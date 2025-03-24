@@ -1,0 +1,414 @@
+@import url('animations.css');
+@import url('responsive.css');
+@import url('../fonts.css');
+
+/* GLOBAL */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-image: url('../img/fundo.jpg');
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    color: #333;
+}
+
+:target {
+    scroll-margin-top: .8em;
+}
+
+.about,
+.skills,
+.portfolio,
+.academic,
+.contact {
+    background-color: #f9f9f9;
+    padding: 60px 250px;
+}
+
+.content-left {
+    display: inline-block;
+    width: calc(50% - 40px);
+    vertical-align: top;
+    text-align: left;
+}
+
+.content-right {
+    display: inline-block;
+    width: calc(50% - 40px);
+    vertical-align: top;
+    text-align: left;
+    margin-left: 40px;
+}
+
+.button {
+    background-color: #FF5722;
+    color: white;
+    border: #FF5722 solid 1px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    margin: 0 10px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.button:hover,
+.button-2:hover {
+    background-color: #000000;
+    color: white;
+    border: #000000 solid 1px;
+}
+
+.button-2 {
+    color: #FF5722;
+    border: 1px solid #FF5722;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+}
+
+section {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+section h1 {
+    font-size: 36px;
+    color: #777;
+    font-weight: bold;
+}
+
+section h2 {
+    font-size: 48px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px;
+}
+
+section h3 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+section p {
+    font-size: 18px;
+    color: #777;
+    margin-top: 10px;
+}
+
+section .buttons {
+    margin-top: 20px;
+}
+
+section .buttons button:hover {
+    background-color: #E64A19;
+}
+
+section .social-icons a {
+    margin: 0 10px;
+    color: #777;
+    font-size: 20px;
+    transition: color 0.3s;
+    padding: 10px 15px;
+}
+
+section .social-icons {
+    padding-top: 20px;
+}
+
+section .social-icons a:hover {
+    color: #FF5722;
+}
+
+section img {
+    margin-top: 0px;
+    max-width: 100%;
+    height: auto;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: transparent;
+}
+
+header .logo a {
+    font-size: 25px;
+    font-weight: bold;
+    color: #FF5722;
+    width: 50px;
+    text-decoration: none;
+}
+
+header .logo a {
+    font-size: 25px;
+    font-weight: bold;
+    color: #FF5722;
+    width: 50px;
+    text-decoration: none;
+}
+
+header a img {
+    width: 50px;
+    height: auto;
+}
+
+header nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #666;
+    transition: color 0.3s;
+}
+
+header nav a:hover {
+    color: #FF5722;
+}
+
+/* HERO SECTION */
+.hero-section {
+    background-position: left;
+    background-size: cover;
+    padding: 180px 20px;
+}
+
+.hero-section h1 {
+    color: #FF5722;
+    padding: 0px 135px 0px 0px; 
+    margin: 0px;
+    align-items: center;
+}
+
+.hero-section h2 {
+    margin: 0px;
+}
+
+.hero-section p {
+    font-style: italic;
+}
+
+/* ABOUT SECTION */
+.about img {
+    width: 200px;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 50%;
+}
+
+.about .content-left {
+    align-items: center;
+    text-align: center;
+}
+
+/* SKILLS SECTION */
+.skills .skill {
+    margin-top: 20px;
+}
+
+.skills .skill span {
+    display: inline-block;
+    width: 100px;
+}
+
+.skills .skill .progress {
+    background-color: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    display: inline-block;
+    width: calc(100% - 120px);
+    height: 10px;
+    vertical-align: middle;
+}
+
+.skills .skill .progress .progress-bar {
+    background-color: #FF5722;
+    height: 100%;
+}
+
+.skills span {
+    color: #777;
+}
+
+/* ACADEMIC SECTION*/
+.academic {
+    background-color: #FF5722;
+    color: #ffffff;
+}
+
+.academic p {
+    color: #ffffff;
+}
+
+.academic .content-right {
+    margin-left: 0px;
+}
+
+.academic .content-left,
+.academic .content-right {
+    border: 1px solid #ddd;
+    padding: 10px 15px 20px 10px;
+    margin: 0px 5px;
+    border-radius: 20px;
+    font-size: 20px;
+    background-color: #4242424b;
+    box-shadow: 0 2px 4px rgb(0, 0, 0, 0.5);
+}
+
+.academic .content-left p,
+.academic .content-right p {
+    font-size: 15px;
+}
+
+/* PORTFOLIO SECTION */
+.portfolio p {
+    font-size: 18px;
+    color: #777;
+    padding: 25px;
+}
+
+.portfolio .portfolio-item {
+    background-color: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    margin: 20px;
+    display: inline-block;
+    width: calc(25% - 40px);
+    vertical-align: top;
+}
+
+.portfolio-item {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.portfolio-item a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.portfolio-item .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ff5622d7;
+    color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    text-align: center;
+}
+
+.portfolio-item .overlay h4 {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.portfolio-item .overlay p {
+    font-size: 16px;
+    margin-top: 10px;
+    color: #FFCCBC;
+}
+
+.portfolio-item:hover .overlay {
+    opacity: 1;
+}
+
+/* CONTACT SECTION */
+.contact form {
+    display: inline-block;
+    text-align: left;
+    width: calc(50% - 40px);
+    vertical-align: top;
+}
+
+.contact .contact-info {
+    display: inline-block;
+    width: calc(50% - 40px);
+    vertical-align: top;
+    text-align: left;
+    margin-left: 40px;
+}
+
+.contact form input,
+.contact form textarea {
+    width: 100%;
+    font-size: 16px;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.contact form textarea {
+    width: 100%;
+    height: 150px;
+    max-width: 100%;
+    max-height: 105px;
+    resize: vertical;
+}
+
+.contact form button {
+    background-color: #FF5722;
+    color: white;
+    border: #FF5722 solid 1px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    margin-top: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.contact form button:hover {
+    background-color: #000000;
+    border: #000000 solid 1px;
+}
+
+.contact .contact-info h4 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.contact .contact-info p {
+    color: #777;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+/* FOOTER */
+footer {
+    background-color: #f9f9f9;
+    padding: 20px;
+    text-align: center;
+}
+
+footer p {
+    color: #777;
+}
+
+footer .social-icons a {
+    margin: 0 10px;
+    color: #777;
+    font-size: 20px;
+    transition: color 0.3s;
+}
+
+footer .social-icons a:hover {
+    color: #FF5722;
+}
