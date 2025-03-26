@@ -1,6 +1,7 @@
-@import url('animations.css');
-@import url('responsive.css');
+@import url('mobile.css');
+
 @import url('../fonts.css');
+@import url('animations.css');
 
 /* GLOBAL */
 html {
@@ -10,6 +11,7 @@ html {
 body {
     background-image: url('../img/fundo.jpg');
     font-family: 'Montserrat', sans-serif;
+    background-repeat: no-repeat;
     margin: 0;
     padding: 0;
     background-color: white;
@@ -180,7 +182,7 @@ header nav a:hover {
 
 .hero-section h1 {
     color: #FF5722;
-    padding: 0px 135px 0px 0px; 
+    padding: 0px 135px 0px 0px;
     margin: 0px;
     align-items: center;
 }

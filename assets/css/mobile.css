@@ -1,8 +1,7 @@
-@media (min-width: 1366px) {
+@media (max-width: 854px) {
 
-    /* GLOBAL */
+    /* GLOBAL*/
     body {
-        background-image: url('../img/fundo-1366x768.jpg');
         font-size: 14px;
     }
 
@@ -11,21 +10,22 @@
     .portfolio,
     .academic,
     .contact {
-        padding: 80px 40px;
+        padding: 60px 30px;
     }
 
     .content-left,
     .content-right {
-        width: 30%;
-        margin: 10px 2.5%;
-        text-align: left;
+        width: 100%;                            
+        margin-left: 0px;
+        margin: 10px 0;
+        text-align: center;
     }
 
     section h3 {
-        font-size: 16px;
+        font-size: 24px;
     }
 
-    section p {
+    section P {
         font-size: 14px;
     }
 
@@ -35,53 +35,58 @@
     }
 
     header .logo {
-        margin: 0px 10px;
+        margin: 0px 0px;
+    }
+
+    /* HERO SECTION */
+    .hero-section {
+        background-image: url('../img/fundo-mobile.jpg');
+    }
+
+    header nav {
+        display: none;
     }
 
     /* SKILLS SECTION */
     .skills .content-left,
     .skills .content-right {
-        margin: 0px 1%;
+        margin: 0px 0;
     }
 
     /* ACADEMIC SECTION */
     .academic .content-left p,
     .academic .content-right p {
-        font-size: 10px;
-        /* 49% de 16px */
+        font-size: 14px;
     }
 
     .academic .content-left,
     .academic .content-right {
         border: 1px solid #ddd;
-        padding: 15px 10px;
-        margin: 15px 0px;
-        font-size: 10.2px;
-        /* 49% de 20px */
+        padding: 10px 0px 10px 0px;
+        margin: 10px 0px;
+        font-size: 18px;
     }
 
-    /* CONTACT SECTION */
+    /* CONTACTO SECTION */
     .contact form input,
     .contact form textarea {
         font-size: 14px;
-        /* 49% de 16px */
     }
 
     /* PORTFOLIO SECTION */
     .portfolio .portfolio-item {
-        width: calc(30% - 20px);
-        margin: 10px 1%;
+        width: calc(100% - 40px);
+        margin: 10px 0;
     }
 
     .contact form {
-        width: 45%;
+        width: 100%;
         margin-bottom: 20px;
     }
 
     .contact .contact-info {
-        margin: 10px 0px;
-        width: 45%;
-        padding-left: 10px;
+        margin: 0px 0px 0px 0px;
+        width: 100%;
     }
 
     .contact .contact-info h4 {
