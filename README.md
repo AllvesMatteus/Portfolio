@@ -6,26 +6,24 @@ Bem-vindo ao repositório do meu portfólio pessoal! Este projeto foi desenvolvi
 
 Este portfólio foi criado com o objetivo de destacar minhas competências como desenvolvedor Full Stack, bem como exibir alguns dos projetos que desenvolvi ao longo da minha carreira. O site é responsivo e otimizado para diferentes dispositivos.
 
-## Tecnologias Utilizadas
-
-- **HTML5**: Estrutura do site.
-- **CSS3**: Estilização, incluindo animações e design responsivo.
-- **JavaScript**: Funcionalidades interativas, como animações baseadas em scroll.
-- **Font Awesome**: Ícones para redes sociais e informações de contato.
-
 ## Funcionalidades
 
-- **Seções do Site**:
-  - Apresentação inicial com links para contato e redes sociais.
-  - Informações sobre mim e minha trajetória.
-  - Exibição das minhas habilidades com barras de progresso.
-  - Detalhes sobre minha formação acadêmica.
-  - Portfólio com projetos desenvolvidos e links para visualização.
-  - Formulário de contato e informações para envio de mensagens.
+- **Sobre:** Breve apresentação pessoal.
+- **Habilidades:** Lista de competências técnicas.
+- **Portfólio:** Projetos realizados.
+- **Formação Acadêmica:** Histórico educacional.
+- **Contato:** Formulário para contato direto.
 
-- **Design Responsivo**: O site se adapta a diferentes tamanhos de tela, garantindo uma boa experiência em dispositivos móveis.
+## Responsividade
 
-- **Animações**: Elementos animados ao entrar na tela, utilizando Intersection Observer.
+O site é totalmente responsivo, adaptando-se para diferentes resoluções, incluindo 1920x1080, 1366x768 e dispositivos móveis.
+
+## Tecnologias Utilizadas
+
+- HTML5
+- CSS3
+- Java Script
+---
 
 ## Estrutura do Projeto
 

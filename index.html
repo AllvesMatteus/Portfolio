@@ -1,243 +1,627 @@
-<html lang="pt-br">
+<!DOCTYPE html>
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio - Mateus Alves</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Mateus Alves | Desenvolvedor Full Stack</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/mobile.css">
-    <link rel="stylesheet" href="assets/css/responsssive.css">
-    <link rel="stylesheet" href="assets/css/animations.css">
-    <link rel="stylesheet" href="assets/fonts/fonts.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
     <link rel="icon" href="assets/icons/ico-16px.ico">
     <link rel="icon" href="assets/icons/ico-32px.ico">
     <link rel="icon" href="assets/icons/ico-64px.ico">
     <link rel="icon" href="assets/icons/ico-128px.ico">
-    <script src="assets/js/animations.js"></script>
 </head>
 
 <body>
     <!-- Header -->
     <header>
-        <!--<div class="logo"><a href="#">DEVELOPER</a></div>-->
-        <a href="#inicio"><img src="assets/img/logo-2.png" alt=""></a>
-        <nav>
-            <a href="#">Inicio</a>
-            <a href="#about">Sobre</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#contact">Contato</a>
-            <a href="#contact" class="button-2">Contate-me</a>
-        </nav>
+        <div class="container header-container">
+            <a href="#hero" class="logo">
+                <img src="assets/img/logo.png" alt="Logo Mateus Alves" style="height:40px;">
+            </a>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="#hero">Início</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#education">Formação</a></li>
+                    <li><a href="#experience">Experiência</a></li>
+                    <li><a href="#skills">Habilidades</a></li>
+                    <li><a href="#portfolio">Portfólio</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero-section">
-        <h1 class="from-left">Olá, Seja</h1>
-        <h2 class="from-right">Bem-Vindo!</h2>
-        <p>Desenvolvedor Full Stack</p>
-        <div class="buttons">
-            <a class="button" href="#contact">CONTATE-ME</a>
-            <a class="button-2" href="docs/curriculo-mateus.pdf" download>DOWNLOAD CV</a>
-        </div>
-        <div class="social-icons">
-            <a href="https://github.com/AllvesMatteus" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/allves-matteus/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://www.instagram.com/matteus.all/" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://x.com/Phalune" target="_blank"><i class="fab fa-twitter"></i></a>
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text animate">
+                    <h1>Mateus Alves</h1>
+                    <h2>Desenvolvedor Full Stack & Web Designer</h2>
+                    <p>Transformo ideias em realidade digital com soluções criativas e eficientes.</p>
+                    <div class="hero-buttons">
+                        <a href="docs/curriculo-mateus.pdf" class="btn btn-primary" download>Download CV</a>
+                        <a href="#portfolio" class="btn btn-outline">Conheça meu trabalho</a>
+                    </div>
+                </div>
+                <div class="hero-image animate">
+                    <img src="assets/img/imghero.png" alt="Mateus Alves">
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section class="about" id="about">
-        <div class="content-left from-left">
-            <img src="assets/img/img-perfil.png" alt="Foto do Mateus">
+    <section id="about">
+        <div class="container">
+            <h2>Sobre <span>Mim</span></h2>
+
+            <div class="about-content">
+                <div class="about-image animate">
+                    <img src="assets/img/img-perfil.png" alt="Mateus Alves">
+                </div>
+
+                <div class="about-text animate" style="animation-delay: 0.2s;">
+                    <h3>Desenvolvedor Full Stack apaixonado por tecnologia</h3>
+                    <p>Seja muito bem-vindo ao meu portfólio! Sou Mateus, programador Full Stack desde 2020. Desenvolvo
+                        sites e
+                        e-commerces utilizando HTML, CSS, JavaScript, Python e WordPress. Atualmente, curso Análise e
+                        Desenvolvimento de Sistemas e estou constantemente aperfeiçoando meus conhecimentos.</p>
+                    <p>Acredito que a tecnologia deve ser acessível, intuitiva e resolver problemas reais. Por isso, me
+                        esforço para criar aplicações que não apenas funcionem perfeitamente, mas que também
+                        proporcionem uma experiência agradável aos usuários.</p>
+
+                    <div class="about-info">
+                        <p><span>Nome:</span> Mateus Alves</p>
+                        <p><span>Idade:</span> 27 anos</p>
+                        <p><span>Email:</span> allves.matteus@hotmail.com</p>
+                        <p><span>Freelance:</span> Disponível</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="content-right from-right">
-            <h3>Mateus Alves</h3>
-            <p>Desenvolvedor Front-End / Full Stack </p>
-            <p>Seja muito bem-vindo ao meu portfólio! Sou Mateus, programador Full Stack desde 2020. Desenvolvo sites e
-                e-commerces utilizando HTML, CSS, JavaScript, Python e WordPress. Atualmente, curso Análise e
-                Desenvolvimento de Sistemas e estou constantemente aperfeiçoando meus conhecimentos.</p>
-            <a class="button" href="docs/curriculo-mateus.pdf" download>DOWNLOAD CV</a>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <h2>Formação <span>Acadêmica</span></h2>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content animate">
+                        <div class="timeline-date">2024 - 2027 - Cursando.</div>
+                        <h3 class="timeline-title">Graduação Análise e Desenvolvimento de Sistemas</h3>
+                        <p class="timeline-desc">Universidade Presbiteriana Mackenzie (UPM)</p>
+                        <p class="timeline-desc">Curso superior focado no desenvolvimento de sistemas de informação, com
+                            disciplinas voltadas à programação, bancos de dados, engenharia de software, arquitetura de
+                            sistemas, segurança da informação e desenvolvimento web/mobile.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content animate" style="animation-delay: 0.2s;">
+                        <div class="timeline-date">2020 - Concluído.</div>
+                        <h3 class="timeline-title">Curso Análise e Desenvolvimento de Sistemas</h3>
+                        <p class="timeline-desc">ETEC Centro Paula Souza</p>
+                        <p class="timeline-desc">Formação técnica voltada para a área de TI, com base sólida em lógica
+                            de programação, estrutura de dados, orientação a objetos, desenvolvimento web e banco de
+                            dados. </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content animate" style="animation-delay: 0.4s;">
+                        <div class="timeline-date">2016 - Concluído.</div>
+                        <h3 class="timeline-title">Ensino médio</h3>
+                        <p class="timeline-desc">Dr. Francisco Pereira da Rocha</p>
+                        <p class="timeline-desc">Formação de nível médio com foco em disciplinas fundamentais como
+                            matemática, português, física e biologia.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2>Experiência <span>Profissional</span></h2>
+
+            <div class="experience-container">
+                <div class="experience-item animate">
+                    <div class="experience-header">
+                        <h3 class="experience-title"> Desenvolvedor Web (Autônomo), Pleno</h3>
+                        <span class="experience-period">2021 - 2022</span>
+                    </div>
+                    <h4 class="experience-company">Compritas</h4>
+                    <p class="experience-desc">Contribuí para o desenvolvimento de uma loja online voltada para a venda
+                        de produtos em geral. Fui responsável pelo design do layout e pela criação da interface do
+                        usuário.</p>
+                    <p class="experience-desc">• Desenvolvimento da interface do usuário (UI) e design do layout para
+                        uma
+                        loja
+                        online.</p>
+                    <p class="experience-desc">• Utilização de WordPress, HTML e JavaScript para criar uma experiência
+                        de
+                        compra intuitiva e responsiva.</p>
+                    <p class="experience-desc">• Implementação de soluções em e-commerce usando WooCommerce e
+                        personalização de temas no WordPress</p>
+                    <div class="experience-skills">
+                        <span class="experience-skill">HTML</span>
+                        <span class="experience-skill">JS</span>
+                        <span class="experience-skill">CSS</span>
+                        <span class="experience-skill">WordPress</span>
+                    </div>
+                </div>
+
+                <div class="experience-item animate" style="animation-delay: 0.2s;">
+                    <div class="experience-header">
+                        <h3 class="experience-title"> Desenvolvedor Web (Autônomo), Pleno</h3>
+                        <span class="experience-period">2020 - 2021</span>
+                    </div>
+                    <h4 class="experience-company">Visual Maker</h4>
+                    <p class="experience-desc"> Empresa de Criação de Sites e Marketing Digital
+                        Atuei como desenvolvedor em uma empresa especializada em criação de sites e
+                        marketing digital. Fui responsável pelo desenvolvimento do site da empresa, criando
+                        layouts.</p>
+                    <p class="experience-desc">• Criação de layouts personalizados e artes visuais para melhorar a
+                        experiência do
+                        usuário.</p>
+                    <p class="experience-desc">• Responsável pelo desenvolvimento e manutenção de sites</p>
+                    <p class="experience-desc">• Colaboração com a equipe de marketing para garantir a funcionalidade e
+                        a
+                        usabilidade dos sites.</p>
+                    <div class="experience-skills">
+                        <span class="experience-skill">HTML</span>
+                        <span class="experience-skill">JavaScript</span>
+                        <span class="experience-skill">CSS</span>
+                        <span class="experience-skill">WordPress</span>
+                        <span class="experience-skill">PHP</span>
+                        <span class="experience-skill">Photoshop</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Skills Section -->
-    <section class="skills">
-        <h3>Minhas Skills</h3>
-        <p>Minhas habilidades são estimativas baseadas no meu conhecimento atual, podendo variar e ser atualizadas
-            constantemente.</p>
-        <div class="content-left">
-            <div class="skill">
-                <span>HTML</span>
-                <div class="progress">
-                    <div class="progress-bar" style="width: 98%;"></div>
+    <section id="skills">
+        <div class="container">
+            <h2>Minhas <span>Habilidades</span></h2>
+
+            <div class="skills-container">
+                <!-- Frontend Skills -->
+                <div class="skill-card animate">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3 class="skill-title">Frontend</h3>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>HTML5</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar-bg">
+                            <div class="skill-bar-fill" data-width="95%"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>CSS3</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar-bg">
+                            <div class="skill-bar-fill" data-width="90%"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>JavaScript</span>
+                            <span>78%</span>
+                        </div>
+                        <div class="skill-bar-bg">
+                            <div class="skill-bar-fill" data-width="78%"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>React Native</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="skill-bar-bg">
+                            <div class="skill-bar-fill" data-width="70%"></div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="skill">
-                <span>CSS</span>
-                <div class="progress">
-                    <div class="progress-bar" style="width: 90%;"></div>
+
+                <!-- Backend Skills -->
+                <div class="skill-card animate" style="animation-delay: 0.2s;">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <h3 class="skill-title">Backend</h3>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Node.js</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="skill-bar-bg">
+                            <div class="skill-bar-fill" data-width="70%"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Python</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar-bg">
+                            <div class="skill-bar-fill" data-width="90%"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>PHP</span>
+                            <span>40%</span>
+                        </div>
+                        <div class="skill-bar-bg">
+                            <div class="skill-bar-fill" data-width="40%"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Python</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar-bg">
+                            <div class="skill-bar-fill" data-width="80%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other Tools -->
+                <div class="skill-card animate" style="animation-delay: 0.4s;">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3 class="skill-title">Outras Ferramentas</h3>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>MySQL/MongoDB</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="skill-bar-bg">
+                            <div class="skill-bar-fill" data-width="75%"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Git/Version Control</span>
+                            <span>88%</span>
+                        </div>
+                        <div class="skill-bar-bg">
+                            <div class="skill-bar-fill" data-width="88%"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Docker</span>
+                            <span>40%</span>
+                        </div>
+                        <div class="skill-bar-bg">
+                            <div class="skill-bar-fill" data-width="40%"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>WordPress</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="skill-bar-bg">
+                            <div class="skill-bar-fill" data-width="70%"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="skill">
-                <span>React</span>
-                <div class="progress">
-                    <div class="progress-bar" style="width: 60%;"></div>
-                </div>
-            </div>
-            <div class="skill">
-                <span>JavaScript</span>
-                <div class="progress">
-                    <div class="progress-bar" style="width: 75%;"></div>
-                </div>
-            </div>
-        </div>
-        <div class="content-right">
-            <div class="skill">
-                <span>Node.JS</span>
-                <div class="progress">
-                    <div class="progress-bar" style="width: 30%;"></div>
-                </div>
-            </div>
-            <div class="skill">
-                <span>Python</span>
-                <div class="progress">
-                    <div class="progress-bar" style="width: 68%;"></div>
-                </div>
-            </div>
-            <div class="skill">
-                <span>MySQL</span>
-                <div class="progress">
-                    <div class="progress-bar" style="width: 75%;"></div>
-                </div>
-            </div>
-            <div class="skill">
-                <span>Wordpress</span>
-                <div class="progress">
-                    <div class="progress-bar" style="width: 90%;"></div>
-                </div>
-            </div>
-        </div>
-    </section>
+            <!-- Other Tools with icons -->
+            <div class="tools-container">
+                <div class="tools-card animate" style="animation-delay: 0.6s;">
+                    <div class="tools-header">
+                        <div class="tools-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3 class="tools-title">Ferramentas Adicionais</h3>
+                    </div>
 
-    <!-- Academic Section -->
-    <section class="academic">
-        <h3>Formação Acadêmica</h3>
-        <p>Minha formação acadêmica e cursos que realizei ao longo da minha carreira. 🎓📚</p>
-        <div class="content-left">
-            <h4>Análise e Desenvolvimento de Sistemas</h4>
-            <p> Curso Superior - Universidade Presbiteriana Mackenzie</p>
-            <p>2024 - Cursando</p>
-        </div>
-        <div class="content-right">
-            <h4>Análise e Desenvolvimento de Sistemas</h4>
-            <p>ETEC - Itanhaém</p>
-            <p>2021 - Concluído</p>
+                    <div class="tools-items">
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <i class="fab fa-git-alt"></i>
+                            </div>
+                            <span class="tool-name">Git</span>
+                        </div>
+
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <i class="fab fa-figma"></i>
+                            </div>
+                            <span class="tool-name">Figma</span>
+                        </div>
+
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <i class="fas fa-terminal"></i>
+                            </div>
+                            <span class="tool-name">CLI</span>
+                        </div>
+
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <img src="assets/img/photoshop.png" alt="Photoshop" style="width:20px; height:20px;">
+                            </div>
+                            <span class="tool-name">Photoshop</span>
+                        </div>
+
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <i class="fas fa-code-branch"></i>
+                            </div>
+                            <span class="tool-name">Git Flow</span>
+                        </div>
+
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <i class="fas fa-network-wired"></i>
+                            </div>
+                            <span class="tool-name">REST APIs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Portfolio Section -->
-    <section class="portfolio" id="portfolio">
-        <h3>Veja alguns dos meus Projetos</h3>
-        <p>Código, criatividade e um toque de magia! Explore meus projetos mais legais e veja o que ando desenvolvendo.
-            🚀</p>
-        <div class="portfolio-item">
-            <a href="https://studiovisualmaker.com/" target="_blank">
-                <img src="assets/img/visual-maker.jpg" alt="Descrição do item">
-                <div class="overlay">
-                    <h4>Visual Maker Studio</h4>
-                    <p>Visual Maker Studio é uma plataforma de criação de sites e lojas virtuais. O projeto foi
-                        desenvolvido com Wordpress, HTML e CSS.
-                    </p>
-                </div>
-            </a>
-        </div>
-        <div class="portfolio-item">
-            <a href="https://compritas.com.br" target="_blank">
-                <img src="assets/img/compritas.jpg" alt="Descrição do item">
-                <div class="overlay">
-                    <h4>Compritas</h4>
-                    <p>Compritas é um e-commerce de roupas e acessórios femininos. O projeto foi desenvolvido com HTML,
-                        CSS, JS e PHP.</p>
-                </div>
-            </a>
-        </div>
-        <div class="portfolio-item">
-            <a href="https://size-converter.com/" target="_blank">
-                <img src="assets/img/tamanho-ideal.jpg" alt="Descrição do item">
-                <div class="overlay">
-                    <h4>Conversor de tamanho</h4>
-                    <p>Conversor de tamanho de roupas e calçados. O projeto foi desenvolvido com HTML, CSS e JS.</p>
-                </div>
-            </a>
-        </div>
-        <div class="portfolio-item">
-            <a href="https://github.com/AllvesMatteus" target="_blank">
-                <img src="assets/img/spotify.jpg" alt="Descrição do item">
-                <div class="overlay">
-                    <h4>Copia do Spotify</h4>
-                    <p>Projeto desenvolvido com HTML, CSS e JS. O projeto é uma cópia da interface do Spotify.</p>
-                </div>
-            </a>
-        </div>
-        </div>
-        <div class="portfolio-item">
-            <a href="https://gerador-de-senha-ruby.vercel.app" target="_blank">
-                <img src="assets/img/gerador-de-senha.jpg" alt="Descrição do item">
-                <div class="overlay">
-                    <h4>Gerador de Senha</h4>
-                    <p>Gerador de senha aleatória. O projeto foi desenvolvido com HTML, CSS e JS.</p>
-                </div>
-            </a>
-        </div>
-        <div class="portfolio-item">
-            <a href="https://github.com/AllvesMatteus" target="_blank">
-                <img src="assets/img/python.jpg" alt="Descrição do item">
-                <div class="overlay">
-                    <h4>Automação com Python</h4>
-                    <p>Projeto de automação de tarefas do dia a dia com Python.</p>
-                </div>
-            </a>
+    <section id="portfolio">
+        <div class="container">
+            <h2>Meu <span>Portfólio</span></h2>
+
+            <div class="portfolio-filter">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="frontend">Frontend</button>
+                <button class="filter-btn" data-filter="backend">Backend</button>
+                <button class="filter-btn" data-filter="fullstack">Fullstack</button>
+            </div>
+
+            <div class="portfolio-grid">
+                <!-- Project 1 -->
+                <a class="portfolio-item show" href="https://studiovisualmaker.com/" target="_blank"
+                    data-category="fullstack">
+                    <div class="portfolio-img">
+                        <img src="assets/img/visual-maker.jpg" alt="Visual Maker">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3 class="portfolio-title">Visual Maker Studio</h3>
+                        <p class="portfolio-desc">Visual Maker Studio é uma plataforma de criação de sites e lojas
+                            virtuais. O projeto foi desenvolvido com Wordpress, HTML e CSS.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">HTML</span>
+                            <span class="portfolio-tag">CSS</span>
+                            <span class="portfolio-tag">JS</span>
+                            <span class="portfolio-tag">WordPress</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Project 2 -->
+                <a class="portfolio-item show" href="https://compritas.com.br/" target="_blank"
+                    data-category="fullstack">
+                    <div class="portfolio-img">
+                        <img src="assets/img/compritas.jpg" alt="Task Management App">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3 class="portfolio-title">Compritas</h3>
+                        <p class="portfolio-desc">Compritas é um e-commerce de roupas e acessórios femininos. O projeto
+                            foi desenvolvido com HTML,
+                            CSS, JS e PHP.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">HTML</span>
+                            <span class="portfolio-tag">CSS</span>
+                            <span class="portfolio-tag">JS</span>
+                            <span class="portfolio-tag">WordPress</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Project 3 -->
+                <a class="portfolio-item show" href="https://studiovisualmaker.com/" target="_blank"
+                    data-category="fullstack">
+                    <div class="portfolio-img">
+                        <img src="assets/img/tamanho-ideal.jpg" alt="API de Autenticação">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3 class="portfolio-title">Conversor de tamanho</h3>
+                        <p class="portfolio-desc">Conversor de tamanho de roupas e calçados. O projeto foi desenvolvido
+                            com HTML, CSS e JS.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">HTML</span>
+                            <span class="portfolio-tag">CSS</span>
+                            <span class="portfolio-tag">JS</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Project 4 -->
+                <a class="portfolio-item show" href="#" target="_blank" data-category="fullstack">
+                    <div class="portfolio-img">
+                        <img src="assets/img/spotify.jpg" alt="Weather Dashboard">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3 class="portfolio-title">Copia do Spotify</h3>
+                        <p class="portfolio-desc">Projeto desenvolvido com HTML, CSS e JS. O projeto é uma cópia da
+                            interface do Spotify.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">React Native</span>
+                            <span class="portfolio-tag">JS</span>
+                            <span class="portfolio-tag">CSS</span>
+                            <span class="portfolio-tag">TypeScript</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Project 5 -->
+                <a class="portfolio-item show" href="https://studiovisualmaker.com/" target="_blank"
+                    data-category="fullstack">
+                    <div class="portfolio-img">
+                        <img src="assets/img/gerador-de-senha.jpg" alt="Social Network">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3 class="portfolio-title">Gerador de Senha</h3>
+                        <p class="portfolio-desc">Gerador de senha aleatória. O projeto foi desenvolvido com HTML, CSS e
+                            JS.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">HTML</span>
+                            <span class="portfolio-tag">CSS</span>
+                            <span class="portfolio-tag">JS</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Project 6 -->
+                <a class="portfolio-item show" href="#" target="_blank" data-category="backend">
+                    <div class="portfolio-img">
+                        <img src="assets/img/python.jpg" alt="CMS Personalizado">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3 class="portfolio-title">Automação com Python</h3>
+                        <p class="portfolio-desc">Projeto de automação de tarefas do dia a dia com Python.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Python</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <h3>Entre em contato comigo</h3>
-        <p>E aí, que tal um café para falarmos sobre negócios? Entre em contato! ☕🚀</p>
-        <form action="https://formsubmit.co/a.matteus@outlook.com" method="POST">
-            <input id="name" name="name" placeholder="Nome" required>
-            <input id="email" type="email" name="email" placeholder="Email" required>
-            <textarea id="message" name="message" placeholder="Mensagem" maxlength="2000" required></textarea>
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_next" value="http://127.0.0.1:5500/index.html">
-            <input type="hidden" name="_subject" value="Novo envio!">
-            <button type="submit">Enviar</button>
-        </form>
-        <div class="contact-info">
-            <h4>Localização</h4>
-            <p><i class="fa-solid fa-location-dot"></i> Peruíbe, São Paulo- Brasil</p>
-            <h4>Celular</h4>
-            <p><i class="fab fa-whatsapp"></i> (11) 94864 2383</p>
-            <h4>Email</h4>
-            <p><i class="fa-regular fa-envelope"></i> allves.matteus@hotmail.com</p>
+    <section id="contact">
+        <div class="container">
+            <h2>Entre em <span>Contato</span></h2>
+
+            <div class="contact-container">
+                <div class="contact-info animate">
+                    <h3>Vamos conversar sobre seu projeto!</h3>
+                    <p>Estou disponível para oportunidades de trabalho freelance e colaborações. Entre em contato comigo
+                        enviando uma mensagem ou através das minhas redes sociais.</p>
+
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <p>allves.matteus@hotmail.com</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Celular (WhatsApp)</h4>
+                                <p>+55 (11) 94864-2383</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Localização</h4>
+                                <p>São Paulo, Brasil</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4>Redes Sociais</h4>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/allves-matteus/" class="social-link"><i
+                                class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/AllvesMatteus" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="https://www.instagram.com/matteus.all/" class="social-link"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://x.com/Phalune" class="social-link"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+
+                <div class="contact-form animate" style="animation-delay: 0.2s;">
+                    <form id="form-contato" action="https://formsubmit.co/a.matteus@outlook.com" method="POST">
+                        <div class="form-group">
+                            <label for="nome">Nome</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mensagem">Mensagem</label>
+                            <textarea id="mensagem" class="form-control" name="message" required></textarea>
+                        </div>
+
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="http://127.0.0.1:5500/index.html">
+                        <input type="hidden" name="_subject" value="Mensagem do Portfólio!">
+                        <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>Copyright 2025 © Mateus Allves</p>
-        <div class="social-icons">
-            <a href="https://github.com/AllvesMatteus" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/allves-matteus/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://www.instagram.com/matteus.all/" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://x.com/Phalune" target="_blank"><i class="fab fa-twitter"></i></a>
+        <div class="container">
+            <p class="footer-text">&copy;
+                <script>document.write(new Date().getFullYear());</script> Mateus Alves. Todos os direitos reservados.
+            </p>
         </div>
     </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/animations.js"></script>
 </body>
 
 </html>
