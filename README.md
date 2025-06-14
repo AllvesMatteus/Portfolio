@@ -29,7 +29,6 @@ O site é totalmente responsivo, adaptando-se para diferentes resoluções, incl
 
 - **`index.html`**: Página principal do site.
 - **`assets/css/`**: Arquivos de estilo.
-- **`assets/fonts/`**: Fontes personalizadas.
 - **`assets/icons/`**: Ícones do site.
 - **`assets/img/`**: Imagens utilizadas no site.
 - **`assets/js/`**: Scripts JavaScript.
