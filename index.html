@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="h-full">
+
+<head>
+  <script>
+    try { if (window.parent && window.parent !== window) { window.parent.promotekit_referral = "1fd2949a-d22c-431b-92bf-02d4ad04ee24"; window.parent.document.cookie = "promotekit_referral=1fd2949a-d22c-431b-92bf-02d4ad04ee24;path=/;domain=.aura.build;max-age=31536000" } } catch (e) { }
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mateus Alves - Desenvolvedor Full Stack</title>
+  <meta name="description"
+    content="Desenvolvedor Full Stack focado em construir aplicações modernas, sistemas eficientes e experiências digitais de alto impacto.">
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon/favicon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon/favicon-192.png">
+  <link rel="apple-touch-icon" href="assets/img/favicon/favicon-512.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="fonts.gstatic.com" crossorigin="">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="assets/js/tailwind-config.js"></script>
+  <link rel="stylesheet" href="assets/css/inter.css">
+  <link rel="stylesheet" href="assets/css/geist.css">
+  <link rel="stylesheet" href="assets/css/geist-mono.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+
+<body class="h-full overflow-hidden bg-[#0d0d0d] text-white antialiased overflow-x-hidden"
+  style="font-family: Inter, ui-sans-serif, system-ui, -apple-system, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; cursor: auto;">
+
+  <!-- --- Terminal Splash --- -->
+  <div id="terminal-splash"
+    class="fixed inset-0 z-[100] bg-[#020202] flex flex-col items-center justify-center transition-all duration-1000 ease-[cubic-bezier(0.87,0,0.13,1)]">
+    <button id="skipTerminalBtn"
+      class="absolute top-6 right-6 px-4 py-2 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 text-white/50 hover:text-white text-sm font-geist transition-all duration-300 flex items-center gap-2 group z-[110]">
+      <span data-i18n="terminal_visual_mode">Modo Visual</span> <kbd
+        class="px-1.5 py-0.5 rounded border border-white/20 bg-white/10 text-[10px] font-geist-mono">ESC</kbd>
+    </button>
+    <div id="terminal-window"
+      class="bg-[#1c1c1c] rounded-xl border border-white/5 shadow-[0_30px_60px_rgba(0,0,0,0.6)] overflow-hidden flex flex-col w-[92vw] h-[65vh] sm:w-[640px] sm:h-[530px] lg:w-[850px] lg:h-[580px] relative mt-16 sm:mt-0">
+      <div class="resizer resizer-t"></div>
+      <div class="resizer resizer-b"></div>
+      <div class="resizer resizer-l"></div>
+      <div class="resizer resizer-r"></div>
+      <div class="resizer resizer-lt"></div>
+      <div class="resizer resizer-rt"></div>
+      <div class="resizer resizer-lb"></div>
+      <div class="resizer resizer-rb"></div>
+
+      <div id="terminal-header"
+        class="h-[38px] bg-[#3a3a3a] flex items-center px-4 relative select-none border-b border-black/20 cursor-move">
+        <div class="flex gap-[8px] relative z-10 group/btns">
+          <button
+            class="w-[12px] h-[12px] rounded-full bg-[#ff5f56] border border-black/5 flex items-center justify-center cursor-pointer group/close"
+            id="term-close" aria-label="Fechar">
+            <svg class="w-[7px] h-[7px] text-black/60 opacity-0 group-hover/close:opacity-100 transition-opacity"
+              viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M1 1l8 8M9 1L1 9" />
+            </svg>
+          </button>
+          <button
+            class="w-[12px] h-[12px] rounded-full bg-[#ffbd2e] border border-black/5 flex items-center justify-center cursor-pointer group/min"
+            id="term-min" aria-label="Minimizar">
+            <svg class="w-[7px] h-[7px] text-black/60 opacity-0 group-hover/min:opacity-100 transition-opacity"
+              viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M1 5h8" />
+            </svg>
+          </button>
+          <button
+            class="w-[12px] h-[12px] rounded-full bg-[#27c93f] border border-black/5 flex items-center justify-center cursor-pointer group/max"
+            id="term-max" aria-label="Maximizar">
+            <svg class="w-[6px] h-[6px] text-black/60 opacity-0 group-hover/max:opacity-100 transition-opacity"
+              viewBox="0 0 10 10" fill="currentColor">
+              <path d="M0 0h10v10H0zM3 3h4v4H3z" />
+            </svg>
+          </button>
+        </div>
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div class="flex items-center gap-2">
+            <span class="text-[12px] text-white/60 font-geist-mono font-medium tracking-tight"
+              data-i18n="terminal_title">mateus —
+              portifólio</span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="pt-2 px-5 pb-5 sm:pt-3 sm:px-6 sm:pb-6 flex-1 min-h-[492px] overflow-y-auto font-geist-mono text-sm flex flex-col cursor-text relative"
+        id="terminal-body">
+        <div id="terminal-output"
+          class="whitespace-pre-wrap space-y-1.5 text-[#d4d4d4] relative z-10 font-geist-mono leading-relaxed">
+        </div>
+        <div id="terminal-input-line" class="flex hidden items-center space-x-2 w-full relative z-10 mt-4">
+          <span id="prompt-label" class="flex items-center space-x-2"></span>
+          <div class="flex-1 relative flex items-center min-w-0">
+            <input type="text" id="terminal-input"
+              class="absolute inset-0 w-full h-full opacity-0 cursor-text pointer-events-auto" autocomplete="off"
+              spellcheck="false" autofocus>
+            <span id="terminal-input-display"
+              class="pointer-events-none tracking-wide text-white whitespace-pre"></span>
+            <span id="terminal-suggestion"
+              class="pointer-events-none tracking-wide text-white/30 whitespace-pre"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- --- Guia Root --- -->
+  <div id="root-guide-modal">
+    <div class="apple-alert">
+      <div class="apple-alert-content">
+        <h3 class="apple-alert-title" data-i18n="root_modal_title">Modo Engenharia Ativo</h3>
+        <div class="apple-alert-message" style="margin-top: 10px; line-height: 1.6;">
+          <p data-i18n="root_modal_privileges">Privilégios de ROOT concedidos.</p>
+          <div style="margin-top: 8px; opacity: 0.9;">
+            <span data-i18n="root_modal_instruction_dev">• Use <span class="text-yellow-400 font-mono">npm run
+                dev</span> para iniciar o ambiente.</span><br>
+            <span data-i18n="root_modal_instruction_help">• Use <span class="text-yellow-400 font-mono">help</span> para
+              ver as novas ferramentas técnicas.</span>
+          </div>
+        </div>
+      </div>
+      <div class="apple-alert-actions">
+        <button id="closeRootModal" class="apple-alert-button bold" data-i18n="root_modal_btn">Entendido</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- --- Botão Terminal --- -->
+  <button id="returnTerminalBtn"
+    class="opacity-0 translate-y-10 pointer-events-none fixed bottom-6 left-6 sm:bottom-8 sm:left-8 z-[90] h-12 rounded-full bg-[#1c1c1c] border border-white/10 text-white flex items-center justify-center px-5 shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:bg-white/10 hover:border-white/20 transition-all duration-300 group">
+    <div class="flex items-center gap-3">
+      <span class="text-[#a1a1aa] font-geist-mono font-bold text-sm select-none">&gt;_</span>
+      <span class="text-xs font-geist-mono font-medium tracking-wide opacity-80 uppercase">Terminal</span>
+      <span class="bg-white/10 px-1.5 py-0.5 rounded text-[9px] font-geist-mono opacity-50 ml-0.5">ESC</span>
+    </div>
+  </button>
+
+  <div aria-hidden="true" class="pointer-events-none fixed inset-0 bg-[#020202]"></div>
+
+  <div id="statusIndicator"
+    class="fixed right-6 top-1/2 -translate-y-1/2 z-50 space-y-3 hidden lg:flex opacity-0 animate-slide-up"
+    style="animation-delay: 2s">
+
+    <div class="group">
+
+    </div>
+  </div>
+
+  <!-- --- Interface --- -->
+  <div id="visual-container" class="view-transition-container view-enter">
+    <header id="main-nav-header"
+      class="hidden fixed top-0 left-0 right-0 z-40 opacity-0 animate-fade-in my-4 backdrop-blur-3xl"
+      style="animation-delay: 0.2s">
+
+      <div
+        class="relative max-w-7xl lg:px-8 ring-1 ring-white/10 bg-white/10 border-white/20 border rounded-full mr-auto ml-auto pr-6 pl-6 shadow-lg backdrop-blur-lg">
+        <div class="flex h-20 items-center">
+          <div class="flex-1 flex justify-start">
+            <a href="#" class="group">
+              <div class="flex items-center gap-2">
+                <img src="assets/img/logo.png" alt="Mateus Alves"
+                  class="h-9 w-auto opacity-90 group-hover:opacity-100 transition-opacity">
+              </div>
+            </a>
+          </div>
+
+          <nav class="hidden md:flex items-center gap-8">
+            <a href="#about" data-i18n="nav_about"
+              class="text-sm font-medium text-gray-300 hover:text-white transition-colors duration-200 font-geist">Sobre</a>
+            <a href="#skills" data-i18n="nav_skills"
+              class="text-sm font-medium text-gray-300 hover:text-white transition-colors duration-200 font-geist">Habilidades</a>
+            <a href="#projects" data-i18n="nav_projects"
+              class="text-sm font-medium text-gray-300 hover:text-white transition-colors duration-200 font-geist">Projetos</a>
+            <a href="#education" data-i18n="nav_training"
+              class="text-sm font-medium text-gray-300 hover:text-white transition-colors duration-200 font-geist">Formação</a>
+          </nav>
+
+          <div class="flex-1 hidden md:flex items-center justify-end gap-4">
+
+            <button id="langToggle"
+              class="group flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="text-gray-400 group-hover:text-white transition-colors">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+                <path d="M2 12h20" />
+              </svg>
+              <span id="langText"
+                class="text-sm font-geist-mono font-medium text-gray-400 group-hover:text-white transition-colors">PT</span>
+            </button>
+
+            <a href="#contact" data-i18n="nav_contact_btn"
+              class="inline-flex items-center gap-2 rounded-full bg-white/90 text-black px-5 py-2.5 text-sm font-semibold hover:bg-white transition-all duration-300 backdrop-blur-md shadow-lg font-geist">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                data-lucide="arrow-right" class="lucide lucide-arrow-right w-4 h-4">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+              Vamos conversar
+            </a>
+          </div>
+
+          <button id="menuBtn"
+            class="md:hidden rounded-xl bg-white/15 border border-white/30 p-2.5 text-white hover:bg-white/20 backdrop-blur-md">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="menu"
+              stroke-line="round" class="lucide lucide-menu w-5 h-5">
+              <path d="M4 12h16"></path>
+              <path d="M4 18h16"></path>
+              <path d="M4 6h16"></path>
+            </svg>
+          </button>
+        </div>
+
+        <div id="mobileNav"
+          class="hidden md:hidden absolute top-full left-0 right-0 bg-black/80 backdrop-blur-xl border-b border-white/20 rounded-b-2xl shadow-lg ring-1 ring-white/10">
+          <div class="px-6 py-6 space-y-4">
+            <a href="#about" data-i18n="nav_about"
+              class="block rounded-xl px-4 py-3 text-base font-medium text-gray-300 hover:bg-white/10 hover:text-white transition-colors font-geist">Sobre</a>
+            <a href="#process" data-i18n="nav_skills"
+              class="block rounded-xl px-4 py-3 text-base font-medium text-gray-300 hover:bg-white/10 hover:text-white transition-colors font-geist">Habilidades</a>
+            <a href="#work" data-i18n="nav_projects"
+              class="block rounded-xl px-4 py-3 text-base font-medium text-gray-300 hover:bg-white/10 hover:text-white transition-colors font-geist">Projetos</a>
+            <a href="#formacao" data-i18n="nav_training"
+              class="block rounded-xl px-4 py-3 text-base font-medium text-gray-300 hover:bg-white/10 hover:text-white transition-colors font-geist">Formação</a>
+            <div class="pt-4 border-t border-white/20">
+              <a href="#contact"
+                class="flex items-center justify-center gap-2 rounded-xl bg-white/90 text-black px-6 py-3 text-base font-semibold backdrop-blur-md shadow-lg font-geist">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  data-lucide="arrow-right" class="lucide lucide-arrow-right w-4 h-4">
+                  <path d="M5 12h14"></path>
+                  <path d="m12 5 7 7-7 7"></path>
+                </svg>
+                Vamos conversar
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- --- Hero --- -->
+    <section id="heroSection"
+      class="relative min-h-screen flex items-center pt-24 lg:pt-32 pb-12 overflow-hidden bg-[#020202]">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8 w-full relative">
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+
+          <div
+            class="flex flex-col items-center lg:items-start text-center lg:text-left z-20 relative order-2 lg:order-1 pointer-events-none mt-8 lg:mt-0">
+            <div class="opacity-0 animate-slide-up pointer-events-auto" style="animation-delay: 0.6s">
+              <h1 id="heroHeadline"
+                class="text-4xl md:text-7xl lg:text-[10rem] font-bold text-white tracking-tighter leading-[1] md:leading-[0.8] drop-shadow-2xl">
+                Desenvolvedor <br class="hidden sm:block">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-white/90 to-white/20">Full
+                  Stack</span>
+              </h1>
+            </div>
+
+            <div class="mt-6 lg:mt-8 opacity-0 animate-slide-up pointer-events-auto" style="animation-delay: 0.8s">
+              <p data-i18n="hero_subheadline"
+                class="text-base md:text-xl text-white/50 font-geist leading-relaxed max-w-xl mx-auto lg:mx-0 tracking-tight font-light">
+                Transformando conceitos complexos em <span class="text-white/90">produtos digitais de alta performance</span>, 
+                unindo arquitetura robusta e design intuitivo.
+              </p>
+            </div>
+
+            <div
+              class="mt-8 lg:mt-12 flex flex-col sm:flex-row items-center gap-4 lg:gap-5 opacity-0 animate-slide-up w-full lg:w-auto pointer-events-auto"
+              style="animation-delay: 1s">
+              <a href="#work" data-i18n="hero_cta_work"
+                class="group w-full sm:w-auto inline-flex items-center justify-center gap-3 rounded-full bg-white text-black px-8 lg:px-10 py-3.5 lg:py-4 text-sm font-bold hover:bg-gray-100 transition-all duration-300 active:scale-95 shadow-[0_0_40px_rgba(255,255,255,0.1)]">
+                Ver projetos
+                <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+              </a>
+              <a href="#about" data-i18n="hero_cta_about"
+                class="w-full sm:w-auto inline-flex items-center justify-center gap-3 rounded-full border border-white/10 bg-white/[0.03] backdrop-blur-md text-white px-8 lg:px-10 py-3.5 lg:py-4 text-sm font-bold hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+                Sobre mim
+              </a>
+            </div>
+          </div>
+
+          <div
+            class="lg:absolute lg:-right-20 lg:top-1/2 lg:-translate-y-1/2 w-full lg:w-[120%] h-auto opacity-0 animate-scale-in z-10 flex justify-center lg:justify-end order-1 lg:order-2 relative"
+            style="animation-delay: 0.4s">
+
+            <div id="hero-video-container"
+              class="relative w-[140%] sm:w-full max-w-none sm:max-w-[600px] lg:max-w-none lg:w-[1100px] aspect-video lg:scale-125 lg:rotate-[-2deg] pointer-events-none left-1/2 lg:left-0 -translate-x-1/2 lg:translate-x-0">
+              <video id="hero-video" src="assets/video/hero-animation.mp4" muted playsinline preload="auto"
+                class="w-full h-full object-cover filter brightness-110 contrast-110 drop-shadow-[0_0_80px_rgba(255,255,255,0.06)] will-change-transform">
+              </video>
+            </div>
+
+            <div
+              class="absolute -z-10 top-1/2 left-1/2 lg:left-auto lg:right-0 -translate-x-1/2 lg:translate-x-0 -translate-y-1/2 w-full h-full bg-blue-500/[0.04] blur-[80px] lg:blur-[150px] rounded-full">
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- --- Sobre Mim --- -->
+    <section id="about" class="mt-0 pt-16 lg:mt-0 lg:pt-24 pb-24 overflow-hidden">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="relative mb-16 text-center reveal-on-scroll reveal-slide-up">
+          <div aria-hidden="true"
+            class="pointer-events-none absolute left-1/2 -translate-x-1/2 -top-2 h-12 w-[560px] rounded-full bg-gradient-to-r from-blue-500/10 via-white/20 to-purple-500/10 blur-3xl">
+          </div>
+          <h2 class="relative text-4xl lg:text-5xl text-white font-geist tracking-tight font-light"
+            data-i18n="about_heading">Minha <span class="font-medium">Jornada</span></h2>
+          <p class="mt-4 text-gray-400 font-geist" data-i18n="about_subheading">Conheça um pouco mais sobre quem está
+            por
+            trás do código</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-5 relative reveal-on-scroll reveal-scale-in stagger-1">
+            <div class="relative group">
+              <div
+                class="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-[2rem] blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200">
+              </div>
+
+              <div class="relative rounded-[2rem] overflow-hidden border border-white/10 bg-[#0a0a0a]">
+                <img src="assets/img/mateus-alves-about.jpg" alt="Mateus Alves"
+                  class="w-full h-[500px] lg:h-[600px] object-cover filter brightness-95">
+
+                <div
+                  class="absolute bottom-6 left-6 right-6 backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-4 flex items-center justify-between">
+                  <div>
+                    <p class="text-[10px] text-gray-400 font-geist-mono uppercase tracking-widest"
+                      data-i18n="about_location_label">Localização</p>
+                    <p class="text-sm text-white font-geist" data-i18n="about_location_value">São Paulo, Brasil</p>
+                  </div>
+                  <div class="h-8 w-px bg-white/10"></div>
+                  <div>
+                    <p class="text-[10px] text-gray-400 font-geist-mono uppercase tracking-widest"
+                      data-i18n="about_experience_label">Experiência</p>
+                    <p class="text-sm text-white font-geist" data-i18n="about_experience_value">+5 Anos</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 flex flex-col gap-8 reveal-on-scroll reveal-slide-up stagger-2">
+            <div class="space-y-4">
+              <span class="text-blue-400 font-geist-mono text-sm font-semibold tracking-[0.2em] uppercase"
+                data-i18n="about_intro">Full Stack Developer & Co-Founder</span>
+              <h3 class="text-3xl lg:text-5xl text-white font-geist font-medium leading-tight">Mateus Alves</h3>
+              <p class="text-xl text-gray-400 font-geist font-light italic leading-relaxed" data-i18n="about_quote">
+                "Traduzo necessidades de negócio em soluções técnicas que escalam de verdade."</p>
+            </div>
+
+            <div class="space-y-6 text-gray-300 font-geist text-base lg:text-lg leading-relaxed">
+              <p data-i18n="about_p1">
+                Desenvolvedor Full Stack com mais de 5 anos de experiência prática no ecossistema de tecnologia.
+                Sócio-fundador do <span
+                  class="text-white font-medium underline decoration-blue-500/40 decoration-2 underline-offset-4">Visual
+                  Maker Studio</span>, onde lidero a arquitetura e o desenvolvimento de sites, e-commerces e automações
+                —
+                do wireframe ao deploy.
+              </p>
+              <p data-i18n="about_p2">
+                Tenho sólido domínio em <span class="text-white font-medium border-b border-blue-500/30">JavaScript,
+                  PHP,
+                  Python, Node.js e React Native</span>, além de expertise no ecossistema WordPress/WooCommerce e bancos
+                de dados como MySQL e MongoDB. Atualmente cursando <span
+                  class="text-white font-medium border-b border-purple-500/30">Análise e Desenvolvimento de Sistemas no
+                  Mackenzie</span>, sigo unindo visão de negócio com execução técnica de alta performance.
+              </p>
+            </div>
+
+            <div class="flex flex-col gap-10 pt-4">
+              <div class="flex items-center gap-6">
+                <span data-i18n="about_social_label"
+                  class="text-[10px] text-gray-500 font-geist-mono uppercase tracking-[0.2em] whitespace-nowrap">Conecte-se:</span>
+                <div class="flex gap-4">
+                  <a href="https://linkedin.com/in/allves-matteus" target="_blank"
+                    class="p-2 rounded-lg bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 hover:border-blue-500/40 transition-all duration-300"
+                    title="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2">
+                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                      <rect x="2" y="9" width="4" height="12"></rect>
+                      <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                  </a>
+                  <a href="https://github.com/AllvesMatteus" target="_blank"
+                    class="p-2 rounded-lg bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 hover:border-white/30 transition-all duration-300"
+                    title="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2">
+                      <path
+                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                      </path>
+                    </svg>
+                  </a>
+                  <a href="https://instagram.com/matteus.all" target="_blank"
+                    class="p-2 rounded-lg bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 hover:border-pink-500/40 transition-all duration-300"
+                    title="Instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2">
+                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <div class="flex flex-row gap-3 sm:gap-4 w-full">
+                <a href="docs/mateus_alves_developer.pdf" target="_blank" download
+                  class="flex-1 group inline-flex items-center justify-center gap-2 sm:gap-3 rounded-full bg-white text-black px-4 sm:px-8 py-3.5 sm:py-4 text-[10px] sm:text-xs md:text-sm font-semibold hover:bg-gray-100 transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.3)] font-geist">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2"
+                    class="flex-shrink-0 animate-bounce group-hover:animate-none hidden md:block">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                  </svg>
+                  Download CV
+                </a>
+
+                <a href="#contact" data-i18n="about_contact_btn"
+                  class="flex-1 group inline-flex items-center justify-center gap-2 sm:gap-3 rounded-full border border-white/20 bg-white/5 px-4 sm:px-8 py-3.5 sm:py-4 text-[10px] sm:text-xs md:text-sm font-medium text-white hover:bg-white/10 hover:border-white/40 transition-all duration-300 font-geist backdrop-blur-md">
+                  Entrar em Contato
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2"
+                    class="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 hidden md:block">
+                    <path d="m5 12 7-7 7 7" />
+                    <path d="M12 19V5" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- --- Formação --- -->
+    <section id="education" class="pt-24 pb-24">
+      <div class="max-w-7xl lg:px-8 mr-auto ml-auto pr-6 pl-6">
+        <div class="relative mb-16 text-center">
+          <div aria-hidden="true"
+            class="pointer-events-none absolute left-1/2 -translate-x-1/2 -top-2 h-12 w-[560px] rounded-full bg-gradient-to-r from-white/5 via-white/25 to-white/5 blur-2xl">
+          </div>
+          <h2 class="relative text-4xl lg:text-5xl text-white font-geist tracking-tight font-light"
+            data-i18n="edu_heading">Formação <span class="text-white/80">Acadêmica</span></h2>
+          <p class="mt-4 text-gray-400 font-geist" data-i18n="edu_subheading">Minha trajetória de aprendizado e evolução
+          </p>
+        </div>
+        <div class="relative max-w-3xl mx-auto" id="timeline-container">
+          <div class="absolute left-10 top-0 bottom-0 w-px bg-white/10 z-0">
+            <div id="timeline-progress-line"
+              class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-t from-purple-500 via-white/50 to-red-600 transition-all duration-1000 ease-out shadow-[0_0_15px_rgba(255,255,255,0.2)] z-0">
+            </div>
+            <div
+              class="absolute bottom-0 -left-[3px] w-2 h-2 rounded-full bg-purple-500 shadow-[0_0_10px_rgba(168,85,247,0.8)] z-10">
+            </div>
+          </div>
+
+          <div class="space-y-12 lg:space-y-16 reveal-on-scroll reveal-slide-up stagger-1">
+            <div class="relative flex gap-8 items-start group opacity-0" data-timeline-item="3">
+              <div
+                class="relative z-20 flex-shrink-0 w-20 h-20 rounded-full bg-[#0d0d0d] border border-red-500/30 flex items-center justify-center transition-all duration-300 group-hover:border-red-500/50 overflow-hidden p-4 opacity-0">
+                <img src="assets/img/logo-mackenzie.png" alt="Mackenzie Logo"
+                  class="relative z-10 w-full h-full object-contain filter brightness-110 contrast-110 group-hover:scale-105 transition-transform duration-500">
+              </div>
+              <div
+                class="flex-1 rounded-2xl bg-white/[0.04] border border-white/10 p-6 hover:bg-white/[0.07] hover:border-red-500/20 transition-all duration-300 backdrop-blur-sm opacity-0">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                  <span data-i18n="edu_mackenzie_date"
+                    class="text-xs font-geist-mono text-red-500/80 bg-red-500/10 border border-red-500/20 px-2.5 py-1 rounded-full">2024
+                    – 2026 (em curso)</span>
+                  <span class="text-xs text-gray-500 font-geist" data-i18n="edu_location_sp">São Paulo, SP</span>
+                </div>
+                <h3 data-i18n="edu_mackenzie_title"
+                  class="text-lg text-white font-geist font-semibold leading-snug group-hover:text-red-400 transition-colors">
+                  Análise e Desenvolvimento de Sistemas</h3>
+                <p class="text-gray-400 text-sm font-geist font-medium mt-0.5 mb-3" data-i18n="edu_mackenzie_subtitle">
+                  Universidade Presbiteriana Mackenzie
+                </p>
+                <p class="text-gray-400 text-sm font-geist leading-relaxed" data-i18n="edu_mackenzie_desc">Graduação com
+                  foco em desenvolvimento web full
+                  stack, banco de dados, engenharia de software e inteligência artificial.</p>
+              </div>
+            </div>
+            <div class="relative flex gap-8 items-start group opacity-0" data-timeline-item="2">
+              <div
+                class="relative z-20 flex-shrink-0 w-20 h-20 rounded-full bg-[#0d0d0d] border border-white/20 flex items-center justify-center transition-all duration-300 group-hover:border-white/40 overflow-hidden p-4 opacity-0">
+                <img src="assets/img/logo-etec.png" alt="ETEC Logo"
+                  class="relative z-10 w-full h-full object-contain filter brightness-110 group-hover:scale-105 transition-transform duration-500">
+              </div>
+              <div
+                class="flex-1 rounded-2xl bg-white/[0.04] border border-white/10 p-6 hover:bg-white/[0.07] hover:border-white/20 transition-all duration-300 backdrop-blur-sm opacity-0">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                  <span
+                    class="text-xs font-geist-mono text-gray-400 bg-white/5 border border-white/10 px-2.5 py-1 rounded-full">2020
+                    – 2021</span>
+                  <span class="text-xs text-gray-400 font-geist" data-i18n="edu_location_sp">São Paulo, SP</span>
+                </div>
+                <h3 class="text-lg text-white font-geist font-semibold leading-snug" data-i18n="edu_etec_title">Técnico
+                  em
+                  Análise e Desenvolvimento
+                  de Sistemas</h3>
+                <p class="text-gray-400 text-sm font-geist font-medium mt-0.5 mb-3" data-i18n="edu_etec_subtitle">ETEC
+                  Centro Paula Souza</p>
+                <p class="text-gray-400 text-sm font-geist leading-relaxed" data-i18n="edu_etec_desc">Base sólida em
+                  programação, lógica
+                  computacional, HTML, CSS, JavaScript e fundamentos de banco de dados.</p>
+              </div>
+            </div>
+            <div class="relative flex gap-8 items-start group opacity-0" data-timeline-item="1">
+              <div
+                class="relative z-20 flex-shrink-0 w-20 h-20 rounded-full bg-[#0d0d0d] border border-purple-500/30 flex items-center justify-center transition-all duration-300 group-hover:border-purple-500/50 overflow-hidden p-4 opacity-0">
+                <img src="assets/img/code.png" alt="Code Icon"
+                  class="relative z-10 w-full h-full object-contain filter brightness-110 group-hover:scale-105 transition-transform duration-500">
+              </div>
+              <div
+                class="flex-1 rounded-2xl bg-white/[0.04] border border-white/10 p-6 hover:bg-white/[0.07] hover:border-purple-500/20 transition-all duration-300 backdrop-blur-sm opacity-0">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                  <span
+                    class="text-xs font-geist-mono text-purple-400 bg-purple-500/10 border border-purple-500/20 px-2.5 py-1 rounded-full">2018</span>
+                  <span class="text-xs text-gray-500 font-geist" data-i18n="edu_start_location">Autodidatismo</span>
+                </div>
+                <h3 data-i18n="edu_start_title"
+                  class="text-lg text-white font-geist font-semibold leading-snug group-hover:text-purple-400 transition-colors">
+                  Início na Programação</h3>
+                <p class="text-purple-400/80 text-sm font-geist font-medium mt-0.5 mb-3" data-i18n="edu_start_subtitle">
+                  Estudos autodidata - O início do
+                  sonho</p>
+                <p class="text-gray-400 text-sm font-geist leading-relaxed" data-i18n="edu_start_desc">Início da jornada
+                  explorando os primeiros
+                  conceitos de programação, HTML, CSS e lógica computacional.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- --- Experiência --- -->
+    <section id="experience" class="pt-24 pb-24 overflow-hidden">
+      <div class="max-w-5xl lg:px-8 mr-auto ml-auto pr-6 pl-6">
+        <div class="relative mb-16 text-center reveal-on-scroll reveal-scale-in">
+          <div aria-hidden="true"
+            class="pointer-events-none absolute left-1/2 -translate-x-1/2 -top-2 h-12 w-[560px] rounded-full bg-gradient-to-r from-white/5 via-white/25 to-white/5 blur-2xl">
+          </div>
+          <h2 class="relative text-4xl lg:text-5xl text-white font-geist tracking-tight font-light"
+            data-i18n="exp_heading">Experiência <span class="text-white/80">Profissional</span></h2>
+          <p class="mt-4 text-gray-400 font-geist" data-i18n="exp_subheading">Minha trajetória prática no
+            desenvolvimento
+            de software e
+            infraestrutura</p>
+        </div>
+
+        <div class="space-y-6">
+          <div
+            class="group relative rounded-2xl bg-white/[0.04] border border-white/10 hover:bg-white/[0.07] hover:border-white/20 transition-all duration-300 overflow-hidden reveal-on-scroll reveal-slide-up stagger-1">
+            <div class="pl-6 pr-6 py-6">
+              <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
+                <div>
+                  <h3 class="text-lg text-white font-geist font-semibold leading-snug"
+                    data-i18n="exp_visualmaker_title">
+                    Desenvolvedor Web Full Stack
+                    (Sócio-Fundador)</h3>
+                  <p class="text-gray-400 text-sm font-geist font-medium mt-0.5">Visual Maker Studio</p>
+                </div>
+                <div class="flex flex-col items-start sm:items-end gap-1 flex-shrink-0">
+                  <span data-i18n="exp_visualmaker_date"
+                    class="text-xs font-geist-mono text-gray-400 bg-white/5 border border-white/10 px-2.5 py-1 rounded-full whitespace-nowrap">Jan
+                    2020 – Atual</span>
+                  <span class="text-xs text-gray-500 font-geist tracking-wide" data-i18n="exp_location_sp">São Paulo,
+                    SP</span>
+                </div>
+              </div>
+              <p class="text-gray-400 text-sm font-geist leading-relaxed mb-4" data-i18n="exp_visualmaker_desc">
+                Liderança
+                técnica no desenvolvimento de
+                temas e plugins personalizados para WordPress. Responsável pela arquitetura de sites institucionais,
+                landing pages e integração de APIs de pagamento.</p>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="text-[11px] bg-white/5 border border-white/10 text-gray-400 px-2.5 py-1 rounded-full font-geist-mono">JavaScript</span>
+                <span
+                  class="text-[11px] bg-white/5 border border-white/10 text-gray-400 px-2.5 py-1 rounded-full font-geist-mono">Node.js</span>
+                <span
+                  class="text-[11px] bg-white/5 border border-white/10 text-gray-400 px-2.5 py-1 rounded-full font-geist-mono">PHP</span>
+                <span
+                  class="text-[11px] bg-white/5 border border-white/10 text-gray-400 px-2.5 py-1 rounded-full font-geist-mono">MySQL</span>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="group relative rounded-2xl bg-white/[0.04] border border-white/10 hover:bg-white/[0.07] hover:border-white/20 transition-all duration-300 overflow-hidden reveal-on-scroll reveal-slide-up stagger-2">
+            <div class="pl-6 pr-6 py-6">
+              <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
+                <div>
+                  <h3 class="text-lg text-white font-geist font-semibold leading-snug" data-i18n="exp_compritas_title">
+                    Especialista em E-commerce</h3>
+                  <p class="text-gray-400 text-sm font-geist font-medium mt-0.5">Compritas (E-commerce)</p>
+                </div>
+                <div class="flex flex-col items-start sm:items-end gap-1 flex-shrink-0">
+                  <span data-i18n="exp_compritas_date"
+                    class="text-xs font-geist-mono text-gray-400 bg-white/5 border border-white/10 px-2.5 py-1 rounded-full">Jan
+                    2021 – Dez 2022</span>
+                  <span class="text-xs text-gray-500 font-geist tracking-wide" data-i18n="exp_location_remote">São
+                    Paulo,
+                    SP · Remoto</span>
+                </div>
+              </div>
+              <p class="text-gray-400 text-sm font-geist leading-relaxed mb-4" data-i18n="exp_compritas_desc">Atuação no
+                ecossistema de dropshipping,
+                criando landing pages estratégicas e artes visuais integradas ao código. Otimização contínua da
+                experiÊncia de compra.</p>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="text-[11px] bg-white/5 border border-white/10 text-gray-400 px-2.5 py-1 rounded-full font-geist-mono">WooCommerce</span>
+                <span
+                  class="text-[11px] bg-white/5 border border-white/10 text-gray-400 px-2.5 py-1 rounded-full font-geist-mono">UI/UX
+                  Design</span>
+                <span
+                  class="text-[11px] bg-white/5 border border-white/10 text-gray-400 px-2.5 py-1 rounded-full font-geist-mono">Copywriting</span>
+                <span
+                  class="text-[11px] bg-white/5 border border-white/10 text-gray-400 px-2.5 py-1 rounded-full font-geist-mono">Marketing
+                  Digital</span>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="group relative rounded-2xl bg-white/[0.04] border border-white/10 hover:bg-white/[0.07] hover:border-white/20 transition-all duration-300 overflow-hidden reveal-on-scroll reveal-slide-up stagger-3">
+            <div class="pl-6 pr-6 py-6">
+              <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
+                <div>
+                  <h3 class="text-lg text-white font-geist font-semibold leading-snug" data-i18n="exp_support_title">
+                    Técnico de Suporte e Infraestrutura
+                  </h3>
+                  <p class="text-gray-400 text-sm font-geist font-medium mt-0.5">Autônomo</p>
+                </div>
+                <div class="flex flex-col items-start sm:items-end gap-1 flex-shrink-0">
+                  <span data-i18n="exp_support_date"
+                    class="text-xs font-geist-mono text-gray-400 bg-white/5 border border-white/10 px-2.5 py-1 rounded-full whitespace-nowrap">Jan
+                    2020 – Atual</span>
+                  <span class="text-xs text-gray-500 font-geist tracking-wide" data-i18n="exp_location_remote">Remoto /
+                    Híbrido</span>
+                </div>
+              </div>
+              <p class="text-gray-400 text-sm font-geist leading-relaxed mb-4" data-i18n="exp_support_desc">Prestação de
+                serviços em infra de TI,
+                manutenção de hardware/redes e configuração de rotinas de backup e segurança em sistemas Windows.</p>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="text-[11px] bg-white/5 border border-white/10 text-gray-400 px-2.5 py-1 rounded-full font-geist-mono">Windows
+                  Server</span>
+                <span
+                  class="text-[11px] bg-white/5 border border-white/10 text-gray-400 px-2.5 py-1 rounded-full font-geist-mono">Redes</span>
+                <span
+                  class="text-[11px] bg-white/5 border border-white/10 text-gray-400 px-2.5 py-1 rounded-full font-geist-mono">Hardware</span>
+                <span
+                  class="text-[11px] bg-white/5 border border-white/10 text-gray-400 px-2.5 py-1 rounded-full font-geist-mono">Backup</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- --- Habilidades --- -->
+    <div class="max-w-7xl lg:px-8 mr-auto ml-auto pr-6 pl-6">
+      <div class="relative mb-12 text-center reveal-on-scroll reveal-scale-in">
+        <div aria-hidden="true"
+          class="pointer-events-none absolute left-1/2 -translate-x-1/2 -top-2 h-12 w-[560px] rounded-full bg-gradient-to-r from-white/5 via-white/25 to-white/5 blur-2xl">
+        </div>
+        <h2 class="relative text-4xl lg:text-5xl text-white font-geist tracking-tight font-light"
+          data-i18n="skills_heading">Minhas <span
+            class="text-white/80 font-geist tracking-tight font-light">Habilidades</span></h2>
+        <p class="mt-4 text-gray-400 font-geist" data-i18n="skills_subheading">Tecnologias e ferramentas que domino na
+          prática</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Frontend -->
+        <div
+          class="relative rounded-[2.5rem] border border-white/10 bg-white/[0.03] backdrop-blur-3xl p-8 lg:p-10 reveal-on-scroll reveal-slide-up stagger-1 overflow-hidden group">
+          <div
+            class="absolute -top-24 -right-24 w-64 h-64 bg-blue-500/10 blur-[100px] rounded-full group-hover:bg-blue-500/20 transition-colors duration-700">
+          </div>
+          <div class="relative z-10">
+            <div class="flex items-center gap-3 mb-6">
+              <h3 class="text-xl text-white font-geist tracking-tight font-medium" data-i18n="skills_frontend_title">
+                Frontend</h3>
+            </div>
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between text-sm mb-1.5"><span
+                    class="text-gray-300 font-geist">HTML5</span><span
+                    class="text-white font-geist font-medium">95%</span></div>
+                <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-blue-500 to-blue-400 rounded-full" style="width:95%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between text-sm mb-1.5"><span class="text-gray-300 font-geist">CSS3</span><span
+                    class="text-white font-geist font-medium">90%</span></div>
+                <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-blue-500 to-blue-400 rounded-full" style="width:90%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between text-sm mb-1.5"><span
+                    class="text-gray-300 font-geist">JavaScript</span><span
+                    class="text-white font-geist font-medium">78%</span></div>
+                <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-blue-500 to-blue-400 rounded-full" style="width:78%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between text-sm mb-1.5"><span class="text-gray-300 font-geist">Tailwind
+                    CSS</span><span class="text-white font-geist font-medium">92%</span></div>
+                <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-blue-500 to-blue-400 rounded-full" style="width:92%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between text-sm mb-1.5"><span class="text-gray-300 font-geist">React
+                    Native</span><span class="text-white font-geist font-medium">75%</span></div>
+                <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-blue-500 to-blue-400 rounded-full" style="width:75%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Backend -->
+        <div
+          class="relative rounded-[2.5rem] border border-white/10 bg-white/[0.03] backdrop-blur-3xl p-8 lg:p-10 reveal-on-scroll reveal-slide-up stagger-2 overflow-hidden group">
+          <div
+            class="absolute -top-24 -right-24 w-64 h-64 bg-green-500/10 blur-[100px] rounded-full group-hover:bg-green-500/20 transition-colors duration-700">
+          </div>
+          <div class="relative z-10">
+            <div class="flex items-center gap-3 mb-6">
+              <h3 class="text-xl text-white font-geist tracking-tight font-medium" data-i18n="skills_backend_title">
+                Backend</h3>
+            </div>
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between text-sm mb-1.5"><span
+                    class="text-gray-300 font-geist">Python</span><span
+                    class="text-white font-geist font-medium">90%</span></div>
+                <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-green-500 to-green-400 rounded-full" style="width:90%">
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between text-sm mb-1.5"><span
+                    class="text-gray-300 font-geist">Node.js</span><span
+                    class="text-white font-geist font-medium">75%</span></div>
+                <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-green-500 to-green-400 rounded-full" style="width:75%">
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between text-sm mb-1.5"><span class="text-gray-300 font-geist">MySQL /
+                    MongoDB
+                    / Supabase</span><span class="text-white font-geist font-medium">80%</span></div>
+                <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-green-500 to-green-400 rounded-full" style="width:80%">
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between text-sm mb-1.5"><span class="text-gray-300 font-geist">PHP (WP
+                    Expert)</span><span class="text-white font-geist font-medium">85%</span></div>
+                <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-green-500 to-green-400 rounded-full" style="width:85%">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ferramentas -->
+        <div
+          class="relative rounded-[2.5rem] border border-white/10 bg-white/[0.03] backdrop-blur-3xl p-8 lg:p-10 reveal-on-scroll reveal-slide-up stagger-3 overflow-hidden group">
+          <div
+            class="absolute -top-24 -right-24 w-64 h-64 bg-purple-500/10 blur-[100px] rounded-full group-hover:bg-purple-500/20 transition-colors duration-700">
+          </div>
+          <div class="relative z-10">
+            <div class="flex items-center gap-3 mb-6">
+              <h3 class="text-xl text-white font-geist tracking-tight font-medium" data-i18n="skills_tools_title">
+                Ferramentas</h3>
+            </div>
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between text-sm mb-1.5"><span class="text-gray-300 font-geist">Git /
+                    GitHub</span><span class="text-white font-geist font-medium">88%</span></div>
+                <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-purple-500 to-purple-400 rounded-full" style="width:88%">
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between text-sm mb-1.5"><span class="text-gray-300 font-geist">WordPress /
+                    WooCommerce</span><span class="text-white font-geist font-medium">70%</span></div>
+                <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-purple-500 to-purple-400 rounded-full" style="width:70%">
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between text-sm mb-1.5"><span class="text-gray-300 font-geist">Infra /
+                    Windows
+                    Server</span><span class="text-white font-geist font-medium">85%</span></div>
+                <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-purple-500 to-purple-400 rounded-full" style="width:85%">
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between text-sm mb-1.5"><span class="text-gray-300 font-geist"
+                    data-i18n="skills_ai_label">IA &amp;
+                    Automação</span><span class="text-white font-geist font-medium" data-i18n="skills_ai_value">EM
+                    EVOLUÇÃO</span></div>
+                <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                  <div
+                    class="h-full rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500 animate-pulse"
+                    style="width:65%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-20 border-t border-white/10 pt-16">
+        <div class="flex items-center justify-center gap-6 mb-10">
+          <div class="h-px flex-1 bg-gradient-to-r from-transparent via-white/10 to-white/20"></div>
+          <p class="text-sm font-geist-mono text-gray-400 tracking-[0.3em] uppercase whitespace-nowrap px-4"
+            data-i18n="skills_marquee_label">Tecnologias que uso no dia a dia</p>
+          <div class="h-px flex-1 bg-gradient-to-l from-transparent via-white/10 to-white/20"></div>
+        </div>
+        <div class="relative overflow-hidden">
+          <div
+            class="pointer-events-none absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-[#0d0d0d] to-transparent">
+          </div>
+          <div
+            class="pointer-events-none absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-[#0d0d0d] to-transparent">
+          </div>
+          <div class="flex animate-marquee whitespace-nowrap">
+            <div class="flex items-center mx-4">
+
+              <div class="flex items-center justify-center w-28 lg:w-40 flex-shrink-0">
+                <img src="assets/img/tecnologias/react-native.png" alt="React Native"
+                  class="h-8 lg:h-10 w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+              </div>
+
+              <div class="flex items-center justify-center w-28 lg:w-40 flex-shrink-0">
+                <img src="assets/img/tecnologias/tailwind.png" alt="Tailwind CSS"
+                  class="h-8 lg:h-10 w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+              </div>
+              <div class="flex items-center justify-center w-28 lg:w-40 flex-shrink-0">
+                <img src="assets/img/tecnologias/supabase.png" alt="Supabase"
+                  class="h-8 lg:h-10 w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+              </div>
+              <div class="flex items-center justify-center w-28 lg:w-40 flex-shrink-0">
+                <img src="assets/img/tecnologias/mongo-db.png" alt="MongoDB"
+                  class="h-8 lg:h-10 w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+              </div>
+              <div class="flex items-center justify-center w-28 lg:w-40 flex-shrink-0">
+                <img src="assets/img/tecnologias/node-js.png" alt="Node.js"
+                  class="h-8 lg:h-10 w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+              </div>
+              <div class="flex items-center justify-center w-28 lg:w-40 flex-shrink-0">
+                <img src="assets/img/tecnologias/wordpress.png" alt="WordPress"
+                  class="h-8 lg:h-10 w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+              </div>
+              <div class="flex items-center justify-center w-28 lg:w-40 flex-shrink-0">
+                <img src="assets/img/tecnologias/woocommerce.png" alt="WooCommerce"
+                  class="h-8 lg:h-10 w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+              </div>
+              <div class="flex items-center justify-center w-28 lg:w-40 flex-shrink-0">
+                <img src="assets/img/tecnologias/typescript.png" alt="TypeScript"
+                  class="h-8 lg:h-10 w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+              </div>
+              <div class="flex items-center justify-center w-28 lg:w-40 flex-shrink-0">
+                <img src="assets/img/tecnologias/python.png" alt="Python"
+                  class="h-8 lg:h-10 w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+              </div>
+              <div class="flex items-center justify-center w-28 lg:w-40 flex-shrink-0">
+                <img src="assets/img/tecnologias/vite-js.png" alt="Vite.js"
+                  class="h-8 lg:h-10 w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+              </div>
+              <div class="flex items-center justify-center w-28 lg:w-40 flex-shrink-0">
+                <img src="assets/img/tecnologias/vs-code.png" alt="VS Code"
+                  class="h-8 lg:h-10 w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+              </div>
+              <div class="flex items-center justify-center w-28 lg:w-40 flex-shrink-0">
+                <img src="assets/img/tecnologias/windows-11.png" alt="Windows"
+                  class="h-8 lg:h-10 w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+              </div>
+              <div class="flex items-center justify-center w-28 lg:w-40 flex-shrink-0">
+                <img src="assets/img/tecnologias/photoshop.png" alt="Photoshop"
+                  class="h-8 lg:h-10 w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+              </div>
+              <div class="flex items-center justify-center w-28 lg:w-40 flex-shrink-0">
+                <img src="assets/img/tecnologias/ios.png" alt="iOS"
+                  class="h-8 lg:h-10 w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+              </div>
+            </div>
+
+            <div class="flex items-center mx-4">
+              <div class="flex items-center justify-center w-28 lg:w-40 flex-shrink-0">
+                <img src="assets/img/tecnologias/react-native.png" alt="React Native"
+                  class="h-8 lg:h-10 w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+              </div>
+              <div class="flex items-center justify-center w-28 lg:w-40 flex-shrink-0">
+                <img src="assets/img/tecnologias/tailwind.png" alt="Tailwind CSS"
+                  class="h-8 lg:h-10 w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+              </div>
+              <div class="flex items-center justify-center w-28 lg:w-40 flex-shrink-0">
+                <img src="assets/img/tecnologias/supabase.png" alt="Supabase"
+                  class="h-8 lg:h-10 w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+              </div>
+              <div class="flex items-center justify-center w-28 lg:w-40 flex-shrink-0">
+                <img src="assets/img/tecnologias/mongo-db.png" alt="MongoDB"
+                  class="h-8 lg:h-10 w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+              </div>
+              <div class="flex items-center justify-center w-28 lg:w-40 flex-shrink-0">
+                <img src="assets/img/tecnologias/node-js.png" alt="Node.js"
+                  class="h-8 lg:h-10 w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+              </div>
+              <div class="flex items-center justify-center w-28 lg:w-40 flex-shrink-0">
+                <img src="assets/img/tecnologias/wordpress.png" alt="WordPress"
+                  class="h-8 lg:h-10 w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+              </div>
+              <div class="flex items-center justify-center w-28 lg:w-40 flex-shrink-0">
+                <img src="assets/img/tecnologias/woocommerce.png" alt="WooCommerce"
+                  class="h-8 lg:h-10 w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+              </div>
+              <div class="flex items-center justify-center w-28 lg:w-40 flex-shrink-0">
+                <img src="assets/img/tecnologias/typescript.png" alt="TypeScript"
+                  class="h-8 lg:h-10 w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+              </div>
+              <div class="flex items-center justify-center w-28 lg:w-40 flex-shrink-0">
+                <img src="assets/img/tecnologias/python.png" alt="Python"
+                  class="h-8 lg:h-10 w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+              </div>
+              <div class="flex items-center justify-center w-28 lg:w-40 flex-shrink-0">
+                <img src="assets/img/tecnologias/vite-js.png" alt="Vite.js"
+                  class="h-8 lg:h-10 w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+              </div>
+              <div class="flex items-center justify-center w-28 lg:w-40 flex-shrink-0">
+                <img src="assets/img/tecnologias/vs-code.png" alt="VS Code"
+                  class="h-8 lg:h-10 w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+              </div>
+              <div class="flex items-center justify-center w-28 lg:w-40 flex-shrink-0">
+                <img src="assets/img/tecnologias/windows-11.png" alt="Windows"
+                  class="h-8 lg:h-10 w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+              </div>
+              <div class="flex items-center justify-center w-28 lg:w-40 flex-shrink-0">
+                <img src="assets/img/tecnologias/photoshop.png" alt="Photoshop"
+                  class="h-8 lg:h-10 w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+              </div>
+              <div class="flex items-center justify-center w-28 lg:w-40 flex-shrink-0">
+                <img src="assets/img/tecnologias/ios.png" alt="iOS"
+                  class="h-8 lg:h-10 w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </section>
+
+    <!-- --- Projetos --- -->
+    <section id="projects" class="pt-24 pb-24 border-t border-white/5">
+      <div class="max-w-7xl lg:px-8 mr-auto ml-auto pr-6 pl-6">
+        <div class="flex flex-col md:flex-row items-end justify-between mb-12 gap-8">
+          <div>
+            <h2 data-i18n="projects_heading"
+              class="text-4xl lg:text-5xl text-white font-geist tracking-tight font-light mb-4 reveal-on-scroll reveal-slide-up">
+              Meus <span class="text-white/80 font-geist tracking-tight font-light">Projetos</span></h2>
+            <p class="text-gray-400 font-geist max-w-xl reveal-on-scroll reveal-slide-up stagger-1"
+              data-i18n="projects_subheading">
+              Uma seleção de trabalhos desenvolvidos com foco em performance, experiência do usuário e arquitetura
+              escalável.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-3 reveal-on-scroll reveal-slide-up stagger-3">
+            <button data-category="all" data-i18n="projects_filter_all"
+              class="project-filter-btn px-5 py-2 rounded-full bg-white text-black text-xs font-semibold transition-all duration-300 active-filter">Todos</button>
+
+            <button data-category="frontend" data-i18n="projects_filter_frontend"
+              class="project-filter-btn px-5 py-2 rounded-full border border-white/10 bg-white/5 text-xs font-semibold text-gray-400 hover:text-white hover:bg-white/10 transition-all duration-300">Frontend</button>
+
+            <button data-category="fullstack" data-i18n="projects_filter_fullstack"
+              class="project-filter-btn px-5 py-2 rounded-full border border-white/10 bg-white/5 text-xs font-semibold text-gray-400 hover:text-white hover:bg-white/10 transition-all duration-300">Full
+              Stack</button>
+
+            <button data-category="desktop" data-i18n="projects_filter_desktop"
+              class="project-filter-btn px-5 py-2 rounded-full border border-white/10 bg-white/5 text-xs font-semibold text-gray-400 hover:text-white hover:bg-white/10 transition-all duration-300">Desktop
+              / Automation</button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projects-grid">
+          <article
+            class="project-card group relative overflow-hidden rounded-[24px] bg-white/[0.03] border border-white/10 hover:border-white/20 transition-all duration-500 reveal-on-scroll reveal-slide-up stagger-1"
+            data-category="fullstack">
+            <a href="https://studiovisualmaker.com/" target="_blank" class="block">
+              <div class="relative aspect-[16/10] overflow-hidden bg-[#0a0a0a]">
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10 opacity-60">
+                </div>
+                <img
+                  class="h-full w-full object-cover transition duration-700 group-hover:scale-110 opacity-40 group-hover:opacity-60"
+                  src="assets/img/visual-maker.jpg" alt="Visual Maker Studio">
+
+                <div class="absolute top-4 right-4 z-20">
+                  <span
+                    class="px-3 py-1 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-[10px] text-white/70 font-geist-mono uppercase tracking-widest">Full
+                    Stack</span>
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg text-white font-geist font-medium mb-2 transition-colors" data-i18n="project1_title">
+                  Visual Maker Studio</h3>
+                <p class="text-sm text-gray-400 font-geist leading-relaxed mb-4" data-i18n="project1_desc">Plataforma de
+                  criação de sites e
+                  e-commerces. Focada em design exclusivo e conversão.</p>
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="text-[9px] font-geist-mono text-gray-500 border border-white/5 px-2 py-0.5 rounded-md">WordPress</span>
+                  <span
+                    class="text-[9px] font-geist-mono text-gray-500 border border-white/5 px-2 py-0.5 rounded-md">PHP</span>
+                  <span
+                    class="text-[9px] font-geist-mono text-gray-500 border border-white/5 px-2 py-0.5 rounded-md">Tailwind</span>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <article
+            class="project-card group relative overflow-hidden rounded-[24px] bg-white/[0.03] border border-white/10 hover:border-white/20 transition-all duration-500 reveal-on-scroll reveal-slide-up stagger-2"
+            data-category="fullstack">
+            <a href="https://compritas.com.br/" target="_blank" class="block">
+              <div class="relative aspect-[16/10] overflow-hidden bg-[#0a0a0a]">
+                <img
+                  class="h-full w-full object-cover transition duration-700 group-hover:scale-110 opacity-40 group-hover:opacity-60"
+                  src="assets/img/compritas.jpg" alt="Compritas">
+                <div class="absolute top-4 right-4 z-20">
+                  <span
+                    class="px-3 py-1 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-[10px] text-white/70 font-geist-mono uppercase tracking-widest">Backend</span>
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg text-white font-geist font-medium mb-2 transition-colors" data-i18n="project2_title">
+                  Compritas E-commerce</h3>
+                <p class="text-sm text-gray-400 font-geist leading-relaxed mb-4" data-i18n="project2_desc">Loja online
+                  de
+                  alta performance com
+                  integração de pagamentos e gestão de estoque.</p>
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="text-[9px] font-geist-mono text-gray-500 border border-white/5 px-2 py-0.5 rounded-md">WooCommerce</span>
+                  <span
+                    class="text-[9px] font-geist-mono text-gray-500 border border-white/5 px-2 py-0.5 rounded-md">MySQL</span>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <article
+            class="project-card group relative overflow-hidden rounded-[24px] bg-white/[0.03] border border-white/10 hover:border-white/20 transition-all duration-500 reveal-on-scroll reveal-slide-up stagger-3"
+            data-category="frontend">
+            <div class="relative aspect-[16/10] overflow-hidden bg-[#0a0a0a] flex items-center justify-center">
+              <img
+                class="h-full w-full object-cover transition duration-700 group-hover:scale-110 opacity-30 group-hover:opacity-50"
+                src="assets/img/spotify.jpg" alt="Spotify UI">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5"
+                class="absolute text-white/20 group-hover:text-green-500/40 transition-colors">
+                <path d="M9 18V5l12-2v13" />
+                <circle cx="6" cy="18" r="3" />
+                <circle cx="18" cy="16" r="3" />
+              </svg>
+              <div class="absolute top-4 right-4 z-20">
+                <span
+                  class="px-3 py-1 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-[10px] text-white/70 font-geist-mono uppercase tracking-widest">Mobile</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-lg text-white font-geist font-medium mb-2" data-i18n="project3_title">Spotify Clone UI
+              </h3>
+              <p class="text-sm text-gray-400 font-geist leading-relaxed mb-4" data-i18n="project3_desc">Reconstrução
+                fiel
+                da interface mobile do
+                Spotify utilizando componentes modernos.</p>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="text-[9px] font-geist-mono text-gray-500 border border-white/5 px-2 py-0.5 rounded-md">React
+                  Native</span>
+                <span
+                  class="text-[9px] font-geist-mono text-gray-500 border border-white/5 px-2 py-0.5 rounded-md">Expo</span>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="project-card group relative overflow-hidden rounded-[24px] bg-white/[0.03] border border-white/10 hover:border-white/20 transition-all duration-500 reveal-on-scroll reveal-slide-up stagger-1"
+            data-category="desktop">
+            <div class="relative aspect-[16/10] overflow-hidden bg-[#0a0a0a] flex items-center justify-center">
+              <img
+                class="h-full w-full object-cover transition duration-700 group-hover:scale-110 opacity-30 group-hover:opacity-50"
+                src="assets/img/python.jpg" alt="Python Automation">
+              <div class="absolute top-4 right-4 z-20">
+                <span
+                  class="px-3 py-1 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-[10px] text-white/70 font-geist-mono uppercase tracking-widest">Automation</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-lg text-white font-geist font-medium mb-2 transition-colors" data-i18n="project4_title">
+                Python OS Automation</h3>
+              <p class="text-sm text-gray-400 font-geist leading-relaxed mb-4" data-i18n="project4_desc">Scripts para
+                automação de rotinas
+                operacionais no Windows e integração de sistemas.</p>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="text-[9px] font-geist-mono text-gray-500 border border-white/5 px-2 py-0.5 rounded-md">Python</span>
+                <span
+                  class="text-[9px] font-geist-mono text-gray-500 border border-white/5 px-2 py-0.5 rounded-md">Batch</span>
+                <span
+                  class="text-[9px] font-geist-mono text-gray-500 border border-white/5 px-2 py-0.5 rounded-md">CLI</span>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="project-card group relative overflow-hidden rounded-[24px] bg-white/[0.03] border border-white/10 hover:border-white/20 transition-all duration-500 reveal-on-scroll reveal-slide-up stagger-2"
+            data-category="frontend">
+            <div class="relative aspect-[16/10] overflow-hidden bg-[#0a0a0a] flex items-center justify-center">
+              <img
+                class="h-full w-full object-cover transition duration-700 group-hover:scale-110 opacity-30 group-hover:opacity-50"
+                src="assets/img/gerador-de-senha.jpg" alt="Password Generator">
+              <div class="absolute top-4 right-4 z-20">
+                <span
+                  class="px-3 py-1 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-[10px] text-white/70 font-geist-mono uppercase tracking-widest">Tool</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-lg text-white font-geist font-medium mb-2" data-i18n="project5_title">Gerador de Senhas
+              </h3>
+              <p class="text-sm text-gray-400 font-geist leading-relaxed mb-4" data-i18n="project5_desc">Ferramenta web
+                leve para geração de
+                credenciais seguras com customização de caracteres.</p>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="text-[9px] font-geist-mono text-gray-500 border border-white/5 px-2 py-0.5 rounded-md">JavaScript</span>
+                <span
+                  class="text-[9px] font-geist-mono text-gray-500 border border-white/5 px-2 py-0.5 rounded-md">CSS3</span>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="project-card group relative overflow-hidden rounded-[24px] bg-white/[0.03] border border-white/10 hover:border-white/20 transition-all duration-500 reveal-on-scroll reveal-slide-up stagger-3"
+            data-category="desktop">
+            <a href="https://github.com/AllvesMatteus/WinSearchManager" target="_blank" class="block">
+              <div class="relative aspect-[16/10] overflow-hidden bg-[#0a0a0a] flex items-center justify-center">
+                <img
+                  class="h-full w-full object-cover transition duration-700 group-hover:scale-110 opacity-30 group-hover:opacity-50"
+                  src="assets/img/img-projetos.png" alt="WinSearch Manager">
+                <div class="absolute top-4 right-4 z-20">
+                  <span
+                    class="px-3 py-1 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-[10px] text-white/70 font-geist-mono uppercase tracking-widest">Desktop</span>
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg text-white font-geist font-medium mb-2 transition-colors" data-i18n="project6_title">
+                  WinSearch Manager</h3>
+                <p class="text-sm text-gray-400 font-geist leading-relaxed mb-4" data-i18n="project6_desc">Ferramenta em
+                  Python para otimização do Windows Search, desativando funções do Bing e Cortana via Registro.</p>
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="text-[9px] font-geist-mono text-gray-500 border border-white/5 px-2 py-0.5 rounded-md">Python</span>
+                  <span
+                    class="text-[9px] font-geist-mono text-gray-500 border border-white/5 px-2 py-0.5 rounded-md">Registry</span>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <article
+            class="project-card group relative overflow-hidden rounded-[24px] bg-white/[0.03] border border-white/10 hover:border-white/20 transition-all duration-500 reveal-on-scroll reveal-slide-up stagger-1"
+            data-category="fullstack">
+            <a href="https://spriters-lol.vercel.app/" target="_blank" class="block">
+              <div class="relative aspect-[16/10] overflow-hidden bg-[#0a0a0a]">
+                <img
+                  class="h-full w-full object-cover transition duration-700 group-hover:scale-110 opacity-30 group-hover:opacity-50"
+                  src="assets/img/img-projetos.png" alt="Spriters-LOL">
+                <div class="absolute top-4 right-4 z-20">
+                  <span
+                    class="px-3 py-1 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-[10px] text-white/70 font-geist-mono uppercase tracking-widest">Full
+                    Stack</span>
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg text-white font-geist font-medium mb-2 transition-colors" data-i18n="project7_title">
+                  Spriters-LOL</h3>
+                <p class="text-sm text-gray-400 font-geist leading-relaxed mb-4" data-i18n="project7_desc">Ferramenta de
+                  análise de desempenho para League of Legends com estatísticas avançadas e gráficos de radar.</p>
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="text-[9px] font-geist-mono text-gray-500 border border-white/5 px-2 py-0.5 rounded-md">React</span>
+                  <span
+                    class="text-[9px] font-geist-mono text-gray-500 border border-white/5 px-2 py-0.5 rounded-md">Vite</span>
+                  <span
+                    class="text-[9px] font-geist-mono text-gray-500 border border-white/5 px-2 py-0.5 rounded-md">Riot
+                    API</span>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <article
+            class="project-card group relative overflow-hidden rounded-[24px] bg-white/[0.03] border border-white/10 hover:border-white/20 transition-all duration-500 reveal-on-scroll reveal-slide-up stagger-2"
+            data-category="fullstack">
+            <a href="https://spriters-bot-discord.onrender.com/" target="_blank" class="block">
+              <div class="relative aspect-[16/10] overflow-hidden bg-[#0a0a0a]">
+                <img
+                  class="h-full w-full object-cover transition duration-700 group-hover:scale-110 opacity-30 group-hover:opacity-50"
+                  src="assets/img/img-projetos.png" alt="Spriters-Bot Discord">
+                <div class="absolute top-4 right-4 z-20">
+                  <span
+                    class="px-3 py-1 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-[10px] text-white/70 font-geist-mono uppercase tracking-widest">Full
+                    Stack</span>
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg text-white font-geist font-medium mb-2 transition-colors" data-i18n="project8_title">
+                  Spriters-Bot Discord</h3>
+                <p class="text-sm text-gray-400 font-geist leading-relaxed mb-4" data-i18n="project8_desc">Bot
+                  multifuncional para Discord com gerenciamento de canais, logs de eventos e comandos de utilidade.</p>
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="text-[9px] font-geist-mono text-gray-500 border border-white/5 px-2 py-0.5 rounded-md">Node.js</span>
+                  <span
+                    class="text-[9px] font-geist-mono text-gray-500 border border-white/5 px-2 py-0.5 rounded-md">Discord.js</span>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <article
+            class="project-card group relative overflow-hidden rounded-[24px] bg-white/[0.03] border border-white/10 hover:border-white/20 transition-all duration-500 reveal-on-scroll reveal-slide-up stagger-3"
+            data-category="frontend">
+            <a href="https://cherry-doceria.vercel.app/" target="_blank" class="block">
+              <div class="relative aspect-[16/10] overflow-hidden bg-[#0a0a0a]">
+                <img
+                  class="h-full w-full object-cover transition duration-700 group-hover:scale-110 opacity-30 group-hover:opacity-50"
+                  src="assets/img/img-projetos.png" alt="Doceria Cherry">
+                <div class="absolute top-4 right-4 z-20">
+                  <span
+                    class="px-3 py-1 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-[10px] text-white/70 font-geist-mono uppercase tracking-widest">Frontend</span>
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg text-white font-geist font-medium mb-2 transition-colors" data-i18n="project9_title">
+                  Doceria Cherry</h3>
+                <p class="text-sm text-gray-400 font-geist leading-relaxed mb-4" data-i18n="project9_desc">Landing page
+                  elegante para confeitaria com foco em exibição de produtos e experiência visual premium.</p>
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="text-[9px] font-geist-mono text-gray-500 border border-white/5 px-2 py-0.5 rounded-md">HTML</span>
+                  <span
+                    class="text-[9px] font-geist-mono text-gray-500 border border-white/5 px-2 py-0.5 rounded-md">CSS</span>
+                  <span
+                    class="text-[9px] font-geist-mono text-gray-500 border border-white/5 px-2 py-0.5 rounded-md">JavaScript</span>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <article
+            class="project-card group relative overflow-hidden rounded-[24px] bg-white/[0.03] border border-white/10 hover:border-white/20 transition-all duration-500 reveal-on-scroll reveal-slide-up stagger-1"
+            data-category="frontend">
+            <a href="https://allvesmatteus.github.io/Crono-CUBE/" target="_blank" class="block">
+              <div class="relative aspect-[16/10] overflow-hidden bg-[#0a0a0a]">
+                <img
+                  class="h-full w-full object-cover transition duration-700 group-hover:scale-110 opacity-30 group-hover:opacity-50"
+                  src="assets/img/img-projetos.png" alt="Crono-CUBE">
+                <div class="absolute top-4 right-4 z-20">
+                  <span
+                    class="px-3 py-1 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-[10px] text-white/70 font-geist-mono uppercase tracking-widest">Frontend</span>
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg text-white font-geist font-medium mb-2 transition-colors"
+                  data-i18n="project10_title">
+                  Crono-CUBE</h3>
+                <p class="text-sm text-gray-400 font-geist leading-relaxed mb-4" data-i18n="project10_desc">Timer de
+                  alta
+                  precisão para Speedcubers com scrambles WCA, estatísticas e exportação de histórico.</p>
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="text-[9px] font-geist-mono text-gray-500 border border-white/5 px-2 py-0.5 rounded-md">JavaScript</span>
+                  <span
+                    class="text-[9px] font-geist-mono text-gray-500 border border-white/5 px-2 py-0.5 rounded-md">WCA</span>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <article
+            class="project-card group relative overflow-hidden rounded-[24px] bg-white/[0.03] border border-white/10 hover:border-white/20 transition-all duration-500 reveal-on-scroll reveal-slide-up stagger-2"
+            data-category="fullstack">
+            <a href="https://allvesmatteus.github.io/ClientManagementSystem/" target="_blank" class="block">
+              <div class="relative aspect-[16/10] overflow-hidden bg-[#0a0a0a]">
+                <img
+                  class="h-full w-full object-cover transition duration-700 group-hover:scale-110 opacity-30 group-hover:opacity-50"
+                  src="assets/img/img-projetos.png" alt="Client Management System">
+                <div class="absolute top-4 right-4 z-20">
+                  <span
+                    class="px-3 py-1 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-[10px] text-white/70 font-geist-mono uppercase tracking-widest">Full
+                    Stack</span>
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg text-white font-geist font-medium mb-2 transition-colors"
+                  data-i18n="project11_title">
+                  System Client Management</h3>
+                <p class="text-sm text-gray-400 font-geist leading-relaxed mb-4" data-i18n="project11_desc">Sistema CRUD
+                  completo integrado ao Supabase para gerenciamento dinâmico de clientes e exportação de dados.</p>
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="text-[9px] font-geist-mono text-gray-500 border border-white/5 px-2 py-0.5 rounded-md">Tailwind</span>
+                  <span
+                    class="text-[9px] font-geist-mono text-gray-500 border border-white/5 px-2 py-0.5 rounded-md">Supabase</span>
+                  <span
+                    class="text-[9px] font-geist-mono text-gray-500 border border-white/5 px-2 py-0.5 rounded-md">JavaScript</span>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <article
+            class="project-card group relative overflow-hidden rounded-[24px] bg-white/[0.03] border border-white/10 hover:border-white/20 transition-all duration-500 reveal-on-scroll reveal-slide-up stagger-3"
+            data-category="frontend">
+            <a href="https://github.com/AllvesMatteus/MySizeConvert" target="_blank" class="block">
+              <div class="relative aspect-[16/10] overflow-hidden bg-[#0a0a0a]">
+                <img
+                  class="h-full w-full object-cover transition duration-700 group-hover:scale-110 opacity-30 group-hover:opacity-50"
+                  src="assets/img/tamanho-ideal.jpg" alt="MySizeConvert">
+                <div class="absolute top-4 right-4 z-20">
+                  <span
+                    class="px-3 py-1 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-[10px] text-white/70 font-geist-mono uppercase tracking-widest">Web
+                    App</span>
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg text-white font-geist font-medium mb-2 transition-colors"
+                  data-i18n="project12_title">
+                  Tamanho Ideal</h3>
+                <p class="text-sm text-gray-400 font-geist leading-relaxed mb-4" data-i18n="project12_desc">Conversor de
+                  tamanhos internacionais.</p>
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="text-[9px] font-geist-mono text-gray-500 border border-white/5 px-2 py-0.5 rounded-md">React</span>
+                  <span
+                    class="text-[9px] font-geist-mono text-gray-500 border border-white/5 px-2 py-0.5 rounded-md">TypeScript</span>
+                </div>
+              </div>
+            </a>
+          </article>
+        </div>
+
+        <div id="load-more-container" class="mt-16 flex justify-center reveal-on-scroll reveal-slide-up">
+          <button id="load-more-btn"
+            class="group inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/5 px-8 py-4 text-sm font-medium text-white hover:bg-white/10 hover:border-white/40 transition-all duration-300 font-geist backdrop-blur-md">
+            <span data-i18n="projects_load_more">Ver mais projetos</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" class="transition-transform group-hover:translate-y-1">
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- --- Contato --- -->
+    <section id="contact" class="relative border-white/10 border-t pt-24 pb-12">
+      <div class="max-w-6xl lg:px-8 mr-auto ml-auto pr-6 pl-6">
+
+        <div
+          class="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start reveal-on-scroll reveal-slide-up stagger-1">
+
+          <div class="lg:col-span-7 flex flex-col">
+            <h2 class="text-4xl lg:text-7xl text-white font-geist font-light tracking-tighter leading-[1.1] mb-8">
+              Vamos criar algo <br>
+              <span
+                class="bg-gradient-to-r from-blue-400 via-white to-purple-500 bg-clip-text text-transparent font-medium italic inline-block pr-6">incrível
+                juntos?&nbsp;</span>
+            </h2>
+            <p class="text-lg lg:text-xl text-gray-400 font-geist leading-relaxed mb-12 max-w-2xl"
+              data-i18n="contact_subheading">
+              Estou em busca de novos desafios onde eu possa somar e continuar evoluindo como desenvolvedor. No momento,
+              estou aberto a oportunidades de estágio, vagas de desenvolvedor júnior e também para projetos freelancer.
+              Tem uma proposta ou quer bater um papo sobre tecnologia? Vamos conversar.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-5 mb-16 w-full lg:max-w-3xl">
+              <a href="mailto:allves.matteus@hotmail.com"
+                class="group w-full sm:flex-1 inline-flex items-center justify-center gap-4 rounded-full bg-white text-black px-8 py-5 text-base font-bold hover:bg-gray-100 transition-all duration-300 shadow-[0_0_30px_rgba(255,255,255,0.1)]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                  class="flex-shrink-0">
+                  <rect width="20" height="16" x="2" y="4" rx="2" />
+                  <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
+                </svg>
+                E-mail
+              </a>
+              <a href="https://wa.me/5511948642383" target="_blank"
+                class="group w-full sm:flex-1 inline-flex items-center justify-center gap-4 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-white px-8 py-5 text-base font-bold hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"
+                  class="flex-shrink-0">
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z" />
+                </svg>
+                WhatsApp
+              </a>
+            </div>
+
+            <div class="flex items-center gap-4 mt-auto">
+              <span
+                class="text-[10px] text-gray-600 font-geist-mono uppercase tracking-[0.3em] font-bold">Network</span>
+              <div class="h-px w-8 bg-white/10"></div>
+              <div class="flex gap-4">
+                <a href="https://linkedin.com/in/allves-matteus" target="_blank"
+                  class="text-gray-400 hover:text-white transition-colors duration-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="1.5">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                    <rect x="2" y="9" width="4" height="12" />
+                    <circle cx="4" cy="4" r="2" />
+                  </svg>
+                </a>
+                <a href="https://github.com/AllvesMatteus" target="_blank"
+                  class="text-gray-400 hover:text-white transition-colors duration-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="1.5">
+                    <path
+                      d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                    <path d="M9 18c-4.51 2-5-2-7-2" />
+                  </svg>
+                </a>
+                <a href="https://instagram.com/matteus.all" target="_blank"
+                  class="text-gray-400 hover:text-white transition-colors duration-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="1.5">
+                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 h-full">
+            <div
+              class="h-full rounded-[2.5rem] bg-white/[0.03] border border-white/10 p-10 lg:p-14 backdrop-blur-3xl relative overflow-hidden group">
+              <div
+                class="absolute -top-24 -right-24 w-64 h-64 bg-blue-500/10 blur-[100px] rounded-full group-hover:bg-blue-500/20 transition-colors duration-700">
+              </div>
+
+              <div class="relative z-10 flex flex-col h-full">
+                <div class="space-y-10">
+                  <div>
+                    <span
+                      class="text-[10px] text-gray-500 font-geist-mono uppercase tracking-[0.3em] font-bold block mb-4">Availability</span>
+                    <div class="flex items-center gap-3">
+                      <div class="relative">
+                        <div class="w-2 h-2 rounded-full bg-green-500"></div>
+                        <div class="absolute inset-0 w-2 h-2 rounded-full bg-green-500 animate-ping opacity-75"></div>
+                      </div>
+                      <p class="text-xl text-white font-geist font-light">Disponível para novos projetos e colaborações
+                      </p>
+                    </div>
+                  </div>
+
+                  <div>
+                    <span
+                      class="text-[10px] text-gray-600 font-geist-mono uppercase tracking-[0.3em] font-bold block mb-4">Current
+                      location</span>
+                    <p class="text-xl text-white font-geist font-light flex items-baseline gap-3">
+                      São Paulo, Brasil
+                      <span class="text-sm text-gray-500">GMT-3</span>
+                    </p>
+                  </div>
+
+                  <div class="pt-10 border-t border-white/10">
+                    <span
+                      class="text-[10px] text-gray-600 font-geist-mono uppercase tracking-[0.3em] font-bold block mb-6">Navigation</span>
+                    <div class="grid grid-cols-2 gap-y-4">
+                      <a href="#projects"
+                        class="text-gray-400 hover:text-white transition-colors font-geist-mono text-sm tracking-tighter hover:translate-x-1 transition-transform duration-300 block">Projects.exe</a>
+                      <a href="#about"
+                        class="text-gray-400 hover:text-white transition-colors font-geist-mono text-sm tracking-tighter hover:translate-x-1 transition-transform duration-300 block">About.md</a>
+                      <a href="#education"
+                        class="text-gray-400 hover:text-white transition-colors font-geist-mono text-sm tracking-tighter hover:translate-x-1 transition-transform duration-300 block">Education.pdf</a>
+                      <a href="#skills"
+                        class="text-gray-400 hover:text-white transition-colors font-geist-mono text-sm tracking-tighter hover:translate-x-1 transition-transform duration-300 block">Skills.json</a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-auto pt-10">
+                  <p class="text-[10px] text-gray-700 font-geist-mono uppercase tracking-[0.2em] leading-relaxed">
+                    Based in Brazil<br>
+                    Working worldwide
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+  </div>
+  </section>
+
+  <!-- --- Footer --- -->
+  <footer class="relative border-white/10 border-t pt-8 pb-12">
+    <div class="max-w-6xl lg:px-8 mr-auto ml-auto pr-6 pl-6">
+      <div class="flex flex-col sm:flex-row gap-4 items-center justify-between">
+        <div class="flex items-center gap-3">
+          <img src="assets/img/logo.png" alt="Mateus Alves" class="h-7 w-auto opacity-70">
+          <span class="text-sm text-gray-500 font-geist">©
+            <span id="currentYear"></span> Mateus Alves. <span data-i18n="footer_rights">Todos os direitos
+              reservados.</span>
+          </span>
+        </div>
+        <div class="text-xs text-gray-600 font-geist-mono" data-i18n="footer_tagline">Feito com ☕ e muito código</div>
+      </div>
+    </div>
+
+    <div class="fixed bottom-8 right-8 z-50">
+      <button id="goToTop"
+        class="group relative inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-white hover:bg-white/20 transition-all duration-300 shadow-lg opacity-0 pointer-events-none scale-90"
+        aria-label="Voltar ao topo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="1.5"
+          class="group-hover:-translate-y-0.5 transition-transform duration-300">
+          <path d="M12 19V6m-7 7l7-7 7 7" />
+        </svg>
+      </button>
+    </div>
+  </footer>
+  </div>
+
+  <!-- --- Alerta Apple --- -->
+  <div id="apple-device-modal">
+    <div class="apple-alert">
+      <div class="apple-alert-content">
+        <h3 class="apple-alert-title" data-i18n="alert_desktop_title">Versão Desktop Recomendada</h3>
+        <p class="apple-alert-message" data-i18n="alert_desktop_msg">Para uma experiência totalmente interativa com o
+          terminal e os recursos de engenharia, recomendamos o uso de um computador desktop ou notebook.</p>
+      </div>
+      <div class="apple-alert-actions">
+        <button class="apple-alert-button bold" id="closeAppleAlert" data-i18n="alert_desktop_btn">Entendi</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/lucide.min.js"></script>
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/terminal.js"></script>
+
+</body>
+
+</html>
