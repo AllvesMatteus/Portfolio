@@ -7,8 +7,11 @@
     <title>Mateus Alves | Desenvolvedor Full Stack (Legacy 2020)</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
+        #back-to-terminal span { font-family: 'JetBrains Mono', monospace !important; }
+
         /* --- Estilo Principal --- */
-        * {
+        *  {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -903,6 +906,17 @@
             </nav>
         </div>
     </header>
+
+    <!-- --- Botão Retorno Terminal --- -->
+    <button id="back-to-terminal"
+        onclick="sessionStorage.setItem('fromLegacy','true'); window.location.href='../index.html';"
+        style="position:fixed;bottom:24px;left:24px;z-index:9999;height:48px;border-radius:9999px;background:#1c1c1c;border:1px solid rgba(255,255,255,0.1);color:#fff;display:flex;align-items:center;justify-content:center;padding:0 20px;box-shadow:0 10px 30px rgba(0,0,0,0.5);cursor:pointer;transition:all 0.3s ease;gap:12px;"
+        onmouseover="this.style.background='rgba(255,255,255,0.1)';this.style.borderColor='rgba(255,255,255,0.2)'"
+        onmouseout="this.style.background='#1c1c1c';this.style.borderColor='rgba(255,255,255,0.1)'">
+        <span style="color:#a1a1aa;font-family:'GeistMono',monospace;font-weight:700;font-size:14px;user-select:none;">›_</span>
+        <span style="font-size:12px;font-family:'GeistMono',monospace;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;opacity:0.8;">Terminal</span>
+        <span style="background:rgba(255,255,255,0.1);padding:2px 6px;border-radius:4px;font-size:9px;font-family:'GeistMono',monospace;opacity:0.5;margin-left:2px;">ESC</span>
+    </button>
 
     <!-- --- Hero --- -->
     <section id="hero">

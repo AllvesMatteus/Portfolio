@@ -84,10 +84,26 @@ document.addEventListener('DOMContentLoaded', () => {
             desc: () => currentLang === 'pt' ? 'Exibe a ajuda do sistema' : 'Display system help',
             exec: async () => {
                 const helpData = isAdmin ? [
-                    `<span class="text-indigo-400 font-bold tracking-widest uppercase">SYTEM TOOLS (ROOT)</span>`,
-                    `  clear           # Limpa a tela`,
-                    `  whoami          # Identidade atual`,
+                    `<span class="text-red-500 font-bold tracking-widest uppercase">Root Mode — MateusOS v2.5</span>`,
+                    `<span class="text-gray-600">────────────────────────────────────────────</span>`,
+                    `<br><span class="text-red-500 font-bold tracking-widest uppercase">Navegação VFS</span>`,
+                    `  ls              # Listar arquivos do diretório atual`,
+                    `  cd [caminho]    # Mudar de diretório (suporta .. e ~)`,
+                    `  pwd             # Caminho do diretório atual`,
+                    `  cat [arquivo]   # Ler conteúdo de um arquivo .md`,
+                    `<br><span class="text-red-500 font-bold tracking-widest uppercase">Scripts NPM</span>`,
+                    `  npm run dev     # Iniciar servidor de desenvolvimento`,
+                    `  npm run [seção] # Navegar para uma seção do portfólio`,
+                    `<br><span class="text-red-500 font-bold tracking-widest uppercase">Ferramentas</span>`,
+                    `  neofetch        # Resumo técnico do sistema`,
+                    `  omz             # Instalar Oh My Zsh`,
+                    `  whoami          # Identidade do usuário atual`,
+                    `<br><span class="text-red-500 font-bold tracking-widest uppercase">Sistema</span>`,
+                    `  lang [en|pt]    # Alterar idioma do sistema`,
+                    `  clear           # Limpar a tela`,
                     `  exit            # Encerrar sessão root`,
+                    `  github          # Abrir perfil no GitHub`,
+                    `  linkedin        # Abrir perfil no LinkedIn`,
                     `<br><span class="text-gray-500"># Setas ↑↓ para histórico | Tab para autocompletar</span>`
                 ] : [
                     `<span class="text-indigo-400 font-bold tracking-widest uppercase">NAVEGAÇÃO</span>`,
@@ -296,7 +312,9 @@ document.addEventListener('DOMContentLoaded', () => {
         'whoami': {
             desc: () => currentLang === 'pt' ? 'Informações sobre o usuário' : 'User information',
             exec: async () => {
-                if (isAdmin) return "root";
+                if (isAdmin) {
+                    return `root`;
+                }
 
                 const birthDate = new Date(1997, 5, 25);
                 const today = new Date();
@@ -478,6 +496,15 @@ document.addEventListener('DOMContentLoaded', () => {
         'echo': {
             desc: () => 'Exibir texto',
             exec: async (args) => args.join(' ')
+        },
+        'id': {
+            desc: () => 'Exibir identidade do usuário atual',
+            exec: async () => {
+                if (isAdmin) {
+                    return `uid=0(root) gid=0(wheel) groups=0(wheel),1(daemon),2(kmem),3(sys),4(tty),5(operator),8(procview),9(procmod),12(everyone),20(staff),29(certusers),61(localaccounts),701(com.apple.sharepoint.group.1),33(_appstore),98(_lpadmin),100(_lpoperator),204(_developer),250(_analyticsusers),395(com.apple.access_ftp),398(com.apple.access_screensharing),399(com.apple.access_ssh),400(com.apple.access_remote_ae)`;
+                }
+                return `uid=501(mateus) gid=20(staff) groups=20(staff),12(everyone),61(localaccounts)`;
+            }
         },
         'cat': {
             desc: () => currentLang === 'pt' ? 'Exibe conteúdo de um arquivo' : 'Display file content',
@@ -944,18 +971,18 @@ document.addEventListener('DOMContentLoaded', () => {
             const container = document.getElementById(targetId);
             if (container) {
                 setTimeout(() => {
+                    void container.offsetHeight;
                     if (window.triggerSectionAnimations) {
-                        window.triggerSectionAnimations(targetId, true);
+                        window.triggerSectionAnimations(targetId, false);
                     } else {
                         const revealElements = container.querySelectorAll('.reveal-on-scroll');
                         revealElements.forEach(el => {
                             el.classList.add('revealed');
-                            el.style.opacity = '1';
-                            el.style.transform = 'translateY(0) scale(1)';
-                            el.style.transitionDelay = '0s';
+                            el.style.opacity = '';
+                            el.style.transform = '';
                         });
                     }
-                }, 250);
+                }, 400);
             }
         }
 
@@ -963,6 +990,12 @@ document.addEventListener('DOMContentLoaded', () => {
             visualContainer.classList.remove('view-enter-active');
             returnBtn.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
         }, 600);
+
+        if (!showAll && targetId && targetId !== 'heroSection') {
+            setTimeout(() => {
+                window.scrollTo({ top: 0, behavior: 'instant' });
+            }, 50);
+        }
     }
 
     /* --- Bloqueio do Portfólio (GUI -> TERMINAL) --- */
@@ -990,6 +1023,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (termWindow) {
                 animateToButton(true, () => {
+                    if (!output.textContent.trim()) {
+                        fullBootSequence().then(() => updatePrompt());
+                    }
                     inputField.focus();
                 }, btnRectBeforeHide);
             }
@@ -1000,15 +1036,7 @@ document.addEventListener('DOMContentLoaded', () => {
         unlockPortfolio('heroSection', true);
     });
 
-    document.getElementById('term-close').addEventListener('click', (e) => {
-        e.stopPropagation();
-        unlockPortfolio('heroSection', true);
-    });
-
-    document.getElementById('term-min').addEventListener('click', (e) => {
-        e.stopPropagation();
-        unlockPortfolio('heroSection', true);
-    });
+    /* Listeners de minimizar/fechar definidos abaixo junto dos controles de janela */
 
     returnBtn.addEventListener('click', lockPortfolio);
 
@@ -1038,8 +1066,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (!output) return;
 
+            const fromLegacy = sessionStorage.getItem('fromLegacy') === 'true';
+            if (fromLegacy) {
+                sessionStorage.removeItem('fromLegacy');
+            }
+
             const skipBoot = sessionStorage.getItem('skipBoot') === 'true';
-            if (skipBoot) {
+            if (skipBoot && !fromLegacy) {
                 sessionStorage.removeItem('skipBoot');
                 output.innerHTML = '';
                 await printLine(ASCII_LOGO, false, 0);
@@ -1181,13 +1214,30 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleMaximize();
     });
 
+    /* --- Botão Amarelo: minimiza sem resetar --- */
     document.getElementById('term-min').addEventListener('click', (e) => {
         e.stopPropagation();
         animateToButton(false, () => unlockPortfolio('heroSection', true));
     });
 
+    /* --- Botão Vermelho: fecha e reseta o terminal --- */
     document.getElementById('term-close').addEventListener('click', (e) => {
         e.stopPropagation();
+
+        /* Reset imediato de estado antes de fechar */
+        isAdmin = false;
+        isDevServerRunning = false;
+        hasShownGratitude = false;
+        technicalProgress.clear();
+        currentDir = '/Users/mateus';
+        const titleEl = document.querySelector('[data-i18n="terminal_title"]');
+        if (titleEl) {
+            titleEl.innerHTML = currentLang === 'pt' ? 'mateus — portifólio' : 'mateus — portfolio';
+        }
+        output.innerHTML = '';
+        inputLine.classList.add('hidden');
+        updatePrompt();
+
         animateToButton(false, () => unlockPortfolio('heroSection', true));
     });
 

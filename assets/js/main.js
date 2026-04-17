@@ -320,6 +320,7 @@ window.triggerSectionAnimations = function (sectionId, instant = false) {
     if (sectionId === 'heroSection') {
         if (window.animateHeadlineLetters) window.animateHeadlineLetters();
     }
+
     if (sectionId === 'skills') {
         const bars = section.querySelectorAll('.h-full.bg-gradient-to-r');
         bars.forEach(bar => {
@@ -327,8 +328,8 @@ window.triggerSectionAnimations = function (sectionId, instant = false) {
             if (width) {
                 bar.style.width = '0%';
                 bar.offsetHeight;
-                bar.style.transition = instant ? 'none' : 'width 1.5s cubic-bezier(0.16, 1, 0.3, 1)';
-                bar.style.width = width;
+                bar.style.transition = 'width 1.5s cubic-bezier(0.16, 1, 0.3, 1)';
+                requestAnimationFrame(() => { bar.style.width = width; });
             }
         });
     }
@@ -336,41 +337,46 @@ window.triggerSectionAnimations = function (sectionId, instant = false) {
     if (sectionId === 'projects') {
         if (window.filterProjects) window.filterProjects('all');
     }
+
     const revealElements = section.querySelectorAll('.reveal-on-scroll');
     const animatedElements = section.querySelectorAll('.animate-slide-up, .animate-scale-in, .animate-fade-in');
 
     revealElements.forEach(el => {
         el.classList.remove('revealed');
-        el.style.opacity = '0';
         el.style.transition = 'none';
+        el.style.opacity = '0';
+        el.style.transform = el.classList.contains('reveal-scale-in') ? 'scale(0.95)' : 'translateY(24px)';
     });
 
     animatedElements.forEach(el => {
         el.style.animation = 'none';
-        el.classList.add('opacity-0');
+        el.style.opacity = '0';
     });
 
-
+    /* Double rAF: garante que o reset é pintado antes de animar */
     requestAnimationFrame(() => {
         section.offsetHeight;
+        requestAnimationFrame(() => {
+            revealElements.forEach((el, i) => {
+                el.style.transition = '';
+                el.style.transform = '';
+                if (instant) {
+                    el.style.transitionDelay = '0s';
+                    el.style.transitionDuration = '0.4s';
+                }
+                setTimeout(() => {
+                    el.classList.add('revealed');
+                    el.style.opacity = '';
+                }, instant ? i * 40 : i * 60);
+            });
 
-        revealElements.forEach(el => {
-            el.style.transition = '';
-            if (instant) {
-                el.style.transitionDelay = '0s';
-                el.style.transitionDuration = '0s';
-            }
-            el.classList.add('revealed');
-            el.style.opacity = '';
-        });
-
-        animatedElements.forEach(el => {
-            el.style.animation = '';
-            if (instant) {
-                el.style.animationDelay = '0s';
-                el.style.animationDuration = '0s';
-            }
-            el.classList.remove('opacity-0');
+            animatedElements.forEach(el => {
+                el.style.animation = '';
+                el.style.opacity = '';
+                if (instant) {
+                    el.style.animationDelay = '0s';
+                }
+            });
         });
     });
 };

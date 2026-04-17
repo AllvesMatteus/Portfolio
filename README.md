@@ -1,7 +1,7 @@
 # 🌌 Portfolio Interativo — Mateus Alves v2.5
 
 <p align="center">
-  <img src="https://img.shields.io/badge/MateusOS-v2.5.0-6366f1?style=for-the-badge&logo=apple-terminal" alt="Version">
+  <img src="https://img.shields.io/badge/MateusOS-v2.5.1-6366f1?style=for-the-badge&logo=apple-terminal" alt="Version">
   <img src="https://img.shields.io/badge/Status-Online-22c55e?style=for-the-badge" alt="Status">
   <img src="https://img.shields.io/badge/Maintained%3F-Yes-0ea5e9?style=for-the-badge" alt="Maintained">
   <img src="https://img.shields.io/badge/License-MIT-white?style=for-the-badge" alt="License">
@@ -37,21 +37,31 @@ Este repositório contém meu portfólio pessoal, projetado para transcender a e
 ### 1. ⌨️ MateusOS (Terminal CLI)
 Uma réplica funcional de um terminal ZSH (adaptado do ecossistema macOS + Oh My Zsh) que inclui:
 - **VFS (Virtual File System):** Explore diretórios como `/Users/mateus` e `/var/root`.
-- **Command Handler:** Suporte a `ls`, `cd`, `cat`, `clear`, `sudo`, `npm run`, entre outros.
+- **Command Handler:** Suporte a `ls`, `cd`, `cat`, `pwd`, `id`, `clear`, `sudo`, `npm run`, entre outros.
 - **Smart Autocomplete:** Use `Tab` ou `➔` para completar comandos dinamicamente.
 - **Histórico:** Navegue por comandos anteriores com as setas `↑` e `↓`.
+- **Navegação por seção:** Abra seções individuais do portfólio diretamente pelo terminal.
+- **Animações de seção:** Cada seção exibe suas animações de reveal ao ser aberta via CLI.
 
 ### 2. 🏗️ Engineering Mode (ROOT)
 Acesso via `sudo -i` que desbloqueia:
-- **ZSH Pro:** Prompt customizado estilo "Oh My Zsh".
+- **ZSH Pro:** Prompt customizado em vermelho estilo root, com título scramble animado.
 - **Scripts NPM:** Simulação de fluxos de deploy e compilação (`npm run dev`).
 - **Neofetch:** Resumo técnico do sistema e hardware simulado.
+- **VFS Completo:** Navegação irrestrita por `/var/root`, `/etc` e demais diretórios.
+- **Help contextual:** O `help` exibe comandos específicos do modo root com tema vermelho.
 
-### 3. ⏳ Time Travel Protocol (Legacy)
-Uma "Máquina do Tempo" integrada que permite aos visitantes acessarem meu portfólio original de 2020 via comando `legacy`, demonstrando meu crescimento profissional e evolução técnica.
+### 3. 🖥️ Controles de Janela Inteligentes
+Os botões macOS do terminal têm comportamentos distintos:
+- **🔴 X (Fechar):** Reseta completamente o terminal (sai do sudo, limpa sessão). Ao reabrir, executa o boot animation completo do zero.
+- **🟡 − (Minimizar):** Apenas minimiza a janela para a GUI. Ao reabrir, continua de onde parou.
+- **🟢 ⊕ (Maximizar):** Expande o terminal para tela cheia.
 
-### 4. 🌍 I18n Multilingual
-Troca instantânea de idioma (Português/Inglês) afetando textos do site, placeholders e outputs do terminal simultaneamente.
+### 4. ⏳ Time Travel Protocol (Legacy)
+Uma "Máquina do Tempo" secreta desbloqueável via modo root, que redireciona para o portfólio original de 2020, demonstrando a evolução profissional ao longo do tempo.
+
+### 5. 🌍 I18n Multilingual
+Troca instantânea de idioma (Português/Inglês) afetando textos do site, placeholders e outputs do terminal simultaneamente via `lang [pt|en]`.
 
 ---
 
@@ -64,13 +74,13 @@ Troca instantânea de idioma (Português/Inglês) afetando textos do site, place
 │   ├── 📂 css/
 │   │   └── 🎨 style.css    # Design System & Animações Customizadas
 │   ├── 📂 js/
-│   │   ├── ⚡ main.js      # Lógica da GUI e Observadores de Scroll
-│   │   ├── 🖥️ terminal.js  # Engine do VFS e Processamento de CLI
-│   │   ├── 🌍 i18n.js      # Gerenciamento de Traduções
+│   │   ├── ⚡ main.js      # Lógica da GUI, Animações e Observadores de Scroll
+│   │   ├── 🖥️ terminal.js  # Engine do VFS, Processamento de CLI e Controles de Janela
+│   │   ├── 🌍 i18n.js      # Gerenciamento de Traduções (pt/en)
 │   │   └── ⚙️ tailwind-config.js
 ├── 📂 docs/
-│   ├── 📜 legacy.html      # Portfólio de 2020 (Preservado)
-│   └── 📘 terminal_commands.md
+│   ├── 📜 legacy.html      # Portfólio de 2020 (Preservado & Protegido)
+│   └── 📘 terminal_commands.md  # Manual completo de comandos
 └── 📄 README.md
 ```
 
@@ -83,10 +93,10 @@ Troca instantânea de idioma (Português/Inglês) afetando textos do site, place
    git clone https://github.com/AllvesMatteus/Portfolio.git
    ```
 2. **Abra o `index.html`:**
-   Não requer etapa de build ou instlação de dependências. Basta abrir diretamente no navegador ou usar o **Live Server** (VS Code).
+   Não requer etapa de build ou instalação de dependências. Basta abrir diretamente no navegador ou usar o **Live Server** (VS Code).
 
 3. **Explore o Terminal:**
-   Abra o site e tente digitar `sudo -i` para ver a mágica acontecer.
+   Abra o site e tente digitar `sudo -i` para desbloquear o modo root.
 
 ---
 
@@ -122,5 +132,5 @@ Este projeto é de uso pessoal e educacional:
 
 ---
 <p align="center">
-  Codado a base de ☕ por **Mateus Alves**.
+  Codado a base de ☕ por <strong>Mateus Alves</strong> — Atualizado em Abril de 2026.
 </p>

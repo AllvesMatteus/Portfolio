@@ -1,105 +1,152 @@
-# 🖥️ Manual de Comandos — MateusOS (Terminal v2.5)
+# 🖥️ Manual de Comandos — MateusOS (Terminal v2.5.1)
 
 Este documento descreve as funcionalidades e comandos disponíveis no **MateusOS**, o terminal interativo integrado ao portfólio.
 
 ---
 
-## 🛠️ Navegação Básica (Usuário Padrão)
+## 🖱️ Controles de Janela
+
+| Botão | Cor | Comportamento |
+| :---- | :-- | :------------ |
+| ⊕ Maximizar | 🟢 Verde | Expande o terminal para tela cheia |
+| − Minimizar | 🟡 Amarelo | Oculta o terminal e abre a GUI — **sessão preservada** |
+| × Fechar | 🔴 Vermelho | Fecha e **reseta** o terminal — reinicia o boot ao reabrir |
+
+> O botão `>_ TERMINAL ESC` no canto inferior esquerdo da GUI retorna ao terminal no estado em que foi minimizado.
+
+---
+
+## 🛠️ Usuário Padrão (`mateus@MacBook-Pro ~ %`)
 
 ### `help`
-Exibe a central de ajuda. No sistema atual, o prompt limpo permite foco total nos comandos.
-
-**Português (PT):**
-```text
-mateus@MacBook-Pro ~ % help
-NAVEGAÇÃO
-  open sobre      # Informações profissionais
-  open projetos   # Galeria de trabalhos
-  open habilidades # Stack tecnológica
-  open contato    # Redes sociais e email
-  open formacao   # Trajetória acadêmica
-
-SISTEMA
-  gui             # Alterna para a interface visual
-  lang [en|pt]    # Idioma / Language
-  clear           # Limpa a tela
-  reset           # Reiniciar terminal
-  sudo -i         # Acessar modo administrador
-
-# Setas ↑↓ para histórico | Tab para autocompletar
-mateus@MacBook-Pro ~ %
-```
+Exibe a central de ajuda com todos os comandos disponíveis para o modo atual.
 
 ### `open [seção]`
-Abre diretamente uma seção do portfólio. 
-**Exemplos:** `open sobre`, `open projetos`.
+Abre diretamente uma seção isolada do portfólio (com animações de reveal).
+
+| Seção         | Descrição               |
+| :------------ | :---------------------- |
+| `sobre`       | Informações profissionais |
+| `habilidades` | Stack tecnológica        |
+| `projetos`    | Galeria de trabalhos     |
+| `contato`     | Redes sociais e email    |
+| `formacao`    | Trajetória acadêmica     |
+
+**Exemplo:** `open projetos`
 
 ### `lang [en|pt]`
-Altera instantaneamente o idioma do sistema (Textos e Terminal).
+Altera instantaneamente o idioma do sistema (textos do site e terminal).
 
----
+### `gui`
+Alterna para a interface visual (GUI), exibindo o portfólio completo.
 
-## 🏗️ Modo de Engenharia (ROOT)
+### `whoami`
+Exibe o usuário atual. No modo padrão, retorna informações completas do perfil.
 
-Para acessar recursos avançados e explorar o "backstage" do projeto, use privilégios elevados.
+### `id`
+Exibe uid/gid/groups no formato Unix real.
+
+```
+uid=501(mateus) gid=20(staff) groups=20(staff),12(everyone),61(localaccounts)
+```
+
+### `clear`
+Limpa o terminal.
+
+### `reset`
+Reinicia o terminal (recarrega a página).
 
 ### `sudo -i`
-Habilita o modo ROOT e o acesso ao Sistema de Arquivos Virtual (VFS).
+Eleva os privilégios para o modo **ROOT** (modo administrador).
 
-```text
-mateus@MacBook-Pro ~ % sudo -i
-Password: 
-(Efeito Scramble no título do terminal)
-root@MacBook-Pro ~ # 
-```
+### `github`
+Abre o perfil do GitHub em uma nova aba.
 
-### 📂 Manipulação de Arquivos (VFS)
-Comandos Unix clássicos para explorar a estrutura do projeto.
-
-*   `ls`: Listar arquivos no diretório atual.
-*   `cd [Caminho]`: Mudar de diretório (suporta `..` e `~`).
-*   `pwd`: Exibe o caminho completo do diretório atual.
-*   `cat [Arquivo]`: Lê o conteúdo de arquivos `.md` (dispara a visualização da seção).
-
-**Exemplo de uso:**
-```text
-root@MacBook-Pro ~ # ls
-about.md  skills.md  projects.md  experience.md  education.md  contact.md
-
-root@MacBook-Pro ~ # cat projects.md
-Routing to projects... (Production Build)
-root@MacBook-Pro ~ # 
-```
-
-### 🚀 Automação e Dev
-*   `npm run dev`: Simula o início do servidor de desenvolvimento Vite.
-*   `neofetch` (ou `system`): Exibe o resumo técnico do sistema (Hardware simulado e links).
-*   `omz`: Instala visualmente o pacote *Oh My Zsh* para personalizar o prompt.
+### `linkedin`
+Abre o perfil do LinkedIn em uma nova aba.
 
 ---
 
-## 🏆 Segredos (Easter Eggs)
+## 🏗️ Modo Root (`root@MacBook-Pro ~ #`)
 
-### `legacy`
-Comando especial que ativa o **Time Travel Protocol**. Disponível apenas para usuários que explorarem o sistema no modo ROOT e visualizarem as seções técnicas.
+Acesso via `sudo -i`. O prompt muda para vermelho e são desbloqueados o VFS e os scripts NPM.
 
-```text
-root@MacBook-Pro ~ # npm run legacy
-WARNING: TIME TRAVEL PROTOCOL ACTIVATED...
-Loading Legacy Environment [2020.v1]...
-Redirecting... Enjoy the evolution!
+---
+
+### 📂 Navegação VFS
+
+| Comando         | Descrição                                                |
+| :-------------- | :------------------------------------------------------- |
+| `ls`            | Listar arquivos do diretório atual                       |
+| `ls [caminho]`  | Listar conteúdo de um diretório específico               |
+| `cd [caminho]`  | Mudar de diretório (suporta `..` e `~`)                  |
+| `pwd`           | Exibir o caminho completo do diretório atual             |
+| `cat [arquivo]` | Ler o conteúdo de um arquivo `.md` (navega para a seção) |
+
+**Estrutura do VFS:**
 ```
+/
+├── Applications/
+├── Users/
+│   └── mateus/
+│       ├── about.md
+│       ├── skills.md
+│       ├── projects.md
+│       ├── experience.md
+│       ├── education.md
+│       └── contact.md
+└── var/
+    └── root/
+        ├── .zshrc
+        └── .ssh/
+```
+
+---
+
+### 🚀 Scripts NPM
+
+> **Requer `npm run dev` antes de navegar pelas seções em modo root.**
+
+| Comando               | Descrição                               |
+| :-------------------- | :-------------------------------------- |
+| `npm run dev`         | Inicia o servidor de desenvolvimento    |
+| `npm run sobre`       | Navega para a seção Sobre               |
+| `npm run habilidades` | Navega para a seção Habilidades         |
+| `npm run projetos`    | Navega para a seção Projetos            |
+| `npm run contato`     | Navega para a seção Contato             |
+| `npm run formacao`    | Navega para a seção Formação            |
+| `npm run experiencia` | Navega para a seção Experiência         |
+
+---
+
+### 🔧 Ferramentas de Sistema
+
+| Comando         | Descrição                                                   |
+| :-------------- | :---------------------------------------------------------- |
+| `neofetch`      | Resumo técnico do sistema (uptime, shell, resolução...)     |
+| `system`        | Alias para `neofetch`                                       |
+| `omz`           | Instalar visualmente o pacote Oh My Zsh                     |
+| `whoami`        | Exibe `root` (comportamento Unix real)                      |
+| `id`            | Exibe `uid=0(root) gid=0(wheel) groups=...` (formato real)  |
+| `lang [en\|pt]` | Alterar idioma do sistema                                   |
+| `clear`         | Limpar o terminal                                           |
+| `exit`          | Encerrar sessão root e retornar ao modo usuário             |
+| `github`        | Abre o perfil no GitHub                                     |
+| `linkedin`      | Abre o perfil no LinkedIn                                   |
 
 ---
 
 ## 🎨 Guia de Estilo (ZSH Theme)
 
-| Elemento | Estilo / Classe | Finalidade |
-| :--- | :--- | :--- |
-| **Comandos Válidos** | `text-[#28C840]` (Verde) | Feedback imediato de sintaxe correta. |
-| **Comandos Inválidos** | `text-[#FF3B30]` (Vermelho) | Alerta de erro de digitação. |
-| **Dicas de Sistema** | `text-gray-500` | Instruções e descrições curtas. |
-| **Prompt Root** | `text-red-500` | Indica privilégios de administrador. |
+| Elemento           | Cor                     | Finalidade                            |
+| :----------------- | :---------------------- | :------------------------------------ |
+| Comandos válidos   | Verde `#28C840`         | Feedback imediato de sintaxe correta  |
+| Comandos inválidos | Vermelho `#FF3B30`      | Alerta de erro de digitação          |
+| Dicas de sistema   | `text-gray-500`         | Instruções e descrições               |
+| Prompt Root        | Vermelho `text-red-500` | Indica privilégios de administrador   |
+| Prompt Usuário     | Índigo `text-indigo-400`| Modo padrão                           |
+| Títulos ROOT help  | Vermelho `text-red-500` | Categorias do help em modo root       |
 
 ---
-*Manual técnico atualizado em 13 de Abril de 2026 por Mateus Alves.*
+
+*Manual técnico atualizado em 17 de Abril de 2026 por Mateus Alves.*
