@@ -6,9 +6,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mateus Alves | Desenvolvedor Full Stack (Legacy 2020)</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../assets/img/favicon/favicon-192.png">
+    <link rel="apple-touch-icon" href="../assets/img/favicon/favicon-512.png">
+    <link rel="stylesheet" href="../assets/css/geist.css">
+    <link rel="stylesheet" href="../assets/css/geist-mono.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
-        #back-to-terminal span { font-family: 'JetBrains Mono', monospace !important; }
+
+        /* --- Botão Terminal Estilo index.html (Clone Exato) --- */
+        .terminal-return-btn {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            z-index: 90;
+            height: 48px;
+            border-radius: 9999px;
+            background-color: #1c1c1c !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            color: #fff !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            opacity: 0;
+            transform: translateY(40px);
+            pointer-events: none;
+            text-decoration: none;
+        }
+
+        @media (min-width: 640px) {
+            .terminal-return-btn {
+                bottom: 32px;
+                left: 32px;
+            }
+        }
+
+        .terminal-return-btn.visible {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            pointer-events: auto;
+        }
+
+        .terminal-return-btn:hover {
+            background-color: #252525 !important; /* Cor exata de white/10 visualizado sobre #0d0d0d */
+            border-color: rgba(255, 255, 255, 0.2) !important;
+            transform: translateY(0) !important;
+        }
+
+        .terminal-btn-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .terminal-btn-prompt {
+            color: #a1a1aa;
+            font-family: 'Geist Mono', 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 14px;
+            user-select: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .terminal-btn-text {
+            font-family: 'Geist Mono', 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.025em; /* tracking-wide */
+            text-transform: uppercase;
+            opacity: 0.8;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .terminal-btn-key {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 9px;
+            font-family: 'Geist Mono', 'JetBrains Mono', monospace;
+            opacity: 0.5;
+            margin-left: 2px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+
 
         /* --- Estilo Principal --- */
         *  {
@@ -158,69 +244,7 @@
             color: #222;
         }
 
-        /* --- Botão Terminal --- */
-        .terminal-return-btn {
-            position: fixed;
-            bottom: 24px;
-            left: 24px;
-            height: 48px;
-            border-radius: 24px;
-            background-color: #1c1c1c;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            transition: all 0.3s ease;
-            text-decoration: none;
-            z-index: 10000;
-            cursor: pointer;
-        }
 
-        @media (min-width: 640px) {
-            .terminal-return-btn {
-                bottom: 32px;
-                left: 32px;
-            }
-        }
-
-        .terminal-return-btn:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .terminal-btn-content {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .terminal-btn-prompt {
-            color: #a1a1aa;
-            font-weight: bold;
-            font-size: 14px;
-            font-family: 'Courier New', Courier, monospace;
-            user-select: none;
-        }
-
-        .terminal-btn-text {
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            opacity: 0.8;
-            text-transform: uppercase;
-        }
-
-        .terminal-btn-key {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 9px;
-            opacity: 0.5;
-            margin-left: 2px;
-        }
 
         /* --- Hero --- */
         #hero {
@@ -908,14 +932,13 @@
     </header>
 
     <!-- --- Botão Retorno Terminal --- -->
-    <button id="back-to-terminal"
-        onclick="sessionStorage.setItem('fromLegacy','true'); window.location.href='../index.html';"
-        style="position:fixed;bottom:24px;left:24px;z-index:9999;height:48px;border-radius:9999px;background:#1c1c1c;border:1px solid rgba(255,255,255,0.1);color:#fff;display:flex;align-items:center;justify-content:center;padding:0 20px;box-shadow:0 10px 30px rgba(0,0,0,0.5);cursor:pointer;transition:all 0.3s ease;gap:12px;"
-        onmouseover="this.style.background='rgba(255,255,255,0.1)';this.style.borderColor='rgba(255,255,255,0.2)'"
-        onmouseout="this.style.background='#1c1c1c';this.style.borderColor='rgba(255,255,255,0.1)'">
-        <span style="color:#a1a1aa;font-family:'GeistMono',monospace;font-weight:700;font-size:14px;user-select:none;">›_</span>
-        <span style="font-size:12px;font-family:'GeistMono',monospace;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;opacity:0.8;">Terminal</span>
-        <span style="background:rgba(255,255,255,0.1);padding:2px 6px;border-radius:4px;font-size:9px;font-family:'GeistMono',monospace;opacity:0.5;margin-left:2px;">ESC</span>
+    <button id="back-to-terminal" class="terminal-return-btn"
+        onclick="sessionStorage.setItem('fromLegacy','true'); window.location.href='../index.html';">
+        <div class="terminal-btn-content">
+            <span class="terminal-btn-prompt">&gt;_</span>
+            <span class="terminal-btn-text">Terminal</span>
+            <span class="terminal-btn-key">ESC</span>
+        </div>
     </button>
 
     <!-- --- Hero --- -->
@@ -1260,20 +1283,9 @@
         </div>
     </footer>
 
-    <!-- --- Botão Terminal --- -->
-    <a href="../index.html" class="terminal-return-btn" id="return-to-terminal" title="Sair da Máquina do Tempo">
-        <div class="terminal-btn-content">
-            <span class="terminal-btn-prompt">&gt;_</span>
-            <span class="terminal-btn-text">Terminal</span>
-            <span class="terminal-btn-key">ESC</span>
-        </div>
-    </a>
+
 
     <script>
-        document.getElementById('return-to-terminal').addEventListener('click', () => {
-            sessionStorage.setItem('skipBoot', 'true');
-        });
-
         document.addEventListener('DOMContentLoaded', () => {
             // Menu mobile
             const mobileBtn = document.querySelector('.mobile-menu-btn');
@@ -1339,6 +1351,11 @@
                     }
                 }
             });
+            // Animação de entrada do botão terminal
+            setTimeout(() => {
+                const termBtn = document.getElementById('back-to-terminal');
+                if (termBtn) termBtn.classList.add('visible');
+            }, 800);
         });
     </script>
 </body>

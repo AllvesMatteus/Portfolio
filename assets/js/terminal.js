@@ -755,6 +755,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const promptSnapshot = getPromptText();
             printLine(`${promptSnapshot} ${val}`);
 
+            if (val === 'sw_vers -legacy') {
+                inputField.disabled = true;
+                inputLine.classList.add('hidden');
+                setTimeout(() => {
+                    window.location.href = 'docs/legacy.html?auth=mateus-legacy-unlocked-2020';
+                }, 400);
+                return;
+            }
+
             if (!val) {
                 showPrompt();
                 return;
