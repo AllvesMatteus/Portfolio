@@ -1,0 +1,471 @@
+/**
+ * patch.css — Override Vite asset hashes and add missing styles
+ * Loaded AFTER main.css to fix asset URL references
+ */
+
+/* ═══════════════════════════════════════════════════════════════════
+   BOOT SCREEN — override to ensure visibility
+   ═══════════════════════════════════════════════════════════════════ */
+.boot-screen {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+}
+
+.boot-screen__apple {
+  fill: white;
+  width: 60px;
+  height: 60px;
+  margin-bottom: 40px;
+}
+
+.boot-screen__loader {
+  width: 200px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.boot-screen__loader-bar {
+  height: 100%;
+  width: 0%;
+  background: white;
+  border-radius: 2px;
+  transition: width 0.1s linear;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   MOBILE NOT SUPPORTED
+   ═══════════════════════════════════════════════════════════════════ */
+.mobile-not-supported {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  /* display is controlled by JS — do NOT set display here */
+}
+
+.mobile-ns__content {
+  text-align: center;
+  padding: 40px;
+  color: white;
+}
+
+.mobile-ns__apple {
+  fill: white;
+  width: 60px;
+  height: 60px;
+  margin-bottom: 24px;
+}
+
+.mobile-ns__title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.mobile-ns__text {
+  font-size: 16px;
+  opacity: 0.5;
+  line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   APP WINDOW — closing animation
+   ═══════════════════════════════════════════════════════════════════ */
+.app-window--closing {
+  animation: windowClose 0.2s ease-out forwards;
+}
+
+@keyframes windowClose {
+  to {
+    opacity: 0;
+    transform: scale(0.95) !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   CONTEXT MENU
+   ═══════════════════════════════════════════════════════════════════ */
+.context-menu {
+  background: rgba(22, 22, 24, 0.92);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 4px;
+  min-width: 200px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 2px 8px rgba(0,0,0,0.3);
+  animation: contextMenuIn 0.12s ease-out;
+}
+
+@keyframes contextMenuIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.context-menu__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  color: rgba(255,255,255,0.88);
+  transition: background 0.1s;
+}
+
+.context-menu__item:hover {
+  background: rgba(10, 132, 255, 0.75);
+  color: white;
+}
+
+.context-menu__arrow {
+  opacity: 0.5;
+  font-size: 16px;
+}
+
+.context-menu__divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 3px 0;
+}
+
+/* Light theme adjustments */
+.light-theme .context-menu {
+  background: rgba(248, 248, 250, 0.92);
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+}
+
+.light-theme .context-menu__item {
+  color: rgba(0,0,0,0.85);
+}
+
+.light-theme .context-menu__divider {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   CONTROL CENTER — slider override
+   ═══════════════════════════════════════════════════════════════════ */
+.cc-slider-input {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  outline: none;
+  cursor: pointer;
+}
+
+.cc-slider-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  cursor: pointer;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   SYSTEM FONT FAMILY
+   ═══════════════════════════════════════════════════════════════════ */
+:root {
+  --system-font-family: -apple-system, 'SF Pro Text', 'SF Pro Display', BlinkMacSystemFont,
+    'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --terminal-font: 'SF Mono', 'Fira Code', 'Fira Mono', Menlo, Consolas, 'Courier New', monospace;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   APPLE ICON (SVG in menubar)
+   ═══════════════════════════════════════════════════════════════════ */
+.apple-icon {
+  display: block;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   ABOUT THIS MAC overlay
+   ═══════════════════════════════════════════════════════════════════ */
+#about-this-mac {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 9998;
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.atm-overlay {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   APP WINDOW LIGHT THEME
+   ═══════════════════════════════════════════════════════════════════ */
+.light-theme .app-window {
+  background: rgba(255, 255, 255, 0.92) !important;
+  color: rgba(0,0,0,0.85) !important;
+}
+
+.light-theme .app-window__titlebar {
+  background: rgba(245, 245, 247, 0.9) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   ENSURE DESKTOP FILLS SCREEN
+   ═══════════════════════════════════════════════════════════════════ */
+#app {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+#window-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 200;
+}
+
+#window-container > * {
+  pointer-events: auto;
+}
+
+#control-center {
+  pointer-events: auto;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   FINDER LIGHT THEME
+   ═══════════════════════════════════════════════════════════════════ */
+.light-theme .finder-window,
+.light-theme .notes-window,
+.light-theme .music-window,
+.light-theme .calendar-window {
+  color: rgba(0,0,0,0.85);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   APPLE HUMAN INTERFACE GUIDELINES (HIG) STYLING POLISH
+   ═══════════════════════════════════════════════════════════════════ */
+:root {
+  --apple-blue: #007AFF;
+  --apple-blue-dark: #0A84FF;
+  --apple-green: #34C759;
+  --apple-yellow: #FFCC00;
+  --apple-orange: #FF9500;
+  --apple-red: #FF3B30;
+  --apple-purple: #AF52DE;
+  --apple-pink: #FF2D55;
+  --apple-gray: #8E8E93;
+}
+
+/* SF Symbols image styling */
+.sf-symbol {
+  vertical-align: middle;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.15));
+}
+
+/* Dock icon images polish */
+.dock__icon-wrapper img {
+  object-fit: contain;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
+  transition: filter 0.2s ease;
+}
+
+.dock__icon-wrapper img:hover {
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.45));
+}
+
+/* macOS Window Glassmorphism & HIG borders */
+.app-window {
+  backdrop-filter: blur(30px) saturate(190%);
+  -webkit-backdrop-filter: blur(30px) saturate(190%);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+}
+
+.menuBar {
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+}
+
+.dock {
+  backdrop-filter: blur(35px) saturate(200%);
+  -webkit-backdrop-filter: blur(35px) saturate(200%);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   EXACT MACOS TRAFFIC LIGHTS & DESIGN TOKENS (from macos_window_prompt.md)
+   ═══════════════════════════════════════════════════════════════════ */
+:root {
+  /* Traffic Lights — exact colors from lwouis/macos-traffic-light-buttons-as-SVG */
+  --mac-close:        #ed6a5f;
+  --mac-close-dark:   #e24b41;
+  --mac-close-active: #b15048;
+
+  --mac-minimize:        #f6be50;
+  --mac-minimize-dark:   #e1a73e;
+  --mac-minimize-active: #b8923b;
+
+  --mac-maximize:        #61c555;
+  --mac-maximize-dark:   #2dac2f;
+  --mac-maximize-active: #4a9741;
+
+  --mac-nofocus-fill:    #dddddd;
+  --mac-nofocus-border:  #d1d0d2;
+}
+
+/* Traffic Light Container */
+.traffic-lights-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Base Traffic Light Button */
+.traffic-light,
+.app-window__btn {
+  width: 12px !important;
+  height: 12px !important;
+  min-width: 12px !important;
+  min-height: 12px !important;
+  border-radius: 50% !important;
+  position: relative;
+  cursor: pointer;
+  box-sizing: border-box;
+  padding: 0 !important;
+  margin: 0;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.12s ease;
+  box-shadow: inset 0 0 0 0.5px rgba(0,0,0,0.05);
+}
+
+/* Top Radial Reflection */
+.traffic-light::before,
+.app-window__btn::before {
+  content: '';
+  position: absolute;
+  top: 0.5px;
+  left: 1.5px;
+  right: 1.5px;
+  height: 45%;
+  border-radius: 50%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.45), transparent);
+  pointer-events: none;
+}
+
+/* 🔴 Close Button */
+.traffic-close,
+.app-window__btn--close {
+  background: var(--mac-close) !important;
+  border: 0.5px solid var(--mac-close-dark) !important;
+}
+.traffic-close:active,
+.app-window__btn--close:active {
+  background: var(--mac-close-active) !important;
+}
+
+/* 🟡 Minimize Button */
+.traffic-minimize,
+.app-window__btn--minimize {
+  background: var(--mac-minimize) !important;
+  border: 0.5px solid var(--mac-minimize-dark) !important;
+}
+.traffic-minimize:active,
+.app-window__btn--minimize:active {
+  background: var(--mac-minimize-active) !important;
+}
+
+/* 🟢 Maximize Button */
+.traffic-maximize,
+.app-window__btn--zoom {
+  background: var(--mac-maximize) !important;
+  border: 0.5px solid var(--mac-maximize-dark) !important;
+}
+.traffic-maximize:active,
+.app-window__btn--zoom:active {
+  background: var(--mac-maximize-active) !important;
+}
+
+/* Inactive Window State (No Focus) */
+.app-window--inactive .traffic-light,
+.app-window--inactive .app-window__btn,
+.traffic-light.nofocus {
+  background: var(--mac-nofocus-fill) !important;
+  border-color: var(--mac-nofocus-border) !important;
+  box-shadow: none !important;
+}
+.app-window--inactive .traffic-light::before,
+.app-window--inactive .app-window__btn::before {
+  display: none;
+}
+
+/* Disabled traffic light */
+.app-window__btn:disabled {
+  background: var(--mac-nofocus-fill) !important;
+  border-color: var(--mac-nofocus-border) !important;
+  cursor: default !important;
+  opacity: 0.5;
+}
+
+/* Traffic Light SVG Icons (invisible by default, fade in on button hover) */
+.traffic-icon {
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  pointer-events: none;
+}
+
+.traffic-light:hover .traffic-icon,
+.app-window__btn:hover .traffic-icon {
+  opacity: 1;
+}
+
+/* Alt / Option key toggle: Maximize icon □ vs Plus + */
+.alt-key-down .maximize-icon {
+  display: none !important;
+}
+.alt-key-down .maximize-plus-icon {
+  display: block !important;
+}
+
+/* Window Drop Shadows & Liquid Glass per section 2.3 & 2.4 */
+.app-window {
+  border-radius: 10px;
+  backdrop-filter: blur(30px) saturate(180%);
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  box-shadow:
+    0 22px 70px rgba(0, 0, 0, 0.45),
+    0 8px 20px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.app-window--inactive {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+  opacity: 0.95;
+}

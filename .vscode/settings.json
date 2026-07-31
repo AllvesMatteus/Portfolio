@@ -1,9 +1,0 @@
-{
-    "search.exclude": {
-        "**/node_modules": false
-    },
-    "files.exclude": {
-        "**/node_modules": true
-    },
-    "workbench.colorTheme": "GitHub Dark"
-}
