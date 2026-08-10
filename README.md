@@ -1,6 +1,6 @@
-# macweb.dev 🍎
+# MacOS-Web — by Mateus PC 🍎
 
-> macOS, rebuilt for the modern web. A browser-native macOS desktop environment.
+> Experiência macOS reconstruída para a web moderna. Um ambiente desktop fiel e responsivo nativo do navegador.
 
 ## Features
 

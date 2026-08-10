@@ -1,8 +1,3 @@
-/**
- * MenuBar — top macOS menu bar with clock, dropdowns and Control Center
- * Ports MenuBar.jsx to vanilla JS
- */
-
 import { getSFSymbolHtml } from './sfSymbols.js';
 
 const APPLE_MENU_OPTIONS = [
@@ -51,15 +46,6 @@ const MENU_OPTIONS = {
     { type: 'divider' },
     { id: 'fullscreen', label: 'Entrar em Tela Cheia', shortcut: '⌃⌘F' },
   ],
-  Histórico: [
-    { id: 'back', label: 'Voltar', shortcut: '⌘[' },
-    { id: 'forward', label: 'Avançar', shortcut: '⌘]' },
-    { id: 'reopen-tab', label: 'Reabrir Última Aba Fechada', shortcut: '⇧⌘T' },
-  ],
-  Favoritos: [
-    { id: 'add-bookmark', label: 'Adicionar Favorito…', shortcut: '⌘D' },
-    { id: 'show-bookmarks', label: 'Mostrar Todos os Favoritos', shortcut: '⌥⌘B' },
-  ],
   Desenvolvedor: [
     { id: 'inspect', label: 'Inspecionar Elemento', shortcut: '⌥⌘I' },
     { id: 'console', label: 'Console JavaScript', shortcut: '⌥⌘J' },
@@ -79,13 +65,11 @@ const MENU_OPTIONS = {
 };
 
 export class MenuBar {
-  constructor(wm, themeManager) {
+  constructor(wm) {
     this.wm = wm;
-    this.themeManager = themeManager;
     this.activeMenu = null;
     this.currentAppName = 'Finder';
 
-    // State
     this.state = {
       wifi: true, bluetooth: true, airdrop: true,
       focus: false, stageManager: false, screenMirror: false,
@@ -98,13 +82,14 @@ export class MenuBar {
     this._initMenus();
     this._initCC();
 
-    // Close menus on outside click
     document.addEventListener('mousedown', e => {
       const bar = document.getElementById('menubar');
-      if (bar && !bar.contains(e.target)) this._closeAll();
+      const cc = document.getElementById('control-center');
+      if (bar && !bar.contains(e.target) && cc && !cc.contains(e.target)) {
+        this._closeAll();
+      }
     });
 
-    // Track active window name
     wm.onChange(({ activeWin }) => {
       this.currentAppName = activeWin
         ? activeWin.charAt(0).toUpperCase() + activeWin.slice(1)
@@ -115,7 +100,6 @@ export class MenuBar {
     });
   }
 
-  // ── Clock ─────────────────────────────────────────────────────────────
   _initClock() {
     const clockEl = document.getElementById('menubar-clock');
     if (!clockEl) return;
@@ -137,7 +121,6 @@ export class MenuBar {
     setInterval(update, 1000);
   }
 
-  // ── Menu dropdowns ─────────────────────────────────────────────────────
   _initMenus() {
     const allMenuKeys = ['apple', 'appname', ...Object.keys(MENU_OPTIONS).map(k => k.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''))];
 
@@ -148,7 +131,6 @@ export class MenuBar {
 
       if (!wrapper || !overlay || !dropdown) return;
 
-      // Populate content
       if (key === 'apple') {
         this._populateAppleMenu(dropdown);
       } else if (key === 'appname') {
@@ -158,13 +140,11 @@ export class MenuBar {
         if (origKey) this._populateMenu(dropdown, MENU_OPTIONS[origKey]);
       }
 
-      // Click to toggle
       overlay.addEventListener('click', e => {
         e.stopPropagation();
         this._toggleMenu(key);
       });
 
-      // HIG Behavior: Hover to switch menu when any menu is open
       wrapper.addEventListener('mouseenter', () => {
         if (this.activeMenu && this.activeMenu !== key) {
           this._openMenu(key);
@@ -233,7 +213,7 @@ export class MenuBar {
         e.stopPropagation();
         const id = item.dataset.id;
         this._closeAll();
-        
+
         // Execute HIG window actions
         if (id === 'close-win' || id === 'quit-app') {
           if (this.wm.activeWinId) this.wm.closeWindow(this.wm.activeWinId);
@@ -263,8 +243,8 @@ export class MenuBar {
     const dropdown = document.getElementById(`menubar-${key}-dropdown`);
     if (dropdown) dropdown.style.display = 'block';
 
-    const itemEl = key === 'apple' 
-      ? document.getElementById('menubar-apple-btn') 
+    const itemEl = key === 'apple'
+      ? document.getElementById('menubar-apple-btn')
       : document.getElementById(key === 'appname' ? 'menubar-appname' : `menubar-${key}`);
     if (itemEl) itemEl.classList.add('isActive');
   }
@@ -274,7 +254,10 @@ export class MenuBar {
     document.querySelectorAll('.menuBar__dropdown').forEach(d => d.style.display = 'none');
     document.querySelectorAll('.menuBar__item').forEach(i => i.classList.remove('isActive'));
     const cc = document.getElementById('control-center');
-    if (cc) cc.style.display = 'none';
+    if (cc) {
+      cc.classList.remove('is-open');
+      cc.style.display = 'none';
+    }
     this.state.ccOpen = false;
   }
 
@@ -286,11 +269,14 @@ export class MenuBar {
     ccBtn.addEventListener('click', e => {
       e.stopPropagation();
       this.state.ccOpen = !this.state.ccOpen;
+      const cc = document.getElementById('control-center');
       if (this.state.ccOpen) {
         this._renderCC();
       } else {
-        const cc = document.getElementById('control-center');
-        if (cc) cc.style.display = 'none';
+        if (cc) {
+          cc.classList.remove('is-open');
+          cc.style.display = 'none';
+        }
       }
     });
   }
@@ -304,38 +290,30 @@ export class MenuBar {
       document.body.appendChild(cc);
     }
 
-    cc.style.cssText = `
-      display: block;
-      position: fixed;
-      top: 32px;
-      right: 8px;
-      z-index: 9000;
-    `;
+    cc.classList.add('is-open');
+    cc.style.display = 'flex';
+    cc.style.position = 'fixed';
+    cc.style.top = '32px';
+    cc.style.right = '8px';
+    cc.style.zIndex = '9000';
 
     const s = this.state;
 
     cc.innerHTML = `
-      <div class="cc-now-context">
-        <span class="cc-context-icon" style="display:flex;align-items:center;">
-          ${getSFSymbolHtml('camera.fill', { size: 13 })}
-        </span>
-        <span style="font-weight:500;">Captura de Tela recentemente</span>
-      </div>
-
       <div class="cc-grid-main">
         <div class="cc-card cc-card--connectivity">
           <div class="cc-conn-item" id="cc-wifi">
             <div class="cc-icon-circle ${s.wifi ? 'active-blue' : ''}" style="display:flex;align-items:center;justify-content:center;">
-              ${getSFSymbolHtml('wifi', { size: 14 })}
+              ${getSFSymbolHtml('wifi', { size: 16 })}
             </div>
             <div class="cc-conn-text">
               <span class="cc-label-main">Wi-Fi</span>
-              <span class="cc-label-sub">${s.wifi ? 'Edson' : 'Desativado'}</span>
+              ${!s.wifi ? '<span class="cc-label-sub">Desativado</span>' : ''}
             </div>
           </div>
           <div class="cc-conn-item" id="cc-bluetooth">
             <div class="cc-icon-circle ${s.bluetooth ? 'active-blue' : ''}" style="display:flex;align-items:center;justify-content:center;">
-              ${getSFSymbolHtml('bluetooth', { size: 14 })}
+              ${getSFSymbolHtml('bluetooth', { size: 16 })}
             </div>
             <div class="cc-conn-text">
               <span class="cc-label-main">Bluetooth</span>
@@ -344,7 +322,7 @@ export class MenuBar {
           </div>
           <div class="cc-conn-item" id="cc-airdrop">
             <div class="cc-icon-circle ${s.airdrop ? 'active-blue' : ''}" style="display:flex;align-items:center;justify-content:center;">
-              ${getSFSymbolHtml('airdrop', { size: 14 })}
+              ${getSFSymbolHtml('airdrop', { size: 16 })}
             </div>
             <div class="cc-conn-text">
               <span class="cc-label-main">AirDrop</span>
@@ -356,17 +334,17 @@ export class MenuBar {
         <div class="cc-right-column">
           <button class="cc-focus-row ${s.focus ? 'active-purple' : ''}" id="cc-focus">
             <div class="cc-icon-circle" style="display:flex;align-items:center;justify-content:center;">
-              ${getSFSymbolHtml('moon.fill', { size: 14 })}
+              ${getSFSymbolHtml('moon.fill', { size: 16 })}
             </div>
             <span class="cc-label-main">Foco</span>
           </button>
           <div class="cc-utilities-row">
             <button class="cc-utility-square ${s.stageManager ? 'active-opaque' : ''}" id="cc-stage">
-              ${getSFSymbolHtml('rectangle.grid.1x2.fill', { size: 16 })}
+              ${getSFSymbolHtml('rectangle.grid.1x2.fill', { size: 18 })}
               <span class="cc-utility-label">Organiz.<br/>Visual</span>
             </button>
             <button class="cc-utility-square ${s.screenMirror ? 'active-opaque' : ''}" id="cc-mirror">
-              ${getSFSymbolHtml('desktopcomputer', { size: 16 })}
+              ${getSFSymbolHtml('desktopcomputer', { size: 18 })}
               <span class="cc-utility-label">Espelham.<br/>de Tela</span>
             </button>
           </div>
@@ -374,38 +352,35 @@ export class MenuBar {
       </div>
 
       <div class="cc-card cc-card--slider-wrapper">
-        <div class="cc-slider-header" style="display:flex;align-items:center;gap:6px;">
-          ${getSFSymbolHtml('sun.max.fill', { size: 12 })}
+        <div class="cc-slider-title-row">
           <span class="cc-slider-title">Tela</span>
         </div>
-        <div class="cc-slider-track">
-          <input type="range" class="cc-slider-input" id="cc-brightness" min="0" max="100" value="${s.brightness}" aria-label="Tela" />
+        <div class="cc-slider-row">
+          <div class="cc-slider-container">
+            <div class="cc-slider-fill" id="cc-brightness-fill" style="width: ${s.brightness}%;"></div>
+            <div class="cc-slider-icon-wrap">
+              ${getSFSymbolHtml('sun.max.fill', { size: 16 })}
+            </div>
+            <input type="range" class="cc-slider-input" id="cc-brightness" min="0" max="100" value="${s.brightness}" aria-label="Tela" />
+          </div>
         </div>
       </div>
 
       <div class="cc-card cc-card--slider-wrapper">
-        <div class="cc-slider-header" style="display:flex;align-items:center;justify-content:space-between;width:100%;">
-          <div style="display:flex;align-items:center;gap:6px;">
-            ${getSFSymbolHtml('speaker.wave.3.fill', { size: 12 })}
-            <span class="cc-slider-title">Som</span>
+        <div class="cc-slider-title-row">
+          <span class="cc-slider-title">Som</span>
+        </div>
+        <div class="cc-slider-row">
+          <div class="cc-slider-container" style="flex:1;">
+            <div class="cc-slider-fill" id="cc-volume-fill" style="width: ${s.volume}%;"></div>
+            <div class="cc-slider-icon-wrap">
+              ${getSFSymbolHtml(s.volume === 0 ? 'speaker.slash.fill' : 'speaker.3.fill', { size: 16 })}
+            </div>
+            <input type="range" class="cc-slider-input" id="cc-volume" min="0" max="100" value="${s.volume}" aria-label="Som" />
           </div>
-          ${getSFSymbolHtml('airplayaudio', { size: 12 })}
-        </div>
-        <div class="cc-slider-track">
-          <input type="range" class="cc-slider-input" id="cc-volume" min="0" max="100" value="${s.volume}" aria-label="Som" />
-        </div>
-      </div>
-
-      <div class="cc-card cc-media-player" style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;">
-        <div style="display:flex;align-items:center;gap:10px;">
-          <div style="width:32px;height:32px;border-radius:6px;background:#FF2D55;display:flex;align-items:center;justify-content:center;">
-            ${getSFSymbolHtml('music.note', { size: 16, isDark: false })}
-          </div>
-          <span style="font-weight:600;font-size:13px;">Música</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:12px;opacity:0.8;">
-          <span style="cursor:pointer;font-size:14px;">▶</span>
-          <span style="cursor:pointer;font-size:14px;">▶▶</span>
+          <button class="cc-airplay-btn" title="Saída de Áudio" id="cc-airplay">
+            ${getSFSymbolHtml('airplayaudio', { size: 16 })}
+          </button>
         </div>
       </div>
     `;
@@ -417,8 +392,16 @@ export class MenuBar {
     cc.querySelector('#cc-focus')?.addEventListener('click', () => { s.focus = !s.focus; this._renderCC(); });
     cc.querySelector('#cc-stage')?.addEventListener('click', () => { s.stageManager = !s.stageManager; this._renderCC(); });
     cc.querySelector('#cc-mirror')?.addEventListener('click', () => { s.screenMirror = !s.screenMirror; this._renderCC(); });
-    cc.querySelector('#cc-brightness')?.addEventListener('input', e => { s.brightness = +e.target.value; });
-    cc.querySelector('#cc-volume')?.addEventListener('input', e => { s.volume = +e.target.value; });
+    cc.querySelector('#cc-brightness')?.addEventListener('input', e => {
+      s.brightness = +e.target.value;
+      const fill = cc.querySelector('#cc-brightness-fill');
+      if (fill) fill.style.width = s.brightness + '%';
+    });
+    cc.querySelector('#cc-volume')?.addEventListener('input', e => {
+      s.volume = +e.target.value;
+      const fill = cc.querySelector('#cc-volume-fill');
+      if (fill) fill.style.width = s.volume + '%';
+    });
   }
 
   // ── About This Mac ─────────────────────────────────────────────────────
@@ -430,7 +413,7 @@ export class MenuBar {
     container.innerHTML = `
       <div class="atm-overlay" id="atm-overlay" style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.35);backdrop-filter:blur(4px);z-index:10000;display:flex;align-items:center;justify-content:center;">
         <div class="atm-window app-window app-window--active" style="width:350px;padding:20px 22px 14px 22px;border-radius:14px;background:#474747;color:#ffffff;box-shadow:0 25px 60px rgba(0,0,0,0.65);border:1px solid rgba(255,255,255,0.18);display:flex;flex-direction:column;align-items:center;position:relative;">
-          
+
           <div class="atm-titlebar" style="position:absolute;top:12px;left:14px;display:flex;align-items:center;gap:8px;">
             <button class="app-window__btn app-window__btn--close traffic-light traffic-close" id="atm-close" aria-label="Fechar" title="Fechar"></button>
             <button class="app-window__btn traffic-light nofocus" disabled style="background:#666 !important;border-color:#555 !important;"></button>

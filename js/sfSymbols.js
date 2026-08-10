@@ -1,7 +1,3 @@
-/**
- * SFSymbols — Helper for loading Apple SF Symbols icons
- */
-
 export function getSFSymbolImg(symbolName, { isDark = false, size = 16, className = '', title = '' } = {}) {
   const folder = isDark ? 'dark' : 'white';
   const img = document.createElement('img');

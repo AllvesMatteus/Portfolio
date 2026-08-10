@@ -1,45 +1,34 @@
-/**
- * WindowManager — full window management system
- * Ports WindowManagerProvider.jsx + AppWindow.jsx to vanilla JS
- */
-
 const DOCK_HEIGHT = 80;
 const MENUBAR_HEIGHT = 28;
 
 export const INITIAL_POSITIONS = {
-  finder:     { x: 80,  y: 56,  w: 940,  h: 560 },
-  safari:     { x: 100, y: 70,  w: 900,  h: 650 },
-  notes:      { x: 120, y: 90,  w: 850,  h: 550 },
-  terminal:   { x: 140, y: 110, w: 700,  h: 450 },
-  music:      { x: 160, y: 130, w: 1000, h: 500 },
-  settings:   { x: 180, y: 150, w: 700,  h: 450 },
-  calendar:   { x: 200, y: 120, w: 900,  h: 580 },
-  calculator: { x: 500, y: 150, w: 280,  h: 380 },
+  finder:   { x: 0, y: 0, w: 960, h: 860 },
+  safari:   { x: 0, y: 0, w: 960, h: 860 },
+  terminal: { x: 0, y: 0, w: 960, h: 860 },
+  settings: { x: 0, y: 0, w: 960, h: 860 },
 };
 
 export class WindowManager {
   constructor(container) {
-    this.container = container;       // #window-container
-    this.windows = [];                // { id, title, el, x, y, w, h, zIndex }
-    this.openApps = [];               // ids of open apps
+    this.container = container;
+    this.windows = [];
+    this.openApps = [];
     this.minimizedApps = new Set();
     this.activeWin = null;
     this.zCounter = 100;
     this._listeners = [];
-    this._appRenderers = {};          // { appId: fn(windowEl) }
+    this._appRenderers = {};
   }
 
-  // ── Register app content renderer ──────────────────────────────────
   registerApp(appId, renderFn) {
     this._appRenderers[appId] = renderFn;
   }
 
-  // ── Open or restore a window ────────────────────────────────────────
   openApp(appId, appName) {
     const existing = this.windows.find(w => w.id === appId);
 
     if (existing) {
-      // Restore if minimized
+
       if (this.minimizedApps.has(appId)) {
         this.minimizedApps.delete(appId);
         existing.el.classList.remove('app-window--minimized');
@@ -48,7 +37,19 @@ export class WindowManager {
       return;
     }
 
-    const p = INITIAL_POSITIONS[appId] || { x: 120, y: 80, w: 700, h: 450 };
+    const initialConfig = INITIAL_POSITIONS[appId] || { w: 800, h: 500 };
+    const winWidth = Math.min(initialConfig.w, window.innerWidth - 40);
+    const winHeight = Math.min(initialConfig.h, window.innerHeight - MENUBAR_HEIGHT - DOCK_HEIGHT - 20);
+
+    const centerX = Math.max(0, Math.round((window.innerWidth - winWidth) / 2));
+    const centerY = Math.max(MENUBAR_HEIGHT + 10, Math.round((window.innerHeight - MENUBAR_HEIGHT - DOCK_HEIGHT - winHeight) / 2) + MENUBAR_HEIGHT);
+
+    const p = {
+      x: centerX,
+      y: centerY,
+      w: winWidth,
+      h: winHeight
+    };
     const zIndex = ++this.zCounter;
 
     const el = this._createWindowElement(appId, appName || appId, p, zIndex);
@@ -59,7 +60,6 @@ export class WindowManager {
     if (!this.openApps.includes(appId)) this.openApps.push(appId);
     this.activeWin = appId;
 
-    // Render app content
     const contentEl = el.querySelector('.app-window__content');
     const renderer = this._appRenderers[appId];
     if (renderer) renderer(contentEl, this);
@@ -69,7 +69,6 @@ export class WindowManager {
     this._makeResizable(el, win);
   }
 
-  // ── Close a window ──────────────────────────────────────────────────
   closeWindow(appId) {
     const win = this.windows.find(w => w.id === appId);
     if (!win) return;
@@ -86,7 +85,6 @@ export class WindowManager {
     this._notify();
   }
 
-  // ── Minimize a window ────────────────────────────────────────────────
   minimizeWindow(appId) {
     const win = this.windows.find(w => w.id === appId);
     if (!win) return;
@@ -96,20 +94,19 @@ export class WindowManager {
     this._notify();
   }
 
-  // ── Maximize/restore a window ────────────────────────────────────────
   maximizeWindow(appId) {
     const win = this.windows.find(w => w.id === appId);
     if (!win) return;
 
     const isMaximized = win._maximized;
     if (isMaximized) {
-      // Restore
+
       win.el.style.transform = `translate3d(${win._prevX}px, ${win._prevY}px, 0)`;
       win.el.style.width = `${win._prevW}px`;
       win.el.style.height = `${win._prevH}px`;
       win._maximized = false;
     } else {
-      // Save current state
+
       win._prevX = win.x;
       win._prevY = win.y;
       win._prevW = win.w;
@@ -128,7 +125,6 @@ export class WindowManager {
     }
   }
 
-  // ── Focus a window ────────────────────────────────────────────────────
   focusWindow(appId) {
     if (this.activeWin === appId) return;
 
@@ -139,7 +135,6 @@ export class WindowManager {
     win.zIndex = zIndex;
     win.el.style.zIndex = zIndex;
 
-    // Update active class
     this.windows.forEach(w => {
       w.el.classList.remove('app-window--active');
       w.el.classList.add('app-window--inactive');
@@ -151,7 +146,6 @@ export class WindowManager {
     this._notify();
   }
 
-  // ── Internal: create window DOM element ──────────────────────────────
   _createWindowElement(appId, title, p, zIndex) {
     const el = document.createElement('div');
     el.className = 'app-window app-window--active';
@@ -171,26 +165,17 @@ export class WindowManager {
 
     el.innerHTML = `
       <div class="app-window__content" style="contain: content; height: 100%; overflow: hidden;"></div>
-      <div class="resize-handle" aria-hidden="true">
-        <svg width="14" height="14" viewBox="0 0 14 14">
-          <path d="M14 0 L14 14 L0 14" fill="none" stroke="white" stroke-width="1" opacity="0.6"/>
-          <path d="M10 14 L14 10" stroke="white" stroke-width="1" opacity="0.6"/>
-          <path d="M6 14 L14 6" stroke="white" stroke-width="1" opacity="0.4"/>
-        </svg>
-      </div>
+      <div class="resize-handle" aria-hidden="true"></div>
     `;
 
-    // Focus on click
     el.addEventListener('mousedown', () => this.focusWindow(appId));
     el.addEventListener('contextmenu', e => e.stopPropagation());
 
     return el;
   }
 
-  // ── Draggable title bar ───────────────────────────────────────────────
   _makeDraggable(el, win) {
-    // Title bar = first child of content, if it has class app-window__titlebar
-    // We use event delegation — if mousedown is on .app-window__titlebar
+
     el.addEventListener('mousedown', (e) => {
       const titlebar = e.target.closest('.app-window__titlebar');
       if (!titlebar) return;
@@ -237,7 +222,6 @@ export class WindowManager {
     });
   }
 
-  // ── Resizable handle ──────────────────────────────────────────────────
   _makeResizable(el, win) {
     const handle = el.querySelector('.resize-handle');
     if (!handle) return;
@@ -280,7 +264,6 @@ export class WindowManager {
     });
   }
 
-  // ── Subscribe to state changes ────────────────────────────────────────
   onChange(fn) {
     this._listeners.push(fn);
     return () => { this._listeners = this._listeners.filter(l => l !== fn); };
@@ -295,7 +278,6 @@ export class WindowManager {
     }));
   }
 
-  // ── Helper to build a standard app window header ──────────────────────
   static buildTitleBar(appId, title, wm, { showTitle = true, disableMinimize = false, disableMaximize = false, isUnsaved = false } = {}) {
     const bar = document.createElement('div');
     bar.className = 'app-window__titlebar';
@@ -330,7 +312,6 @@ export class WindowManager {
   }
 }
 
-// ── Track Alt / Option key globally for Maximize (+) icon ────────────────
 document.addEventListener('keydown', (e) => {
   if (e.altKey || e.key === 'Alt') {
     document.body.classList.add('alt-key-down');

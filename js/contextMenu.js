@@ -1,6 +1,3 @@
-/**
- * ContextMenu — floating right-click context menu
- */
 export class ContextMenu {
   constructor() {
     this.el = document.getElementById('context-menu');
@@ -43,7 +40,6 @@ export class ContextMenu {
       z-index: 9999;
     `;
 
-    // Keep menu within viewport
     requestAnimationFrame(() => {
       const rect = this.el.getBoundingClientRect();
       if (rect.right > window.innerWidth) {
@@ -54,7 +50,6 @@ export class ContextMenu {
       }
     });
 
-    // Close on outside click / escape
     setTimeout(() => {
       document.addEventListener('mousedown', this._close);
       document.addEventListener('keydown', this._handleKey.bind(this));

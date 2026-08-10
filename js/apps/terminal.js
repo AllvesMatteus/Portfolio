@@ -1,8 +1,3 @@
-/**
- * Terminal App — full terminal emulator
- * Ported from Terminal.jsx
- */
-
 import { WindowManager } from '../windowManager.js';
 
 const FORTUNES = [
@@ -20,7 +15,6 @@ function randomMatrixStr(len = 20) {
   return Array.from({ length: len }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
 }
 
-// ANSI escape codes → HTML spans
 function ansiToHtml(text) {
   const map = {
     '30': 'color:#1d1d1f', '31': 'color:#ff3b30', '32': 'color:#34c759',
@@ -33,7 +27,6 @@ function ansiToHtml(text) {
     '46': 'background:#5ac8fa', '47': 'background:#ebebf0',
   };
 
-  // Handle 256-color codes like \x1b[38;5;39m
   let result = text
     .replace(/\x1b\[38;5;(\d+)m/g, (_, code) => `<span style="color:var(--ansi-${code},currentColor)">`)
     .replace(/\x1b\[(\d+)m/g, (_, code) => {
@@ -42,12 +35,19 @@ function ansiToHtml(text) {
       return style ? `<span style="${style}">` : '';
     });
 
-  // Escape any remaining HTML chars that weren't in spans
   return result;
 }
 
 export function renderTerminal(contentEl, wm) {
-  const nowStr = new Date().toString().split(' GMT')[0];
+  const d = new Date();
+  const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const dayName = days[d.getDay()];
+  const monthName = months[d.getMonth()];
+  const dayNum = String(d.getDate()).padStart(2, '0');
+  const timeStr = d.toTimeString().split(' ')[0];
+  const nowStr = `${dayName} ${monthName} ${dayNum} ${timeStr}`;
+
   let history = [
     { text: `Last login: ${nowStr} on ttys008` },
   ];
@@ -57,51 +57,123 @@ export function renderTerminal(contentEl, wm) {
   let gitLogLines = null;
   let gitLogLoading = true;
 
-  contentEl.style.cssText = 'display:flex;flex-direction:column;height:100%;overflow:hidden;background:transparent;';
-
-  // Re-create titlebar with exact macOS Terminal title from Image 4
+  contentEl.style.cssText = 'display:flex;flex-direction:column;height:100%;overflow:hidden;background:#1e1e1e;border-radius:10px;';
   contentEl.innerHTML = '';
-  const titlebar = WindowManager.buildTitleBar('terminal', '📁 mateus — -zsh — 80x24', wm, { showTitle: true });
+
+  const titlebar = document.createElement('div');
+  titlebar.className = 'app-window__titlebar terminal-titlebar';
+  titlebar.style.cssText = `
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    height: 38px;
+    background: #2d2d2d;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    position: relative;
+    user-select: none;
+    flex-shrink: 0;
+  `;
+
+  const controls = document.createElement('div');
+  controls.className = 'app-window__controls traffic-lights-container';
+  controls.style.cssText = 'display:flex;align-items:center;gap:8px;z-index:2;';
+  controls.innerHTML = `
+    <button class="app-window__btn app-window__btn--close traffic-light traffic-close" aria-label="Close Terminal" title="Close">
+      <svg viewBox="0 0 12 12" width="12" height="12" class="traffic-icon close-icon"><line x1="3" y1="3" x2="9" y2="9" stroke="#460804" stroke-width="1.5" stroke-linecap="round"/><line x1="9" y1="3" x2="3" y2="9" stroke="#460804" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+    <button class="app-window__btn app-window__btn--minimize traffic-light traffic-minimize" aria-label="Minimize Terminal" title="Minimize">
+      <svg viewBox="0 0 12 12" width="12" height="12" class="traffic-icon minimize-icon"><line x1="2" y1="6" x2="10" y2="6" stroke="#90591d" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+    <button class="app-window__btn app-window__btn--zoom traffic-light traffic-maximize" aria-label="Zoom Terminal" title="Zoom">
+      <svg viewBox="0 0 12 12" width="12" height="12" class="traffic-icon maximize-icon"><rect x="3" y="3" width="6" height="6" fill="none" stroke="#2a6218" stroke-width="1.2" rx="1"/></svg>
+    </button>
+  `;
+
+  const closeBtn = controls.querySelector('.app-window__btn--close');
+  const minBtn = controls.querySelector('.app-window__btn--minimize');
+  const zoomBtn = controls.querySelector('.app-window__btn--zoom');
+  if (closeBtn) closeBtn.addEventListener('click', () => wm.closeWindow('terminal'));
+  if (minBtn) minBtn.addEventListener('click', () => wm.minimizeWindow('terminal'));
+  if (zoomBtn) zoomBtn.addEventListener('click', () => wm.maximizeWindow('terminal'));
+
+  const titleEl = document.createElement('div');
+  titleEl.className = 'terminal-title';
+  titleEl.style.cssText = `
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    pointer-events: none;
+  `;
+  titleEl.innerHTML = `
+    <svg width="15" height="13" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:middle;flex-shrink:0;">
+      <path d="M1.5 2C1.5 1.44772 1.94772 1 2.5 1H5.79289C6.0581 1 6.31248 1.10536 6.50005 1.29289L7.70711 2.5H13.5C14.0523 2.5 14.5 2.94772 14.5 3.5V12C14.5 12.5523 14.0523 13 13.5 13H2.5C1.94772 13 1.5 12.5523 1.5 12V2Z" fill="#0a84ff"/>
+    </svg>
+    <span>mateus — -zsh — 80x24</span>
+  `;
+
+  titlebar.appendChild(controls);
+  titlebar.appendChild(titleEl);
   contentEl.appendChild(titlebar);
 
   const termWin = document.createElement('div');
-  termWin.style.cssText = 'display:flex;flex-direction:column;height:calc(100% - 38px);overflow:hidden;background:#1e1e1e;';
+  termWin.className = 'terminal-body';
+  termWin.style.cssText = `
+    flex: 1;
+    overflow-y: auto;
+    background: #1e1e1e;
+    padding: 8px 12px 12px 12px;
+    font-family: "SF Mono", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 13px;
+    line-height: 1.4;
+    color: #ffffff;
+    box-sizing: border-box;
+    cursor: text;
+  `;
 
   const outputEl = document.createElement('div');
-  outputEl.style.cssText = 'flex:1;overflow-y:auto;padding:12px 16px;font-family:"SF Mono",Menlo,"Courier New",monospace;font-size:13px;line-height:1.55;color:#ffffff;';
-  outputEl.setAttribute('aria-live', 'polite');
+  outputEl.style.cssText = 'font-family:inherit;font-size:inherit;color:inherit;';
 
   const inputRow = document.createElement('div');
-  inputRow.style.cssText = 'display:flex;align-items:center;padding:4px 16px 12px 16px;flex-shrink:0;';
+  inputRow.style.cssText = 'display:flex;align-items:center;margin-top:2px;font-family:inherit;font-size:inherit;';
 
   const prompt = document.createElement('span');
-  prompt.style.cssText = 'color:#ffffff;white-space:nowrap;font-family:"SF Mono",Menlo,"Courier New",monospace;font-size:13px;font-weight:500;';
+  prompt.style.cssText = 'color:#ffffff;white-space:nowrap;font-family:inherit;font-size:13px;font-weight:400;margin-right:2px;';
   prompt.textContent = 'mateus@MacBook-Pro-de-Mateus ~ % ';
 
   const input = document.createElement('input');
   input.type = 'text';
   input.autocomplete = 'off';
   input.spellcheck = false;
-  input.style.cssText = 'flex:1;background:transparent;border:none;outline:none;color:#ffffff;font-family:"SF Mono",Menlo,"Courier New",monospace;font-size:13px;caret-color:#ffffff;';
+  input.style.cssText = 'flex:1;background:transparent;border:none;outline:none;color:#ffffff;font-family:inherit;font-size:13px;caret-color:#ffffff;padding:0;margin:0;';
   input.setAttribute('aria-label', 'Terminal input');
 
   inputRow.appendChild(prompt);
   inputRow.appendChild(input);
+
   termWin.appendChild(outputEl);
   termWin.appendChild(inputRow);
   contentEl.appendChild(termWin);
 
-  // Focus input on click
-  contentEl.addEventListener('click', () => input.focus());
-  input.focus();
+  termWin.addEventListener('click', () => input.focus());
+  setTimeout(() => input.focus(), 50);
 
   function renderHistory() {
     outputEl.innerHTML = history.map(h => `<div>${ansiToHtml(h.text)}</div>`).join('');
-    outputEl.scrollTop = outputEl.scrollHeight;
+    termWin.scrollTop = termWin.scrollHeight;
   }
   renderHistory();
 
-  // Fetch git log in background
   fetch('https://api.github.com/repos/gaminghackintosh/macweb.dev/commits?sha=code-root&per_page=10')
     .then(r => r.json())
     .then(commits => {
@@ -189,14 +261,14 @@ export function renderTerminal(contentEl, wm) {
       case 'clear':
         history = [];
         renderHistory();
-        return null; // null = no additional lines
+        return null;
 
       case 'history':
         if (!cmdHistory.length) return ['No command history.'];
         return cmdHistory.map((c, i) => `  ${i + 1}  ${c}`);
 
       case 'open': {
-        const appMap = { finder: 'finder', settings: 'settings', notes: 'notes', terminal: 'terminal', music: 'music', safari: 'safari', calendar: 'calendar', calculator: 'calculator' };
+        const appMap = { finder: 'finder', settings: 'settings', terminal: 'terminal', safari: 'safari' };
         const appId = appMap[args[0]?.toLowerCase()];
         if (appId) { wm.openApp(appId, appId.charAt(0).toUpperCase() + appId.slice(1)); return [`Opening ${args[0]}...`]; }
         return [`\x1b[31mError:\x1b[0m Application '${args[0]}' not found.`];
@@ -275,19 +347,16 @@ export function renderTerminal(contentEl, wm) {
       const raw = input.value.trim();
       input.value = '';
 
-      // Add to cmd history
       if (raw) {
         cmdHistory.unshift(raw);
         cmdIdx = -1;
       }
 
-      // Push command echo to history
-      history.push({ text: `\x1b[32mghost@macweb:~$\x1b[0m \x1b[37m${raw}\x1b[0m` });
+      history.push({ text: `mateus@MacBook-Pro-de-Mateus ~ % ${raw}` });
 
       const lines = runCommand(raw);
       if (lines !== null && lines !== undefined) {
         lines.forEach(t => history.push({ text: t }));
-        history.push({ text: '' });
       }
 
       renderHistory();

@@ -1,23 +1,19 @@
-/**
- * Dock — macOS Dock with Gaussian spring magnification
- * Ports Dock.jsx to vanilla JS
- */
+import { showMacDialog } from './macDialog.js';
 
-const BASE_ICON_SIZE = 58;
+const BASE_ICON_SIZE = 60;
 const MAX_SCALE = 1.1;
 const SIGMA = 62;
 const LIFT = 22;
 
 export const APPS = [
-  { id: 'finder',     name: 'Finder',     iconDark: 'assets/icons/custom/finder.png',     iconLight: 'assets/icons/custom/finder.png',     fallback: '🗂' },
-  { id: 'safari',     name: 'Safari',     iconDark: 'assets/icons/custom/safari.png',     iconLight: 'assets/icons/custom/safari.png',     fallback: '🧭' },
-  { id: 'calendar',   name: 'Calendar',   iconDark: 'assets/icons/apps/Dark_Themes/Calendrier_Dark.png', iconLight: 'assets/icons/apps/Light_Themes/Calendrier.png', fallback: '📅' },
-  { id: 'music',      name: 'Music',      iconDark: 'assets/icons/apps/Dark_Themes/Music_Dark.png',      iconLight: 'assets/icons/apps/Light_Themes/apple_music.ico', fallback: '🎵' },
+  { id: 'finder',    name: 'Finder',             iconDark: 'assets/icons/dock/finder.png',         iconLight: 'assets/icons/dock/finder.png',         fallback: '🗂' },
+  { id: 'safari',    name: 'Safari',             iconDark: 'assets/icons/dock/safari.png',         iconLight: 'assets/icons/dock/safari.png',         fallback: '🧭' },
+  { id: 'windows11', name: 'Windows 11',          iconDark: 'assets/icons/dock/windows11.png',       iconLight: 'assets/icons/dock/windows11.png',       fallback: '🪟', alertMessage: 'Em breve.' },
+  { id: 'github',    name: 'GitHub',             iconDark: 'assets/icons/dock/github-desktop.png', iconLight: 'assets/icons/dock/github-desktop.png', fallback: '🐙', url: 'https://github.com/AllvesMatteus' },
+  { id: 'terminal',  name: 'Terminal',           iconDark: 'assets/icons/dock/terminal.png',       iconLight: 'assets/icons/dock/terminal.png',       fallback: '🖥' },
+  { id: 'settings',  name: 'Ajustes do Sistema', iconDark: 'assets/icons/dock/settings.png',       iconLight: 'assets/icons/dock/settings.png',       fallback: '⚙️' },
   { type: 'divider' },
-  { id: 'notes',      name: 'Notes',      iconDark: 'assets/icons/apps/Dark_Themes/Notes_Dark.png',      iconLight: 'assets/icons/apps/Light_Themes/Notes.png',      fallback: '📒' },
-  { id: 'calculator', name: 'Calculator', iconDark: 'assets/icons/apps/Dark_Themes/Calculator_Dark.png', iconLight: 'assets/icons/apps/Light_Themes/Calculator.png', fallback: '🧮' },
-  { id: 'terminal',   name: 'Terminal',   iconDark: 'assets/icons/custom/terminal.png',   iconLight: 'assets/icons/custom/terminal.png',   fallback: '🖥' },
-  { id: 'settings',   name: 'Settings',   iconDark: 'assets/icons/custom/settings.png',   iconLight: 'assets/icons/custom/settings.png',   fallback: '⚙️' },
+  { id: 'trash',     name: 'Lixeira',            iconDark: 'assets/icons/dock/empty-bin.png',      iconLight: 'assets/icons/dock/empty-bin.png',      fallback: '🗑️', noOpen: true },
 ];
 
 class DockMagnification {
@@ -86,44 +82,22 @@ class DockMagnification {
 }
 
 export class Dock {
-  constructor(dockEl, githubEl, wm, themeManager) {
+  constructor(dockEl, wm) {
     this.dockEl = dockEl;
-    this.githubEl = githubEl;
     this.wm = wm;
-    this.themeManager = themeManager;
-    this.isLight = themeManager.isLight;
 
     this.mainMag = new DockMagnification(dockEl);
-    this.githubMag = new DockMagnification(githubEl);
 
     this._itemEls = [];
     this._build();
-
-    // Listen to theme changes
-    themeManager.onChange(isLight => {
-      this.isLight = isLight;
-      this._updateIcons();
-    });
 
     // Listen to window manager changes
     wm.onChange(state => this._updateIndicators(state));
 
     // Bind magnification events
     dockEl.addEventListener('mouseenter', e => this.mainMag.onMouseEnter(e));
-    dockEl.addEventListener('mousemove', e => this.mainMag.onMouseMove(e));
+    dockEl.addEventListener('mousemove',  e => this.mainMag.onMouseMove(e));
     dockEl.addEventListener('mouseleave', e => this.mainMag.onMouseLeave(e));
-
-    githubEl.addEventListener('mouseenter', e => this.githubMag.onMouseEnter(e));
-    githubEl.addEventListener('mousemove', e => this.githubMag.onMouseMove(e));
-    githubEl.addEventListener('mouseleave', e => this.githubMag.onMouseLeave(e));
-
-    // GitHub button
-    const ghBtn = document.getElementById('dock-github-btn');
-    if (ghBtn) {
-      ghBtn.addEventListener('click', () => window.open('https://github.com/gaminghackintosh/macweb.dev', '_blank'));
-      ghBtn.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.open('https://github.com/gaminghackintosh/macweb.dev', '_blank'); } });
-      this.githubMag.register(ghBtn, 0);
-    }
   }
 
   _build() {
@@ -162,7 +136,7 @@ export class Dock {
       iconWrapper.className = 'dock__icon-wrapper';
 
       const img = document.createElement('img');
-      img.src = this.isLight ? app.iconLight : app.iconDark;
+      img.src = app.iconDark;
       img.alt = app.name;
       img.draggable = false;
       img.loading = 'lazy';
@@ -176,7 +150,6 @@ export class Dock {
 
       iconWrapper.appendChild(img);
 
-      // Indicator
       const indicator = document.createElement('div');
       indicator.className = 'dock__indicator';
       indicator.dataset.appId = app.id;
@@ -191,23 +164,31 @@ export class Dock {
       wrapper.appendChild(item);
       this.dockEl.appendChild(wrapper);
 
-      // Click handler
-      item.addEventListener('click', () => this.wm.openApp(app.id, app.name));
+      item.addEventListener('click', () => {
+        if (app.alertMessage) {
+          showMacDialog({ icon: app.iconDark, title: app.name, message: app.alertMessage });
+          return;
+        }
+        if (app.url) { window.open(app.url, '_blank'); return; }
+        if (app.noOpen) return;
+        this.wm.openApp(app.id, app.name);
+      });
       item.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); this.wm.openApp(app.id, app.name); }
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          if (app.alertMessage) {
+            showMacDialog({ icon: app.iconDark, title: app.name, message: app.alertMessage });
+            return;
+          }
+          if (app.url) { window.open(app.url, '_blank'); return; }
+          if (app.noOpen) return;
+          this.wm.openApp(app.id, app.name);
+        }
       });
 
-      // Register for magnification
       this.mainMag.register(item, itemIndex);
       this._itemEls.push({ item, img, app, dot });
       itemIndex++;
-    });
-  }
-
-  _updateIcons() {
-    this._itemEls.forEach(({ img, app }) => {
-      if (!img) return;
-      img.src = this.isLight ? app.iconLight : app.iconDark;
     });
   }
 

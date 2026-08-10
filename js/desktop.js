@@ -1,7 +1,3 @@
-/**
- * Desktop — background wallpaper management and desktop context menu
- */
-
 const WALLPAPER_GROUPS = [
   {
     id: 'custom',
@@ -45,33 +41,18 @@ export const ALL_WALLPAPERS = WALLPAPER_GROUPS.flatMap(g => g.wallpapers);
 export { WALLPAPER_GROUPS };
 
 export class Desktop {
-  constructor(wm, contextMenu, themeManager) {
+  constructor(wm, contextMenu) {
     this.el = document.getElementById('desktop');
     this.wm = wm;
     this.contextMenu = contextMenu;
-    this.themeManager = themeManager;
 
-    // Default wallpaper (Classic Wallpaper)
     this.currentWallpaper = ALL_WALLPAPERS.find(w => w.id === 'custom_wallpaper') || ALL_WALLPAPERS[0];
     this._applyWallpaper(this.currentWallpaper.image);
 
-    // Sync wallpaper with theme on start
-    themeManager.onChange(isLight => {
-      if (this.currentWallpaper?.id === 'tahoe_dark' || this.currentWallpaper?.id === 'tahoe_light') {
-        const wp = isLight
-          ? ALL_WALLPAPERS.find(w => w.id === 'tahoe_light')
-          : ALL_WALLPAPERS.find(w => w.id === 'tahoe_dark');
-        if (wp) this.setWallpaper(wp.id);
-      }
-    });
-
-    // Render desktop icons
     this._renderDesktopIcons();
 
-    // Marquee drag selection box
     this._initDragSelection();
 
-    // Right-click context menu on desktop (in Portuguese)
     if (this.el) {
       this.el.addEventListener('contextmenu', e => {
         if (e.target.closest('.desktop-icon') || e.target.closest('.window')) return;
@@ -79,8 +60,8 @@ export class Desktop {
         this.contextMenu.open(e.clientX, e.clientY, [
           { label: 'Nova Pasta', action: () => this.wm.openApp('finder', 'Finder') },
           { type: 'divider' },
-          { label: 'Obter Informações', action: () => this.wm.openApp('settings', 'Ajustes') },
-          { label: 'Alterar Papel de Parede…', action: () => this.wm.openApp('settings', 'Ajustes') },
+          { label: 'Obter Informações', action: () => this.wm.openApp('settings', 'Ajustes do Sistema') },
+          { label: 'Alterar Papel de Parede…', action: () => this.wm.openApp('settings', 'Ajustes do Sistema') },
           { label: 'Editar Widgets…', action: () => {} },
           { type: 'divider' },
           { label: 'Usar Conjuntos', action: () => {} },
@@ -92,7 +73,6 @@ export class Desktop {
       });
     }
 
-    // Prevent context menu on shift+right-click (like original)
     document.addEventListener('contextmenu', e => {
       if (e.shiftKey) return;
       if (!e.defaultPrevented) e.preventDefault();
@@ -104,38 +84,109 @@ export class Desktop {
     if (!iconsContainer) {
       iconsContainer = document.createElement('div');
       iconsContainer.id = 'desktop-icons-grid';
-      iconsContainer.style.cssText = 'position:absolute;top:40px;right:20px;display:flex;flex-direction:column;gap:20px;z-index:10;pointer-events:auto;';
+      iconsContainer.style.cssText = `
+        position: absolute;
+        top: 40px;
+        right: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        z-index: 10;
+        pointer-events: auto;
+      `;
       this.el.appendChild(iconsContainer);
     }
 
     const DESKTOP_ITEMS = [
-      { id: 'mac-hd', name: 'Macintosh HD', icon: '💻', action: () => this.wm.openApp('finder', 'Finder') },
-      { id: 'docs', name: 'Documentos', icon: '📁', action: () => this.wm.openApp('finder', 'Finder') },
-      { id: 'trash', name: 'Lixeira', icon: '🗑️', action: () => this.wm.openApp('finder', 'Finder') },
-      { id: 'github', name: 'GitHub Repo', icon: '🌐', action: () => window.open('https://github.com/gaminghackintosh/macweb.dev', '_blank') },
+      {
+        id: 'curriculo-pdf',
+        name: 'Currículo.pdf',
+        imgSrc: 'assets/icons/documents/pdf-document.png',
+        action: () => window.open('assets/docs/mateus-desenvolvedor-fullstack.pdf', '_blank'),
+      },
     ];
 
-    iconsContainer.innerHTML = DESKTOP_ITEMS.map(item => `
-      <div class="desktop-icon" data-id="${item.id}" style="display:flex;flex-direction:column;align-items:center;gap:4px;width:80px;cursor:pointer;user-select:none;padding:6px;border-radius:8px;transition:background 0.15s;">
-        <div style="font-size:38px;line-height:1;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.4));">${item.icon}</div>
-        <span style="font-size:11px;font-weight:500;color:#fff;text-align:center;text-shadow:0 1px 3px rgba(0,0,0,0.9);background:rgba(0,0,0,0.3);padding:2px 6px;border-radius:4px;">${item.name}</span>
-      </div>
-    `).join('');
+    iconsContainer.innerHTML = '';
 
-    iconsContainer.querySelectorAll('.desktop-icon').forEach(el => {
-      const item = DESKTOP_ITEMS.find(i => i.id === el.dataset.id);
-      if (!item) return;
+    DESKTOP_ITEMS.forEach(item => {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'desktop-icon';
+      wrapper.dataset.id = item.id;
+      wrapper.style.cssText = `
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        width: 76px;
+        cursor: pointer;
+        user-select: none;
+        padding: 6px 4px 5px 4px;
+        border-radius: 8px;
+        transition: background 0.15s;
+      `;
 
-      el.addEventListener('click', e => {
+      const iconEl = document.createElement('div');
+      iconEl.style.cssText = 'display:flex;align-items:center;justify-content:center;width:60px;height:60px;';
+
+      if (item.imgSrc) {
+        const img = document.createElement('img');
+        img.src = item.imgSrc;
+        img.alt = item.name;
+        img.draggable = false;
+        img.style.cssText = 'width:60px;height:60px;object-fit:contain;filter:drop-shadow(0 4px 10px rgba(0,0,0,0.45));';
+        iconEl.appendChild(img);
+      } else {
+        iconEl.style.fontSize = '44px';
+        iconEl.style.lineHeight = '1';
+        iconEl.textContent = item.emoji || '';
+      }
+
+      const label = document.createElement('span');
+      label.style.cssText = `
+        font-size: 11px;
+        font-weight: 500;
+        color: #fff;
+        text-align: center;
+        text-shadow: 0 1px 3px rgba(0,0,0,0.95), 0 1px 8px rgba(0,0,0,0.6);
+        padding: 2px 5px;
+        border-radius: 4px;
+        max-width: 76px;
+        word-break: break-word;
+        line-height: 1.3;
+        font-family: -apple-system, 'SF Pro Text', BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        -webkit-font-smoothing: antialiased;
+      `;
+      label.textContent = item.name;
+
+      wrapper.appendChild(iconEl);
+      wrapper.appendChild(label);
+      iconsContainer.appendChild(wrapper);
+
+      wrapper.addEventListener('click', e => {
         e.stopPropagation();
-        iconsContainer.querySelectorAll('.desktop-icon').forEach(i => i.style.background = 'none');
-        el.style.background = 'rgba(255,255,255,0.2)';
+        iconsContainer.querySelectorAll('.desktop-icon').forEach(i => {
+          i.style.background = 'transparent';
+          const lbl = i.querySelector('span');
+          if (lbl) lbl.style.background = 'transparent';
+        });
+        wrapper.style.background = 'rgba(255,255,255,0.18)';
+        label.style.background = 'rgba(10,132,255,0.7)';
       });
 
-      el.addEventListener('dblclick', e => {
+      wrapper.addEventListener('dblclick', e => {
         e.stopPropagation();
         item.action();
       });
+    });
+
+    this.el.addEventListener('click', e => {
+      if (!e.target.closest('.desktop-icon')) {
+        iconsContainer.querySelectorAll('.desktop-icon').forEach(i => {
+          i.style.background = 'transparent';
+          const lbl = i.querySelector('span');
+          if (lbl) lbl.style.background = 'transparent';
+        });
+      }
     });
   }
 
