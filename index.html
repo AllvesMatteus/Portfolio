@@ -53,7 +53,6 @@
 
     <div id="menubar" class="menuBar" role="navigation" aria-label="Menu Bar">
       <div class="menuBar__left" id="menubar-left">
-
         <div class="menuBar__itemWrapper" id="menubar-apple">
           <span class="menuBar__item isClickable isBold isApple" id="menubar-apple-btn" aria-label="Apple Menu"
             tabindex="0">
@@ -65,46 +64,10 @@
             </svg>
           </span>
           <div class="menuBar__item-click-overlay" id="menubar-apple-overlay"></div>
-
           <div class="menuBar__dropdown apple-menu" id="menubar-apple-dropdown" style="display:none;"></div>
         </div>
 
-        <div class="menuBar__itemWrapper" id="menubar-appname-wrapper">
-          <span class="menuBar__item isClickable isBold" id="menubar-appname">Finder</span>
-          <div class="menuBar__item-click-overlay" id="menubar-appname-overlay"></div>
-          <div class="menuBar__dropdown" id="menubar-appname-dropdown" style="display:none;"></div>
-        </div>
-
-        <div class="menuBar__itemWrapper" id="menubar-arquivo-wrapper">
-          <span class="menuBar__item isClickable" id="menubar-arquivo">Arquivo</span>
-          <div class="menuBar__item-click-overlay" id="menubar-arquivo-overlay"></div>
-          <div class="menuBar__dropdown" id="menubar-arquivo-dropdown" style="display:none;"></div>
-        </div>
-        <div class="menuBar__itemWrapper" id="menubar-editar-wrapper">
-          <span class="menuBar__item isClickable" id="menubar-editar">Editar</span>
-          <div class="menuBar__item-click-overlay" id="menubar-editar-overlay"></div>
-          <div class="menuBar__dropdown" id="menubar-editar-dropdown" style="display:none;"></div>
-        </div>
-        <div class="menuBar__itemWrapper" id="menubar-visualizar-wrapper">
-          <span class="menuBar__item isClickable" id="menubar-visualizar">Visualizar</span>
-          <div class="menuBar__item-click-overlay" id="menubar-visualizar-overlay"></div>
-          <div class="menuBar__dropdown" id="menubar-visualizar-dropdown" style="display:none;"></div>
-        </div>
-        <div class="menuBar__itemWrapper" id="menubar-desenvolvedor-wrapper">
-          <span class="menuBar__item isClickable" id="menubar-desenvolvedor">Desenvolvedor</span>
-          <div class="menuBar__item-click-overlay" id="menubar-desenvolvedor-overlay"></div>
-          <div class="menuBar__dropdown" id="menubar-desenvolvedor-dropdown" style="display:none;"></div>
-        </div>
-        <div class="menuBar__itemWrapper" id="menubar-janela-wrapper">
-          <span class="menuBar__item isClickable" id="menubar-janela">Janela</span>
-          <div class="menuBar__item-click-overlay" id="menubar-janela-overlay"></div>
-          <div class="menuBar__dropdown" id="menubar-janela-dropdown" style="display:none;"></div>
-        </div>
-        <div class="menuBar__itemWrapper" id="menubar-ajuda-wrapper">
-          <span class="menuBar__item isClickable" id="menubar-ajuda">Ajuda</span>
-          <div class="menuBar__item-click-overlay" id="menubar-ajuda-overlay"></div>
-          <div class="menuBar__dropdown" id="menubar-ajuda-dropdown" style="display:none;"></div>
-        </div>
+        <div id="menubar-dynamic-items" class="menuBar__dynamicItems"></div>
       </div>
 
       <div class="menuBar__right" id="menubar-right">

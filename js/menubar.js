@@ -18,6 +18,13 @@ const APPLE_MENU_OPTIONS = [
   { id: 'logout', label: 'Encerrar Sessão mateus…', shortcut: '⇧⌘Q' },
 ];
 
+const APP_MENUS = {
+  finder: ['Finder', 'Arquivo', 'Editar', 'Visualizar', 'Ir', 'Janela', 'Ajuda'],
+  terminal: ['Terminal', 'Shell', 'Editar', 'Visualizar', 'Janela', 'Ajuda'],
+  settings: ['Ajustes do Sistema', 'Editar', 'Visualizar', 'Janela', 'Ajuda'],
+  safari: ['Safari', 'Arquivo', 'Editar', 'Visualizar', 'Histórico', 'Favoritos', 'Desenvolvedor', 'Janela', 'Ajuda'],
+};
+
 const MENU_OPTIONS = {
   Arquivo: [
     { id: 'new-win', label: 'Nova Janela', shortcut: '⌘N' },
@@ -45,6 +52,33 @@ const MENU_OPTIONS = {
     { id: 'actual-size', label: 'Tamanho Real', shortcut: '⌘0' },
     { type: 'divider' },
     { id: 'fullscreen', label: 'Entrar em Tela Cheia', shortcut: '⌃⌘F' },
+  ],
+  Shell: [
+    { id: 'shell-new', label: 'Novo Terminal', shortcut: '⌘N' },
+    { id: 'shell-tab', label: 'Nova Aba', shortcut: '⌘T' },
+    { type: 'divider' },
+    { id: 'shell-close-tab', label: 'Fechar Aba', shortcut: '⌘W' },
+    { id: 'shell-close-win', label: 'Fechar Janela', shortcut: '⇧⌘W' },
+  ],
+  Ir: [
+    { id: 'go-back', label: 'Voltar', shortcut: '⌘[' },
+    { id: 'go-forward', label: 'Avançar', shortcut: '⌘]' },
+    { type: 'divider' },
+    { id: 'go-recents', label: 'Recentes', shortcut: '⇧⌘F' },
+    { id: 'go-docs', label: 'Documentos', shortcut: '⇧⌘O' },
+    { id: 'go-downloads', label: 'Downloads', shortcut: '⌥⌘L' },
+    { id: 'go-desktop', label: 'Mesa', shortcut: '⇧⌘D' },
+  ],
+  Histórico: [
+    { id: 'hist-back', label: 'Voltar', shortcut: '⌘[' },
+    { id: 'hist-forward', label: 'Avançar', shortcut: '⌘]' },
+    { type: 'divider' },
+    { id: 'hist-show', label: 'Mostrar Todo o Histórico', shortcut: '⌥⌘B' },
+    { id: 'hist-clear', label: 'Limpar Histórico…' },
+  ],
+  Favoritos: [
+    { id: 'fav-add', label: 'Adicionar Favorito…', shortcut: '⌘D' },
+    { id: 'fav-show', label: 'Mostrar Favoritos', shortcut: '⌥⌘B' },
   ],
   Desenvolvedor: [
     { id: 'inspect', label: 'Inspecionar Elemento', shortcut: '⌥⌘I' },
@@ -79,7 +113,7 @@ export class MenuBar {
     };
 
     this._initClock();
-    this._initMenus();
+    this._initAppleMenu();
     this._initCC();
 
     document.addEventListener('mousedown', e => {
@@ -91,13 +125,10 @@ export class MenuBar {
     });
 
     wm.onChange(({ activeWin }) => {
-      this.currentAppName = activeWin
-        ? activeWin.charAt(0).toUpperCase() + activeWin.slice(1)
-        : 'Finder';
-      const el = document.getElementById('menubar-appname');
-      if (el) el.textContent = this.currentAppName;
-      this._updateAppMenuDropdown();
+      this.updateMenuBarForApp(activeWin);
     });
+
+    this.updateMenuBarForApp('finder');
   }
 
   _initClock() {
@@ -119,23 +150,83 @@ export class MenuBar {
     setInterval(update, 1000);
   }
 
-  _initMenus() {
-    const allMenuKeys = ['apple', 'appname', ...Object.keys(MENU_OPTIONS).map(k => k.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''))];
+  _initAppleMenu() {
+    const wrapper = document.getElementById('menubar-apple');
+    const overlay = document.getElementById('menubar-apple-overlay');
+    const dropdown = document.getElementById('menubar-apple-dropdown');
 
-    allMenuKeys.forEach(key => {
-      const wrapper = document.getElementById(key === 'apple' ? 'menubar-apple' : `menubar-${key}-wrapper`);
-      const overlay = document.getElementById(key === 'apple' ? 'menubar-apple-overlay' : `menubar-${key}-overlay`);
-      const dropdown = document.getElementById(`menubar-${key}-dropdown`);
+    if (!wrapper || !overlay || !dropdown) return;
 
-      if (!wrapper || !overlay || !dropdown) return;
+    this._populateAppleMenu(dropdown);
 
-      if (key === 'apple') {
-        this._populateAppleMenu(dropdown);
-      } else if (key === 'appname') {
-        this._updateAppMenuDropdown();
+    overlay.addEventListener('click', e => {
+      e.stopPropagation();
+      this._toggleMenu('apple');
+    });
+
+    wrapper.addEventListener('mouseenter', () => {
+      if (this.activeMenu && this.activeMenu !== 'apple') {
+        this._openMenu('apple');
+      }
+    });
+  }
+
+  updateMenuBarForApp(appId) {
+    const appKey = (appId || 'finder').toLowerCase();
+    let appName = 'Finder';
+
+    if (appKey === 'finder') appName = 'Finder';
+    else if (appKey === 'terminal') appName = 'Terminal';
+    else if (appKey === 'settings') appName = 'Ajustes do Sistema';
+    else if (appKey === 'safari') appName = 'Safari';
+    else appName = appId.charAt(0).toUpperCase() + appId.slice(1);
+
+    this.currentAppName = appName;
+    const titles = APP_MENUS[appKey] || [appName, 'Arquivo', 'Editar', 'Visualizar', 'Janela', 'Ajuda'];
+
+    this._renderDynamicMenuItems(titles, appName);
+  }
+
+  _renderDynamicMenuItems(titles, appName) {
+    const container = document.getElementById('menubar-dynamic-items');
+    if (!container) return;
+
+    container.innerHTML = '';
+    this.activeMenu = null;
+
+    titles.forEach((title, index) => {
+      const isAppName = index === 0;
+      const key = title.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '-');
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'menuBar__itemWrapper';
+      wrapper.id = `menubar-${key}-wrapper`;
+
+      const span = document.createElement('span');
+      span.className = `menuBar__item isClickable ${isAppName ? 'isBold' : ''}`;
+      span.id = `menubar-${key}`;
+      span.textContent = title;
+
+      const overlay = document.createElement('div');
+      overlay.className = 'menuBar__item-click-overlay';
+      overlay.id = `menubar-${key}-overlay`;
+
+      const dropdown = document.createElement('div');
+      dropdown.className = 'menuBar__dropdown';
+      dropdown.id = `menubar-${key}-dropdown`;
+      dropdown.style.display = 'none';
+
+      wrapper.appendChild(span);
+      wrapper.appendChild(overlay);
+      wrapper.appendChild(dropdown);
+      container.appendChild(wrapper);
+
+      if (isAppName) {
+        this._populateAppMenuDropdown(dropdown, appName);
+      } else if (MENU_OPTIONS[title]) {
+        this._populateMenu(dropdown, MENU_OPTIONS[title]);
       } else {
-        const origKey = Object.keys(MENU_OPTIONS).find(k => k.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '') === key);
-        if (origKey) this._populateMenu(dropdown, MENU_OPTIONS[origKey]);
+        dropdown.innerHTML = `<div class="menuBar__dropdownItem"><span>${title}</span></div>`;
       }
 
       overlay.addEventListener('click', e => {
@@ -151,11 +242,7 @@ export class MenuBar {
     });
   }
 
-  _updateAppMenuDropdown() {
-    const dropdown = document.getElementById('menubar-appname-dropdown');
-    if (!dropdown) return;
-
-    const appName = this.currentAppName;
+  _populateAppMenuDropdown(dropdown, appName) {
     const items = [
       { id: 'about-app', label: `Sobre o ${appName}` },
       { type: 'divider' },
@@ -212,7 +299,6 @@ export class MenuBar {
         const id = item.dataset.id;
         this._closeAll();
 
-        // Execute HIG window actions
         if (id === 'close-win' || id === 'quit-app') {
           if (this.wm.activeWinId) this.wm.closeWindow(this.wm.activeWinId);
         } else if (id === 'minimize' || id === 'hide-app') {
@@ -243,7 +329,7 @@ export class MenuBar {
 
     const itemEl = key === 'apple'
       ? document.getElementById('menubar-apple-btn')
-      : document.getElementById(key === 'appname' ? 'menubar-appname' : `menubar-${key}`);
+      : document.getElementById(`menubar-${key}`);
     if (itemEl) itemEl.classList.add('isActive');
   }
 
@@ -259,211 +345,171 @@ export class MenuBar {
     this.state.ccOpen = false;
   }
 
-  // ── Control Center ────────────────────────────────────────────────────
-  _initCC() {
-    const ccBtn = document.getElementById('menubar-cc-btn');
-    if (!ccBtn) return;
+  _showAbout() {
+    const overlay = document.getElementById('about-this-mac');
+    if (!overlay) return;
 
-    ccBtn.addEventListener('click', e => {
+    if (!this._serialNumber) {
+      this._serialNumber = 'C02' + Math.random().toString(36).substring(2, 10).toUpperCase();
+    }
+
+    overlay.innerHTML = `
+      <div class="atm-window">
+        <button class="atm-close-btn" id="atm-close-btn" aria-label="Fechar">
+          <svg viewBox="0 0 12 12" width="8" height="8">
+            <path d="M1.5 1.5l9 9m0-9l-9 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+          </svg>
+        </button>
+
+        <div class="atm-img-container">
+          <img src="assets/icons/settings icons/Macbook-settings.png" alt="MacBook Pro" class="atm-macbook-img" />
+        </div>
+
+        <div class="atm-header">
+          <div class="atm-title">MacBook Pro</div>
+          <div class="atm-subtitle">13-inch, 2018, Four Thunderbolt 3 Ports</div>
+        </div>
+
+        <div class="atm-specs">
+          <div class="atm-spec-row">
+            <span class="atm-spec-label">Processador</span>
+            <span class="atm-spec-value">2,7 GHz Intel Core i7 Quad-Core</span>
+          </div>
+          <div class="atm-spec-row">
+            <span class="atm-spec-label">Gráficos</span>
+            <span class="atm-spec-value">Intel Iris Plus Graphics 655 1536 MB</span>
+          </div>
+          <div class="atm-spec-row">
+            <span class="atm-spec-label">Memória</span>
+            <span class="atm-spec-value">16 GB 2133 MHz LPDDR3</span>
+          </div>
+          <div class="atm-spec-row">
+            <span class="atm-spec-label">Número de série</span>
+            <span class="atm-spec-value">${this._serialNumber}</span>
+          </div>
+          <div class="atm-spec-row">
+            <span class="atm-spec-label">macOS</span>
+            <span class="atm-spec-value">Sequoia 15.7.7</span>
+          </div>
+        </div>
+
+        <button class="atm-more-info-btn" id="atm-more-info-btn">Mais Informações...</button>
+
+        <div class="atm-footer">
+          <div class="atm-reg-cert">Certificação Reguladora</div>
+          <div class="atm-copyright">™ e © 1983-2026 Apple Inc.<br>Todos os Direitos Reservados.</div>
+        </div>
+      </div>
+    `;
+
+    overlay.style.display = 'flex';
+    overlay.className = 'atm-backdrop';
+
+    const closeBtn = overlay.querySelector('#atm-close-btn');
+    if (closeBtn) {
+      closeBtn.onclick = () => { overlay.style.display = 'none'; };
+    }
+
+    const moreBtn = overlay.querySelector('#atm-more-info-btn');
+    if (moreBtn) {
+      moreBtn.onclick = () => {
+        overlay.style.display = 'none';
+        this.wm.openWindow('settings');
+      };
+    }
+  }
+
+  _initCC() {
+    const btn = document.getElementById('menubar-cc-btn');
+    const cc = document.getElementById('control-center');
+    if (!btn || !cc) return;
+
+    btn.addEventListener('click', e => {
       e.stopPropagation();
-      this.state.ccOpen = !this.state.ccOpen;
-      const cc = document.getElementById('control-center');
       if (this.state.ccOpen) {
-        this._renderCC();
+        cc.classList.remove('is-open');
+        cc.style.display = 'none';
+        this.state.ccOpen = false;
       } else {
-        if (cc) {
-          cc.classList.remove('is-open');
-          cc.style.display = 'none';
-        }
+        this._closeAll();
+        this._renderCCContent(cc);
+        cc.style.display = 'flex';
+        cc.classList.add('is-open');
+        this.state.ccOpen = true;
       }
     });
   }
 
-  _renderCC() {
-    let cc = document.getElementById('control-center');
-    if (!cc) {
-      cc = document.createElement('div');
-      cc.id = 'control-center';
-      cc.className = 'control-center';
-      document.body.appendChild(cc);
-    }
-
-    cc.classList.add('is-open');
-    cc.style.display = 'flex';
-    cc.style.position = 'fixed';
-    cc.style.top = '32px';
-    cc.style.right = '8px';
-    cc.style.zIndex = '9000';
-
-    const s = this.state;
-
+  _renderCCContent(cc) {
     cc.innerHTML = `
       <div class="cc-grid-main">
         <div class="cc-card cc-card--connectivity">
-          <div class="cc-conn-item" id="cc-wifi">
-            <div class="cc-icon-circle ${s.wifi ? 'active-blue' : ''}" style="display:flex;align-items:center;justify-content:center;">
-              ${getSFSymbolHtml('wifi', { size: 16 })}
+          <div class="cc-conn-item">
+            <div class="cc-icon-circle active-blue">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg>
             </div>
             <div class="cc-conn-text">
               <span class="cc-label-main">Wi-Fi</span>
-              ${!s.wifi ? '<span class="cc-label-sub">Desativado</span>' : ''}
+              <span class="cc-label-sub">Home Network</span>
             </div>
           </div>
-          <div class="cc-conn-item" id="cc-bluetooth">
-            <div class="cc-icon-circle ${s.bluetooth ? 'active-blue' : ''}" style="display:flex;align-items:center;justify-content:center;">
-              ${getSFSymbolHtml('bluetooth', { size: 16 })}
+          <div class="cc-conn-item">
+            <div class="cc-icon-circle active-blue">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m7 7 10 10-5 5V2l5 5L7 17"/></svg>
             </div>
             <div class="cc-conn-text">
               <span class="cc-label-main">Bluetooth</span>
-              <span class="cc-label-sub">${s.bluetooth ? 'Ativado' : 'Desativado'}</span>
+              <span class="cc-label-sub">Ativado</span>
             </div>
           </div>
-          <div class="cc-conn-item" id="cc-airdrop">
-            <div class="cc-icon-circle ${s.airdrop ? 'active-blue' : ''}" style="display:flex;align-items:center;justify-content:center;">
-              ${getSFSymbolHtml('airdrop', { size: 16 })}
+          <div class="cc-conn-item">
+            <div class="cc-icon-circle active-blue">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24M14.83 14.83l4.24 4.24M14.83 9.17l4.24-4.24M4.93 19.07l4.24-4.24"/></svg>
             </div>
             <div class="cc-conn-text">
               <span class="cc-label-main">AirDrop</span>
-              <span class="cc-label-sub">${s.airdrop ? 'Apenas Contatos' : 'Desativado'}</span>
+              <span class="cc-label-sub">Todos</span>
             </div>
           </div>
         </div>
 
         <div class="cc-right-column">
-          <button class="cc-focus-row ${s.focus ? 'active-purple' : ''}" id="cc-focus">
-            <div class="cc-icon-circle" style="display:flex;align-items:center;justify-content:center;">
-              ${getSFSymbolHtml('moon.fill', { size: 16 })}
+          <button class="cc-focus-row">
+            <div class="cc-icon-circle">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
             </div>
             <span class="cc-label-main">Foco</span>
           </button>
           <div class="cc-utilities-row">
-            <button class="cc-utility-square ${s.stageManager ? 'active-opaque' : ''}" id="cc-stage">
-              ${getSFSymbolHtml('rectangle.grid.1x2.fill', { size: 18 })}
-              <span class="cc-utility-label">Organiz.<br/>Visual</span>
+            <button class="cc-utility-square">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20M2 6h20M2 18h20"/></svg>
+              <span class="cc-utility-label">Organizador Visual</span>
             </button>
-            <button class="cc-utility-square ${s.screenMirror ? 'active-opaque' : ''}" id="cc-mirror">
-              ${getSFSymbolHtml('desktopcomputer', { size: 18 })}
-              <span class="cc-utility-label">Espelham.<br/>de Tela</span>
+            <button class="cc-utility-square">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              <span class="cc-utility-label">Espelhar Tela</span>
             </button>
           </div>
         </div>
       </div>
 
       <div class="cc-card cc-card--slider-wrapper">
-        <div class="cc-slider-title-row">
-          <span class="cc-slider-title">Tela</span>
+        <div class="cc-slider-header">
+          <span>Brilho da Tela</span>
         </div>
-        <div class="cc-slider-row">
-          <div class="cc-slider-container">
-            <div class="cc-slider-fill" id="cc-brightness-fill" style="width: ${s.brightness}%;"></div>
-            <div class="cc-slider-icon-wrap">
-              ${getSFSymbolHtml('sun.max.fill', { size: 16 })}
-            </div>
-            <input type="range" class="cc-slider-input" id="cc-brightness" min="0" max="100" value="${s.brightness}" aria-label="Tela" />
-          </div>
+        <div class="cc-slider-bar">
+          <div class="cc-slider-fill" style="width: 75%;"></div>
         </div>
       </div>
 
       <div class="cc-card cc-card--slider-wrapper">
-        <div class="cc-slider-title-row">
-          <span class="cc-slider-title">Som</span>
+        <div class="cc-slider-header">
+          <span>Som</span>
         </div>
-        <div class="cc-slider-row">
-          <div class="cc-slider-container" style="flex:1;">
-            <div class="cc-slider-fill" id="cc-volume-fill" style="width: ${s.volume}%;"></div>
-            <div class="cc-slider-icon-wrap">
-              ${getSFSymbolHtml(s.volume === 0 ? 'speaker.slash.fill' : 'speaker.3.fill', { size: 16 })}
-            </div>
-            <input type="range" class="cc-slider-input" id="cc-volume" min="0" max="100" value="${s.volume}" aria-label="Som" />
-          </div>
-          <button class="cc-airplay-btn" title="Saída de Áudio" id="cc-airplay">
-            ${getSFSymbolHtml('airplayaudio', { size: 16 })}
-          </button>
+        <div class="cc-slider-bar">
+          <div class="cc-slider-fill" style="width: 55%;"></div>
         </div>
       </div>
     `;
-
-    // Bind events
-    cc.querySelector('#cc-wifi')?.addEventListener('click', () => { s.wifi = !s.wifi; this._renderCC(); });
-    cc.querySelector('#cc-bluetooth')?.addEventListener('click', () => { s.bluetooth = !s.bluetooth; this._renderCC(); });
-    cc.querySelector('#cc-airdrop')?.addEventListener('click', () => { s.airdrop = !s.airdrop; this._renderCC(); });
-    cc.querySelector('#cc-focus')?.addEventListener('click', () => { s.focus = !s.focus; this._renderCC(); });
-    cc.querySelector('#cc-stage')?.addEventListener('click', () => { s.stageManager = !s.stageManager; this._renderCC(); });
-    cc.querySelector('#cc-mirror')?.addEventListener('click', () => { s.screenMirror = !s.screenMirror; this._renderCC(); });
-    cc.querySelector('#cc-brightness')?.addEventListener('input', e => {
-      s.brightness = +e.target.value;
-      const fill = cc.querySelector('#cc-brightness-fill');
-      if (fill) fill.style.width = s.brightness + '%';
-    });
-    cc.querySelector('#cc-volume')?.addEventListener('input', e => {
-      s.volume = +e.target.value;
-      const fill = cc.querySelector('#cc-volume-fill');
-      if (fill) fill.style.width = s.volume + '%';
-    });
-  }
-
-  // ── About This Mac ─────────────────────────────────────────────────────
-  _showAbout() {
-    const container = document.getElementById('about-this-mac');
-    if (!container) return;
-
-    if (!window.macSerialNumber) {
-      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-      let randomPart = '';
-      for (let i = 0; i < 9; i++) {
-        randomPart += chars.charAt(Math.floor(Math.random() * chars.length));
-      }
-      window.macSerialNumber = 'C02' + randomPart;
-    }
-
-    container.style.display = 'block';
-    container.innerHTML = `
-      <div class="atm-overlay" id="atm-overlay">
-        <div class="atm-window app-window app-window--active">
-
-          <div class="atm-titlebar">
-            <button class="app-window__btn app-window__btn--close traffic-light traffic-close" id="atm-close" aria-label="Fechar" title="Fechar"></button>
-            <div class="atm-disabled-dot"></div>
-            <div class="atm-disabled-dot"></div>
-          </div>
-
-          <img src="assets/icons/settings icons/Macbook-settings.png" alt="MacBook Pro" class="atm-mac-img" draggable="false" />
-
-          <div class="atm-model-title">MacBook Pro</div>
-          <div class="atm-model-subtitle">13-inch, 2018, Four Thunderbolt 3 Ports</div>
-
-          <div class="atm-specs-grid">
-            <div class="atm-spec-label">Processador</div>
-            <div class="atm-spec-value">2,7 GHz Intel Core i7 Quad-Core</div>
-            
-            <div class="atm-spec-label">Gráficos</div>
-            <div class="atm-spec-value">Intel Iris Plus Graphics 655 1536 MB</div>
-            
-            <div class="atm-spec-label">Memória</div>
-            <div class="atm-spec-value">16 GB 2133 MHz LPDDR3</div>
-            
-            <div class="atm-spec-label">Número de série</div>
-            <div class="atm-spec-value">${window.macSerialNumber}</div>
-            
-            <div class="atm-spec-label">macOS</div>
-            <div class="atm-spec-value">Sequoia 15.7.7</div>
-          </div>
-
-          <button class="atm-info-btn">Mais Informações...</button>
-
-          <div class="atm-reg-cert">Certificação Reguladora</div>
-          <div class="atm-copyright">™ e © 1983-2026 Apple Inc.<br />Todos os Direitos Reservados.</div>
-
-        </div>
-      </div>
-    `;
-
-    document.getElementById('atm-close')?.addEventListener('click', () => {
-      container.style.display = 'none';
-      container.innerHTML = '';
-    });
-    document.getElementById('atm-overlay')?.addEventListener('click', e => {
-      if (e.target.id === 'atm-overlay') { container.style.display = 'none'; container.innerHTML = ''; }
-    });
   }
 }

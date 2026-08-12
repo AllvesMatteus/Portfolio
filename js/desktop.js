@@ -50,7 +50,6 @@ export class Desktop {
     this._applyWallpaper(this.currentWallpaper.image);
 
     this._renderDesktopIcons();
-
     this._initDragSelection();
 
     if (this.el) {
@@ -64,9 +63,8 @@ export class Desktop {
           { label: 'Alterar Papel de Parede…', action: () => this.wm.openApp('settings', 'Ajustes do Sistema') },
           { label: 'Editar Widgets…', action: () => {} },
           { type: 'divider' },
-          { label: 'Usar Conjuntos', action: () => {} },
-          { label: 'Organizar Por', submenu: true, action: () => {} },
-          { label: 'Limpar', action: () => {} },
+          { label: 'Organizar Por', action: () => this._alignIconsToGrid() },
+          { label: 'Limpar', action: () => this._alignIconsToGrid() },
           { type: 'divider' },
           { label: 'Mostrar Opções de Visualização', action: () => {} },
         ]);
@@ -79,24 +77,22 @@ export class Desktop {
     }, { capture: true });
   }
 
-  _renderDesktopIcons() {
-    let iconsContainer = document.getElementById('desktop-icons-grid');
-    if (!iconsContainer) {
-      iconsContainer = document.createElement('div');
-      iconsContainer.id = 'desktop-icons-grid';
-      iconsContainer.style.cssText = `
-        position: absolute;
-        top: 40px;
-        right: 20px;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        z-index: 10;
-        pointer-events: auto;
-      `;
-      this.el.appendChild(iconsContainer);
+  _getSavedIconPositions() {
+    try {
+      const saved = localStorage.getItem('desktop_icon_positions');
+      return saved ? JSON.parse(saved) : {};
+    } catch (e) {
+      return {};
     }
+  }
 
+  _saveIconPosition(id, left, top) {
+    const saved = this._getSavedIconPositions();
+    saved[id] = { left, top };
+    localStorage.setItem('desktop_icon_positions', JSON.stringify(saved));
+  }
+
+  _renderDesktopIcons() {
     const DESKTOP_ITEMS = [
       {
         id: 'curriculo-pdf',
@@ -106,87 +102,156 @@ export class Desktop {
       },
     ];
 
-    iconsContainer.innerHTML = '';
+    const savedPositions = this._getSavedIconPositions();
 
-    DESKTOP_ITEMS.forEach(item => {
-      const wrapper = document.createElement('div');
-      wrapper.className = 'desktop-icon';
-      wrapper.dataset.id = item.id;
+    DESKTOP_ITEMS.forEach((item, index) => {
+      let wrapper = document.querySelector(`.desktop-icon[data-id="${item.id}"]`);
+      if (!wrapper) {
+        wrapper = document.createElement('div');
+        wrapper.className = 'desktop-icon';
+        wrapper.dataset.id = item.id;
+        this.el.appendChild(wrapper);
+      }
+
+      const defaultLeft = window.innerWidth - 100;
+      const defaultTop = 45 + (index * 110);
+      const pos = savedPositions[item.id] || { left: defaultLeft, top: defaultTop };
+
       wrapper.style.cssText = `
+        position: absolute;
+        left: ${pos.left}px;
+        top: ${pos.top}px;
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 5px;
-        width: 76px;
+        width: 84px;
         cursor: pointer;
         user-select: none;
-        padding: 6px 4px 5px 4px;
+        padding: 6px 4px;
         border-radius: 8px;
-        transition: background 0.15s;
+        z-index: 10;
+        touch-action: none;
       `;
 
-      const iconEl = document.createElement('div');
-      iconEl.style.cssText = 'display:flex;align-items:center;justify-content:center;width:60px;height:60px;';
-
-      if (item.imgSrc) {
-        const img = document.createElement('img');
-        img.src = item.imgSrc;
-        img.alt = item.name;
-        img.draggable = false;
-        img.style.cssText = 'width:60px;height:60px;object-fit:contain;filter:drop-shadow(0 4px 10px rgba(0,0,0,0.45));';
-        iconEl.appendChild(img);
-      } else {
-        iconEl.style.fontSize = '44px';
-        iconEl.style.lineHeight = '1';
-        iconEl.textContent = item.emoji || '';
-      }
-
-      const label = document.createElement('span');
-      label.style.cssText = `
-        font-size: 11px;
-        font-weight: 500;
-        color: #fff;
-        text-align: center;
-        text-shadow: 0 1px 3px rgba(0,0,0,0.95), 0 1px 8px rgba(0,0,0,0.6);
-        padding: 2px 5px;
-        border-radius: 4px;
-        max-width: 76px;
-        word-break: break-word;
-        line-height: 1.3;
-        font-family: -apple-system, 'SF Pro Text', BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        -webkit-font-smoothing: antialiased;
+      wrapper.innerHTML = `
+        <div style="display:flex;align-items:center;justify-content:center;width:60px;height:60px;">
+          ${item.imgSrc ? `<img src="${item.imgSrc}" alt="${item.name}" draggable="false" style="width:60px;height:60px;object-fit:contain;filter:drop-shadow(0 4px 10px rgba(0,0,0,0.45));" />` : `<span style="font-size:44px;line-height:1;">${item.emoji || ''}</span>`}
+        </div>
+        <span style="font-size:11px;font-weight:500;color:#fff;text-align:center;text-shadow:0 1px 3px rgba(0,0,0,0.95),0 1px 8px rgba(0,0,0,0.6);padding:2px 5px;border-radius:4px;max-width:84px;word-break:break-word;line-height:1.3;font-family:-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased;">${item.name}</span>
       `;
-      label.textContent = item.name;
 
-      wrapper.appendChild(iconEl);
-      wrapper.appendChild(label);
-      iconsContainer.appendChild(wrapper);
-
-      wrapper.addEventListener('click', e => {
-        e.stopPropagation();
-        iconsContainer.querySelectorAll('.desktop-icon').forEach(i => {
-          i.style.background = 'transparent';
-          const lbl = i.querySelector('span');
-          if (lbl) lbl.style.background = 'transparent';
-        });
-        wrapper.style.background = 'rgba(255,255,255,0.18)';
-        label.style.background = 'rgba(10,132,255,0.7)';
-      });
-
-      wrapper.addEventListener('dblclick', e => {
-        e.stopPropagation();
-        item.action();
-      });
+      this._makeIconDraggable(wrapper, item.id, item.action);
     });
 
     this.el.addEventListener('click', e => {
       if (!e.target.closest('.desktop-icon')) {
-        iconsContainer.querySelectorAll('.desktop-icon').forEach(i => {
+        document.querySelectorAll('.desktop-icon').forEach(i => {
           i.style.background = 'transparent';
           const lbl = i.querySelector('span');
           if (lbl) lbl.style.background = 'transparent';
         });
       }
+    });
+  }
+
+  _makeIconDraggable(wrapper, itemId, action) {
+    let isMouseDown = false;
+    let isDragging = false;
+    let startX = 0, startY = 0;
+    let initialLeft = 0, initialTop = 0;
+
+    const onMouseDown = e => {
+      if (e.button !== 0) return;
+      e.stopPropagation();
+
+      isMouseDown = true;
+      isDragging = false;
+      startX = e.clientX;
+      startY = e.clientY;
+      initialLeft = wrapper.offsetLeft;
+      initialTop = wrapper.offsetTop;
+
+      document.querySelectorAll('.desktop-icon').forEach(i => {
+        i.style.background = 'transparent';
+        const lbl = i.querySelector('span');
+        if (lbl) lbl.style.background = 'transparent';
+      });
+
+      wrapper.style.background = 'rgba(255,255,255,0.18)';
+      const label = wrapper.querySelector('span');
+      if (label) label.style.background = 'rgba(10,132,255,0.7)';
+
+      document.addEventListener('mousemove', onMouseMove);
+      document.addEventListener('mouseup', onMouseUp);
+    };
+
+    const onMouseMove = e => {
+      if (!isMouseDown) return;
+
+      const dx = e.clientX - startX;
+      const dy = e.clientY - startY;
+
+      if (!isDragging && Math.hypot(dx, dy) > 4) {
+        isDragging = true;
+        wrapper.style.zIndex = '100';
+        wrapper.style.opacity = '0.85';
+        wrapper.style.cursor = 'grabbing';
+      }
+
+      if (isDragging) {
+        let newLeft = initialLeft + dx;
+        let newTop = initialTop + dy;
+
+        const maxLeft = window.innerWidth - 84;
+        const maxTop = window.innerHeight - 100;
+        newLeft = Math.max(10, Math.min(maxLeft, newLeft));
+        newTop = Math.max(36, Math.min(maxTop, newTop));
+
+        wrapper.style.left = `${newLeft}px`;
+        wrapper.style.top = `${newTop}px`;
+      }
+    };
+
+    const onMouseUp = e => {
+      if (!isMouseDown) return;
+      isMouseDown = false;
+
+      document.removeEventListener('mousemove', onMouseMove);
+      document.removeEventListener('mouseup', onMouseUp);
+
+      wrapper.style.opacity = '1';
+      wrapper.style.zIndex = '10';
+      wrapper.style.cursor = 'pointer';
+
+      if (isDragging) {
+        this._saveIconPosition(itemId, wrapper.offsetLeft, wrapper.offsetTop);
+      }
+    };
+
+    wrapper.addEventListener('mousedown', onMouseDown);
+
+    let lastClickTime = 0;
+    wrapper.addEventListener('click', e => {
+      e.stopPropagation();
+      if (isDragging) return;
+      const currentTime = new Date().getTime();
+      if (currentTime - lastClickTime < 300) {
+        if (action) action();
+      }
+      lastClickTime = currentTime;
+    });
+  }
+
+  _alignIconsToGrid() {
+    const icons = document.querySelectorAll('.desktop-icon');
+    const gridX = window.innerWidth - 100;
+    icons.forEach((icon, index) => {
+      const id = icon.dataset.id;
+      const top = 45 + (index * 110);
+      icon.style.left = `${gridX}px`;
+      icon.style.top = `${top}px`;
+      if (id) this._saveIconPosition(id, gridX, top);
     });
   }
 
@@ -196,7 +261,8 @@ export class Desktop {
     let boxEl = null;
 
     this.el.addEventListener('mousedown', e => {
-      if (e.target !== this.el && !e.target.classList.contains('desktop-icon')) return;
+      if (e.target !== this.el && !e.target.classList.contains('desktop')) return;
+      if (e.button !== 0) return;
       isDragging = true;
       startX = e.clientX;
       startY = e.clientY;

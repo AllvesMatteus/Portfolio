@@ -1759,6 +1759,12 @@ body.dark-theme {
   line-height: 1.35;
 }
 
+.menuBar__dynamicItems {
+  display: flex !important;
+  align-items: center !important;
+  gap: 1px !important;
+}
+
 .menuBar__right {
   display: flex !important;
   align-items: center !important;
