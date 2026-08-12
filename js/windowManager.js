@@ -4,7 +4,7 @@ const MENUBAR_HEIGHT = 28;
 export const INITIAL_POSITIONS = {
   finder:   { x: 0, y: 0, w: 960, h: 860 },
   safari:   { x: 0, y: 0, w: 960, h: 860 },
-  terminal: { x: 0, y: 0, w: 960, h: 860 },
+  terminal: { x: 0, y: 0, w: 680, h: 440 },
   settings: { x: 0, y: 0, w: 960, h: 860 },
 };
 
@@ -58,7 +58,7 @@ export class WindowManager {
     const win = { id: appId, title: appName || appId, el, x: p.x, y: p.y, w: p.w, h: p.h, zIndex };
     this.windows.push(win);
     if (!this.openApps.includes(appId)) this.openApps.push(appId);
-    this.activeWin = appId;
+    this.focusWindow(appId);
 
     const contentEl = el.querySelector('.app-window__content');
     const renderer = this._appRenderers[appId];
@@ -81,7 +81,14 @@ export class WindowManager {
     this.windows = this.windows.filter(w => w.id !== appId);
     this.openApps = this.openApps.filter(id => id !== appId);
     this.minimizedApps.delete(appId);
-    if (this.activeWin === appId) this.activeWin = null;
+    if (this.activeWin === appId) {
+      this.activeWin = null;
+      const remaining = this.windows.filter(w => !this.minimizedApps.has(w.id));
+      if (remaining.length > 0) {
+        remaining.sort((a, b) => b.zIndex - a.zIndex);
+        this.focusWindow(remaining[0].id);
+      }
+    }
     this._notify();
   }
 
@@ -90,7 +97,14 @@ export class WindowManager {
     if (!win) return;
     this.minimizedApps.add(appId);
     win.el.classList.add('app-window--minimized');
-    if (this.activeWin === appId) this.activeWin = null;
+    if (this.activeWin === appId) {
+      this.activeWin = null;
+      const remaining = this.windows.filter(w => !this.minimizedApps.has(w.id));
+      if (remaining.length > 0) {
+        remaining.sort((a, b) => b.zIndex - a.zIndex);
+        this.focusWindow(remaining[0].id);
+      }
+    }
     this._notify();
   }
 

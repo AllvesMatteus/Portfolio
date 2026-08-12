@@ -12,7 +12,18 @@ const FILE_TREE = {
       'Mesa':       { type: 'folder', children: { 'macweb.dev': { type: 'folder', children: {} } } },
       'Música':     { type: 'folder', children: {} },
       'Pública':    { type: 'folder', children: {} },
-      'Developer':  { type: 'folder', children: {} },
+      'Developer':  {
+        type: 'folder',
+        children: {
+          'archive':  { type: 'folder', children: {} },
+          'learning': { type: 'folder', children: {} },
+          'projects': { type: 'folder', children: {} },
+          'sandbox':  { type: 'folder', children: {} },
+          'setup':    { type: 'folder', children: {} },
+          'temp':     { type: 'folder', children: {} },
+          'work':     { type: 'folder', children: {} },
+        }
+      },
       'Aplicativos': {
         type: 'folder',
         children: {

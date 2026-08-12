@@ -106,16 +106,14 @@ export class MenuBar {
 
     const update = () => {
       const now = new Date();
-      const days = ['dom','seg','ter','qua','qui','sex','sáb'];
+      const days = ['Dom','Seg','Ter','Qua','Qui','Sex','Sab'];
       const months = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
       const day = days[now.getDay()];
       const month = months[now.getMonth()];
       const date = now.getDate();
-      const hours = now.getHours();
+      const hours = String(now.getHours()).padStart(2, '0');
       const mins = String(now.getMinutes()).padStart(2, '0');
-      const ampm = hours >= 12 ? 'PM' : 'AM';
-      const h12 = hours % 12 || 12;
-      clockEl.textContent = `${day} ${date} de ${month} ${h12}:${mins} ${ampm}`;
+      clockEl.textContent = `${day}. ${date} de ${month}. ${hours}:${mins}`;
     };
     update();
     setInterval(update, 1000);
@@ -409,64 +407,52 @@ export class MenuBar {
     const container = document.getElementById('about-this-mac');
     if (!container) return;
 
+    if (!window.macSerialNumber) {
+      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+      let randomPart = '';
+      for (let i = 0; i < 9; i++) {
+        randomPart += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      window.macSerialNumber = 'C02' + randomPart;
+    }
+
     container.style.display = 'block';
     container.innerHTML = `
-      <div class="atm-overlay" id="atm-overlay" style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.35);backdrop-filter:blur(4px);z-index:10000;display:flex;align-items:center;justify-content:center;">
-        <div class="atm-window app-window app-window--active" style="width:350px;padding:20px 22px 14px 22px;border-radius:14px;background:#474747;color:#ffffff;box-shadow:0 25px 60px rgba(0,0,0,0.65);border:1px solid rgba(255,255,255,0.18);display:flex;flex-direction:column;align-items:center;position:relative;">
+      <div class="atm-overlay" id="atm-overlay">
+        <div class="atm-window app-window app-window--active">
 
-          <div class="atm-titlebar" style="position:absolute;top:12px;left:14px;display:flex;align-items:center;gap:8px;">
+          <div class="atm-titlebar">
             <button class="app-window__btn app-window__btn--close traffic-light traffic-close" id="atm-close" aria-label="Fechar" title="Fechar"></button>
-            <button class="app-window__btn traffic-light nofocus" disabled style="background:#666 !important;border-color:#555 !important;"></button>
-            <button class="app-window__btn traffic-light nofocus" disabled style="background:#666 !important;border-color:#555 !important;"></button>
+            <div class="atm-disabled-dot"></div>
+            <div class="atm-disabled-dot"></div>
           </div>
 
-          <!-- MacBook Pro Graphic -->
-          <div style="margin-top:10px;margin-bottom:14px;display:flex;justify-content:center;">
-            <svg viewBox="0 0 200 110" width="150" height="82" xmlns="http://www.w3.org/2000/svg">
-              <rect x="25" y="4" width="150" height="92" rx="6" fill="#1e1e1e" stroke="#555" stroke-width="1.5"/>
-              <rect x="30" y="9" width="140" height="82" rx="2" fill="#3B99FC"/>
-              <rect x="25" y="92" width="150" height="6" fill="#181818"/>
-              <path d="M12 98 L188 98 L198 106 L2 106 Z" fill="#b5b5b5" stroke="#777" stroke-width="1"/>
-              <rect x="85" y="98" width="30" height="3" rx="1.5" fill="#666"/>
-            </svg>
+          <img src="assets/icons/settings icons/Macbook-settings.png" alt="MacBook Pro" class="atm-mac-img" draggable="false" />
+
+          <div class="atm-model-title">MacBook Pro</div>
+          <div class="atm-model-subtitle">13-inch, 2018, Four Thunderbolt 3 Ports</div>
+
+          <div class="atm-specs-grid">
+            <div class="atm-spec-label">Processador</div>
+            <div class="atm-spec-value">2,7 GHz Intel Core i7 Quad-Core</div>
+            
+            <div class="atm-spec-label">Gráficos</div>
+            <div class="atm-spec-value">Intel Iris Plus Graphics 655 1536 MB</div>
+            
+            <div class="atm-spec-label">Memória</div>
+            <div class="atm-spec-value">16 GB 2133 MHz LPDDR3</div>
+            
+            <div class="atm-spec-label">Número de série</div>
+            <div class="atm-spec-value">${window.macSerialNumber}</div>
+            
+            <div class="atm-spec-label">macOS</div>
+            <div class="atm-spec-value">Sequoia 15.7.7</div>
           </div>
 
-          <div style="font-size:21px;font-weight:700;margin-bottom:2px;letter-spacing:-0.2px;">MacBook Pro</div>
-          <div style="font-size:11px;opacity:0.65;margin-bottom:18px;text-align:center;">13-inch, 2018, Four Thunderbolt 3 Ports</div>
+          <button class="atm-info-btn">Mais Informações...</button>
 
-          <div style="width:100%;font-size:11.5px;line-height:1.75;margin-bottom:18px;padding:0 4px;">
-            <div style="display:flex;justify-content:space-between;gap:8px;">
-              <span style="font-weight:600;opacity:0.9;white-space:nowrap;">Processador</span>
-              <span style="opacity:0.85;text-align:right;">2,7 GHz Intel Core i7 Quad-Core</span>
-            </div>
-            <div style="display:flex;justify-content:space-between;gap:8px;">
-              <span style="font-weight:600;opacity:0.9;white-space:nowrap;">Gráficos</span>
-              <span style="opacity:0.85;text-align:right;">Intel Iris Plus Graphics 655 1536 MB</span>
-            </div>
-            <div style="display:flex;justify-content:space-between;gap:8px;">
-              <span style="font-weight:600;opacity:0.9;white-space:nowrap;">Memória</span>
-              <span style="opacity:0.85;text-align:right;">16 GB 2133 MHz LPDDR3</span>
-            </div>
-            <div style="display:flex;justify-content:space-between;gap:8px;">
-              <span style="font-weight:600;opacity:0.9;white-space:nowrap;">Número de série</span>
-              <span style="opacity:0.85;text-align:right;">C02XL18SJHD4</span>
-            </div>
-            <div style="display:flex;justify-content:space-between;gap:8px;">
-              <span style="font-weight:600;opacity:0.9;white-space:nowrap;">macOS</span>
-              <span style="opacity:0.85;text-align:right;">Sequoia 15.7.7</span>
-            </div>
-          </div>
-
-          <button style="background:rgba(255,255,255,0.22);border:1px solid rgba(255,255,255,0.28);color:#fff;border-radius:14px;padding:5px 20px;font-size:12px;font-weight:500;cursor:pointer;margin-bottom:14px;transition:background 0.15s;">
-            Mais Informações...
-          </button>
-
-          <div style="font-size:10.5px;opacity:0.55;text-decoration:underline;cursor:pointer;margin-bottom:4px;">
-            Certificação Reguladora
-          </div>
-          <div style="font-size:9.5px;opacity:0.4;text-align:center;">
-            ™ e © 1983-2026 Apple Inc. Todos os Direitos Reservados.
-          </div>
+          <div class="atm-reg-cert">Certificação Reguladora</div>
+          <div class="atm-copyright">™ e © 1983-2026 Apple Inc.<br />Todos os Direitos Reservados.</div>
 
         </div>
       </div>

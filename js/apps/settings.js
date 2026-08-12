@@ -41,7 +41,7 @@ export function renderSettings(contentEl, wm, desktop) {
   const profileCard = document.createElement('div');
   profileCard.className = 'settings-profile-card';
   profileCard.innerHTML = `
-    <img src="assets/icons/avatar.png" class="settings-profile-avatar" alt="Mateus Alves" />
+    <img src="assets/icons/settings icons/avatar.jpg" class="settings-profile-avatar" alt="Mateus Alves" />
     <div class="settings-profile-info">
       <span class="settings-profile-name">Mateus Alves</span>
       <span class="settings-profile-sub">Conta Apple</span>

@@ -178,9 +178,10 @@
 #about-this-mac {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: transparent !important;
   z-index: 9998;
-  backdrop-filter: blur(4px);
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -264,7 +265,7 @@
 .app-window {
   backdrop-filter: blur(30px) saturate(190%);
   -webkit-backdrop-filter: blur(30px) saturate(190%);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.08);
   border-radius: 12px;
 }
 
@@ -408,8 +409,48 @@
   background-image: url('../assets/icons/buttons/Maximize_Button_hover.png') !important;
 }
 
-.app-window--inactive .traffic-light,
-.app-window--inactive .app-window__btn,
+.app-window--inactive .traffic-close,
+.app-window--inactive .app-window__btn--close,
+.app-window--inactive .traffic-minimize,
+.app-window--inactive .app-window__btn--minimize,
+.app-window--inactive .traffic-maximize,
+.app-window--inactive .app-window__btn--zoom {
+  background-image: none !important;
+  background-color: rgba(255, 255, 255, 0.16) !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+}
+
+.app-window--inactive .traffic-lights-container:hover .traffic-close,
+.app-window--inactive .app-window__controls:hover .traffic-close,
+.app-window--inactive .traffic-lights-container:hover .app-window__btn--close,
+.app-window--inactive .app-window__controls:hover .app-window__btn--close,
+.app-window--inactive .traffic-close:hover,
+.app-window--inactive .app-window__btn--close:hover {
+  background-image: url('../assets/icons/buttons/Close_Button_hover.png') !important;
+  background-color: transparent !important;
+}
+
+.app-window--inactive .traffic-lights-container:hover .traffic-minimize,
+.app-window--inactive .app-window__controls:hover .traffic-minimize,
+.app-window--inactive .traffic-lights-container:hover .app-window__btn--minimize,
+.app-window--inactive .app-window__controls:hover .app-window__btn--minimize,
+.app-window--inactive .traffic-minimize:hover,
+.app-window--inactive .app-window__btn--minimize:hover {
+  background-image: url('../assets/icons/buttons/Minimize_Button_hover.png') !important;
+  background-color: transparent !important;
+}
+
+.app-window--inactive .traffic-lights-container:hover .traffic-maximize,
+.app-window--inactive .app-window__controls:hover .traffic-maximize,
+.app-window--inactive .traffic-lights-container:hover .app-window__btn--zoom,
+.app-window--inactive .app-window__controls:hover .app-window__btn--zoom,
+.app-window--inactive .traffic-maximize:hover,
+.app-window--inactive .app-window__btn--zoom:hover {
+  background-image: url('../assets/icons/buttons/Maximize_Button_hover.png') !important;
+  background-color: transparent !important;
+}
+
 .traffic-light.nofocus {
   opacity: 0.55 !important;
   box-shadow: none !important;
@@ -441,15 +482,12 @@
   border-radius: 10px;
   backdrop-filter: blur(30px) saturate(180%);
   -webkit-backdrop-filter: blur(30px) saturate(180%);
-  box-shadow:
-    0 22px 70px rgba(0, 0, 0, 0.45),
-    0 8px 20px rgba(0, 0, 0, 0.25),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .app-window--inactive {
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.14) !important;
   opacity: 0.95;
 }
 
@@ -618,19 +656,15 @@
 #window-terminal {
   border-radius: 10px !important;
   overflow: hidden !important;
-  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.56), 0 0 0 1px rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.08) !important;
   border: none !important;
   background: #1e1e1e !important;
-}
-
-#window-terminal .resize-handle {
-  display: none !important;
 }
 
 #window-safari {
   border-radius: 12px !important;
   overflow: hidden !important;
-  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.56), 0 0 0 1px rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.08) !important;
   border: none !important;
   background: #1e1e20 !important;
 }
@@ -737,19 +771,38 @@
 /* ═══════════════════════════════════════════════════════════════════
    REUSABLE UTILITY CLASSES (APPLE HIG COMPLIANT)
    ═══════════════════════════════════════════════════════════════════ */
-.mac-font-system { font-family: var(--font-system) !important; }
-.mac-font-mono   { font-family: var(--font-mono) !important; }
-.mac-font-serif  { font-family: var(--font-serif) !important; }
+.mac-font-system {
+  font-family: var(--font-system) !important;
+}
 
-.mac-label-primary   { color: var(--mac-label) !important; }
-.mac-label-secondary { color: var(--mac-label-secondary) !important; }
-.mac-label-tertiary  { color: var(--mac-label-tertiary) !important; }
-.mac-label-quaternary { color: var(--mac-label-quaternary) !important; }
+.mac-font-mono {
+  font-family: var(--font-mono) !important;
+}
+
+.mac-font-serif {
+  font-family: var(--font-serif) !important;
+}
+
+.mac-label-primary {
+  color: var(--mac-label) !important;
+}
+
+.mac-label-secondary {
+  color: var(--mac-label-secondary) !important;
+}
+
+.mac-label-tertiary {
+  color: var(--mac-label-tertiary) !important;
+}
+
+.mac-label-quaternary {
+  color: var(--mac-label-quaternary) !important;
+}
 
 .mac-window-base {
   background: var(--mac-bg-window) !important;
   border-radius: 12px !important;
-  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.55), 0 0 0 1px var(--mac-separator-subtle) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2), 0 0 0 1px var(--mac-separator-subtle) !important;
   font-family: var(--font-system) !important;
 }
 
@@ -1095,7 +1148,7 @@ body.dark-theme {
 #window-settings {
   border-radius: 12px !important;
   overflow: hidden !important;
-  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.55), 0 0 0 1px var(--mac-separator-subtle) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2), 0 0 0 1px var(--mac-separator-subtle) !important;
   background: var(--mac-bg-window) !important;
 }
 
@@ -1175,7 +1228,7 @@ body.dark-theme {
   padding: 4px 8px 4px 26px !important;
   font-size: 13px !important;
   height: 28px !important;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.1) inset !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset !important;
 }
 
 .settings-search-input::placeholder {
@@ -1204,7 +1257,7 @@ body.dark-theme {
   height: 44px !important;
   border-radius: 50% !important;
   object-fit: cover !important;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.2) !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2) !important;
 }
 
 .settings-profile-info {
@@ -1262,7 +1315,7 @@ body.dark-theme {
   align-items: center !important;
   justify-content: center !important;
   flex-shrink: 0 !important;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.2) !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
 }
 
 .settings-nav-container {
@@ -1305,7 +1358,7 @@ body.dark-theme {
   border-radius: 5px !important;
   object-fit: contain !important;
   flex-shrink: 0 !important;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.15) !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15) !important;
 }
 
 .settings-nav-label {
@@ -1459,13 +1512,23 @@ body.dark-theme {
 }
 
 @keyframes dialogFadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes dialogFadeOut {
-  from { opacity: 1; }
-  to   { opacity: 0; }
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
 }
 
 .mac-dialog-box {
@@ -1488,8 +1551,15 @@ body.dark-theme {
 }
 
 @keyframes dialogPopIn {
-  from { opacity: 0; transform: scale(0.92); }
-  to   { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .mac-dialog-icon {
@@ -1558,4 +1628,199 @@ body.dark-theme {
 
 .resize-handle svg {
   display: none !important;
+}
+
+.atm-overlay {
+  position: fixed;
+  inset: 0;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.atm-window {
+  width: 310px;
+  padding: 24px 22px 20px 22px;
+  border-radius: 14px;
+  background: rgba(50, 52, 56, 0.55);
+  backdrop-filter: blur(40px) saturate(200%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.20);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.atm-titlebar {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.atm-disabled-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.atm-mac-img {
+  width: 160px;
+  height: auto;
+  object-fit: contain;
+  margin-top: 12px;
+  margin-bottom: 16px;
+  filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.4));
+}
+
+.atm-model-title {
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  margin-bottom: 3px;
+  color: #ffffff;
+}
+
+.atm-model-subtitle {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 22px;
+  text-align: center;
+  font-weight: 400;
+}
+
+.atm-specs-grid {
+  width: 100%;
+  font-size: 11px;
+  line-height: 1.4;
+  margin-bottom: 22px;
+  display: grid;
+  grid-template-columns: 102px 1fr;
+  gap: 6px 12px;
+}
+
+.atm-spec-label {
+  text-align: right;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.atm-spec-value {
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 400;
+}
+
+.atm-info-btn {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border-radius: 5px;
+  padding: 4px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transition: background 0.12s, transform 0.1s;
+}
+
+.atm-info-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.atm-info-btn:active {
+  transform: scale(0.97);
+}
+
+.atm-reg-cert {
+  font-size: 10.5px;
+  color: rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+  text-decoration: underline;
+  margin-bottom: 6px;
+}
+
+.atm-copyright {
+  font-size: 9.5px;
+  color: rgba(255, 255, 255, 0.35);
+  text-align: center;
+  line-height: 1.35;
+}
+
+.menuBar__right {
+  display: flex !important;
+  align-items: center !important;
+  gap: 16px !important;
+  padding-right: 14px !important;
+  height: 28px !important;
+  max-height: 28px !important;
+  overflow: hidden !important;
+}
+
+.menuBar__iconImg {
+  filter: none !important;
+  width: 18px !important;
+  height: 18px !important;
+  max-height: 18px !important;
+  object-fit: contain !important;
+  opacity: 0.95 !important;
+  flex-shrink: 0 !important;
+  transition: opacity 0.12s ease !important;
+}
+
+.menuBar__iconImg:hover {
+  opacity: 1 !important;
+}
+
+.siri-icon-img {
+  width: 20px !important;
+  height: 20px !important;
+  max-height: 20px !important;
+}
+
+.battery-icon-img {
+  width: 25px !important;
+  height: 18px !important;
+  max-height: 18px !important;
+}
+
+.cc-icon-img {
+  width: 14px !important;
+  height: 14px !important;
+  max-height: 14px !important;
+}
+
+.menuBar__controlCenterBtn {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 2px 4px !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  height: 22px !important;
+}
+
+.menuBar__controlCenterBtn:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+}
+
+.menuBar__clock {
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  color: rgba(255, 255, 255, 0.95) !important;
+  margin-left: 2px !important;
+  white-space: nowrap !important;
+  letter-spacing: -0.1px !important;
 }
