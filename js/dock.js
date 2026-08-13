@@ -1,9 +1,10 @@
 import { showMacDialog } from './macDialog.js';
 
 const BASE_ICON_SIZE = 60;
-const MAX_SCALE = 1.1;
-const SIGMA = 62;
-const LIFT = 22;
+const RADIUS = 110;
+const MAX_SCALE = 1.10;
+const MAX_LIFT = 7;
+const LERP_FACTOR = 0.22;
 
 export const APPS = [
   { id: 'finder',    name: 'Finder',             iconDark: 'assets/icons/dock/finder.png',         iconLight: 'assets/icons/dock/finder.png',         fallback: '🗂' },
@@ -20,13 +21,22 @@ class DockMagnification {
   constructor(container) {
     this.container = container;
     this.items = [];
+    this.targetScales = [];
+    this.currentScales = [];
+    this.targetLifts = [];
+    this.currentLifts = [];
     this.centers = [];
     this.mouseX = null;
     this.raf = null;
+    this.isHovered = false;
   }
 
   register(el, index) {
     this.items[index] = el;
+    this.targetScales[index] = 1;
+    this.currentScales[index] = 1;
+    this.targetLifts[index] = 0;
+    this.currentLifts[index] = 0;
   }
 
   measure() {
@@ -39,44 +49,91 @@ class DockMagnification {
     });
   }
 
-  apply() {
-    this.raf = null;
-    const mouseX = this.mouseX;
+  updateTargets() {
     this.items.forEach((el, i) => {
       if (!el) return;
-      if (mouseX == null) {
-        el.style.transform = '';
-        el.style.zIndex = '';
+      if (!this.isHovered || this.mouseX === null) {
+        this.targetScales[i] = 1;
+        this.targetLifts[i] = 0;
         return;
       }
       const center = this.centers[i] ?? 0;
-      const d = mouseX - center;
-      const scale = 1 + (MAX_SCALE - 1) * Math.exp(-(d * d) / (2 * SIGMA * SIGMA));
-      const lift = (LIFT * (scale - 1)) / (MAX_SCALE - 1);
-      el.style.transform = `translateZ(0) scale(${scale.toFixed(3)}) translateY(${-lift.toFixed(2)}px)`;
-      el.style.zIndex = scale > 1.015 ? '50' : '';
+      const dist = Math.abs(this.mouseX - center);
+
+      if (dist < RADIUS) {
+        const cosVal = Math.cos((dist / RADIUS) * (Math.PI / 2));
+        const factor = Math.pow(cosVal, 2);
+        this.targetScales[i] = 1 + (MAX_SCALE - 1) * factor;
+        this.targetLifts[i] = MAX_LIFT * factor;
+      } else {
+        this.targetScales[i] = 1;
+        this.targetLifts[i] = 0;
+      }
     });
   }
 
-  schedule() {
-    if (this.raf != null) return;
-    this.raf = requestAnimationFrame(() => this.apply());
+  animate() {
+    this.updateTargets();
+    let isMoving = false;
+
+    this.items.forEach((el, i) => {
+      if (!el) return;
+      const targetS = this.targetScales[i];
+      const targetL = this.targetLifts[i];
+
+      this.currentScales[i] += (targetS - this.currentScales[i]) * LERP_FACTOR;
+      this.currentLifts[i] += (targetL - this.currentLifts[i]) * LERP_FACTOR;
+
+      const scale = this.currentScales[i];
+      const lift = this.currentLifts[i];
+
+      if (Math.abs(targetS - scale) > 0.001 || Math.abs(targetL - lift) > 0.01) {
+        isMoving = true;
+      }
+
+      if (scale > 1.002) {
+        el.style.transform = `translate3d(0, ${-lift.toFixed(2)}px, 0) scale(${scale.toFixed(3)})`;
+        el.style.zIndex = Math.round(scale * 100).toString();
+      } else {
+        el.style.transform = '';
+        el.style.zIndex = '';
+      }
+    });
+
+    if (isMoving || this.isHovered) {
+      this.raf = requestAnimationFrame(() => this.animate());
+    } else {
+      this.items.forEach((el, i) => {
+        if (!el) return;
+        el.style.transform = '';
+        el.style.zIndex = '';
+        this.currentScales[i] = 1;
+        this.currentLifts[i] = 0;
+      });
+      this.raf = null;
+    }
   }
 
   onMouseEnter() {
+    this.isHovered = true;
     this.measure();
     this.container.classList.add('dock--interacting');
+    if (!this.raf) {
+      this.animate();
+    }
   }
 
   onMouseMove(e) {
     const rect = this.container.getBoundingClientRect();
     this.mouseX = e.clientX - rect.left;
-    this.schedule();
+    if (!this.raf) {
+      this.animate();
+    }
   }
 
   onMouseLeave() {
+    this.isHovered = false;
     this.mouseX = null;
-    this.schedule();
     this.container.classList.remove('dock--interacting');
   }
 }
@@ -91,10 +148,8 @@ export class Dock {
     this._itemEls = [];
     this._build();
 
-    // Listen to window manager changes
     wm.onChange(state => this._updateIndicators(state));
 
-    // Bind magnification events
     dockEl.addEventListener('mouseenter', e => this.mainMag.onMouseEnter(e));
     dockEl.addEventListener('mousemove',  e => this.mainMag.onMouseMove(e));
     dockEl.addEventListener('mouseleave', e => this.mainMag.onMouseLeave(e));
@@ -123,15 +178,12 @@ export class Dock {
       item.role = 'button';
       item.setAttribute('aria-label', `Launch ${app.name} app`);
       item.tabIndex = 0;
-      item.style.contain = 'layout style';
 
-      // Tooltip
       const tooltip = document.createElement('div');
       tooltip.className = 'dock__tooltip';
       tooltip.setAttribute('role', 'tooltip');
       tooltip.textContent = app.name;
 
-      // Icon
       const iconWrapper = document.createElement('div');
       iconWrapper.className = 'dock__icon-wrapper';
 
@@ -145,8 +197,6 @@ export class Dock {
       img.onerror = () => {
         iconWrapper.innerHTML = `<span style="font-size:42px;line-height:${BASE_ICON_SIZE}px;">${app.fallback}</span>`;
       };
-      img.dataset.darkSrc = app.iconDark;
-      img.dataset.lightSrc = app.iconLight;
 
       iconWrapper.appendChild(img);
 

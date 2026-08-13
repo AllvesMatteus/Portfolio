@@ -90,23 +90,19 @@ export function renderFinder(contentEl, wm) {
     {
       header: 'Favoritos',
       items: [
-        { label: 'Mesa',       iconSymbol: 'desktopcomputer',  path: ['~', 'Mesa'] },
-        { label: 'Aplicativos',iconSymbol: 'app',              path: ['~', 'Aplicativos'] },
-        { label: 'Documentos', iconSymbol: 'doc.text',         path: ['~', 'Documentos'] },
-        { label: 'Downloads',  iconSymbol: 'arrow.down.circle',path: ['~', 'Downloads'] },
-        { label: 'Imagens',    iconSymbol: 'photo',            path: ['~', 'Imagens'] },
-        { label: 'Developer',  iconSymbol: 'hammer',           path: ['~', 'Developer'] },
+        { label: 'Mesa', iconFile: 'assets/icons/sf-symbols/white/macwindow.png', path: ['~', 'Mesa'] },
+        { label: 'Aplicativos', iconFile: 'assets/icons/sf-symbols/white/applications.png', path: ['~', 'Aplicativos'] },
+        { label: 'Documentos', iconFile: 'assets/icons/sf-symbols/white/doc.png', path: ['~', 'Documentos'] },
+        { label: 'Downloads', iconFile: 'assets/icons/sf-symbols/white/arrow.down.circle.png', path: ['~', 'Downloads'] },
+        { label: 'Imagens', iconFile: 'assets/icons/sf-symbols/white/photo.fill.png', path: ['~', 'Imagens'] },
+        { label: 'Developer', iconFile: 'assets/icons/sf-symbols/white/hammer.png', path: ['~', 'Developer'] },
       ]
     },
     {
       header: 'iCloud',
       items: [
-        { label: 'Drive do iCloud', iconSymbol: 'icloud', path: null },
+        { label: 'OneDrive', iconFile: 'assets/icons/sf-symbols/white/icloud.png', path: ['~'] },
       ]
-    },
-    {
-      header: 'Localizações',
-      items: []
     },
     {
       header: 'Etiquetas',
@@ -188,30 +184,30 @@ export function renderFinder(contentEl, wm) {
       row.style.cssText = `
         display: flex;
         align-items: center;
-        gap: 8px;
-        padding: 5px 12px 5px 14px;
+        gap: 9px;
+        padding: 5px 12px 5px 12px;
         cursor: pointer;
         border-radius: 6px;
         margin: 0 6px 1px 6px;
         transition: background 0.1s;
-        color: rgba(255,255,255,0.88);
+        color: rgba(255,255,255,0.92);
         font-size: 13px;
         font-weight: 400;
         letter-spacing: -0.1px;
         user-select: none;
       `;
       row.innerHTML = `
-        <span style="display:flex;align-items:center;color:#3b9eff;flex-shrink:0;">${getSFSymbolHtml(item.iconSymbol, { size: 15 })}</span>
+        <span class="sidebar-icon-mask" style="width:16px;height:16px;display:inline-block;background-color:#007aff;-webkit-mask:url('${item.iconFile}') no-repeat center / contain;mask:url('${item.iconFile}') no-repeat center / contain;flex-shrink:0;"></span>
         <span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${item.label}</span>
       `;
       row.addEventListener('click', () => {
         if (item.path) { currentPath = [...item.path]; render(); }
 
         sidebarScroll.querySelectorAll('.finder-sidebar-item').forEach(r => r.style.background = '');
-        row.style.background = 'rgba(255,255,255,0.1)';
+        row.style.background = 'rgba(255,255,255,0.12)';
       });
-      row.addEventListener('mouseenter', () => { if (row.style.background !== 'rgba(255,255,255,0.1)') row.style.background = 'rgba(255,255,255,0.05)'; });
-      row.addEventListener('mouseleave', () => { if (row.style.background !== 'rgba(255,255,255,0.1)') row.style.background = ''; });
+      row.addEventListener('mouseenter', () => { if (row.style.background !== 'rgba(255,255,255,0.12)') row.style.background = 'rgba(255,255,255,0.06)'; });
+      row.addEventListener('mouseleave', () => { if (row.style.background !== 'rgba(255,255,255,0.12)') row.style.background = ''; });
       sidebarScroll.appendChild(row);
     });
   });

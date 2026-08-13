@@ -254,12 +254,11 @@
 
 .dock__icon-wrapper img {
   object-fit: contain;
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
-  transition: filter 0.2s ease;
+  filter: none !important;
 }
 
 .dock__icon-wrapper img:hover {
-  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.45));
+  filter: none !important;
 }
 
 .app-window {
@@ -579,6 +578,12 @@
 .dock__item-wrapper,
 .dock__item {
   overflow: visible !important;
+  transition: none !important;
+  transform-style: preserve-3d !important;
+}
+
+.dock__item-wrapper:hover {
+  transform: none !important;
 }
 
 .dock__icon-wrapper {
@@ -592,7 +597,7 @@
   width: 60px !important;
   height: 60px !important;
   object-fit: contain !important;
-  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.35)) !important;
+  filter: none !important;
 }
 
 .dock__separator {

@@ -355,55 +355,43 @@ export class MenuBar {
 
     overlay.innerHTML = `
       <div class="atm-window">
-        <button class="atm-close-btn" id="atm-close-btn" aria-label="Fechar">
-          <svg viewBox="0 0 12 12" width="8" height="8">
-            <path d="M1.5 1.5l9 9m0-9l-9 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
-          </svg>
-        </button>
-
-        <div class="atm-img-container">
-          <img src="assets/icons/settings icons/Macbook-settings.png" alt="MacBook Pro" class="atm-macbook-img" />
+        <div class="atm-titlebar">
+          <button class="traffic-light traffic-close" id="atm-close-btn" aria-label="Fechar"></button>
+          <span class="atm-disabled-dot"></span>
+          <span class="atm-disabled-dot"></span>
         </div>
 
-        <div class="atm-header">
-          <div class="atm-title">MacBook Pro</div>
-          <div class="atm-subtitle">13-inch, 2018, Four Thunderbolt 3 Ports</div>
+        <img src="assets/icons/settings icons/Macbook-settings.png" alt="MacBook Pro" class="atm-mac-img" />
+
+        <div class="atm-model-title">MacBook Pro</div>
+        <div class="atm-model-subtitle">13-inch, 2018, Four Thunderbolt 3 Ports</div>
+
+        <div class="atm-specs-grid">
+          <div class="atm-spec-label">Processador</div>
+          <div class="atm-spec-value">2,7 GHz Intel Core i7 Quad-Core</div>
+
+          <div class="atm-spec-label">Gráficos</div>
+          <div class="atm-spec-value">Intel Iris Plus Graphics 655 1536 MB</div>
+
+          <div class="atm-spec-label">Memória</div>
+          <div class="atm-spec-value">16 GB 2133 MHz LPDDR3</div>
+
+          <div class="atm-spec-label">Número de série</div>
+          <div class="atm-spec-value">${this._serialNumber}</div>
+
+          <div class="atm-spec-label">macOS</div>
+          <div class="atm-spec-value">Sequoia 15.7.7</div>
         </div>
 
-        <div class="atm-specs">
-          <div class="atm-spec-row">
-            <span class="atm-spec-label">Processador</span>
-            <span class="atm-spec-value">2,7 GHz Intel Core i7 Quad-Core</span>
-          </div>
-          <div class="atm-spec-row">
-            <span class="atm-spec-label">Gráficos</span>
-            <span class="atm-spec-value">Intel Iris Plus Graphics 655 1536 MB</span>
-          </div>
-          <div class="atm-spec-row">
-            <span class="atm-spec-label">Memória</span>
-            <span class="atm-spec-value">16 GB 2133 MHz LPDDR3</span>
-          </div>
-          <div class="atm-spec-row">
-            <span class="atm-spec-label">Número de série</span>
-            <span class="atm-spec-value">${this._serialNumber}</span>
-          </div>
-          <div class="atm-spec-row">
-            <span class="atm-spec-label">macOS</span>
-            <span class="atm-spec-value">Sequoia 15.7.7</span>
-          </div>
-        </div>
+        <button class="atm-info-btn" id="atm-more-info-btn">Mais Informações...</button>
 
-        <button class="atm-more-info-btn" id="atm-more-info-btn">Mais Informações...</button>
-
-        <div class="atm-footer">
-          <div class="atm-reg-cert">Certificação Reguladora</div>
-          <div class="atm-copyright">™ e © 1983-2026 Apple Inc.<br>Todos os Direitos Reservados.</div>
-        </div>
+        <div class="atm-reg-cert">Certificação Reguladora</div>
+        <div class="atm-copyright">™ e © 1983-2026 Apple Inc.<br>Todos os Direitos Reservados.</div>
       </div>
     `;
 
     overlay.style.display = 'flex';
-    overlay.className = 'atm-backdrop';
+    overlay.className = 'atm-overlay';
 
     const closeBtn = overlay.querySelector('#atm-close-btn');
     if (closeBtn) {

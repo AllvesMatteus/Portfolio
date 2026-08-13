@@ -16,7 +16,7 @@ export function renderSettings(contentEl, wm, desktop) {
   contentEl.innerHTML = '';
   contentEl.style.cssText = 'height:100%;width:100%;overflow:hidden;display:flex;flex-direction:column;position:relative;';
 
-  const titlebar = WindowManager.buildTitleBar('settings', '', wm, { disableMinimize: true, disableMaximize: true });
+  const titlebar = WindowManager.buildTitleBar('settings', '', wm);
   titlebar.className = 'app-window__titlebar settings-titlebar';
   contentEl.appendChild(titlebar);
 
