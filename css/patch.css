@@ -854,7 +854,7 @@ body.dark-theme {
 }
 
 #control-center {
-  width: 315px !important;
+  width: 325px !important;
   background: rgba(36, 36, 40, 0.78) !important;
   backdrop-filter: blur(40px) saturate(190%) !important;
   -webkit-backdrop-filter: blur(40px) saturate(190%) !important;
@@ -903,15 +903,20 @@ body.dark-theme {
   display: grid !important;
   grid-template-columns: 1fr 1fr !important;
   gap: 10px !important;
+  align-items: stretch !important;
 }
 
 #control-center .cc-card--connectivity {
   background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
   border-radius: 16px !important;
-  padding: 10px !important;
+  padding: 8px 6px !important;
   display: flex !important;
   flex-direction: column !important;
-  gap: 10px !important;
+  justify-content: space-between !important;
+  height: 134px !important;
+  box-sizing: border-box !important;
 }
 
 #control-center .cc-conn-item {
@@ -919,7 +924,7 @@ body.dark-theme {
   align-items: center !important;
   gap: 10px !important;
   cursor: pointer !important;
-  padding: 3px 4px !important;
+  padding: 4px 6px !important;
   border-radius: 8px !important;
   transition: background 0.15s !important;
 }
@@ -942,45 +947,75 @@ body.dark-theme {
 
 #control-center .cc-icon-circle.active-blue {
   background: #0a84ff !important;
+  color: #ffffff !important;
+}
+
+#control-center .cc-icon-circle.active-purple {
+  background: #9333ea !important;
+  color: #ffffff !important;
+}
+
+#control-center .cc-utility-square.active-opaque {
+  background: #ffffff !important;
+  color: #000000 !important;
+}
+
+#control-center .cc-utility-square.active-opaque .sf-symbol {
+  color: #000000 !important;
 }
 
 #control-center .cc-conn-text {
   display: flex !important;
   flex-direction: column !important;
-  line-height: 1.25 !important;
+  justify-content: center !important;
+  line-height: 1.2 !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
 }
 
 #control-center .cc-label-main {
   font-size: 13px !important;
   font-weight: 600 !important;
   color: #ffffff !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
 }
 
 #control-center .cc-label-sub {
   font-size: 11px !important;
-  opacity: 0.6 !important;
-  color: rgba(255, 255, 255, 0.7) !important;
+  opacity: 0.65 !important;
+  color: rgba(255, 255, 255, 0.75) !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
 }
 
 #control-center .cc-right-column {
   display: flex !important;
   flex-direction: column !important;
+  justify-content: space-between !important;
   gap: 10px !important;
+  height: 134px !important;
+  box-sizing: border-box !important;
 }
 
 #control-center .cc-focus-row {
   background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
   border-radius: 16px !important;
   padding: 8px 12px !important;
   display: flex !important;
   align-items: center !important;
-  gap: 10px !important;
-  border: none !important;
+  gap: 12px !important;
   color: #ffffff !important;
   cursor: pointer !important;
   width: 100% !important;
   text-align: left !important;
   transition: background 0.15s !important;
+  height: 56px !important;
+  box-sizing: border-box !important;
 }
 
 #control-center .cc-focus-row:hover {
@@ -990,23 +1025,27 @@ body.dark-theme {
 #control-center .cc-utilities-row {
   display: flex !important;
   gap: 10px !important;
-  flex: 1 !important;
+  height: 68px !important;
 }
 
 #control-center .cc-utility-square {
   flex: 1 !important;
+  height: 68px !important;
+  aspect-ratio: 1 / 1 !important;
   background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
   border-radius: 16px !important;
-  padding: 10px !important;
-  border: none !important;
+  padding: 8px 4px !important;
   color: #ffffff !important;
   cursor: pointer !important;
   display: flex !important;
   flex-direction: column !important;
   justify-content: space-between !important;
-  align-items: flex-start !important;
-  height: 68px !important;
+  align-items: center !important;
+  text-align: center !important;
   transition: background 0.15s !important;
+  box-sizing: border-box !important;
 }
 
 #control-center .cc-utility-square:hover {
@@ -1017,11 +1056,14 @@ body.dark-theme {
   font-size: 11px !important;
   font-weight: 600 !important;
   line-height: 1.2 !important;
-  text-align: left !important;
+  text-align: center !important;
+  width: 100% !important;
 }
 
 #control-center .cc-card--slider-wrapper {
   background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
   border-radius: 16px !important;
   padding: 10px 14px 12px 14px !important;
   display: flex !important;
@@ -1051,13 +1093,12 @@ body.dark-theme {
 #control-center .cc-slider-container {
   position: relative !important;
   width: 100% !important;
-  height: 28px !important;
-  background: rgba(255, 255, 255, 0.22) !important;
-  border-radius: 14px !important;
+  height: 20px !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-radius: 10px !important;
   overflow: hidden !important;
   display: flex !important;
   align-items: center !important;
-  box-shadow: inset 0 0 0 0.5px rgba(255, 255, 255, 0.1) !important;
 }
 
 #control-center .cc-slider-fill {
@@ -1066,7 +1107,7 @@ body.dark-theme {
   left: 0 !important;
   bottom: 0 !important;
   background: #ffffff !important;
-  border-radius: 14px 0 0 14px !important;
+  border-radius: 10px 0 0 10px !important;
   pointer-events: none !important;
   z-index: 1 !important;
   transition: width 0.05s linear !important;
@@ -1074,7 +1115,7 @@ body.dark-theme {
 
 #control-center .cc-slider-icon-wrap {
   position: absolute !important;
-  left: 8px !important;
+  left: 6px !important;
   top: 50% !important;
   transform: translateY(-50%) !important;
   z-index: 3 !important;
@@ -1084,8 +1125,10 @@ body.dark-theme {
   justify-content: center !important;
 }
 
-#control-center .cc-slider-icon-wrap img {
-  filter: brightness(0) opacity(0.65) !important;
+#control-center .cc-slider-icon-wrap img,
+#control-center .cc-slider-icon-wrap svg,
+#control-center .cc-slider-icon-wrap .sf-symbol {
+  filter: brightness(0) opacity(0.55) !important;
 }
 
 #control-center .cc-slider-input {
@@ -1112,31 +1155,31 @@ body.dark-theme {
 #control-center .cc-slider-input::-webkit-slider-thumb {
   -webkit-appearance: none !important;
   appearance: none !important;
-  width: 28px !important;
-  height: 28px !important;
+  width: 20px !important;
+  height: 20px !important;
   border-radius: 50% !important;
   background: #ffffff !important;
-  box-shadow: -2px 0 6px rgba(0, 0, 0, 0.3), 0 2px 6px rgba(0, 0, 0, 0.35) !important;
-  border: 0.5px solid rgba(0, 0, 0, 0.12) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px rgba(0, 0, 0, 0.08) !important;
+  border: 1px solid rgba(0, 0, 0, 0.12) !important;
   cursor: pointer !important;
   margin-top: 0 !important;
 }
 
 #control-center .cc-slider-input::-moz-range-thumb {
-  width: 28px !important;
-  height: 28px !important;
+  width: 20px !important;
+  height: 20px !important;
   border-radius: 50% !important;
   background: #ffffff !important;
-  box-shadow: -2px 0 6px rgba(0, 0, 0, 0.3), 0 2px 6px rgba(0, 0, 0, 0.35) !important;
-  border: 0.5px solid rgba(0, 0, 0, 0.12) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px rgba(0, 0, 0, 0.08) !important;
+  border: 1px solid rgba(0, 0, 0, 0.12) !important;
   cursor: pointer !important;
 }
 
 #control-center .cc-airplay-btn {
-  width: 28px !important;
-  height: 28px !important;
+  width: 20px !important;
+  height: 20px !important;
   border-radius: 50% !important;
-  background: rgba(255, 255, 255, 0.22) !important;
+  background: rgba(255, 255, 255, 0.18) !important;
   border: none !important;
   display: flex !important;
   align-items: center !important;
@@ -1773,11 +1816,27 @@ body.dark-theme {
 .menuBar__right {
   display: flex !important;
   align-items: center !important;
-  gap: 16px !important;
-  padding-right: 14px !important;
+  gap: 2px !important;
+  padding-right: 10px !important;
   height: 28px !important;
   max-height: 28px !important;
-  overflow: hidden !important;
+  overflow: visible !important;
+}
+
+.menuBar__iconWrapper {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 3px 8px !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  height: 22px !important;
+  transition: background 0.12s ease !important;
+}
+
+.menuBar__iconWrapper:hover,
+.menuBar__iconWrapper.isActive {
+  background: rgba(255, 255, 255, 0.18) !important;
 }
 
 .menuBar__iconImg {
@@ -1788,11 +1847,6 @@ body.dark-theme {
   object-fit: contain !important;
   opacity: 0.95 !important;
   flex-shrink: 0 !important;
-  transition: opacity 0.12s ease !important;
-}
-
-.menuBar__iconImg:hover {
-  opacity: 1 !important;
 }
 
 .siri-icon-img {
@@ -1813,25 +1867,10 @@ body.dark-theme {
   max-height: 14px !important;
 }
 
-.menuBar__controlCenterBtn {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  padding: 2px 4px !important;
-  border-radius: 4px !important;
-  cursor: pointer !important;
-  height: 22px !important;
-}
-
-.menuBar__controlCenterBtn:hover {
-  background: rgba(255, 255, 255, 0.15) !important;
-}
-
 .menuBar__clock {
   font-size: 13px !important;
   font-weight: 500 !important;
   color: rgba(255, 255, 255, 0.95) !important;
-  margin-left: 2px !important;
   white-space: nowrap !important;
   letter-spacing: -0.1px !important;
 }
@@ -1848,37 +1887,42 @@ body.dark-theme {
 }
 
 .mac-notif-banner {
-  width: 320px;
+  width: 330px;
   padding: 12px 14px;
   border-radius: 16px;
-  background: rgba(45, 45, 48, 0.75);
-  backdrop-filter: blur(40px) saturate(190%);
-  -webkit-backdrop-filter: blur(40px) saturate(190%);
+  background: rgba(45, 45, 48, 0.78);
+  backdrop-filter: blur(40px) saturate(200%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
   color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
   pointer-events: auto;
   cursor: pointer;
   user-select: none;
   -webkit-user-select: none;
-  animation: notifSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+  animation: notifSlideIn 0.38s cubic-bezier(0.2, 0.9, 0.3, 1.1) forwards;
+  transition: transform 0.25s cubic-bezier(0.2, 0.9, 0.3, 1), opacity 0.25s ease;
+  touch-action: pan-y;
 }
 
 .mac-notif-banner:hover {
-  background: rgba(55, 55, 60, 0.85);
+  background: rgba(58, 58, 64, 0.88);
 }
 
 .mac-notif-banner.mac-notif-closing {
-  animation: notifSlideOut 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: notifSlideOut 0.22s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 @keyframes notifSlideIn {
-  from {
-    transform: translateX(360px);
+  0% {
+    transform: translateX(380px);
     opacity: 0;
   }
-  to {
+  75% {
+    transform: translateX(-6px);
+    opacity: 1;
+  }
+  100% {
     transform: translateX(0);
     opacity: 1;
   }
@@ -1890,7 +1934,7 @@ body.dark-theme {
     opacity: 1;
   }
   to {
-    transform: translateX(360px);
+    transform: translateX(380px);
     opacity: 0;
   }
 }
@@ -1906,14 +1950,14 @@ body.dark-theme {
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.6px;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.5);
   text-transform: uppercase;
 }
 
 .mac-notif-time {
   font-size: 10px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(255, 255, 255, 0.4);
 }
 
 .mac-notif-body {
@@ -1956,4 +2000,34 @@ body.dark-theme {
   color: rgba(255, 255, 255, 0.65);
   line-height: 1.35;
   margin-top: 2px;
+}
+
+.mac-notif-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mac-notif-action-btn {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-size: 11.5px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.12s, transform 0.1s;
+}
+
+.mac-notif-action-btn:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.mac-notif-action-btn:active {
+  transform: scale(0.96);
 }

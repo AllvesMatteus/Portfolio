@@ -2,7 +2,7 @@ const DOCK_HEIGHT = 80;
 const MENUBAR_HEIGHT = 28;
 
 export const INITIAL_POSITIONS = {
-  finder:   { x: 0, y: 0, w: 960, h: 860 },
+  finder:   { x: 0, y: 0, w: 780, h: 540 },
   safari:   { x: 0, y: 0, w: 960, h: 860 },
   terminal: { x: 0, y: 0, w: 680, h: 440 },
   settings: { x: 0, y: 0, w: 960, h: 860 },

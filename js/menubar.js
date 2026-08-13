@@ -429,75 +429,114 @@ export class MenuBar {
   }
 
   _renderCCContent(cc) {
+    const s = this.state;
     cc.innerHTML = `
       <div class="cc-grid-main">
         <div class="cc-card cc-card--connectivity">
-          <div class="cc-conn-item">
-            <div class="cc-icon-circle active-blue">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg>
+          <div class="cc-conn-item" id="cc-wifi">
+            <div class="cc-icon-circle ${s.wifi ? 'active-blue' : ''}">
+              ${getSFSymbolHtml('wifi', { size: 20 })}
             </div>
             <div class="cc-conn-text">
               <span class="cc-label-main">Wi-Fi</span>
-              <span class="cc-label-sub">Home Network</span>
+              <span class="cc-label-sub">${s.wifi ? 'Casa' : 'Desativado'}</span>
             </div>
           </div>
-          <div class="cc-conn-item">
-            <div class="cc-icon-circle active-blue">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m7 7 10 10-5 5V2l5 5L7 17"/></svg>
+          <div class="cc-conn-item" id="cc-bluetooth">
+            <div class="cc-icon-circle ${s.bluetooth ? 'active-blue' : ''}">
+              ${getSFSymbolHtml('bluetooth', { size: 20 })}
             </div>
             <div class="cc-conn-text">
               <span class="cc-label-main">Bluetooth</span>
-              <span class="cc-label-sub">Ativado</span>
+              <span class="cc-label-sub">${s.bluetooth ? 'Ativado' : 'Desativado'}</span>
             </div>
           </div>
-          <div class="cc-conn-item">
-            <div class="cc-icon-circle active-blue">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24M14.83 14.83l4.24 4.24M14.83 9.17l4.24-4.24M4.93 19.07l4.24-4.24"/></svg>
+          <div class="cc-conn-item" id="cc-airdrop">
+            <div class="cc-icon-circle ${s.airdrop ? 'active-blue' : ''}">
+              ${getSFSymbolHtml('airdrop', { size: 20 })}
             </div>
             <div class="cc-conn-text">
               <span class="cc-label-main">AirDrop</span>
-              <span class="cc-label-sub">Todos</span>
+              <span class="cc-label-sub">${s.airdrop ? 'Todos' : 'Desativado'}</span>
             </div>
           </div>
         </div>
 
         <div class="cc-right-column">
-          <button class="cc-focus-row">
-            <div class="cc-icon-circle">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          <button class="cc-focus-row" id="cc-focus">
+            <div class="cc-icon-circle ${s.focus ? 'active-purple' : ''}">
+              ${getSFSymbolHtml('moon.fill', { size: 20 })}
             </div>
             <span class="cc-label-main">Foco</span>
           </button>
           <div class="cc-utilities-row">
-            <button class="cc-utility-square">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20M2 6h20M2 18h20"/></svg>
-              <span class="cc-utility-label">Organizador Visual</span>
+            <button class="cc-utility-square ${s.stageManager ? 'active-opaque' : ''}" id="cc-stage">
+              <img src="assets/icons/menuBar/rectagle.png" alt="Organizador Visual" class="sf-symbol" style="width:20px;height:20px;object-fit:contain;vertical-align:middle;display:inline-block;" draggable="false" />
+              <span class="cc-utility-label">Organiz.<br/>Visual</span>
             </button>
-            <button class="cc-utility-square">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-              <span class="cc-utility-label">Espelhar Tela</span>
+            <button class="cc-utility-square ${s.screenMirror ? 'active-opaque' : ''}" id="cc-mirror">
+              ${getSFSymbolHtml('square.on.square', { size: 20 })}
+              <span class="cc-utility-label">Espelham.<br/>de Tela</span>
             </button>
           </div>
         </div>
       </div>
 
       <div class="cc-card cc-card--slider-wrapper">
-        <div class="cc-slider-header">
-          <span>Brilho da Tela</span>
+        <div class="cc-slider-title-row">
+          <span class="cc-slider-title">Tela</span>
         </div>
-        <div class="cc-slider-bar">
-          <div class="cc-slider-fill" style="width: 75%;"></div>
+        <div class="cc-slider-row">
+          <div class="cc-slider-container">
+            <div class="cc-slider-fill" id="cc-brightness-fill" style="width: ${s.brightness}%;"></div>
+            <div class="cc-slider-icon-wrap">
+              ${getSFSymbolHtml('sun.max.fill', { size: 14 })}
+            </div>
+            <input type="range" class="cc-slider-input" id="cc-brightness" min="0" max="100" value="${s.brightness}" aria-label="Tela" />
+          </div>
         </div>
       </div>
 
       <div class="cc-card cc-card--slider-wrapper">
-        <div class="cc-slider-header">
-          <span>Som</span>
+        <div class="cc-slider-title-row">
+          <span class="cc-slider-title">Som</span>
         </div>
-        <div class="cc-slider-bar">
-          <div class="cc-slider-fill" style="width: 55%;"></div>
+        <div class="cc-slider-row">
+          <div class="cc-slider-container" style="flex:1;">
+            <div class="cc-slider-fill" id="cc-volume-fill" style="width: ${s.volume}%;"></div>
+            <div class="cc-slider-icon-wrap">
+              ${getSFSymbolHtml(s.volume === 0 ? 'speaker.slash.fill' : 'speaker.3.fill', { size: 14 })}
+            </div>
+            <input type="range" class="cc-slider-input" id="cc-volume" min="0" max="100" value="${s.volume}" aria-label="Som" />
+          </div>
+          <button class="cc-airplay-btn" title="Saída de Áudio" id="cc-airplay">
+            ${getSFSymbolHtml('airplayaudio', { size: 14 })}
+          </button>
         </div>
       </div>
     `;
+
+    cc.querySelector('#cc-wifi')?.addEventListener('click', () => { s.wifi = !s.wifi; this._renderCCContent(cc); });
+    cc.querySelector('#cc-bluetooth')?.addEventListener('click', () => { s.bluetooth = !s.bluetooth; this._renderCCContent(cc); });
+    cc.querySelector('#cc-airdrop')?.addEventListener('click', () => { s.airdrop = !s.airdrop; this._renderCCContent(cc); });
+    cc.querySelector('#cc-focus')?.addEventListener('click', () => { s.focus = !s.focus; this._renderCCContent(cc); });
+    cc.querySelector('#cc-stage')?.addEventListener('click', () => { s.stageManager = !s.stageManager; this._renderCCContent(cc); });
+    cc.querySelector('#cc-mirror')?.addEventListener('click', () => { s.screenMirror = !s.screenMirror; this._renderCCContent(cc); });
+    
+    cc.querySelector('#cc-brightness')?.addEventListener('input', e => {
+      s.brightness = +e.target.value;
+      const fill = cc.querySelector('#cc-brightness-fill');
+      if (fill) fill.style.width = s.brightness + '%';
+    });
+    
+    cc.querySelector('#cc-volume')?.addEventListener('input', e => {
+      s.volume = +e.target.value;
+      const fill = cc.querySelector('#cc-volume-fill');
+      if (fill) fill.style.width = s.volume + '%';
+      const iconWrap = cc.querySelector('.cc-card--slider-wrapper:last-child .cc-slider-icon-wrap');
+      if (iconWrap) {
+        iconWrap.innerHTML = getSFSymbolHtml(s.volume === 0 ? 'speaker.slash.fill' : 'speaker.3.fill', { size: 15 });
+      }
+    });
   }
 }
