@@ -132,7 +132,7 @@ export function renderFinder(contentEl, wm) {
     min-width: 180px;
     display: flex;
     flex-direction: column;
-    background: rgba(26, 26, 28, 0.97);
+    background: rgba(25, 25, 27, 0.97);
     border-right: 1px solid rgba(255,255,255,0.06);
     flex-shrink: 0;
   `;
@@ -147,7 +147,7 @@ export function renderFinder(contentEl, wm) {
     display: flex;
     align-items: center;
     padding: 13px 14px 10px 14px;
-    background: rgba(26, 26, 28, 0.97);
+    background: rgba(25, 25, 27, 0.97);
     border-bottom: none;
     flex-shrink: 0;
   `;
@@ -314,7 +314,7 @@ export function renderFinder(contentEl, wm) {
     align-items: center;
     gap: 3px;
     flex-shrink: 0;
-    background: rgba(28, 28, 30, 0.98);
+    background: rgba(28, 28, 30, 0.97);
     letter-spacing: -0.1px;
     height: 26px;
     box-sizing: border-box;

@@ -2,10 +2,10 @@ const DOCK_HEIGHT = 80;
 const MENUBAR_HEIGHT = 28;
 
 export const INITIAL_POSITIONS = {
-  finder:   { x: 0, y: 0, w: 780, h: 540 },
-  safari:   { x: 0, y: 0, w: 960, h: 860 },
+  finder: { x: 0, y: 0, w: 780, h: 540 },
+  safari: { x: 0, y: 0, w: 850, h: 850 },
   terminal: { x: 0, y: 0, w: 680, h: 440 },
-  settings: { x: 0, y: 0, w: 960, h: 860 },
+  settings: { x: 0, y: 0, w: 850, h: 580 },
 };
 
 export class WindowManager {
@@ -299,9 +299,9 @@ export class WindowManager {
       <div class="app-window__controls traffic-lights-container">
         <button class="app-window__btn app-window__btn--close traffic-light traffic-close" aria-label="Close ${title}" title="Close">
           ${isUnsaved
-            ? `<svg viewBox="0 0 12 12" width="12" height="12" class="traffic-icon close-dot-icon"><circle cx="6" cy="6" r="2.5" fill="#460804"/></svg>`
-            : `<svg viewBox="0 0 12 12" width="12" height="12" class="traffic-icon close-icon"><line x1="3" y1="3" x2="9" y2="9" stroke="#460804" stroke-width="1.5" stroke-linecap="round"/><line x1="9" y1="3" x2="3" y2="9" stroke="#460804" stroke-width="1.5" stroke-linecap="round"/></svg>`
-          }
+        ? `<svg viewBox="0 0 12 12" width="12" height="12" class="traffic-icon close-dot-icon"><circle cx="6" cy="6" r="2.5" fill="#460804"/></svg>`
+        : `<svg viewBox="0 0 12 12" width="12" height="12" class="traffic-icon close-icon"><line x1="3" y1="3" x2="9" y2="9" stroke="#460804" stroke-width="1.5" stroke-linecap="round"/><line x1="9" y1="3" x2="3" y2="9" stroke="#460804" stroke-width="1.5" stroke-linecap="round"/></svg>`
+      }
         </button>
         <button class="app-window__btn app-window__btn--minimize traffic-light traffic-minimize" aria-label="Minimize ${title}" title="Minimize" ${disableMinimize ? 'disabled' : ''}>
           <svg viewBox="0 0 12 12" width="12" height="12" class="traffic-icon minimize-icon"><line x1="2" y1="6" x2="10" y2="6" stroke="#90591d" stroke-width="1.5" stroke-linecap="round"/></svg>
