@@ -45,6 +45,8 @@ function getIconHtml(name, item, size = 72) {
     if (name === 'Mesa')        return `<img src="assets/icons/folders/desktop-folder.png" alt="${name}" style="width:${size}px;height:${size}px;object-fit:contain;" draggable="false" />`;
     if (name === 'Aplicativos') return `<img src="assets/icons/folders/applications-folder.png" alt="${name}" style="width:${size}px;height:${size}px;object-fit:contain;" draggable="false" />`;
     if (name === 'Imagens')     return `<img src="assets/icons/folders/imagens-folder.png" alt="${name}" style="width:${size}px;height:${size}px;object-fit:contain;" draggable="false" />`;
+    if (name === 'Filmes' || name === 'Movies')  return `<img src="assets/icons/folders/films-folder.png" alt="${name}" style="width:${size}px;height:${size}px;object-fit:contain;" draggable="false" />`;
+    if (name === 'Pública' || name === 'Public') return `<img src="assets/icons/folders/public-folder.png" alt="${name}" style="width:${size}px;height:${size}px;object-fit:contain;" draggable="false" />`;
     if (name === 'Developer' || name === 'Projetos') return `<img src="assets/icons/folders/developer-folder.png" alt="${name}" style="width:${size}px;height:${size}px;object-fit:contain;" draggable="false" />`;
     return `<img src="assets/icons/folders/default-folder.png" alt="${name}" style="width:${size}px;height:${size}px;object-fit:contain;" draggable="false" />`;
   }
