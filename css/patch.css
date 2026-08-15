@@ -79,23 +79,32 @@
 }
 
 .context-menu {
-  background: rgba(22, 22, 24, 0.92);
-  backdrop-filter: blur(40px) saturate(180%);
-  -webkit-backdrop-filter: blur(40px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  padding: 4px;
-  min-width: 200px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.3);
-  animation: contextMenuIn 0.12s ease-out;
+  position: fixed !important;
+  background: rgba(42, 42, 46, 0.92) !important;
+  backdrop-filter: blur(35px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(35px) saturate(190%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  border-radius: 8px !important;
+  padding: 4px !important;
+  width: max-content !important;
+  min-width: 255px !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), 0 2px 8px rgba(0, 0, 0, 0.35) !important;
+  z-index: 99999 !important;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  animation: contextMenuIn 0.12s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+
+.context-menu[data-depth]:not([data-depth="0"]) {
+  min-width: 175px !important;
 }
 
 @keyframes contextMenuIn {
   from {
     opacity: 0;
-    transform: scale(0.96);
+    transform: scale(0.97);
   }
-
   to {
     opacity: 1;
     transform: scale(1);
@@ -103,45 +112,76 @@
 }
 
 .context-menu__item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 6px 14px;
-  border-radius: 6px;
-  font-size: 13px;
-  cursor: pointer;
-  color: rgba(255, 255, 255, 0.88);
-  transition: background 0.1s;
+  display: flex !important;
+  align-items: center !important;
+  height: 24px !important;
+  padding: 0 8px 0 6px !important;
+  border-radius: 5px !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  color: #ffffff !important;
+  cursor: pointer !important;
+  letter-spacing: -0.15px !important;
+  transition: background 0.05s ease, color 0.05s ease !important;
+  white-space: nowrap !important;
+  position: relative !important;
+  box-sizing: border-box !important;
 }
 
-.context-menu__item:hover {
-  background: rgba(10, 132, 255, 0.75);
-  color: white;
+.context-menu__item:hover,
+.context-menu__item.is-active-parent {
+  background: #0a84ff !important;
+  color: #ffffff !important;
+}
+
+.context-menu__item.context-menu__item--disabled,
+.context-menu__item.context-menu__item--header {
+  color: rgba(255, 255, 255, 0.35) !important;
+  cursor: default !important;
+  pointer-events: none !important;
+  background: transparent !important;
+}
+
+.context-menu__item--header {
+  font-weight: 500 !important;
+}
+
+.context-menu__check {
+  width: 18px !important;
+  min-width: 18px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  margin-right: 2px !important;
+  color: currentColor !important;
+}
+
+.context-menu__label {
+  flex: 1 !important;
+  white-space: nowrap !important;
 }
 
 .context-menu__arrow {
-  opacity: 0.5;
-  font-size: 16px;
+  margin-left: 12px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  opacity: 0.85 !important;
+  color: currentColor !important;
+}
+
+.context-menu__item:hover .context-menu__arrow,
+.context-menu__item.is-active-parent .context-menu__arrow {
+  opacity: 1 !important;
+  color: #ffffff !important;
 }
 
 .context-menu__divider {
-  height: 1px;
-  background: rgba(255, 255, 255, 0.08);
-  margin: 3px 0;
-}
-
-.light-theme .context-menu {
-  background: rgba(248, 248, 250, 0.92);
-  border-color: rgba(0, 0, 0, 0.1);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
-}
-
-.light-theme .context-menu__item {
-  color: rgba(0, 0, 0, 0.85);
-}
-
-.light-theme .context-menu__divider {
-  background: rgba(0, 0, 0, 0.08);
+  height: 1px !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  margin: 4px 6px !important;
 }
 
 .cc-slider-input {

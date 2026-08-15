@@ -52,6 +52,9 @@ export class Desktop {
     this._renderDesktopIcons();
     this._initDragSelection();
 
+    this.useStacks = true;
+    this.groupBy = 'tipo';
+
     if (this.el) {
       this.el.addEventListener('contextmenu', e => {
         if (e.target.closest('.desktop-icon') || e.target.closest('.window')) return;
@@ -60,13 +63,38 @@ export class Desktop {
           { label: 'Nova Pasta', action: () => this.wm.openApp('finder', 'Finder') },
           { type: 'divider' },
           { label: 'Obter Informações', action: () => this.wm.openApp('settings', 'Ajustes do Sistema') },
-          { label: 'Alterar Papel de Parede…', action: () => this.wm.openApp('settings', 'Ajustes do Sistema') },
-          { label: 'Editar Widgets…', action: () => {} },
+          { label: 'Alterar Imagem de Fundo...', action: () => this.wm.openApp('settings', 'Ajustes do Sistema') },
+          { label: 'Editar Widgets...', action: () => {} },
           { type: 'divider' },
-          { label: 'Organizar Por', action: () => this._alignIconsToGrid() },
-          { label: 'Limpar', action: () => this._alignIconsToGrid() },
-          { type: 'divider' },
+          { 
+            label: 'Usar Conjuntos', 
+            checked: this.useStacks, 
+            action: () => {
+              this.useStacks = !this.useStacks;
+            } 
+          },
+          { 
+            label: 'Agrupar Conjuntos por', 
+            submenu: [
+              { label: 'Tipo', checked: this.groupBy === 'tipo', action: () => { this.groupBy = 'tipo'; } },
+              { label: 'Data da Última Abertura', checked: this.groupBy === 'abertura', action: () => { this.groupBy = 'abertura'; } },
+              { label: 'Data da Adição', checked: this.groupBy === 'adicao', action: () => { this.groupBy = 'adicao'; } },
+              { label: 'Data de Modificação', checked: this.groupBy === 'modificacao', action: () => { this.groupBy = 'modificacao'; } },
+              { label: 'Data de Criação', checked: this.groupBy === 'criacao', action: () => { this.groupBy = 'criacao'; } },
+              { label: 'Etiquetas', checked: this.groupBy === 'etiquetas', action: () => { this.groupBy = 'etiquetas'; } },
+            ] 
+          },
           { label: 'Mostrar Opções de Visualização', action: () => {} },
+          { type: 'divider' },
+          { 
+            label: 'Importar do iPhone', 
+            submenu: [
+              { label: 'iPhone de Mateus', disabled: true, isHeader: true },
+              { label: 'Tirar Foto', action: () => {} },
+              { label: 'Escanear Documentos', action: () => {} },
+              { label: 'Adicionar Desenho', action: () => {} },
+            ] 
+          }
         ]);
       });
     }
