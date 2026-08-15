@@ -187,15 +187,29 @@ export class WidgetsManager {
       const maxTemp = data.daily?.temperature_2m_max?.[0] ?? (currentTemp + 3);
       const minTemp = data.daily?.temperature_2m_min?.[0] ?? (currentTemp - 4);
 
-      const currentHour = new Date().getHours();
+      const now = new Date();
+      const currentHour = now.getHours();
+      let startIndex = data.hourly?.time?.findIndex(t => {
+        const d = new Date(t);
+        return d.getHours() === currentHour && d.getDate() === now.getDate();
+      }) ?? -1;
+
+      if (startIndex === -1) startIndex = currentHour;
+
       const hourlyList = [];
       for (let i = 0; i < 6; i++) {
-        const h = (currentHour + i) % 24;
-        const hStr = h.toString().padStart(2, '0');
-        const hCode = data.hourly?.weathercode?.[currentHour + i] ?? weatherCode;
-        const hTemp = data.hourly?.temperature_2m?.[currentHour + i] ?? currentTemp;
+        const idx = startIndex + i;
+        const timeISO = data.hourly?.time?.[idx];
+        let hourDisplay = ((currentHour + i) % 24).toString().padStart(2, '0');
+        if (timeISO) {
+          const d = new Date(timeISO);
+          hourDisplay = d.getHours().toString().padStart(2, '0');
+        }
+
+        const hCode = data.hourly?.weathercode?.[idx] ?? weatherCode;
+        const hTemp = data.hourly?.temperature_2m?.[idx] ?? currentTemp;
         const hSym = (weatherCodeMap[hCode] || { symbol: 'cloud.fill' }).symbol;
-        hourlyList.push({ time: hStr, symbol: hSym, temp: hTemp });
+        hourlyList.push({ time: hourDisplay, symbol: hSym, temp: hTemp });
       }
 
       applyWeatherData(cityName, currentTemp, weatherCode, maxTemp, minTemp, hourlyList);
