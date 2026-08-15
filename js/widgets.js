@@ -178,61 +178,123 @@ export class WidgetsManager {
     };
 
     const fetchWeatherByCoords = async (lat, lon, cityName) => {
-      try {
-        const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&hourly=temperature_2m,weathercode&daily=temperature_2m_max,temperature_2m_min&timezone=auto`;
-        const res = await fetch(url);
-        const data = await res.json();
+      const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&hourly=temperature_2m,weathercode&daily=temperature_2m_max,temperature_2m_min&timezone=auto`;
+      const res = await fetch(url);
+      const data = await res.json();
 
-        const currentTemp = data.current_weather.temperature;
-        const weatherCode = data.current_weather.weathercode;
-        const maxTemp = data.daily?.temperature_2m_max?.[0] ?? (currentTemp + 3);
-        const minTemp = data.daily?.temperature_2m_min?.[0] ?? (currentTemp - 4);
+      const currentTemp = data.current_weather.temperature;
+      const weatherCode = data.current_weather.weathercode;
+      const maxTemp = data.daily?.temperature_2m_max?.[0] ?? (currentTemp + 3);
+      const minTemp = data.daily?.temperature_2m_min?.[0] ?? (currentTemp - 4);
 
-        const currentHour = new Date().getHours();
-        const hourlyList = [];
-        for (let i = 0; i < 6; i++) {
-          const h = (currentHour + i) % 24;
-          const hStr = h.toString().padStart(2, '0');
-          const hCode = data.hourly?.weathercode?.[currentHour + i] ?? weatherCode;
-          const hTemp = data.hourly?.temperature_2m?.[currentHour + i] ?? currentTemp;
-          const hSym = (weatherCodeMap[hCode] || { symbol: 'cloud.fill' }).symbol;
-          hourlyList.push({ time: hStr, symbol: hSym, temp: hTemp });
-        }
-
-        applyWeatherData(cityName, currentTemp, weatherCode, maxTemp, minTemp, hourlyList);
-      } catch (e) {
-        applyFallbackWeather(cityName);
-      }
-    };
-
-    const applyFallbackWeather = (cityName = 'Peruíbe') => {
       const currentHour = new Date().getHours();
       const hourlyList = [];
       for (let i = 0; i < 6; i++) {
         const h = (currentHour + i) % 24;
-        hourlyList.push({ time: h.toString().padStart(2, '0'), symbol: 'cloud.fill', temp: 19 - Math.floor(i / 3) });
+        const hStr = h.toString().padStart(2, '0');
+        const hCode = data.hourly?.weathercode?.[currentHour + i] ?? weatherCode;
+        const hTemp = data.hourly?.temperature_2m?.[currentHour + i] ?? currentTemp;
+        const hSym = (weatherCodeMap[hCode] || { symbol: 'cloud.fill' }).symbol;
+        hourlyList.push({ time: hStr, symbol: hSym, temp: hTemp });
       }
-      applyWeatherData(cityName, 20, 3, 22, 17, hourlyList);
+
+      applyWeatherData(cityName, currentTemp, weatherCode, maxTemp, minTemp, hourlyList);
     };
 
+    const getCityNameFromCoords = async (lat, lon) => {
+      try {
+        const res = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=pt`);
+        const data = await res.json();
+        return data.city || data.locality || data.principalSubdivision || 'Sua Localização';
+      } catch (e) {
+        return 'Sua Localização';
+      }
+    };
+
+    const tryBrowserGeolocation = () => {
+      return new Promise((resolve) => {
+        if (!('geolocation' in navigator)) return resolve(null);
+        navigator.geolocation.getCurrentPosition(
+          async pos => {
+            const lat = pos.coords.latitude;
+            const lon = pos.coords.longitude;
+            const city = await getCityNameFromCoords(lat, lon);
+            resolve({ lat, lon, city });
+          },
+          () => resolve(null),
+          { timeout: 4000 }
+        );
+      });
+    };
+
+    const tryGeoJs = async () => {
+      try {
+        const res = await fetch('https://get.geojs.io/v1/ip/geo.json');
+        const data = await res.json();
+        if (data && data.latitude && data.longitude) {
+          return { lat: parseFloat(data.latitude), lon: parseFloat(data.longitude), city: data.city || 'Sua Cidade' };
+        }
+      } catch (e) {}
+      return null;
+    };
+
+    const tryIpApiCom = async () => {
+      try {
+        const res = await fetch('https://ip-api.com/json/');
+        const data = await res.json();
+        if (data && data.lat && data.lon) {
+          return { lat: data.lat, lon: data.lon, city: data.city || 'Sua Cidade' };
+        }
+      } catch (e) {}
+      return null;
+    };
+
+    const tryIpApiCo = async () => {
+      try {
+        const res = await fetch('https://ipapi.co/json/');
+        const data = await res.json();
+        if (data && data.latitude && data.longitude) {
+          return { lat: data.latitude, lon: data.longitude, city: data.city || 'Sua Cidade' };
+        }
+      } catch (e) {}
+      return null;
+    };
+
+    const fallbackTimezoneCity = () => {
+      try {
+        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+        const parts = tz.split('/');
+        if (parts.length > 1) {
+          return parts[parts.length - 1].replace(/_/g, ' ');
+        }
+      } catch (e) {}
+      return 'Sua Cidade';
+    };
+
+    let loc = await tryGeoJs();
+    if (!loc) loc = await tryIpApiCom();
+    if (!loc) loc = await tryIpApiCo();
+    if (!loc) loc = await tryBrowserGeolocation();
+
+    if (loc) {
+      try {
+        await fetchWeatherByCoords(loc.lat, loc.lon, loc.city);
+        return;
+      } catch (e) {}
+    }
+
+    const fallbackCity = fallbackTimezoneCity();
     try {
-      const ipRes = await fetch('https://ipapi.co/json/');
-      const ipData = await ipRes.json();
-      if (ipData && ipData.latitude && ipData.longitude) {
-        const city = ipData.city || 'Sua Cidade';
-        await fetchWeatherByCoords(ipData.latitude, ipData.longitude, city);
+      const geoUrl = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(fallbackCity)}&count=1&language=pt&format=json`;
+      const res = await fetch(geoUrl);
+      const data = await res.json();
+      if (data.results && data.results[0]) {
+        const { latitude, longitude, name } = data.results[0];
+        await fetchWeatherByCoords(latitude, longitude, name);
         return;
       }
     } catch (e) {}
 
-    if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition(
-        pos => fetchWeatherByCoords(pos.coords.latitude, pos.coords.longitude, 'Sua Localização'),
-        () => applyFallbackWeather('Peruíbe'),
-        { timeout: 5000 }
-      );
-    } else {
-      applyFallbackWeather('Peruíbe');
-    }
+    await fetchWeatherByCoords(-23.5505, -46.6333, fallbackCity);
   }
 }
