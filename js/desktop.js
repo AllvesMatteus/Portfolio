@@ -37,6 +37,8 @@ const WALLPAPER_GROUPS = [
   }
 ];
 
+import { WidgetsManager } from './widgets.js';
+
 export const ALL_WALLPAPERS = WALLPAPER_GROUPS.flatMap(g => g.wallpapers);
 export { WALLPAPER_GROUPS };
 
@@ -51,6 +53,7 @@ export class Desktop {
 
     this._renderDesktopIcons();
     this._initDragSelection();
+    this.widgetsManager = new WidgetsManager(this.el);
 
     this.useStacks = true;
     this.groupBy = 'tipo';
@@ -141,9 +144,13 @@ export class Desktop {
         this.el.appendChild(wrapper);
       }
 
-      const defaultLeft = window.innerWidth - 100;
-      const defaultTop = 45 + (index * 110);
-      const pos = savedPositions[item.id] || { left: defaultLeft, top: defaultTop };
+      const defaultLeft = window.innerWidth - 110;
+      const defaultTop = window.innerHeight - 190;
+      let pos = savedPositions[item.id];
+      if (!pos || pos.top < 350) {
+        pos = { left: defaultLeft, top: defaultTop };
+        this._saveIconPosition(item.id, pos.left, pos.top);
+      }
 
       wrapper.style.cssText = `
         position: absolute;

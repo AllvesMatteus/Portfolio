@@ -2080,3 +2080,255 @@ body.dark-theme {
 .mac-notif-action-btn:active {
   transform: scale(0.96);
 }
+
+.desktop-widgets-container {
+  position: absolute !important;
+  top: 38px !important;
+  right: 18px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  width: 316px !important;
+  z-index: 10 !important;
+  pointer-events: auto !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
+.desktop-widgets-container .widget-card {
+  background: rgba(38, 38, 42, 0.78) !important;
+  backdrop-filter: blur(35px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(35px) saturate(180%) !important;
+  border: 0.5px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 22px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), inset 0 0.5px 0 0 rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+}
+
+.desktop-widgets-container .widget-top-row {
+  display: flex !important;
+  gap: 12px !important;
+  width: 100% !important;
+}
+
+.desktop-widgets-container .widget-calendar,
+.desktop-widgets-container .widget-battery {
+  width: 152px !important;
+  height: 152px !important;
+  padding: 12px 14px 12px 14px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+}
+
+.desktop-widgets-container {
+  display: grid !important;
+  grid-template-columns: 152px 152px !important;
+  gap: 12px !important;
+}
+
+.desktop-widgets-container .widget-weather {
+  grid-column: span 2 !important;
+  width: 316px !important;
+  height: 152px !important;
+  padding: 12px 16px 10px 16px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+}
+
+.widget-cal-title {
+  color: #ff3b30 !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.3px !important;
+  text-transform: uppercase !important;
+  margin-bottom: 4px !important;
+}
+
+.widget-cal-header-row {
+  display: grid !important;
+  grid-template-columns: repeat(7, 1fr) !important;
+  text-align: center !important;
+  color: #ffffff !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  margin-bottom: 2px !important;
+}
+
+.widget-cal-header-row span.is-weekend {
+  color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.widget-cal-grid {
+  display: grid !important;
+  grid-template-columns: repeat(7, 1fr) !important;
+  row-gap: 1px !important;
+  text-align: center !important;
+  font-size: 10.5px !important;
+  font-weight: 600 !important;
+}
+
+.widget-cal-day {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 15px !important;
+  color: #ffffff !important;
+}
+
+.widget-cal-day.is-weekend {
+  color: rgba(255, 255, 255, 0.45) !important;
+}
+
+.widget-cal-day.is-today span {
+  background: #ff3b30 !important;
+  color: #ffffff !important;
+  border-radius: 50% !important;
+  width: 15px !important;
+  height: 15px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-weight: 700 !important;
+}
+
+.widget-battery-top {
+  display: flex !important;
+  justify-content: flex-start !important;
+  padding-top: 2px !important;
+}
+
+.widget-battery-ring-wrap {
+  position: relative !important;
+  width: 44px !important;
+  height: 44px !important;
+}
+
+.widget-battery-ring-svg {
+  width: 44px !important;
+  height: 44px !important;
+  transform: rotate(-90deg) !important;
+}
+
+.widget-battery-ring-svg .ring-bg {
+  fill: none !important;
+  stroke: rgba(255, 255, 255, 0.12) !important;
+  stroke-width: 4 !important;
+}
+
+.widget-battery-ring-svg .ring-fill {
+  fill: none !important;
+  stroke: #30d158 !important;
+  stroke-width: 4 !important;
+  stroke-linecap: round !important;
+  transition: stroke-dashoffset 0.3s ease !important;
+}
+
+.widget-battery-icon-center {
+  position: absolute !important;
+  inset: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #ffffff !important;
+}
+
+.widget-battery-bottom {
+  margin-top: auto !important;
+  padding-bottom: 2px !important;
+}
+
+.widget-battery-pct {
+  font-size: 38px !important;
+  font-weight: 500 !important;
+  letter-spacing: -1px !important;
+  color: #ffffff !important;
+  line-height: 1 !important;
+}
+
+.widget-weather-main {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: flex-start !important;
+}
+
+.widget-weather-city-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+  letter-spacing: -0.2px !important;
+}
+
+.widget-weather-temp {
+  font-size: 42px !important;
+  font-weight: 200 !important;
+  color: #ffffff !important;
+  line-height: 1 !important;
+  margin-top: 1px !important;
+  letter-spacing: -1px !important;
+}
+
+.widget-weather-right {
+  text-align: right !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-end !important;
+}
+
+.widget-weather-condition-icon {
+  font-size: 18px !important;
+  line-height: 1 !important;
+}
+
+.widget-weather-condition-text {
+  font-size: 11.5px !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  margin-top: 2px !important;
+}
+
+.widget-weather-range {
+  font-size: 10.5px !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  margin-top: 1px !important;
+}
+
+.widget-weather-hourly {
+  display: flex !important;
+  justify-content: space-between !important;
+  border-top: none !important;
+  padding-top: 6px !important;
+  margin-top: 4px !important;
+}
+
+.widget-hourly-col {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 2px !important;
+}
+
+.widget-hourly-time {
+  font-size: 10px !important;
+  color: rgba(255, 255, 255, 0.55) !important;
+  font-weight: 500 !important;
+}
+
+.widget-hourly-icon {
+  font-size: 12px !important;
+  line-height: 1.2 !important;
+}
+
+.widget-hourly-temp {
+  font-size: 10.5px !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+}
