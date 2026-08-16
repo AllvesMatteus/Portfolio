@@ -1,9 +1,9 @@
 import { showMacDialog } from './macDialog.js';
 
 const BASE_ICON_SIZE = 60;
-const RADIUS = 145;
-const MAX_SCALE = 2.0;
-const MAX_LIFT = 6;
+const RADIUS = 110;
+const MAX_SCALE = 1.30;
+const MAX_LIFT = 5;
 const STIFFNESS = 280;
 const DAMPING = 22;
 
@@ -80,7 +80,7 @@ class DockMagnification {
         const factor = Math.pow(cosVal, 2);
         this.targetScales[i] = 1 + (MAX_SCALE - 1) * factor;
         this.targetLifts[i] = MAX_LIFT * factor;
-        this.targetWidths[i] = BASE_ICON_SIZE + (BASE_ICON_SIZE * (MAX_SCALE - 1) * 0.75) * factor;
+        this.targetWidths[i] = BASE_ICON_SIZE + (BASE_ICON_SIZE * (MAX_SCALE - 1) * 0.20) * factor;
       } else {
         this.targetScales[i] = 1;
         this.targetLifts[i] = 0;
