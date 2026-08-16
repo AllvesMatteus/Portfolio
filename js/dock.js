@@ -3,7 +3,7 @@ import { showMacDialog } from './macDialog.js';
 const BASE_ICON_SIZE = 60;
 const RADIUS = 145;
 const MAX_SCALE = 2.0;
-const MAX_LIFT = 30;
+const MAX_LIFT = 6;
 const STIFFNESS = 280;
 const DAMPING = 22;
 
