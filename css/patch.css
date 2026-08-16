@@ -616,19 +616,41 @@
   background: rgba(35, 35, 40, 0.52) !important;
   backdrop-filter: blur(40px) saturate(190%) !important;
   -webkit-backdrop-filter: blur(40px) saturate(190%) !important;
-  padding: 4px 6px !important;
-  border-radius: 19px !important;
+  padding: 4px 8px !important;
+  border-radius: 20px !important;
   border: 1px solid rgba(255, 255, 255, 0.09) !important;
   box-shadow: 0 16px 38px rgba(0, 0, 0, 0.55), inset 0 0.5px 0 0 rgba(255, 255, 255, 0.18) !important;
   gap: 4px !important;
   overflow: visible !important;
+  display: flex !important;
+  align-items: flex-end !important;
 }
 
-.dock__item-wrapper,
-.dock__item {
+.dock__item-wrapper {
+  position: relative !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: flex-end !important;
+  width: 60px;
+  height: 60px !important;
   overflow: visible !important;
-  transition: none !important;
   transform-style: preserve-3d !important;
+  flex-shrink: 0 !important;
+  will-change: width !important;
+}
+
+.dock__item {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  width: 60px !important;
+  height: 60px !important;
+  transform-origin: bottom center !important;
+  overflow: visible !important;
+  transform-style: preserve-3d !important;
+  will-change: transform !important;
 }
 
 .dock__item-wrapper:hover {
