@@ -616,41 +616,19 @@
   background: rgba(35, 35, 40, 0.52) !important;
   backdrop-filter: blur(40px) saturate(190%) !important;
   -webkit-backdrop-filter: blur(40px) saturate(190%) !important;
-  padding: 4px 8px !important;
-  border-radius: 20px !important;
+  padding: 4px 6px !important;
+  border-radius: 19px !important;
   border: 1px solid rgba(255, 255, 255, 0.09) !important;
   box-shadow: 0 16px 38px rgba(0, 0, 0, 0.55), inset 0 0.5px 0 0 rgba(255, 255, 255, 0.18) !important;
   gap: 4px !important;
   overflow: visible !important;
-  display: flex !important;
-  align-items: flex-end !important;
 }
 
-.dock__item-wrapper {
-  position: relative !important;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: flex-end !important;
-  width: 60px;
-  height: 60px !important;
-  overflow: visible !important;
-  transform-style: preserve-3d !important;
-  flex-shrink: 0 !important;
-  will-change: width !important;
-}
-
+.dock__item-wrapper,
 .dock__item {
-  position: relative !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: flex-end !important;
-  width: 60px !important;
-  height: 60px !important;
-  transform-origin: bottom center !important;
   overflow: visible !important;
+  transition: none !important;
   transform-style: preserve-3d !important;
-  will-change: transform !important;
 }
 
 .dock__item-wrapper:hover {
@@ -925,7 +903,7 @@ body.dark-theme {
 }
 
 #control-center {
-  width: 325px !important;
+  width: 318px !important;
   background: rgba(36, 36, 40, 0.78) !important;
   backdrop-filter: blur(40px) saturate(190%) !important;
   -webkit-backdrop-filter: blur(40px) saturate(190%) !important;
@@ -972,7 +950,7 @@ body.dark-theme {
 
 #control-center .cc-grid-main {
   display: grid !important;
-  grid-template-columns: 1fr 1fr !important;
+  grid-template-columns: 142px 142px !important;
   gap: 10px !important;
   align-items: stretch !important;
 }
@@ -982,11 +960,12 @@ body.dark-theme {
   border: 1px solid rgba(255, 255, 255, 0.12) !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
   border-radius: 16px !important;
-  padding: 8px 6px !important;
+  padding: 10px 8px !important;
   display: flex !important;
   flex-direction: column !important;
   justify-content: space-between !important;
-  height: 134px !important;
+  width: 142px !important;
+  height: 142px !important;
   box-sizing: border-box !important;
 }
 
@@ -1067,7 +1046,8 @@ body.dark-theme {
   flex-direction: column !important;
   justify-content: space-between !important;
   gap: 10px !important;
-  height: 134px !important;
+  width: 142px !important;
+  height: 142px !important;
   box-sizing: border-box !important;
 }
 
@@ -1085,7 +1065,7 @@ body.dark-theme {
   width: 100% !important;
   text-align: left !important;
   transition: background 0.15s !important;
-  height: 56px !important;
+  height: 66px !important;
   box-sizing: border-box !important;
 }
 
@@ -1096,12 +1076,12 @@ body.dark-theme {
 #control-center .cc-utilities-row {
   display: flex !important;
   gap: 10px !important;
-  height: 68px !important;
+  height: 66px !important;
 }
 
 #control-center .cc-utility-square {
   flex: 1 !important;
-  height: 68px !important;
+  height: 66px !important;
   aspect-ratio: 1 / 1 !important;
   background: rgba(255, 255, 255, 0.1) !important;
   border: 1px solid rgba(255, 255, 255, 0.12) !important;
@@ -2136,7 +2116,15 @@ body.dark-theme {
   width: 100% !important;
 }
 
-.desktop-widgets-container .widget-calendar,
+.desktop-widgets-container .widget-calendar {
+  width: 152px !important;
+  height: 152px !important;
+  padding: 10px 12px 8px 12px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+}
+
 .desktop-widgets-container .widget-battery {
   width: 152px !important;
   height: 152px !important;
@@ -2164,11 +2152,11 @@ body.dark-theme {
 
 .widget-cal-title {
   color: #ff3b30 !important;
-  font-size: 11px !important;
+  font-size: 10.5px !important;
   font-weight: 700 !important;
   letter-spacing: 0.3px !important;
   text-transform: uppercase !important;
-  margin-bottom: 4px !important;
+  margin-bottom: 2px !important;
 }
 
 .widget-cal-header-row {
@@ -2176,7 +2164,7 @@ body.dark-theme {
   grid-template-columns: repeat(7, 1fr) !important;
   text-align: center !important;
   color: #ffffff !important;
-  font-size: 10px !important;
+  font-size: 9.5px !important;
   font-weight: 700 !important;
   margin-bottom: 2px !important;
 }
@@ -2190,7 +2178,7 @@ body.dark-theme {
   grid-template-columns: repeat(7, 1fr) !important;
   row-gap: 1px !important;
   text-align: center !important;
-  font-size: 10.5px !important;
+  font-size: 10px !important;
   font-weight: 600 !important;
 }
 
@@ -2198,12 +2186,19 @@ body.dark-theme {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  height: 15px !important;
+  height: 16px !important;
+  width: 100% !important;
   color: #ffffff !important;
+  position: relative !important;
+  font-size: 10px !important;
 }
 
 .widget-cal-day.is-weekend {
   color: rgba(255, 255, 255, 0.45) !important;
+}
+
+.widget-cal-day.is-today {
+  color: #ffffff !important;
 }
 
 .widget-cal-day.is-today span {
@@ -2212,10 +2207,14 @@ body.dark-theme {
   border-radius: 50% !important;
   width: 15px !important;
   height: 15px !important;
-  display: flex !important;
+  display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
   font-weight: 700 !important;
+  font-size: 9.5px !important;
+  line-height: 1 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
 }
 
 .widget-battery-top {
@@ -2353,4 +2352,38 @@ body.dark-theme {
   font-size: 10.5px !important;
   font-weight: 600 !important;
   color: #ffffff !important;
+}
+
+.safari-btn {
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
+  padding: 4px 6px !important;
+  border-radius: 5px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: background 0.15s ease, opacity 0.15s ease !important;
+  color: #ffffff !important;
+}
+
+.safari-btn:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.safari-btn:active {
+  background: rgba(255, 255, 255, 0.18) !important;
+}
+
+#window-safari {
+  background: #202124 !important;
+}
+
+#window-safari .app-window__content {
+  background: transparent !important;
+}
+
+.safari-favorite-item:hover .safari-fav-icon-box {
+  transform: scale(1.05) !important;
+  background: rgba(255, 255, 255, 0.14) !important;
 }

@@ -2,10 +2,9 @@ import { showMacDialog } from './macDialog.js';
 
 const BASE_ICON_SIZE = 60;
 const RADIUS = 110;
-const MAX_SCALE = 1.30;
-const MAX_LIFT = 5;
-const STIFFNESS = 280;
-const DAMPING = 22;
+const MAX_SCALE = 1.10;
+const MAX_LIFT = 7;
+const LERP_FACTOR = 0.22;
 
 export const APPS = [
   { id: 'finder',    name: 'Finder',             iconDark: 'assets/icons/dock/finder.png',         iconLight: 'assets/icons/dock/finder.png',         fallback: '🗂' },
@@ -21,42 +20,29 @@ export const APPS = [
 class DockMagnification {
   constructor(container) {
     this.container = container;
-    this.wrappers = [];
     this.items = [];
     this.targetScales = [];
     this.currentScales = [];
-    this.velocityScales = [];
     this.targetLifts = [];
     this.currentLifts = [];
-    this.velocityLifts = [];
-    this.targetWidths = [];
-    this.currentWidths = [];
-    this.velocityWidths = [];
     this.centers = [];
     this.mouseX = null;
     this.raf = null;
     this.isHovered = false;
-    this.lastTime = null;
   }
 
-  register(wrapperEl, itemEl, index) {
-    this.wrappers[index] = wrapperEl;
-    this.items[index] = itemEl;
+  register(el, index) {
+    this.items[index] = el;
     this.targetScales[index] = 1;
     this.currentScales[index] = 1;
-    this.velocityScales[index] = 0;
     this.targetLifts[index] = 0;
     this.currentLifts[index] = 0;
-    this.velocityLifts[index] = 0;
-    this.targetWidths[index] = BASE_ICON_SIZE;
-    this.currentWidths[index] = BASE_ICON_SIZE;
-    this.velocityWidths[index] = 0;
   }
 
   measure() {
     if (!this.container) return;
     const cRect = this.container.getBoundingClientRect();
-    this.centers = this.wrappers.map(el => {
+    this.centers = this.items.map(el => {
       if (!el) return 0;
       const r = el.getBoundingClientRect();
       return (r.left + r.right) / 2 - cRect.left;
@@ -69,7 +55,6 @@ class DockMagnification {
       if (!this.isHovered || this.mouseX === null) {
         this.targetScales[i] = 1;
         this.targetLifts[i] = 0;
-        this.targetWidths[i] = BASE_ICON_SIZE;
         return;
       }
       const center = this.centers[i] ?? 0;
@@ -80,56 +65,33 @@ class DockMagnification {
         const factor = Math.pow(cosVal, 2);
         this.targetScales[i] = 1 + (MAX_SCALE - 1) * factor;
         this.targetLifts[i] = MAX_LIFT * factor;
-        this.targetWidths[i] = BASE_ICON_SIZE + (BASE_ICON_SIZE * (MAX_SCALE - 1) * 0.20) * factor;
       } else {
         this.targetScales[i] = 1;
         this.targetLifts[i] = 0;
-        this.targetWidths[i] = BASE_ICON_SIZE;
       }
     });
   }
 
-  animate(now) {
-    if (!this.lastTime) this.lastTime = now;
-    const dt = Math.min(0.032, (now - this.lastTime) / 1000 || 0.016);
-    this.lastTime = now;
-
+  animate() {
     this.updateTargets();
     let isMoving = false;
 
     this.items.forEach((el, i) => {
       if (!el) return;
-      const wrapper = this.wrappers[i];
+      const targetS = this.targetScales[i];
+      const targetL = this.targetLifts[i];
 
-      const ts = this.targetScales[i];
-      const tl = this.targetLifts[i];
-      const tw = this.targetWidths[i];
-
-      const fs = (ts - this.currentScales[i]) * STIFFNESS - this.velocityScales[i] * DAMPING;
-      this.velocityScales[i] += fs * dt;
-      this.currentScales[i] += this.velocityScales[i] * dt;
-
-      const fl = (tl - this.currentLifts[i]) * STIFFNESS - this.velocityLifts[i] * DAMPING;
-      this.velocityLifts[i] += fl * dt;
-      this.currentLifts[i] += this.velocityLifts[i] * dt;
-
-      const fw = (tw - this.currentWidths[i]) * STIFFNESS - this.velocityWidths[i] * DAMPING;
-      this.velocityWidths[i] += fw * dt;
-      this.currentWidths[i] += this.velocityWidths[i] * dt;
+      this.currentScales[i] += (targetS - this.currentScales[i]) * LERP_FACTOR;
+      this.currentLifts[i] += (targetL - this.currentLifts[i]) * LERP_FACTOR;
 
       const scale = this.currentScales[i];
       const lift = this.currentLifts[i];
-      const width = this.currentWidths[i];
 
-      if (Math.abs(ts - scale) > 0.001 || Math.abs(tl - lift) > 0.01 || Math.abs(this.velocityScales[i]) > 0.01) {
+      if (Math.abs(targetS - scale) > 0.001 || Math.abs(targetL - lift) > 0.01) {
         isMoving = true;
       }
 
-      if (wrapper) {
-        wrapper.style.width = `${width.toFixed(2)}px`;
-      }
-
-      if (scale > 1.002 || lift > 0.1) {
+      if (scale > 1.002) {
         el.style.transform = `translate3d(0, ${-lift.toFixed(2)}px, 0) scale(${scale.toFixed(3)})`;
         el.style.zIndex = Math.round(scale * 100).toString();
       } else {
@@ -139,22 +101,16 @@ class DockMagnification {
     });
 
     if (isMoving || this.isHovered) {
-      this.raf = requestAnimationFrame(t => this.animate(t));
+      this.raf = requestAnimationFrame(() => this.animate());
     } else {
       this.items.forEach((el, i) => {
         if (!el) return;
         el.style.transform = '';
         el.style.zIndex = '';
-        if (this.wrappers[i]) this.wrappers[i].style.width = '';
         this.currentScales[i] = 1;
-        this.velocityScales[i] = 0;
         this.currentLifts[i] = 0;
-        this.velocityLifts[i] = 0;
-        this.currentWidths[i] = BASE_ICON_SIZE;
-        this.velocityWidths[i] = 0;
       });
       this.raf = null;
-      this.lastTime = null;
     }
   }
 
@@ -163,8 +119,7 @@ class DockMagnification {
     this.measure();
     this.container.classList.add('dock--interacting');
     if (!this.raf) {
-      this.lastTime = performance.now();
-      this.raf = requestAnimationFrame(t => this.animate(t));
+      this.animate();
     }
   }
 
@@ -172,8 +127,7 @@ class DockMagnification {
     const rect = this.container.getBoundingClientRect();
     this.mouseX = e.clientX - rect.left;
     if (!this.raf) {
-      this.lastTime = performance.now();
-      this.raf = requestAnimationFrame(t => this.animate(t));
+      this.animate();
     }
   }
 
@@ -206,7 +160,7 @@ export class Dock {
     this._itemEls = [];
     let itemIndex = 0;
 
-    APPS.forEach((app) => {
+    APPS.forEach((app, idx) => {
       if (app.type === 'divider') {
         const sep = document.createElement('div');
         sep.className = 'dock__separator';
@@ -282,7 +236,7 @@ export class Dock {
         }
       });
 
-      this.mainMag.register(wrapper, item, itemIndex);
+      this.mainMag.register(item, itemIndex);
       this._itemEls.push({ item, img, app, dot });
       itemIndex++;
     });

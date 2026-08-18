@@ -1,68 +1,130 @@
-# MacOS-Web — by Mateus PC 🍎
+# macOS Web
 
-> Experiência macOS reconstruída para a web moderna. Um ambiente desktop fiel, altamente interativo e responsivo nativo do navegador.
+A browser-native desktop environment inspired by Apple macOS Sonoma & Sequoia, built with vanilla HTML5, CSS3, and ES6 JavaScript Modules without external framework overhead.
 
-## Features
+---
 
-- 🪟 **Draggable & Resizable Windows** — Gerenciador de janelas com dimensões e proporções nativas do macOS.
-- 🚢 **Dock with Gaussian Spring Magnification** — Barra Dock fluida com efeito de magnificação e marcadores de status.
-- 🎛️ **Pixel-Perfect Control Center** — Central de Controle completa com sliders de brilho e som, modo Foco, Organizador Visual e Espelhamento de Tela.
-- 🖱️ **Multi-Level Context Menu Engine** — Menu de contexto nativo com submenus em múltiplos níveis (Agrupar conjuntos, Importar do iPhone), suporte a seleções (`✓`), atalhos e animações fluidas.
-- 🗂️ **Finder** — Gerenciador de arquivos completo com visualizações em grade, barra de navegação superior e barra de caminho inferior.
-- 🧭 **Safari** — Navegador com barra de endereços unificada e navegação integrada.
-- ⚙️ **Settings** — Ajustes do sistema com seletor de papéis de parede e preferências.
-- 🖥️ **Terminal** — Emulador de comandos completo com suporte a ANSI colors, neofetch, efeito matrix e comandos git.
-- 🌓 **Dark / Light Theme & Translucency** — Transparência sutil de 3% (*97% opacidade*) com efeito *frosted glass* (`backdrop-filter`) para contraste impecável em Dark Mode.
+## Technical Overview
 
-## How to run
+**macOS Web** is an open-source web application designed to replicate the macOS user experience with pixel-perfect visual fidelity, high-performance animations, fluid window management, and native-feeling desktop interactions. The project leverages modern Web APIs, CSS Backdrop Filters, and ES6 modular software architecture.
 
-### Option 1: GitHub Pages (recommended)
-Push to a GitHub repo and enable GitHub Pages in Settings → Pages → main branch.
+---
 
-### Option 2: Local development server
-```bash
-python -m http.server 8080
-```
-Then open `http://localhost:8080` in your browser.
+## Core System Modules
 
-> **Note:** ES modules require an HTTP server. Opening `index.html` directly via `file://` will not work due to browser security restrictions (CORS).
+### Safari Web Browser Engine
+- **Modular Architecture**: Built around an object-oriented `SafariEngine` class managing session state, history stack navigation (Back, Forward, Reload), and dynamic iframe content rendering.
+- **Web Navigation & Search**: Native support for Google Search parameter embedding (`igu=1`) and cross-origin website proxying via CORS proxy endpoints.
+- **Authentic Start Page (Nova Aba)**: Replicates the macOS Safari Start Page with a customizable Favorites grid (Portfólio, LinkedIn, GitHub, WhatsApp) and iCloud Tabs integration.
+- **High-Resolution Favicon Resolver**: Multi-tier asynchronous favicon pipeline utilizing the Favicone API (`128px`) with fallbacks to Google Favicons CDN and system vector icons.
+- **Dynamic Theme Color Blending**: Automatic theme color management switching window background colors (`#22242A` for Google, `#28282b` for standard pages) and dynamically toggling the bottom toolbar separator line (`border-bottom`).
+- **Interactive Toolbar Controls**: Integrated Clipboard API for URL copying, automatic URL input placeholder clearing upon focus, and custom SF Symbol button hover states.
 
-### Option 3: Start server (Windows)
-Double-click `start-server.bat` and open `http://localhost:8080`.
+### Window Management Engine
+- **Z-Index Layering**: Dynamic depth management with automatic focus elevation (`windowManager.js`).
+- **Drag & Resize**: High-frequency mouse and touch event handling for real-time window bounds computation.
+- **Input Focus Protection**: Drag handler filtering that excludes interactive elements (`<input>`, `<textarea>`, `<button>`) from window drag events to prevent input focus loss and window flashing.
+- **Calibrated Default Aspect Ratios**: Initial window bounds optimized for standard desktop viewports (Safari: 1040x680px, Finder: 960x620px).
+
+### Desktop Widgets Engine
+- **Live Location Weather Engine**: Integrated 5-tier location resolution engine (GeoJS, IP-API, ipapi.co, HTML5 Geolocation + BigDataCloud reverse geocode, System Timezone fallback) paired with the Open-Meteo API for live weather conditions and 6-hour hourly forecasts.
+- **Mathematical Calendar Grid**: Real-time Portuguese calendar grid with 6-row mathematical overflow protection and a centered active day ring (`#ff3b30`).
+- **Battery Gauge**: SVG circular progress gauge rendering real-time battery status and status icons.
+
+### Control Center & Navigation Bar
+- **Symmetrical 1:1 Control Center**: Precise 1:1 square grid layout (`142px x 142px`) for Connectivity and Utilities cards.
+- **Interactive System Sliders**: Custom input sliders for System Volume and Display Brightness.
+- **Top Menubar**: Dynamic clock, status indicators, active application title, and contextual dropdown menus.
+
+### Multi-Level Context Menu System
+- **Nested Submenus**: Support for hierarchical multi-level context menus with automatic viewport overflow correction (`contextMenu.js`).
+- **State Indicators**: Rendered checkmarks, item headers, disabled states, and active blue parent item highlighting (`#0a84ff`).
+
+### Dock Component
+- **Spring Physics Magnification**: Smooth icon scaling based on cursor distance calculations.
+- **Active Indicators**: Status indicators for open and minimized applications.
+
+---
 
 ## Project Structure
 
 ```
-macweb.dev/
+MacOS-Web/
 ├── index.html          # Main HTML entry point
 ├── manifest.json       # PWA manifest
-├── start-server.bat    # Windows quick-start server
+├── start-server.bat    # Windows quick-start server launcher
 ├── css/
-│   ├── main.css        # Main SCSS compiled styles
+│   ├── main.css        # Main compiled stylesheet
 │   └── patch.css       # Pixel-perfect design system & override styles
 ├── js/
-│   ├── app.js          # Entry point & boot sequence
+│   ├── app.js          # Main entry point & boot sequence
 │   ├── windowManager.js # Window lifecycle & placement engine
 │   ├── themeManager.js # Dark/Light theme manager
 │   ├── menubar.js      # Menubar & Control Center manager
-│   ├── dock.js         # Dock magnification & indicator manager
-│   ├── desktop.js      # Desktop icons & context menu trigger
+│   ├── dock.js         # Dock magnification & status indicators
+│   ├── desktop.js      # Desktop icons & position engine
+│   ├── widgets.js      # Desktop widgets engine (Calendar, Battery, Weather)
 │   ├── contextMenu.js  # Multi-level nested context menu engine
+│   ├── sfSymbols.js    # SF Symbols rendering helper
 │   └── apps/
 │       ├── finder.js
 │       ├── safari.js
+│       ├── terminal.js
+│       ├── settings.js
 │       ├── notes.js
 │       ├── music.js
 │       ├── calendar.js
-│       ├── calculator.js
-│       ├── terminal.js
-│       └── settings.js
+│       └── calculator.js
 └── assets/
     ├── docs/
     ├── icons/
     └── favicons/
 ```
 
-## License
+---
 
-MIT — Original project by [@gaminghackintosh](https://github.com/gaminghackintosh) | Customized and enhanced by [@AllvesMatteus](https://github.com/AllvesMatteus)
+## Environment Setup & Execution
+
+### Local HTTP Server Requirement
+Due to browser security restrictions regarding ES6 Module imports (`import`/`export`), `index.html` must be served via an HTTP server.
+
+#### Python 3 HTTP Server
+```bash
+python -m http.server 8080
+```
+
+#### Node.js Server (npx)
+```bash
+npx serve .
+```
+
+#### Windows Launcher
+Execute `start-server.bat` by double-clicking or launching via PowerShell:
+```cmd
+start-server.bat
+```
+
+Access the application in any modern web browser at `http://localhost:8080`.
+
+---
+
+## Deployment
+
+The project is fully compatible with static web hosting services such as GitHub Pages, Vercel, and Netlify.
+
+---
+
+## Browser Compatibility
+
+- Google Chrome / Chromium (v90+)
+- Mozilla Firefox (v88+)
+- Apple Safari (v14+)
+- Microsoft Edge (v90+)
+
+---
+
+## License & Credits
+
+- **Original Concept**: [@gaminghackintosh](https://github.com/gaminghackintosh)
+- **Maintainer & Developer**: [@AllvesMatteus](https://github.com/AllvesMatteus)
+- **License**: MIT License

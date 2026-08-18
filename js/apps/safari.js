@@ -1,239 +1,429 @@
 import { getSFSymbolHtml } from '../sfSymbols.js';
 
-export function renderSafari(contentEl, wm) {
-  contentEl.innerHTML = '';
+class SafariEngine {
+  constructor(contentEl, wm) {
+    this.contentEl = contentEl;
+    this.wm = wm;
+    this.historyStack = [];
+    this.historyIndex = -1;
+    this.init();
+  }
 
-  const wrapper = document.createElement('div');
-  wrapper.style.cssText = 'display:flex;flex-direction:column;height:100%;background:#202124;overflow:hidden;color:#ffffff;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",Roboto,sans-serif;';
+  init() {
+    this.contentEl.innerHTML = '';
 
-  const titlebar = document.createElement('div');
-  titlebar.className = 'app-window__titlebar safari-toolbar';
-  titlebar.style.cssText = 'display:flex;align-items:center;height:52px;padding:0 16px;background:#28282b;border-bottom:1px solid rgba(255,255,255,0.08);flex-shrink:0;user-select:none;-webkit-user-select:none;';
+    this.wrapper = document.createElement('div');
+    this.wrapper.style.cssText = 'display:flex;flex-direction:column;height:100%;background:#28282b;overflow:hidden;color:#ffffff;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",Roboto,sans-serif;';
 
-  titlebar.innerHTML = `
-    <!-- Traffic Lights -->
-    <div class="app-window__controls traffic-lights-container" style="display:flex;align-items:center;gap:8px;margin-right:20px;">
-      <button class="app-window__btn app-window__btn--close traffic-light traffic-close" aria-label="Fechar" title="Fechar">
-        <svg viewBox="0 0 12 12" width="12" height="12" class="traffic-icon close-icon"><line x1="3" y1="3" x2="9" y2="9" stroke="#460804" stroke-width="1.5" stroke-linecap="round"/><line x1="9" y1="3" x2="3" y2="9" stroke="#460804" stroke-width="1.5" stroke-linecap="round"/></svg>
-      </button>
-      <button class="app-window__btn app-window__btn--minimize traffic-light traffic-minimize" aria-label="Minimizar" title="Minimizar">
-        <svg viewBox="0 0 12 12" width="12" height="12" class="traffic-icon minimize-icon"><line x1="2" y1="6" x2="10" y2="6" stroke="#90591d" stroke-width="1.5" stroke-linecap="round"/></svg>
-      </button>
-      <button class="app-window__btn app-window__btn--zoom traffic-light traffic-maximize" aria-label="Zoom" title="Zoom">
-        <svg viewBox="0 0 12 12" width="12" height="12" class="traffic-icon maximize-icon"><rect x="3" y="3" width="6" height="6" fill="none" stroke="#2a6218" stroke-width="1.2" rx="1"/></svg>
-      </button>
-    </div>
+    this.titlebar = document.createElement('div');
+    this.titlebar.className = 'app-window__titlebar safari-toolbar';
+    this.titlebar.style.cssText = 'display:flex;align-items:center;height:52px;padding:0 16px;background:#28282b;border-bottom:none;flex-shrink:0;user-select:none;-webkit-user-select:none;';
 
-    <!-- Navigation Icon Group — Matching Finder Standard -->
-    <div style="display:flex;align-items:center;gap:12px;">
-      <button style="background:none;border:none;cursor:pointer;padding:2px;display:flex;align-items:center;border-radius:4px;transition:opacity 0.12s;margin-right:4px;" title="Mostrar/Ocultar Barra Lateral">
-        ${getSFSymbolHtml('sidebar.left', { size: 15, style: 'opacity:0.8;' })}
-      </button>
-      <button id="safari-back-btn" style="background:none;border:none;cursor:pointer;padding:2px;display:flex;align-items:center;border-radius:4px;transition:opacity 0.12s;" title="Voltar">
-        ${getSFSymbolHtml('chevron.left', { size: 14, style: 'opacity:0.65;' })}
-      </button>
-      <button id="safari-forward-btn" style="background:none;border:none;cursor:pointer;padding:2px;display:flex;align-items:center;border-radius:4px;transition:opacity 0.12s;" title="Avançar">
-        ${getSFSymbolHtml('chevron.right', { size: 14, style: 'opacity:0.4;' })}
-      </button>
-      <button id="safari-reload-btn" style="background:none;border:none;cursor:pointer;padding:2px;display:flex;align-items:center;border-radius:4px;transition:opacity 0.12s;" title="Recarregar Página">
-        ${getSFSymbolHtml('arrow.clockwise', { size: 14, style: 'opacity:0.8;' })}
-      </button>
-    </div>
-
-    <!-- Central Address Bar -->
-    <div style="flex:1;max-width:480px;margin:0 auto;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.09);border-radius:8px;padding:5px 12px;position:relative;border:1px solid rgba(255,255,255,0.05);">
-      <div style="display:flex;align-items:center;gap:6px;justify-content:center;">
-        <!-- Small Google G Logo -->
-        <svg width="14" height="14" viewBox="0 0 24 24" style="flex-shrink:0;">
-          <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-          <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-          <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
-          <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
-        </svg>
-        <input id="safari-url-input" type="text" value="google.com" style="background:none;border:none;outline:none;color:#ffffff;font-size:13px;font-weight:400;text-align:center;width:88px;" />
-      </div>
-      <!-- Format / Reader Icon on Far Right inside Address Bar -->
-      <span style="position:absolute;right:10px;display:flex;align-items:center;opacity:0.6;cursor:pointer;" title="Formatos da Página">
-        ${getSFSymbolHtml('slider.horizontal.3', { size: 14 })}
-      </span>
-    </div>
-
-    <!-- Right Action Icons -->
-    <div style="display:flex;align-items:center;gap:16px;">
-      <button style="background:none;border:none;cursor:pointer;padding:2px;display:flex;align-items:center;border-radius:4px;" title="Compartilhar">
-        ${getSFSymbolHtml('square.and.arrow.up', { size: 15, style: 'opacity:0.8;' })}
-      </button>
-      <button id="safari-newtab-btn" style="background:none;border:none;cursor:pointer;padding:2px;display:flex;align-items:center;border-radius:4px;" title="Nova Aba">
-        ${getSFSymbolHtml('plus', { size: 14, style: 'opacity:0.8;' })}
-      </button>
-      <button style="background:none;border:none;cursor:pointer;padding:2px;display:flex;align-items:center;border-radius:4px;" title="Visão Geral das Abas">
-        ${getSFSymbolHtml('square.on.square', { size: 15, style: 'opacity:0.8;' })}
-      </button>
-    </div>
-  `;
-
-  const closeBtn = titlebar.querySelector('.app-window__btn--close');
-  const minBtn = titlebar.querySelector('.app-window__btn--minimize');
-  const maxBtn = titlebar.querySelector('.app-window__btn--zoom');
-  if (closeBtn) closeBtn.addEventListener('click', () => wm.closeWindow('safari'));
-  if (minBtn) minBtn.addEventListener('click', () => wm.minimizeWindow('safari'));
-  if (maxBtn) maxBtn.addEventListener('click', () => wm.maximizeWindow('safari'));
-
-  const bodyEl = document.createElement('div');
-  bodyEl.style.cssText = 'flex:1;display:flex;flex-direction:column;background:#202124;overflow-y:auto;position:relative;';
-
-  function renderGoogleHome() {
-    bodyEl.innerHTML = `
-      <!-- Google Top Right Header -->
-      <div style="display:flex;justify-content:flex-end;align-items:center;gap:18px;padding:16px 28px;font-size:13px;color:rgba(255,255,255,0.85);">
-        <a href="#" style="color:inherit;text-decoration:none;opacity:0.85;">Gmail</a>
-        <a href="#" style="color:inherit;text-decoration:none;opacity:0.85;">Imagens</a>
-        <!-- 9 Dots App Launcher -->
-        <div style="cursor:pointer;opacity:0.8;display:flex;align-items:center;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM6 4c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 12c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
-          </svg>
-        </div>
-        <!-- User Avatar Circle -->
-        <div style="width:32px;height:32px;border-radius:50%;background:#1a73e8;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:14px;color:#fff;cursor:pointer;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.3);">
-          M
-        </div>
+    this.titlebar.innerHTML = `
+      <div class="app-window__controls traffic-lights-container" style="display:flex;align-items:center;gap:8px;margin-right:14px;">
+        <button class="app-window__btn app-window__btn--close traffic-light traffic-close" aria-label="Fechar" title="Fechar">
+          <svg viewBox="0 0 12 12" width="12" height="12" class="traffic-icon close-icon"><line x1="3" y1="3" x2="9" y2="9" stroke="#460804" stroke-width="1.5" stroke-linecap="round"/><line x1="9" y1="3" x2="3" y2="9" stroke="#460804" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <button class="app-window__btn app-window__btn--minimize traffic-light traffic-minimize" aria-label="Minimizar" title="Minimizar">
+          <svg viewBox="0 0 12 12" width="12" height="12" class="traffic-icon minimize-icon"><line x1="2" y1="6" x2="10" y2="6" stroke="#90591d" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <button class="app-window__btn app-window__btn--zoom traffic-light traffic-maximize" aria-label="Zoom" title="Zoom">
+          <svg viewBox="0 0 12 12" width="12" height="12" class="traffic-icon maximize-icon"><rect x="3" y="3" width="6" height="6" fill="none" stroke="#2a6218" stroke-width="1.2" rx="1"/></svg>
+        </button>
       </div>
 
-      <!-- Main Center Content -->
-      <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 20px 60px 20px;">
-        <!-- Large Google Logo -->
-        <div style="font-size:86px;font-weight:500;color:#ffffff;letter-spacing:-2.5px;font-family:-apple-system,BlinkMacSystemFont,Roboto,sans-serif;margin-bottom:32px;user-select:none;">
-          Google
-        </div>
-
-        <!-- Search Bar Capsule -->
-        <div style="width:100%;max-width:640px;background:#303134;border:1px solid rgba(255,255,255,0.14);border-radius:28px;padding:10px 18px;display:flex;align-items:center;gap:12px;box-shadow:0 2px 8px rgba(0,0,0,0.3);transition:background 0.2s, border-color 0.2s;">
-          <span style="font-size:22px;color:rgba(255,255,255,0.5);cursor:pointer;line-height:1;margin-top:-2px;">+</span>
-          <input id="google-search-input" type="text" placeholder="" autofocus
-            style="flex:1;background:none;border:none;outline:none;color:#ffffff;font-size:16px;font-family:inherit;" />
-
-          <div style="display:flex;align-items:center;gap:12px;">
-            <img src="assets/icons/sf-symbols/white/keyboard.png" style="width:16px;height:16px;opacity:0.6;cursor:pointer;" title="Teclado virtual" alt="Teclado" />
-            <img src="assets/icons/sf-symbols/white/mic.fill.png" style="width:15px;height:15px;opacity:0.6;cursor:pointer;" title="Pesquisa por voz" alt="Voz" />
-            <img src="assets/icons/sf-symbols/white/camera.png" style="width:16px;height:16px;opacity:0.6;cursor:pointer;" title="Pesquisa por imagem" alt="Lente" />
-
-            <!-- Modo IA Badge Button -->
-            <button style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.9);border-radius:16px;padding:5px 12px;font-size:12.5px;display:flex;align-items:center;gap:6px;cursor:pointer;font-weight:500;">
-              <span style="font-size:11px;">🔍</span> Modo IA
-            </button>
-          </div>
-        </div>
-
-        <!-- Search Action Buttons -->
-        <div style="display:flex;gap:12px;margin-top:30px;">
-          <button id="google-search-btn" style="background:#303134;border:1px solid transparent;color:#e8eaed;border-radius:6px;padding:10px 18px;font-size:14px;cursor:pointer;transition:background 0.15s, border-color 0.15s;">
-            Pesquisa Google
-          </button>
-          <button id="google-lucky-btn" style="background:#303134;border:1px solid transparent;color:#e8eaed;border-radius:6px;padding:10px 18px;font-size:14px;cursor:pointer;transition:background 0.15s, border-color 0.15s;">
-            Estou com sorte
-          </button>
-        </div>
+      <div style="display:flex;align-items:center;gap:4px;margin-right:12px;">
+        <button class="safari-btn" id="safari-sidebar-btn" title="Barra Lateral">
+          ${getSFSymbolHtml('sidebar.left', { size: 17 })}
+        </button>
+        <button class="safari-btn" id="safari-back-btn" style="opacity:0.35;" title="Voltar">
+          ${getSFSymbolHtml('chevron.left', { size: 13 })}
+        </button>
+        <button class="safari-btn" id="safari-forward-btn" style="opacity:0.35;" title="Avançar">
+          ${getSFSymbolHtml('chevron.right', { size: 13 })}
+        </button>
+        <button class="safari-btn" id="safari-reload-btn" title="Recarregar">
+          ${getSFSymbolHtml('arrow.clockwise', { size: 13 })}
+        </button>
       </div>
 
-      <!-- Google Footer -->
-      <div style="background:#171717;border-top:1px solid rgba(255,255,255,0.08);font-size:13.5px;color:rgba(255,255,255,0.6);margin-top:auto;">
-        <!-- Top Footer Row: Country -->
-        <div style="padding:14px 30px;border-bottom:1px solid rgba(255,255,255,0.08);">
-          Brasil
+      <div style="flex:1;max-width:560px;margin:0 auto;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.12);border-radius:8px;padding:3px 10px;position:relative;border:1px solid rgba(255,255,255,0.04);height:28px;box-sizing:border-box;">
+        <div id="safari-url-wrapper" style="display:inline-flex;align-items:center;justify-content:center;gap:5px;max-width:calc(100% - 32px);">
+          <img id="safari-favicon" src="https://www.google.com/s2/favicons?domain=google.com&sz=32" style="width:14px;height:14px;object-fit:contain;flex-shrink:0;border-radius:2px;display:none;" alt="Favicon" />
+          <input id="safari-url-input" type="text" placeholder="Busque ou digite o nome do site" style="background:none;border:none;outline:none;color:#ffffff;font-size:13px;font-weight:400;text-align:center;width:240px;" />
         </div>
-        <!-- Bottom Footer Row: Links -->
-        <div style="padding:14px 30px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
-          <div style="display:flex;gap:24px;">
-            <a href="#" style="color:inherit;text-decoration:none;">Sobre</a>
-            <a href="#" style="color:inherit;text-decoration:none;">Publicidade</a>
-            <a href="#" style="color:inherit;text-decoration:none;">Negócios</a>
-            <a href="#" style="color:inherit;text-decoration:none;">Como funciona a Pesquisa</a>
-          </div>
-          <div style="display:flex;gap:24px;">
-            <a href="#" style="color:inherit;text-decoration:none;">Privacidade</a>
-            <a href="#" style="color:inherit;text-decoration:none;">Termos</a>
-            <a href="#" style="color:inherit;text-decoration:none;">Configurações</a>
-          </div>
-        </div>
+        <span style="position:absolute;right:8px;display:flex;align-items:center;opacity:0.6;cursor:pointer;" title="Ajustes de Exibição">
+          ${getSFSymbolHtml('slider.horizontal.3', { size: 13 })}
+        </span>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:4px;margin-left:12px;">
+        <button class="safari-btn" id="safari-share-btn" title="Copiar / Compartilhar Link">
+          ${getSFSymbolHtml('square.and.arrow.up', { size: 14 })}
+        </button>
+        <button class="safari-btn" id="safari-newtab-btn" title="Nova Aba">
+          ${getSFSymbolHtml('plus', { size: 14 })}
+        </button>
+        <button class="safari-btn" id="safari-tabs-btn" title="Visão Geral das Abas">
+          ${getSFSymbolHtml('square.on.square', { size: 14 })}
+        </button>
       </div>
     `;
 
-    const searchInput = bodyEl.querySelector('#google-search-input');
-    const searchBtn = bodyEl.querySelector('#google-search-btn');
-    const luckyBtn = bodyEl.querySelector('#google-lucky-btn');
+    this.bodyEl = document.createElement('div');
+    this.bodyEl.style.cssText = 'flex:1;display:flex;flex-direction:column;background:#28282b;position:relative;overflow:hidden;';
 
-    function doSearch() {
-      const q = searchInput ? searchInput.value.trim() : '';
-      if (q) {
-        navigateTo('https://www.google.com/search?q=' + encodeURIComponent(q));
-      }
-    }
+    this.wrapper.appendChild(this.titlebar);
+    this.wrapper.appendChild(this.bodyEl);
+    this.contentEl.appendChild(this.wrapper);
 
-    if (searchInput) {
-      searchInput.addEventListener('keydown', e => {
-        if (e.key === 'Enter') doSearch();
-      });
-    }
-    if (searchBtn) searchBtn.addEventListener('click', doSearch);
-    if (luckyBtn) luckyBtn.addEventListener('click', doSearch);
+    this.bindWindowControls();
+    this.bindToolbarEvents();
+    this.renderStartPage();
   }
 
-  function navigateTo(url) {
-    if (!url || url.toLowerCase() === 'google.com' || url.toLowerCase() === 'https://google.com') {
-      const input = titlebar.querySelector('#safari-url-input');
-      if (input) input.value = 'google.com';
-      renderGoogleHome();
+  bindWindowControls() {
+    const closeBtn = this.titlebar.querySelector('.app-window__btn--close');
+    const minBtn = this.titlebar.querySelector('.app-window__btn--minimize');
+    const maxBtn = this.titlebar.querySelector('.app-window__btn--zoom');
+
+    if (closeBtn) closeBtn.addEventListener('click', () => this.wm.closeWindow('safari'));
+    if (minBtn) minBtn.addEventListener('click', () => this.wm.minimizeWindow('safari'));
+    if (maxBtn) maxBtn.addEventListener('click', () => this.wm.maximizeWindow('safari'));
+  }
+
+  bindToolbarEvents() {
+    this.backBtn = this.titlebar.querySelector('#safari-back-btn');
+    this.forwardBtn = this.titlebar.querySelector('#safari-forward-btn');
+    this.reloadBtn = this.titlebar.querySelector('#safari-reload-btn');
+    this.newTabBtn = this.titlebar.querySelector('#safari-newtab-btn');
+    this.shareBtn = this.titlebar.querySelector('#safari-share-btn');
+    this.urlInput = this.titlebar.querySelector('#safari-url-input');
+    this.faviconImg = this.titlebar.querySelector('#safari-favicon');
+
+    if (this.backBtn) {
+      this.backBtn.addEventListener('click', () => {
+        if (this.historyIndex > 0) {
+          this.historyIndex--;
+          const target = this.historyStack[this.historyIndex];
+          if (target === 'newtab') {
+            this.renderStartPage(false);
+          } else {
+            this.loadUrl(target, false);
+          }
+        }
+      });
+    }
+
+    if (this.forwardBtn) {
+      this.forwardBtn.addEventListener('click', () => {
+        if (this.historyIndex < this.historyStack.length - 1) {
+          this.historyIndex++;
+          const target = this.historyStack[this.historyIndex];
+          if (target === 'newtab') {
+            this.renderStartPage(false);
+          } else {
+            this.loadUrl(target, false);
+          }
+        }
+      });
+    }
+
+    if (this.reloadBtn) {
+      this.reloadBtn.addEventListener('click', () => {
+        if (this.historyIndex >= 0 && this.historyStack[this.historyIndex]) {
+          const target = this.historyStack[this.historyIndex];
+          if (target === 'newtab') {
+            this.renderStartPage(false);
+          } else {
+            this.loadUrl(target, false);
+          }
+        } else {
+          this.loadUrl('google.com', true);
+        }
+      });
+    }
+
+    if (this.newTabBtn) {
+      this.newTabBtn.addEventListener('click', () => {
+        this.renderStartPage(true);
+      });
+    }
+
+    if (this.shareBtn) {
+      this.shareBtn.addEventListener('click', () => {
+        let urlToCopy = 'https://allvesmatteus.github.io/Portfolio/';
+        if (this.urlInput && this.urlInput.value.trim()) {
+          urlToCopy = this.urlInput.value.trim();
+          if (!/^https?:\/\//i.test(urlToCopy)) {
+            urlToCopy = 'https://' + urlToCopy;
+          }
+        } else if (this.currentUrl) {
+          urlToCopy = this.currentUrl;
+        }
+
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(urlToCopy);
+        }
+
+        this.shareBtn.style.transform = 'scale(0.85)';
+        this.shareBtn.style.opacity = '0.5';
+        setTimeout(() => {
+          this.shareBtn.style.transform = 'scale(1)';
+          this.shareBtn.style.opacity = '1';
+        }, 180);
+      });
+    }
+
+    if (this.urlInput) {
+      this.urlInput.addEventListener('mousedown', e => e.stopPropagation());
+      this.urlInput.addEventListener('click', () => {
+        if (this.urlInput.value) {
+          this.urlInput.select();
+        } else {
+          this.urlInput.placeholder = '';
+        }
+      });
+      this.urlInput.addEventListener('focus', () => {
+        if (this.urlInput.value) {
+          this.urlInput.select();
+        } else {
+          this.urlInput.placeholder = '';
+        }
+      });
+      this.urlInput.addEventListener('blur', () => {
+        if (!this.urlInput.value) {
+          this.urlInput.placeholder = 'Busque ou digite o nome do site';
+          this.adjustInputWidth('');
+        }
+      });
+      this.urlInput.addEventListener('input', () => this.adjustInputWidth(this.urlInput.value));
+      this.urlInput.addEventListener('keydown', e => {
+        if (e.key === 'Enter') {
+          const val = this.urlInput.value.trim();
+          if (val) {
+            this.loadUrl(val, true);
+          }
+        }
+      });
+    }
+  }
+
+  applyThemeColor(color, hideBorder = false) {
+    this.wrapper.style.background = color;
+    this.titlebar.style.background = color;
+    this.bodyEl.style.background = color;
+    this.titlebar.style.borderBottom = hideBorder ? 'none' : '1px solid rgba(255, 255, 255, 0.08)';
+
+    const windowEl = this.contentEl.closest('.app-window');
+    if (windowEl) {
+      windowEl.style.background = color;
+    }
+  }
+
+  updateNavButtons() {
+    if (this.backBtn) this.backBtn.style.opacity = this.historyIndex > 0 ? '0.85' : '0.35';
+    if (this.forwardBtn) this.forwardBtn.style.opacity = this.historyIndex < this.historyStack.length - 1 ? '0.85' : '0.35';
+  }
+
+  extractDomain(url) {
+    try {
+      const parsed = new URL(url);
+      return parsed.hostname.replace(/^www\./, '');
+    } catch (e) {
+      return 'google.com';
+    }
+  }
+
+  updateFavicon(url) {
+    if (!this.faviconImg) return;
+    if (!url || url === 'newtab') {
+      this.faviconImg.style.display = 'none';
+      return;
+    }
+    this.faviconImg.style.display = 'block';
+    const domain = this.extractDomain(url);
+    this.faviconImg.src = `https://favicone.com/${domain}?s=128`;
+  }
+
+  adjustInputWidth(val) {
+    if (!this.urlInput) return;
+    if (!val) {
+      this.urlInput.style.width = '240px';
+      this.urlInput.style.textAlign = 'center';
+      return;
+    }
+    this.urlInput.style.textAlign = 'left';
+    const len = val.length;
+    const width = Math.max(65, Math.min(380, Math.round(len * 7.5 + 10)));
+    this.urlInput.style.width = `${width}px`;
+  }
+
+  renderStartPage(pushHistory = true) {
+    if (pushHistory) {
+      if (this.historyIndex < this.historyStack.length - 1) {
+        this.historyStack.splice(this.historyIndex + 1);
+      }
+      this.historyStack.push('newtab');
+      this.historyIndex = this.historyStack.length - 1;
+    }
+
+    this.currentUrl = 'https://allvesmatteus.github.io/Portfolio/';
+    this.updateNavButtons();
+    this.updateFavicon(null);
+
+    if (this.urlInput) {
+      this.urlInput.value = '';
+      this.urlInput.placeholder = 'Busque ou digite o nome do site';
+      this.adjustInputWidth('');
+    }
+
+    this.applyThemeColor('#28282b', true);
+
+    const favorites = [
+      { 
+        name: 'Portfólio', 
+        url: 'https://allvesmatteus.github.io/Portfolio/', 
+        domain: 'allvesmatteus.github.io',
+        primaryIcon: 'https://www.google.com/s2/favicons?domain=github.com&sz=128',
+        secondaryIcon: 'https://favicone.com/github.com?s=128'
+      },
+      { 
+        name: 'LinkedIn', 
+        url: 'https://www.linkedin.com/in/allves-matteus/', 
+        domain: 'linkedin.com',
+        primaryIcon: 'https://favicone.com/linkedin.com?s=128',
+        secondaryIcon: 'https://www.google.com/s2/favicons?domain=linkedin.com&sz=128'
+      },
+      { 
+        name: 'GitHub', 
+        url: 'https://github.com/AllvesMatteus', 
+        domain: 'github.com',
+        primaryIcon: 'https://favicone.com/github.com?s=128',
+        secondaryIcon: 'https://www.google.com/s2/favicons?domain=github.com&sz=128'
+      },
+      { 
+        name: 'WhatsApp', 
+        url: 'https://wa.me/5513996845344', 
+        domain: 'whatsapp.com',
+        primaryIcon: 'https://favicone.com/whatsapp.com?s=128',
+        secondaryIcon: 'https://www.google.com/s2/favicons?domain=whatsapp.com&sz=128'
+      }
+    ];
+
+    this.bodyEl.innerHTML = `
+      <div style="padding:48px 64px 40px 64px;display:flex;flex-direction:column;height:100%;overflow-y:auto;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text',sans-serif;user-select:none;position:relative;">
+        <h2 style="font-size:18px;font-weight:700;color:#ffffff;margin:0 0 18px 0;letter-spacing:-0.2px;">Preferidos</h2>
+        
+        <div style="display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-bottom:38px;">
+          ${favorites.map(item => `
+            <div class="safari-favorite-item" data-url="${item.url}" style="display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;width:72px;">
+              <div class="safari-fav-icon-box" style="width:64px;height:64px;border-radius:16px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,0.25);transition:transform 0.15s ease, background 0.15s ease;">
+                <img src="${item.primaryIcon}" style="width:38px;height:38px;object-fit:contain;border-radius:8px;" alt="${item.name}" onError="if(!this.dataset.fallback){this.dataset.fallback='1';this.src='${item.secondaryIcon}';}else if(!this.dataset.globe){this.dataset.globe='1';this.src='assets/icons/sf-symbols/white/globe.png';}" />
+              </div>
+              <span style="font-size:11.5px;font-weight:500;color:rgba(255,255,255,0.85);text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%;">${item.name}</span>
+            </div>
+          `).join('')}
+        </div>
+
+        <h2 style="font-size:18px;font-weight:700;color:#ffffff;margin:0 0 18px 0;letter-spacing:-0.2px;">Abas do iCloud</h2>
+
+        <div class="safari-icloud-card" data-url="google.com" style="width:280px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:background 0.15s ease;">
+          <div style="width:48px;height:48px;border-radius:10px;background:#202124;display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid rgba(255,255,255,0.08);">
+            <img src="https://www.google.com/s2/favicons?domain=google.com&sz=64" style="width:24px;height:24px;object-fit:contain;" alt="Google" />
+          </div>
+          <div style="display:flex;flex-direction:column;gap:3px;overflow:hidden;">
+            <span style="font-size:12.5px;font-weight:600;color:#ffffff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Google</span>
+            <span style="font-size:11px;color:rgba(255,255,255,0.5);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">google.com</span>
+            <span style="font-size:10.5px;color:rgba(255,255,255,0.4);margin-top:2px;">📱 em iPhone de Mateus</span>
+          </div>
+        </div>
+
+        <button style="position:absolute;right:28px;bottom:24px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:4px 12px;font-size:12px;font-weight:500;color:rgba(255,255,255,0.8);cursor:pointer;">Editar</button>
+      </div>
+    `;
+
+    this.bodyEl.querySelectorAll('.safari-favorite-item').forEach(el => {
+      el.addEventListener('click', () => {
+        const url = el.getAttribute('data-url');
+        if (url) this.loadUrl(url, true);
+      });
+    });
+
+    const icloudCard = this.bodyEl.querySelector('.safari-icloud-card');
+    if (icloudCard) {
+      icloudCard.addEventListener('click', () => {
+        const url = icloudCard.getAttribute('data-url');
+        if (url) this.loadUrl(url, true);
+      });
+    }
+  }
+
+  resolveUrl(query) {
+    let q = query.trim();
+    if (!q) return 'newtab';
+    if (q.toLowerCase() === 'google.com' || q.toLowerCase() === 'google') {
+      return 'https://www.google.com/search?igu=1';
+    }
+    if (/^https?:\/\//i.test(q)) {
+      return q;
+    }
+    if (q.includes('.') && !q.includes(' ')) {
+      return 'https://' + q;
+    }
+    return `https://www.google.com/search?q=${encodeURIComponent(q)}&igu=1`;
+  }
+
+  loadUrl(targetUrl, pushHistory = true) {
+    if (!targetUrl || targetUrl === 'newtab') {
+      this.renderStartPage(pushHistory);
       return;
     }
 
-    let targetUrl = url;
-    if (!/^https?:\/\//i.test(targetUrl)) {
-      if (targetUrl.includes('.') && !targetUrl.includes(' ')) {
-        targetUrl = 'https://' + targetUrl;
-      } else {
-        targetUrl = 'https://www.google.com/search?q=' + encodeURIComponent(targetUrl);
+    const finalUrl = this.resolveUrl(targetUrl);
+
+    if (pushHistory) {
+      if (this.historyIndex < this.historyStack.length - 1) {
+        this.historyStack.splice(this.historyIndex + 1);
       }
+      this.historyStack.push(finalUrl);
+      this.historyIndex = this.historyStack.length - 1;
     }
 
-    const input = titlebar.querySelector('#safari-url-input');
-    if (input) input.value = targetUrl.replace(/^https?:\/\//i, '');
+    this.currentUrl = finalUrl;
+    this.updateNavButtons();
+    this.updateFavicon(finalUrl);
 
-    bodyEl.innerHTML = `
-      <iframe src="${targetUrl}" style="width:100%;height:100%;border:none;background:#ffffff;" title="Safari Web View"></iframe>
+    let displayVal = '';
+    if (finalUrl.includes('google.com/search')) {
+      const match = finalUrl.match(/[?&]q=([^&]+)/);
+      displayVal = match ? decodeURIComponent(match[1]) : 'google.com';
+    } else {
+      displayVal = finalUrl.replace(/^https?:\/\//i, '');
+    }
+
+    if (this.urlInput) {
+      this.urlInput.value = displayVal;
+      this.adjustInputWidth(displayVal);
+    }
+
+    if (finalUrl.includes('google.com')) {
+      this.applyThemeColor('#22242A', true);
+    } else {
+      this.applyThemeColor('#28282b', false);
+    }
+
+    let embedUrl = finalUrl;
+    if (!finalUrl.includes('google.com/search')) {
+      embedUrl = `https://corsproxy.io/?${encodeURIComponent(finalUrl)}`;
+    }
+
+    this.bodyEl.innerHTML = `
+      <iframe src="${embedUrl}" style="width:100%;height:100%;border:none;background:#ffffff;" title="Safari Web Browser" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
     `;
   }
+}
 
-  renderGoogleHome();
-
-  const inputEl = titlebar.querySelector('#safari-url-input');
-  if (inputEl) {
-    inputEl.addEventListener('keydown', e => {
-      if (e.key === 'Enter') {
-        navigateTo(inputEl.value.trim());
-      }
-    });
-    inputEl.addEventListener('focus', () => inputEl.select());
-  }
-
-  const reloadBtn = titlebar.querySelector('#safari-reload-btn');
-  if (reloadBtn) {
-    reloadBtn.addEventListener('click', () => {
-      const val = inputEl ? inputEl.value.trim() : 'google.com';
-      navigateTo(val);
-    });
-  }
-
-  const newTabBtn = titlebar.querySelector('#safari-newtab-btn');
-  if (newTabBtn) {
-    newTabBtn.addEventListener('click', () => {
-      const input = titlebar.querySelector('#safari-url-input');
-      if (input) input.value = 'google.com';
-      renderGoogleHome();
-    });
-  }
-
-  wrapper.appendChild(titlebar);
-  wrapper.appendChild(bodyEl);
-  contentEl.appendChild(wrapper);
+export function renderSafari(contentEl, wm) {
+  new SafariEngine(contentEl, wm);
 }
