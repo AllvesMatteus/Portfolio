@@ -1,7 +1,7 @@
 {
-  "name": "macOS Web",
-  "short_name": "macOS",
-  "description": "macOS-like desktop environment in your browser",
+  "name": "Mateus OS — Portfólio Desktop",
+  "short_name": "Mateus OS",
+  "description": "Mateus OS — Ambiente Desktop Interativo e Portfólio",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0d0718",
@@ -9,13 +9,13 @@
   "orientation": "landscape",
   "icons": [
     {
-      "src": "assets/favicons/web-app-manifest-192x192.png",
+      "src": "assets/favicons/favicon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "assets/favicons/web-app-manifest-512x512.png",
+      "src": "assets/favicons/favicon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"

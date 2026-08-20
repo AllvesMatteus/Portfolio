@@ -1,12 +1,12 @@
-# macOS Web
+# Mateus OS — Portfólio Desktop
 
-A browser-native desktop environment inspired by Apple macOS Sonoma & Sequoia, built with vanilla HTML5, CSS3, and ES6 JavaScript Modules without external framework overhead.
+Um ambiente desktop interativo executado no navegador, unificando a experiência inspirada no macOS com o Portfólio de Engenharia de Software de Mateus Alves. Construído em HTML5 puro, CSS3 e Módulos JavaScript ES6 sem frameworks pesados.
 
 ---
 
-## Technical Overview
+## Visão Geral Técnica
 
-**macOS Web** is an open-source web application designed to replicate the macOS user experience with pixel-perfect visual fidelity, high-performance animations, fluid window management, and native-feeling desktop interactions. The project leverages modern Web APIs, CSS Backdrop Filters, and ES6 modular software architecture.
+**Mateus OS** é uma aplicação web que combina o ambiente de trabalho estilo macOS com o portfólio profissional de Mateus Alves, oferecendo navegação por terminal zsh, suporte a comandos e integração direta com aplicações nativas (Safari, Finder, Terminal e Ajustes).
 
 ---
 
@@ -44,6 +44,17 @@ A browser-native desktop environment inspired by Apple macOS Sonoma & Sequoia, b
 - **Spring Physics Magnification**: Smooth icon scaling based on cursor distance calculations.
 - **Active Indicators**: Status indicators for open and minimized applications.
 
+### Terminal Engine (MateusOS)
+- **Modo de Operação e Privilégios Dual-Stage**: Divisão de permissões entre o Modo Normal (`mateus@MacBook-Pro ~ %`) para visitantes comuns e o Modo Engenharia/Administrador (`root@MacBook-Pro ~ #`) desbloqueado via `sudo -i` com a lecture de segurança nativa da Apple e preenchimento de senha automatizado.
+- **Sistema de Arquivos Virtual (VFS)**: Estrutura simulada contendo caminhos de sistema `/Users/mateus` e diretórios protegidos `/var/root` / `/etc`. Permite a leitura em tempo real de arquivos virtuais `.md` e arquivos de sistema (como `/etc/hosts` e chaves SSH públicas).
+- **Comandos BSD Nativos**: Suporte completo a utilitários de shell:
+  - `ls`: Listagem avançada aceitando flags BSD (`-l`, `-a`, `-la`) com permissões detalhadas, proprietários, tamanhos e data de criação.
+  - `man` / `man intro`: Visualizador de manual interativo estilo `less` (alternate screen buffer), permitindo fechamento e limpeza de buffer de tela com a tecla `q`.
+  - `pbcopy`: Integração assíncrona com a Clipboard API do navegador para copiar dados reais de contato.
+  - `open`: Suporta abertura de arquivos com extensões (ex: `open about.md` abrindo seções da GUI), abertura de Finder (`open .`) e tratamento inteligente de redirecionamento de links externos (WhatsApp, LinkedIn) em novas abas reais fora do SO.
+  - `sw_vers`, `uname -a`, `date`, `uptime`, `whoami` (com flag `--verbose`).
+- **Ferramentas Root Avançadas**: Desbloqueio de comandos como `git log` (histórico real de commits), `system_profiler` (especificações de hardware), `defaults write` (alteração de tema claro/escuro em tempo real no DOM) e serviços bloqueantes como `caffeinate` e `tail -f system.log` com streaming de logs em tempo real canceláveis via `Ctrl + C`.
+
 ---
 
 ## Project Structure
@@ -53,29 +64,29 @@ MacOS-Web/
 ├── index.html          # Main HTML entry point
 ├── manifest.json       # PWA manifest
 ├── start-server.bat    # Windows quick-start server launcher
-├── css/
-│   ├── main.css        # Main compiled stylesheet
-│   └── patch.css       # Pixel-perfect design system & override styles
-├── js/
-│   ├── app.js          # Main entry point & boot sequence
-│   ├── windowManager.js # Window lifecycle & placement engine
-│   ├── themeManager.js # Dark/Light theme manager
-│   ├── menubar.js      # Menubar & Control Center manager
-│   ├── dock.js         # Dock magnification & status indicators
-│   ├── desktop.js      # Desktop icons & position engine
-│   ├── widgets.js      # Desktop widgets engine (Calendar, Battery, Weather)
-│   ├── contextMenu.js  # Multi-level nested context menu engine
-│   ├── sfSymbols.js    # SF Symbols rendering helper
-│   └── apps/
-│       ├── finder.js
-│       ├── safari.js
-│       ├── terminal.js
-│       ├── settings.js
-│       ├── notes.js
-│       ├── music.js
-│       ├── calendar.js
-│       └── calculator.js
 └── assets/
+    ├── css/
+    │   ├── main.css        # Main compiled stylesheet
+    │   └── patch.css       # Pixel-perfect design system & override styles
+    ├── js/
+    │   ├── app.js          # Main entry point & boot sequence
+    │   ├── windowManager.js # Window lifecycle & placement engine
+    │   ├── themeManager.js # Dark/Light theme manager
+    │   ├── menubar.js      # Menubar & Control Center manager
+    │   ├── dock.js         # Dock magnification & status indicators
+    │   ├── desktop.js      # Desktop icons & position engine
+    │   ├── widgets.js      # Desktop widgets engine (Calendar, Battery, Weather)
+    │   ├── contextMenu.js  # Multi-level nested context menu engine
+    │   ├── sfSymbols.js    # SF Symbols rendering helper
+    │   └── apps/
+    │       ├── finder.js
+    │       ├── safari.js
+    │       ├── terminal.js
+    │       ├── settings.js
+    │       ├── notes.js
+    │       ├── music.js
+    │       ├── calendar.js
+    │       └── calculator.js
     ├── docs/
     ├── icons/
     └── favicons/
