@@ -176,6 +176,134 @@ export class Desktop {
         <span class="desktop-icon-label" style="font-size:11px;font-weight:500;color:#fff;text-align:center;text-shadow:0 1px 3px rgba(0,0,0,0.95),0 1px 8px rgba(0,0,0,0.6);padding:1px 5px;border-radius:4px;max-width:84px;word-break:break-word;line-height:1.3;font-family:-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased;transition:background 0.08s;">${item.name}</span>
       `;
 
+      wrapper.addEventListener('contextmenu', e => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        document.querySelectorAll('.desktop-icon').forEach(i => {
+          const prev = i.querySelector('.desktop-icon-preview');
+          if (prev) prev.style.background = 'transparent';
+          const lbl = i.querySelector('.desktop-icon-label');
+          if (lbl) {
+            lbl.style.background = 'transparent';
+            lbl.style.textShadow = '0 1px 3px rgba(0,0,0,0.95),0 1px 8px rgba(0,0,0,0.6)';
+          }
+        });
+        const preview = wrapper.querySelector('.desktop-icon-preview');
+        if (preview) preview.style.background = 'rgba(255, 255, 255, 0.18)';
+        const label = wrapper.querySelector('.desktop-icon-label');
+        if (label) {
+          label.style.background = '#0063e1';
+          label.style.textShadow = 'none';
+        }
+
+        const menuItems = [
+          {
+            label: 'Abrir',
+            action: () => window.open('assets/docs/mateus-desenvolvedor-fullstack.pdf', '_blank')
+          },
+          {
+            label: 'Baixar',
+            action: () => {
+              const a = document.createElement('a');
+              a.href = 'assets/docs/mateus-desenvolvedor-fullstack.pdf';
+              a.download = 'mateus-desenvolvedor-fullstack.pdf';
+              document.body.appendChild(a);
+              a.click();
+              a.remove();
+            }
+          },
+          { type: 'divider' },
+          {
+            label: 'Mover para o Lixo',
+            action: () => {
+              wrapper.style.display = 'none';
+              import('./notificationManager.js').then(m => {
+                m.showNotification({
+                  title: 'Lixo',
+                  desc: 'Item movido para o Lixo.',
+                  icon: 'assets/icons/dock/empty-bin.png',
+                  duration: 3000
+                });
+              });
+            }
+          },
+          { type: 'divider' },
+          {
+            label: 'Obter Informações',
+            action: () => {
+              import('./macDialog.js').then(m => {
+                m.showMacAlert({
+                  messageText: 'Currículo.pdf',
+                  informativeText: 'Tipo: Documento PDF\nTamanho: 353 KB\nModificado: Hoje\nLocal: Mesa',
+                  buttons: ['OK']
+                });
+              });
+            }
+          },
+          {
+            label: 'Renomear',
+            action: () => {}
+          },
+          {
+            label: 'Comprimir “mateus-desenvolvedor-fullstack”',
+            action: () => {
+              import('./notificationManager.js').then(m => {
+                m.showNotification({
+                  title: 'Finder',
+                  desc: 'Criando arquivo compactado...',
+                  icon: 'assets/icons/dock/finder.png',
+                  duration: 2500
+                });
+              });
+            }
+          },
+          {
+            label: 'Duplicar',
+            action: () => {}
+          },
+          {
+            label: 'Criar Atalho',
+            action: () => {}
+          },
+          {
+            label: 'Visualização Rápida',
+            action: () => window.open('assets/docs/mateus-desenvolvedor-fullstack.pdf', '_blank')
+          },
+          { type: 'divider' },
+          {
+            label: 'Copiar',
+            action: () => navigator.clipboard?.writeText('mateus-desenvolvedor-fullstack.pdf')
+          },
+          {
+            label: 'Compartilhar...',
+            action: () => {
+              if (navigator.share) {
+                navigator.share({ title: 'Currículo Mateus Alves', url: window.location.href });
+              } else {
+                navigator.clipboard?.writeText(window.location.href);
+              }
+            }
+          },
+          { type: 'divider' },
+          { type: 'tags' },
+          {
+            label: 'Etiquetas...',
+            action: () => {}
+          },
+          { type: 'divider' },
+          {
+            label: 'Ações Rápidas',
+            submenu: [
+              { label: 'Criar PDF', disabled: true },
+              { label: 'Girar à Esquerda', disabled: true }
+            ]
+          }
+        ];
+
+        this.contextMenu.open(e.clientX, e.clientY, menuItems);
+      });
+
       this._makeIconDraggable(wrapper, item.id, item.action);
     });
 

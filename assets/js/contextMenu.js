@@ -33,6 +33,36 @@ export class ContextMenu {
         return;
       }
 
+      if (item.type === 'tags') {
+        const tagsRow = document.createElement('div');
+        tagsRow.className = 'context-menu__tags';
+        tagsRow.style.cssText = `
+          display: flex;
+          align-items: center;
+          gap: 9px;
+          padding: 6px 14px;
+          user-select: none;
+        `;
+        const colors = ['#ff453a', '#ff9f0a', '#ffd60a', '#30d158', '#0a84ff', '#bf5af2', '#8e8e93'];
+        colors.forEach(c => {
+          const dot = document.createElement('span');
+          dot.style.cssText = `
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background-color: ${c};
+            display: inline-block;
+            cursor: pointer;
+            transition: transform 0.1s;
+          `;
+          dot.addEventListener('mouseenter', () => dot.style.transform = 'scale(1.2)');
+          dot.addEventListener('mouseleave', () => dot.style.transform = 'scale(1)');
+          tagsRow.appendChild(dot);
+        });
+        menuEl.appendChild(tagsRow);
+        return;
+      }
+
       const row = document.createElement('div');
       let rowClasses = 'context-menu__item';
       if (item.disabled || item.isHeader) rowClasses += ' context-menu__item--disabled';
