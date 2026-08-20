@@ -73,10 +73,7 @@ export class WindowManager {
   closeWindow(appId) {
     const win = this.windows.find(w => w.id === appId);
     if (win) {
-      win.el.classList.add('app-window--closing');
-      setTimeout(() => {
-        if (win.el.parentNode) win.el.parentNode.removeChild(win.el);
-      }, 200);
+      if (win.el.parentNode) win.el.parentNode.removeChild(win.el);
       this.windows = this.windows.filter(w => w.id !== appId);
     }
 

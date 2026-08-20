@@ -67,17 +67,6 @@
   line-height: 1.6;
 }
 
-.app-window--closing {
-  animation: windowClose 0.2s ease-out forwards;
-}
-
-@keyframes windowClose {
-  to {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-}
-
 .context-menu {
   position: fixed;
   background: rgba(42, 42, 46, 0.92);
