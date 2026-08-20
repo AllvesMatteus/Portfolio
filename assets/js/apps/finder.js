@@ -29,7 +29,6 @@ const FILE_TREE = {
           'wallpaper.jpg': { type: 'file', size: '1.2 MB', ext: 'jpg' }
         }
       },
-      'Lixo':       { type: 'folder', children: {} },
       'Mesa':       { type: 'folder', children: { 'macweb.dev': { type: 'folder', children: {} } } },
       'Música':     { type: 'folder', children: {} },
       'Pública':    { type: 'folder', children: {} },
@@ -98,7 +97,15 @@ function getIconHtml(name, item, size = 72) {
   return getSFSymbolHtml('doc.text', { size });
 }
 
+const TRASH_TREE = {
+  type: 'folder',
+  children: {}
+};
+
 function resolvePath(pathArr) {
+  if (pathArr && (pathArr[pathArr.length - 1] === 'Lixo' || (pathArr[0] === '~' && pathArr[1] === 'Lixo'))) {
+    return TRASH_TREE;
+  }
   let node = FILE_TREE['~'];
   for (const p of pathArr.slice(1)) {
     if (!node?.children?.[p]) return null;
