@@ -2194,7 +2194,7 @@ body.dark-theme {
 }
 
 .desktop-widgets-container.widgets--desktop .widget-battery {
-  background: rgba(62, 62, 65, 0.86);
+  background: rgba(62, 62, 65, 0.667);
   border: 0.5px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.28);
 }
