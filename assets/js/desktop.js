@@ -40,6 +40,7 @@ const WALLPAPER_GROUPS = [
 import { WidgetsManager } from './widgets.js';
 import { showNotification } from './notificationManager.js';
 import { showMacAlert } from './macDialog.js';
+import { moveToTrash } from './apps/finder.js';
 
 export const ALL_WALLPAPERS = WALLPAPER_GROUPS.flatMap(g => g.wallpapers);
 export { WALLPAPER_GROUPS };
@@ -198,12 +199,7 @@ export class Desktop {
             label: 'Mover para o Lixo',
             action: () => {
               wrapper.style.display = 'none';
-              showNotification({
-                title: 'Lixo',
-                desc: 'Item movido para o Lixo.',
-                icon: 'assets/icons/dock/empty-bin.png',
-                duration: 3000
-              });
+              moveToTrash('Currículo.pdf', { type: 'file', size: '353 KB', ext: 'pdf', url: 'assets/docs/mateus-desenvolvedor-fullstack.pdf', id: 'curriculo-pdf' }, ['desktop']);
             }
           },
           { type: 'divider' },
@@ -462,6 +458,11 @@ export class Desktop {
     localStorage.setItem('wallpaper', wallpaperId);
   }
 
+  setWallpaperUrl(url) {
+    this._applyWallpaper(url);
+    localStorage.setItem('custom_wallpaper_url', url);
+  }
+
   _applyWallpaper(url) {
     if (this.el) {
       this.el.style.backgroundImage = `url('${url}')`;
@@ -471,6 +472,11 @@ export class Desktop {
   }
 
   restoreWallpaper() {
+    const customUrl = localStorage.getItem('custom_wallpaper_url');
+    if (customUrl) {
+      this.setWallpaperUrl(customUrl);
+      return;
+    }
     const saved = localStorage.getItem('wallpaper');
     if (saved) this.setWallpaper(saved);
   }

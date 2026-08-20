@@ -77,7 +77,7 @@ async function init() {
 
   wm.registerApp('terminal',   (el) => renderTerminal(el, wm));
   wm.registerApp('safari',     (el) => renderSafari(el, wm));
-  wm.registerApp('finder',     (el) => renderFinder(el, wm));
+  wm.registerApp('finder',     (el) => renderFinder(el, wm, { contextMenu, desktop }));
   wm.registerApp('settings',   (el) => renderSettings(el, wm, desktop));
 
   const menuBar = new MenuBar(wm);

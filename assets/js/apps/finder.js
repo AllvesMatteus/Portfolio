@@ -1,5 +1,7 @@
 import { WindowManager } from '../windowManager.js';
 import { getSFSymbolHtml } from '../sfSymbols.js';
+import { showNotification } from '../notificationManager.js';
+import { showMacAlert } from '../macDialog.js';
 
 const FILE_TREE = {
   '~': {
@@ -97,14 +99,69 @@ function getIconHtml(name, item, size = 72) {
   return getSFSymbolHtml('doc.text', { size });
 }
 
-const TRASH_TREE = {
-  type: 'folder',
-  children: {}
-};
+export const TRASH_ITEMS = {};
+
+function dispatchTrashUpdate() {
+  const hasItems = Object.keys(TRASH_ITEMS).length > 0;
+  window.dispatchEvent(new CustomEvent('trash:updated', { detail: { hasItems } }));
+}
+
+export function moveToTrash(name, item, originPath = ['~']) {
+  const node = resolvePath(originPath);
+  if (node?.children?.[name]) {
+    delete node.children[name];
+  }
+  TRASH_ITEMS[name] = { ...item, originPath: [...originPath], trashedAt: Date.now() };
+  dispatchTrashUpdate();
+  showNotification({
+    title: 'Lixo',
+    desc: `"${name}" movido para o Lixo.`,
+    icon: 'assets/icons/dock/empty-bin.png',
+    duration: 3000
+  });
+}
+
+export function restoreFromTrash(name) {
+  const item = TRASH_ITEMS[name];
+  if (!item) return;
+
+  const originPath = item.originPath || ['~'];
+  if (originPath.length === 1 && originPath[0] === 'desktop') {
+    const desktopEl = document.querySelector(`.desktop-icon[data-id="${item.id || 'curriculo-pdf'}"]`);
+    if (desktopEl) desktopEl.style.display = 'flex';
+  } else {
+    const node = resolvePath(originPath) || FILE_TREE['~'];
+    if (node && node.children) {
+      const { originPath: _, trashedAt: __, ...cleanItem } = item;
+      node.children[name] = cleanItem;
+    }
+  }
+
+  delete TRASH_ITEMS[name];
+  dispatchTrashUpdate();
+  showNotification({
+    title: 'Lixo',
+    desc: `"${name}" colocado de volta.`,
+    icon: 'assets/icons/dock/empty-bin.png',
+    duration: 3000
+  });
+}
+
+export function deleteImmediately(name) {
+  delete TRASH_ITEMS[name];
+  dispatchTrashUpdate();
+}
+
+export function emptyTrash() {
+  for (const k of Object.keys(TRASH_ITEMS)) {
+    delete TRASH_ITEMS[k];
+  }
+  dispatchTrashUpdate();
+}
 
 function resolvePath(pathArr) {
   if (pathArr && (pathArr[pathArr.length - 1] === 'Lixo' || (pathArr[0] === '~' && pathArr[1] === 'Lixo'))) {
-    return TRASH_TREE;
+    return { type: 'folder', children: TRASH_ITEMS };
   }
   let node = FILE_TREE['~'];
   for (const p of pathArr.slice(1)) {
@@ -452,47 +509,281 @@ export function renderFinder(contentEl, wm, options = {}) {
   `;
 
   trashBar.querySelector('#finder-empty-trash-btn').addEventListener('click', () => {
-    import('../macDialog.js').then(m => {
-      m.showMacAlert({
-        messageText: 'Tem certeza de que deseja esvaziar o Lixo?',
-        informativeText: 'Os itens no Lixo serão apagados permanentemente.',
-        buttons: ['Cancelar', 'Esvaziar Lixo'],
-        callback: (chosenBtn) => {
-          if (chosenBtn === 'Esvaziar Lixo') {
-            const lixoNode = resolvePath(['~', 'Lixo']);
-            if (lixoNode) lixoNode.children = {};
-            render();
-            import('../notificationManager.js').then(n => {
-              n.showNotification({
-                title: 'Lixo',
-                desc: 'O Lixo foi esvaziado.',
-                icon: 'assets/icons/dock/empty-bin.png',
-                duration: 3000
-              });
-            });
-          }
+    showMacAlert({
+      messageText: 'Tem certeza de que deseja esvaziar o Lixo?',
+      informativeText: 'Os itens no Lixo serão apagados permanentemente.',
+      iconSrc: 'assets/icons/dock/empty-bin-full.png',
+      buttons: ['Cancelar', 'Esvaziar Lixo'],
+      callback: (chosenBtn) => {
+        if (chosenBtn === 'Esvaziar Lixo') {
+          emptyTrash();
+          render();
+          showNotification({
+            title: 'Lixo',
+            desc: 'O Lixo foi esvaziado.',
+            icon: 'assets/icons/dock/empty-bin.png',
+            duration: 3000
+          });
         }
-      });
+      }
     });
   });
 
   const contentArea = document.createElement('div');
   contentArea.id = 'finder-content';
-  contentArea.addEventListener('click', (e) => {
-    if (!e.target.closest('.finder-grid-cell') && !e.target.closest('.finder-list-row')) {
-      contentArea.querySelectorAll('.finder-grid-cell').forEach(c => {
-        const icon = c.querySelector('.finder-icon-preview');
-        if (icon) icon.style.background = '';
-        const txt = c.querySelector('.finder-item-name');
-        if (txt) {
-          txt.style.background = '';
-          txt.style.color = 'rgba(255,255,255,0.92)';
+
+  function deselectAllItems() {
+    contentArea.querySelectorAll('.finder-grid-cell').forEach(c => {
+      const icon = c.querySelector('.finder-icon-preview');
+      if (icon) icon.style.background = '';
+      const txt = c.querySelector('.finder-item-name');
+      if (txt) {
+        txt.style.background = '';
+        txt.style.color = 'rgba(255,255,255,0.92)';
+      }
+    });
+    contentArea.querySelectorAll('.finder-list-row').forEach(r => {
+      r.style.background = '';
+      r.style.color = '';
+    });
+  }
+
+  function selectGridCell(cell) {
+    deselectAllItems();
+    const icon = cell.querySelector('.finder-icon-preview');
+    if (icon) icon.style.background = 'rgba(255,255,255,0.18)';
+    const txt = cell.querySelector('.finder-item-name');
+    if (txt) {
+      txt.style.background = '#0063e1';
+      txt.style.color = '#ffffff';
+    }
+  }
+
+  function selectListRow(row) {
+    deselectAllItems();
+    row.style.background = '#0063e1';
+    row.style.color = '#ffffff';
+  }
+
+  function showItemContextMenu(e, name, item) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const isTrash = currentPath[currentPath.length - 1] === 'Lixo';
+    const isImage = item.type === 'file' && ['png', 'jpg', 'jpeg', 'webp'].includes(item.ext);
+
+    let menuItems = [];
+
+    if (isTrash) {
+      menuItems = [
+        {
+          label: 'Abrir',
+          action: () => {
+            if (isImage) openQuickLookImage(name, item.url);
+            else if (item.url) window.open(item.url, '_blank');
+          }
+        },
+        {
+          label: 'Abrir Com',
+          disabled: true
+        },
+        { type: 'divider' },
+        {
+          label: 'Colocar de Volta',
+          action: () => {
+            restoreFromTrash(name);
+            render();
+          }
+        },
+        {
+          label: 'Apagar Imediatamente...',
+          action: () => {
+            showMacAlert({
+              messageText: `Deseja realmente apagar “${name}” imediatamente?`,
+              informativeText: 'Este item será apagado imediatamente. Você não pode desfazer esta ação.',
+              buttons: ['Cancelar', 'Apagar'],
+              callback: (btn) => {
+                if (btn === 'Apagar') {
+                  deleteImmediately(name);
+                  render();
+                }
+              }
+            });
+          }
+        },
+        {
+          label: 'Esvaziar Lixo',
+          action: () => {
+            showMacAlert({
+              messageText: 'Tem certeza de que deseja esvaziar o Lixo?',
+              informativeText: 'Os itens no Lixo serão apagados permanentemente.',
+              buttons: ['Cancelar', 'Esvaziar Lixo'],
+              callback: (btn) => {
+                if (btn === 'Esvaziar Lixo') {
+                  emptyTrash();
+                  render();
+                }
+              }
+            });
+          }
+        },
+        { type: 'divider' },
+        {
+          label: 'Obter Informações',
+          action: () => {
+            showMacAlert({
+              messageText: name,
+              informativeText: `Tipo: ${item.type === 'folder' ? 'Pasta' : (item.ext ? item.ext.toUpperCase() : 'Arquivo')}\nTamanho: ${item.size || '—'}\nLocal: Lixo`,
+              buttons: ['OK']
+            });
+          }
+        },
+        {
+          label: 'Renomear',
+          action: () => {}
+        },
+        {
+          label: `Visualização Rápida de “${name}”`,
+          action: () => {
+            if (isImage) openQuickLookImage(name, item.url);
+            else if (item.url) window.open(item.url, '_blank');
+          }
+        },
+        { type: 'divider' },
+        {
+          label: 'Copiar',
+          action: () => navigator.clipboard?.writeText(name)
+        },
+        { type: 'divider' },
+        { type: 'tags' },
+        {
+          label: 'Etiquetas...',
+          action: () => {}
+        }
+      ];
+
+      if (isImage && item.url) {
+        menuItems.push({ type: 'divider' });
+        menuItems.push({
+          label: 'Definir como Imagem da Mesa',
+          action: () => {
+            if (options?.desktop?.setWallpaperUrl) {
+              options.desktop.setWallpaperUrl(item.url);
+            }
+          }
+        });
+      }
+
+    } else {
+
+      menuItems = [
+        {
+          label: 'Abrir',
+          action: () => {
+            if (item.type === 'folder') { currentPath.push(name); render(); }
+            else if (item.type === 'app') { wm.openApp(item.appKey || name.toLowerCase().replace('.app', ''), name); }
+            else if (isImage) { openQuickLookImage(name, item.url); }
+            else if (item.url) { window.open(item.url, '_blank'); }
+          }
+        }
+      ];
+
+      if (item.url) {
+        menuItems.push({
+          label: 'Baixar',
+          action: () => {
+            const a = document.createElement('a');
+            a.href = item.url;
+            a.download = name;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+          }
+        });
+      } else {
+        menuItems.push({ label: 'Abrir Com', disabled: true });
+      }
+
+      menuItems.push({ type: 'divider' });
+      menuItems.push({
+        label: 'Mover para o Lixo',
+        action: () => {
+          moveToTrash(name, item, currentPath);
+          render();
         }
       });
-      contentArea.querySelectorAll('.finder-list-row').forEach(r => {
-        r.style.background = '';
-        r.style.color = '';
+      menuItems.push({ type: 'divider' });
+      menuItems.push({
+        label: 'Obter Informações',
+        action: () => {
+          showMacAlert({
+            messageText: name,
+            informativeText: `Tipo: ${item.type === 'folder' ? 'Pasta' : (item.ext ? item.ext.toUpperCase() : 'Arquivo')}\nTamanho: ${item.size || '—'}\nLocal: ${currentPath.join(' > ')}`,
+            buttons: ['OK']
+          });
+        }
       });
+      menuItems.push({ label: 'Renomear', action: () => {} });
+      menuItems.push({
+        label: `Comprimir “${name}”`,
+        action: () => {
+          showNotification({
+            title: 'Finder',
+            desc: `Comprimindo “${name}”...`,
+            icon: 'assets/icons/dock/finder.png',
+            duration: 2500
+          });
+        }
+      });
+      menuItems.push({ label: 'Duplicar', action: () => {} });
+      menuItems.push({ label: 'Criar Atalho', action: () => {} });
+      menuItems.push({
+        label: `Visualização Rápida de “${name}”`,
+        action: () => {
+          if (isImage) openQuickLookImage(name, item.url);
+          else if (item.url) window.open(item.url, '_blank');
+        }
+      });
+      menuItems.push({ type: 'divider' });
+      menuItems.push({
+        label: 'Copiar',
+        action: () => navigator.clipboard?.writeText(name)
+      });
+      menuItems.push({
+        label: 'Compartilhar...',
+        action: () => {
+          if (navigator.share) {
+            navigator.share({ title: name, url: item.url || window.location.href });
+          } else {
+            navigator.clipboard?.writeText(item.url || window.location.href);
+          }
+        }
+      });
+      menuItems.push({ type: 'divider' });
+      menuItems.push({ type: 'tags' });
+      menuItems.push({ label: 'Etiquetas...', action: () => {} });
+
+      if (isImage && item.url) {
+        menuItems.push({ type: 'divider' });
+        menuItems.push({
+          label: 'Definir como Imagem da Mesa',
+          action: () => {
+            if (options?.desktop?.setWallpaperUrl) {
+              options.desktop.setWallpaperUrl(item.url);
+            }
+          }
+        });
+      }
+    }
+
+    if (options?.contextMenu) {
+      options.contextMenu.open(e.clientX, e.clientY, menuItems);
+    }
+  }
+
+  contentArea.addEventListener('click', (e) => {
+    if (!e.target.closest('.finder-grid-cell') && !e.target.closest('.finder-list-row')) {
+      deselectAllItems();
     }
   });
 
@@ -641,22 +932,11 @@ export function renderFinder(contentEl, wm, options = {}) {
         `;
         cell.addEventListener('click', (e) => {
           e.stopPropagation();
-          contentArea.querySelectorAll('.finder-grid-cell').forEach(c => {
-            const icon = c.querySelector('.finder-icon-preview');
-            if (icon) icon.style.background = '';
-            const txt = c.querySelector('.finder-item-name');
-            if (txt) {
-              txt.style.background = '';
-              txt.style.color = 'rgba(255,255,255,0.92)';
-            }
-          });
-          const icon = cell.querySelector('.finder-icon-preview');
-          if (icon) icon.style.background = 'rgba(255,255,255,0.18)';
-          const txt = cell.querySelector('.finder-item-name');
-          if (txt) {
-            txt.style.background = '#0063e1';
-            txt.style.color = '#ffffff';
-          }
+          selectGridCell(cell);
+        });
+        cell.addEventListener('contextmenu', (e) => {
+          selectGridCell(cell);
+          showItemContextMenu(e, name, item);
         });
         cell.addEventListener('dblclick', () => {
           if (item.type === 'folder') { currentPath.push(name); render(); }
@@ -712,12 +992,11 @@ export function renderFinder(contentEl, wm, options = {}) {
         `;
         row.addEventListener('click', (e) => {
           e.stopPropagation();
-          contentArea.querySelectorAll('.finder-list-row').forEach(r => {
-            r.style.background = '';
-            r.style.color = '';
-          });
-          row.style.background = '#0063e1';
-          row.style.color = '#ffffff';
+          selectListRow(row);
+        });
+        row.addEventListener('contextmenu', (e) => {
+          selectListRow(row);
+          showItemContextMenu(e, name, item);
         });
         row.addEventListener('dblclick', () => {
           if (item.type === 'folder') { currentPath.push(name); render(); }

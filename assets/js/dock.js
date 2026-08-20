@@ -154,6 +154,14 @@ export class Dock {
     wm.onChange(state => this._updateIndicators(state));
     this._updateIndicators({ openApps: wm.openApps, minimizedApps: wm.minimizedApps });
 
+    window.addEventListener('trash:updated', e => {
+      if (this.trashImg) {
+        this.trashImg.src = e.detail?.hasItems
+          ? 'assets/icons/dock/empty-bin-full.png'
+          : 'assets/icons/dock/empty-bin.png';
+      }
+    });
+
     dockEl.addEventListener('mouseenter', e => this.mainMag.onMouseEnter(e));
     dockEl.addEventListener('mousemove',  e => this.mainMag.onMouseMove(e));
     dockEl.addEventListener('mouseleave', e => this.mainMag.onMouseLeave(e));
@@ -201,6 +209,10 @@ export class Dock {
       img.onerror = () => {
         iconWrapper.innerHTML = `<span style="font-size:42px;line-height:${BASE_ICON_SIZE}px;">${app.fallback}</span>`;
       };
+
+      if (app.id === 'trash') {
+        this.trashImg = img;
+      }
 
       iconWrapper.appendChild(img);
 
