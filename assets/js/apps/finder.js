@@ -10,13 +10,6 @@ const FILE_TREE = {
       'Documentos': {
         type: 'folder',
         children: {
-          'docs': {
-            type: 'folder',
-            children: {
-              'mateus-desenvolvedor-fullstack.pdf': { type: 'file', size: '353 KB', ext: 'pdf', url: 'assets/docs/mateus-desenvolvedor-fullstack.pdf' }
-            }
-          },
-          'Projetos': { type: 'folder', children: { 'macweb.dev': { type: 'file', size: '7 KB', ext: 'md' } } },
           'Currículo.pdf': { type: 'file', size: '353 KB', ext: 'pdf', url: 'assets/docs/mateus-desenvolvedor-fullstack.pdf' }
         }
       },
