@@ -38,6 +38,8 @@ const WALLPAPER_GROUPS = [
 ];
 
 import { WidgetsManager } from './widgets.js';
+import { showNotification } from './notificationManager.js';
+import { showMacAlert } from './macDialog.js';
 
 export const ALL_WALLPAPERS = WALLPAPER_GROUPS.flatMap(g => g.wallpapers);
 export { WALLPAPER_GROUPS };
@@ -180,22 +182,7 @@ export class Desktop {
         e.preventDefault();
         e.stopPropagation();
 
-        document.querySelectorAll('.desktop-icon').forEach(i => {
-          const prev = i.querySelector('.desktop-icon-preview');
-          if (prev) prev.style.background = 'transparent';
-          const lbl = i.querySelector('.desktop-icon-label');
-          if (lbl) {
-            lbl.style.background = 'transparent';
-            lbl.style.textShadow = '0 1px 3px rgba(0,0,0,0.95),0 1px 8px rgba(0,0,0,0.6)';
-          }
-        });
-        const preview = wrapper.querySelector('.desktop-icon-preview');
-        if (preview) preview.style.background = 'rgba(255, 255, 255, 0.18)';
-        const label = wrapper.querySelector('.desktop-icon-label');
-        if (label) {
-          label.style.background = '#0063e1';
-          label.style.textShadow = 'none';
-        }
+        this._selectIcon(wrapper);
 
         const menuItems = [
           {
@@ -204,27 +191,18 @@ export class Desktop {
           },
           {
             label: 'Baixar',
-            action: () => {
-              const a = document.createElement('a');
-              a.href = 'assets/docs/mateus-desenvolvedor-fullstack.pdf';
-              a.download = 'mateus-desenvolvedor-fullstack.pdf';
-              document.body.appendChild(a);
-              a.click();
-              a.remove();
-            }
+            action: () => this._downloadFile('assets/docs/mateus-desenvolvedor-fullstack.pdf', 'mateus-desenvolvedor-fullstack.pdf')
           },
           { type: 'divider' },
           {
             label: 'Mover para o Lixo',
             action: () => {
               wrapper.style.display = 'none';
-              import('./notificationManager.js').then(m => {
-                m.showNotification({
-                  title: 'Lixo',
-                  desc: 'Item movido para o Lixo.',
-                  icon: 'assets/icons/dock/empty-bin.png',
-                  duration: 3000
-                });
+              showNotification({
+                title: 'Lixo',
+                desc: 'Item movido para o Lixo.',
+                icon: 'assets/icons/dock/empty-bin.png',
+                duration: 3000
               });
             }
           },
@@ -232,12 +210,10 @@ export class Desktop {
           {
             label: 'Obter Informações',
             action: () => {
-              import('./macDialog.js').then(m => {
-                m.showMacAlert({
-                  messageText: 'Currículo.pdf',
-                  informativeText: 'Tipo: Documento PDF\nTamanho: 353 KB\nModificado: Hoje\nLocal: Mesa',
-                  buttons: ['OK']
-                });
+              showMacAlert({
+                messageText: 'Currículo.pdf',
+                informativeText: 'Tipo: Documento PDF\nTamanho: 353 KB\nModificado: Hoje\nLocal: Mesa',
+                buttons: ['OK']
               });
             }
           },
@@ -248,13 +224,11 @@ export class Desktop {
           {
             label: 'Comprimir “mateus-desenvolvedor-fullstack”',
             action: () => {
-              import('./notificationManager.js').then(m => {
-                m.showNotification({
-                  title: 'Finder',
-                  desc: 'Criando arquivo compactado...',
-                  icon: 'assets/icons/dock/finder.png',
-                  duration: 2500
-                });
+              showNotification({
+                title: 'Finder',
+                desc: 'Criando arquivo compactado...',
+                icon: 'assets/icons/dock/finder.png',
+                duration: 2500
               });
             }
           },
@@ -309,17 +283,41 @@ export class Desktop {
 
     this.el.addEventListener('click', e => {
       if (!e.target.closest('.desktop-icon')) {
-        document.querySelectorAll('.desktop-icon').forEach(i => {
-          const prev = i.querySelector('.desktop-icon-preview');
-          if (prev) prev.style.background = 'transparent';
-          const lbl = i.querySelector('.desktop-icon-label');
-          if (lbl) {
-            lbl.style.background = 'transparent';
-            lbl.style.textShadow = '0 1px 3px rgba(0,0,0,0.95),0 1px 8px rgba(0,0,0,0.6)';
-          }
-        });
+        this._deselectAllIcons();
       }
     });
+  }
+
+  _deselectAllIcons() {
+    document.querySelectorAll('.desktop-icon').forEach(i => {
+      const prev = i.querySelector('.desktop-icon-preview');
+      if (prev) prev.style.background = 'transparent';
+      const lbl = i.querySelector('.desktop-icon-label');
+      if (lbl) {
+        lbl.style.background = 'transparent';
+        lbl.style.textShadow = '0 1px 3px rgba(0,0,0,0.95),0 1px 8px rgba(0,0,0,0.6)';
+      }
+    });
+  }
+
+  _selectIcon(wrapper) {
+    this._deselectAllIcons();
+    const preview = wrapper.querySelector('.desktop-icon-preview');
+    if (preview) preview.style.background = 'rgba(255, 255, 255, 0.18)';
+    const label = wrapper.querySelector('.desktop-icon-label');
+    if (label) {
+      label.style.background = '#0063e1';
+      label.style.textShadow = 'none';
+    }
+  }
+
+  _downloadFile(url, filename) {
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
   }
 
   _makeIconDraggable(wrapper, itemId, action) {
@@ -339,23 +337,7 @@ export class Desktop {
       initialLeft = wrapper.offsetLeft;
       initialTop = wrapper.offsetTop;
 
-      document.querySelectorAll('.desktop-icon').forEach(i => {
-        const prev = i.querySelector('.desktop-icon-preview');
-        if (prev) prev.style.background = 'transparent';
-        const lbl = i.querySelector('.desktop-icon-label');
-        if (lbl) {
-          lbl.style.background = 'transparent';
-          lbl.style.textShadow = '0 1px 3px rgba(0,0,0,0.95),0 1px 8px rgba(0,0,0,0.6)';
-        }
-      });
-
-      const preview = wrapper.querySelector('.desktop-icon-preview');
-      if (preview) preview.style.background = 'rgba(255, 255, 255, 0.18)';
-      const label = wrapper.querySelector('.desktop-icon-label');
-      if (label) {
-        label.style.background = '#0063e1';
-        label.style.textShadow = 'none';
-      }
+      this._selectIcon(wrapper);
 
       document.addEventListener('mousemove', onMouseMove);
       document.addEventListener('mouseup', onMouseUp);
