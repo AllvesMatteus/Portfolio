@@ -424,10 +424,13 @@ class SafariEngine {
     let q = query.trim();
     if (!q) return 'newtab';
     if (this.isLocalUrl(q)) return q;
-    if (q.toLowerCase() === 'google.com' || q.toLowerCase() === 'google') {
+    if (q.toLowerCase() === 'google.com' || q.toLowerCase() === 'google' || q.toLowerCase() === 'https://google.com' || q.toLowerCase() === 'https://www.google.com') {
       return 'https://www.google.com/search?igu=1';
     }
     if (/^https?:\/\//i.test(q)) {
+      if (q.includes('google.com') && !q.includes('igu=1')) {
+        return q + (q.includes('?') ? '&igu=1' : '?igu=1');
+      }
       return q;
     }
     if (q.includes('.') && !q.includes(' ')) {
@@ -476,11 +479,11 @@ class SafariEngine {
     }
 
     let embedUrl = finalUrl;
-    if (!finalUrl.includes('google.com/search') && !this.isLocalUrl(finalUrl)) {
+    if (!finalUrl.includes('google.com') && !this.isLocalUrl(finalUrl)) {
       embedUrl = `https://corsproxy.io/?${encodeURIComponent(finalUrl)}`;
     }
 
-    const sandboxAttr = this.isLocalUrl(finalUrl) ? '' : 'sandbox="allow-scripts allow-popups allow-forms"';
+    const sandboxAttr = this.isLocalUrl(finalUrl) ? '' : 'sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-modals"';
     this.bodyEl.innerHTML = `
       <iframe id="safari-iframe" src="${embedUrl}" style="width:100%;height:100%;border:none;background:#ffffff;" title="Safari Web Browser" ${sandboxAttr}></iframe>
     `;
