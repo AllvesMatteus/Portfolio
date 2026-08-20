@@ -2194,9 +2194,7 @@ body.dark-theme {
 }
 
 .desktop-widgets-container.widgets--desktop .widget-battery {
-  background: rgba(0, 0, 0, 0.45);
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
+  background: rgba(62, 62, 65, 0.86);
   border: 0.5px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.28);
 }
@@ -2205,7 +2203,6 @@ body.dark-theme {
   background: linear-gradient(to bottom, #363639 0%, #1E1F22 100%);
 }
 
-/* Quando os widgets estao no modo translucido (com outra janela ativa na frente) */
 .desktop-widgets-container:not(.widgets--desktop) .widget-cal-title {
   color: #ffffff;
 }
