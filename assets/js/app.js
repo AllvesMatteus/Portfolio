@@ -79,7 +79,6 @@ async function init() {
   wm.registerApp('safari',     (el) => renderSafari(el, wm));
   wm.registerApp('finder',     (el) => renderFinder(el, wm));
   wm.registerApp('settings',   (el) => renderSettings(el, wm, desktop));
-  wm.registerApp('trash',      (el) => renderFinder(el, wm, { initialPath: ['~', 'Lixo'] }));
 
   const menuBar = new MenuBar(wm);
 

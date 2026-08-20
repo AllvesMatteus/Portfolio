@@ -225,6 +225,13 @@ export class Dock {
         }
         if (app.url) { window.open(app.url, '_blank'); return; }
         if (app.noOpen) return;
+        if (app.id === 'trash') {
+          this.wm.openApp('finder', 'Finder');
+          setTimeout(() => {
+            window.dispatchEvent(new CustomEvent('finder:navigate', { detail: { path: ['~', 'Lixo'] } }));
+          }, 10);
+          return;
+        }
         this.wm.openApp(app.id, app.name);
       });
       item.addEventListener('keydown', e => {
@@ -236,6 +243,13 @@ export class Dock {
           }
           if (app.url) { window.open(app.url, '_blank'); return; }
           if (app.noOpen) return;
+          if (app.id === 'trash') {
+            this.wm.openApp('finder', 'Finder');
+            setTimeout(() => {
+              window.dispatchEvent(new CustomEvent('finder:navigate', { detail: { path: ['~', 'Lixo'] } }));
+            }, 10);
+            return;
+          }
           this.wm.openApp(app.id, app.name);
         }
       });

@@ -190,14 +190,19 @@ export function renderFinder(contentEl, wm, options = {}) {
   contentEl.innerHTML = '';
 
   const initialPath = options?.initialPath ? [...options.initialPath] : ['~'];
-  const isTrashApp = options?.appId === 'trash' || initialPath[initialPath.length - 1] === 'Lixo';
-  const appId = isTrashApp ? 'trash' : 'finder';
-
-  const titlebar = WindowManager.buildTitleBar(appId, isTrashApp ? 'Lixo' : 'mateus', wm, { showTitle: false });
+  const titlebar = WindowManager.buildTitleBar('finder', 'mateus', wm, { showTitle: false });
 
   let currentPath = initialPath;
   let viewMode    = 'grid';
   let searchQuery = '';
+
+  const onNavigate = (e) => {
+    if (e.detail?.path) {
+      currentPath = [...e.detail.path];
+      render();
+    }
+  };
+  window.addEventListener('finder:navigate', onNavigate);
 
   const SIDEBAR_SECTIONS = [
     {
