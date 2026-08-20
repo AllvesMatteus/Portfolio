@@ -3,6 +3,7 @@ const MENUBAR_HEIGHT = 28;
 
 export const INITIAL_POSITIONS = {
   finder: { x: 0, y: 0, w: 960, h: 620 },
+  trash: { x: 0, y: 0, w: 960, h: 620 },
   safari: { x: 0, y: 0, w: 1040, h: 680 },
   terminal: { x: 0, y: 0, w: 680, h: 440 },
   settings: { x: 0, y: 0, w: 850, h: 580 },

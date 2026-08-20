@@ -5,10 +5,31 @@ const FILE_TREE = {
   '~': {
     type: 'folder',
     children: {
-      'Documentos': { type: 'folder', children: { 'Projetos': { type: 'folder', children: { 'macweb.dev': { type: 'file', size: '7 KB', ext: 'md' } } }, 'Currículo.pdf': { type: 'file', size: '1.2 MB', ext: 'pdf', url: 'assets/documents/mateus_alves_developer.pdf' } } },
+      'Documentos': {
+        type: 'folder',
+        children: {
+          'docs': {
+            type: 'folder',
+            children: {
+              'mateus-desenvolvedor-fullstack.pdf': { type: 'file', size: '353 KB', ext: 'pdf', url: 'assets/docs/mateus-desenvolvedor-fullstack.pdf' }
+            }
+          },
+          'Projetos': { type: 'folder', children: { 'macweb.dev': { type: 'file', size: '7 KB', ext: 'md' } } },
+          'Currículo.pdf': { type: 'file', size: '353 KB', ext: 'pdf', url: 'assets/docs/mateus-desenvolvedor-fullstack.pdf' }
+        }
+      },
       'Downloads':  { type: 'folder', children: { 'macOS-Sequoia.dmg': { type: 'file', size: '5.4 GB', ext: 'dmg' } } },
       'Filmes':     { type: 'folder', children: {} },
-      'Imagens':    { type: 'folder', children: { 'wallpaper.jpg': { type: 'file', size: '1.2 MB', ext: 'jpg' } } },
+      'Imagens':    {
+        type: 'folder',
+        children: {
+          'Captura de Tela 2026-05-05 às 18.38.12.jpeg': { type: 'file', size: '33 KB', ext: 'jpeg', url: 'assets/images/user_photos/Captura de Tela 2026-05-05 às 18.38.12.jpeg' },
+          'Captura de Tela 2026-05-08 às 02.39.45.jpeg': { type: 'file', size: '172 KB', ext: 'jpeg', url: 'assets/images/user_photos/Captura de Tela 2026-05-08 às 02.39.45.jpeg' },
+          'Captura de Tela 2026-05-08 às 20.26.10.jpeg': { type: 'file', size: '224 KB', ext: 'jpeg', url: 'assets/images/user_photos/Captura de Tela 2026-05-08 às 20.26.10.jpeg' },
+          'wallpaper.jpg': { type: 'file', size: '1.2 MB', ext: 'jpg' }
+        }
+      },
+      'Lixo':       { type: 'folder', children: {} },
       'Mesa':       { type: 'folder', children: { 'macweb.dev': { type: 'folder', children: {} } } },
       'Música':     { type: 'folder', children: {} },
       'Pública':    { type: 'folder', children: {} },
@@ -46,6 +67,7 @@ function getIconHtml(name, item, size = 72) {
     if (name === 'Mesa')        return `<img src="assets/icons/folders/desktop-folder.png" alt="${name}" style="width:${size}px;height:${size}px;object-fit:contain;" draggable="false" />`;
     if (name === 'Aplicativos') return `<img src="assets/icons/folders/applications-folder.png" alt="${name}" style="width:${size}px;height:${size}px;object-fit:contain;" draggable="false" />`;
     if (name === 'Imagens')     return `<img src="assets/icons/folders/imagens-folder.png" alt="${name}" style="width:${size}px;height:${size}px;object-fit:contain;" draggable="false" />`;
+    if (name === 'Lixo')        return `<img src="assets/icons/dock/empty-bin.png" alt="${name}" style="width:${size}px;height:${size}px;object-fit:contain;" draggable="false" />`;
     if (name === 'Filmes' || name === 'Movies')  return `<img src="assets/icons/folders/films-folder.png" alt="${name}" style="width:${size}px;height:${size}px;object-fit:contain;" draggable="false" />`;
     if (name === 'Pública' || name === 'Public') return `<img src="assets/icons/folders/public-folder.png" alt="${name}" style="width:${size}px;height:${size}px;object-fit:contain;" draggable="false" />`;
     if (name === 'Developer' || name === 'Projetos') return `<img src="assets/icons/folders/developer-folder.png" alt="${name}" style="width:${size}px;height:${size}px;object-fit:contain;" draggable="false" />`;
@@ -64,7 +86,12 @@ function getIconHtml(name, item, size = 72) {
     return getSFSymbolHtml('app', { size });
   }
 
-  if (['png', 'jpg', 'jpeg', 'webp'].includes(item.ext)) return getSFSymbolHtml('photo',      { size });
+  if (['png', 'jpg', 'jpeg', 'webp'].includes(item.ext)) {
+    if (item.url) {
+      return `<img src="${item.url}" alt="${name}" style="width:${size}px;height:${size}px;object-fit:cover;border-radius:6px;box-shadow:0 3px 8px rgba(0,0,0,0.4);border:0.5px solid rgba(255,255,255,0.15);" draggable="false" />`;
+    }
+    return getSFSymbolHtml('photo', { size });
+  }
   if (['mp3', 'm3u'].includes(item.ext))                  return getSFSymbolHtml('music.note', { size });
   if (['zip', 'dmg'].includes(item.ext))                  return getSFSymbolHtml('archivebox', { size });
 
@@ -80,12 +107,88 @@ function resolvePath(pathArr) {
   return node;
 }
 
-export function renderFinder(contentEl, wm) {
+function openQuickLookImage(title, url) {
+  const existing = document.getElementById('mac-quicklook-overlay');
+  if (existing) existing.remove();
+
+  const overlay = document.createElement('div');
+  overlay.id = 'mac-quicklook-overlay';
+  overlay.style.cssText = `
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  `;
+
+  const container = document.createElement('div');
+  container.style.cssText = `
+    max-width: 85vw;
+    max-height: 85vh;
+    background: #1e1e20;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: scale(0.95);
+    transition: transform 0.2s cubic-bezier(0.2, 0.9, 0.3, 1);
+  `;
+
+  container.innerHTML = `
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:rgba(40,40,44,0.95);border-bottom:1px solid rgba(255,255,255,0.08);user-select:none;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <button id="ql-close-btn" style="width:12px;height:12px;border-radius:50%;background:#ff5f57;border:none;cursor:pointer;padding:0;" title="Fechar"></button>
+        <span style="font-size:12px;font-weight:600;color:rgba(255,255,255,0.85);margin-left:6px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;">${title}</span>
+      </div>
+      <a href="${url}" target="_blank" style="font-size:11px;color:#0a84ff;text-decoration:none;font-weight:500;">Abrir Original ↗</a>
+    </div>
+    <div style="padding:16px;display:flex;align-items:center;justify-content:center;background:#141416;overflow:hidden;flex:1;">
+      <img src="${url}" alt="${title}" style="max-width:100%;max-height:75vh;object-fit:contain;border-radius:6px;box-shadow:0 8px 24px rgba(0,0,0,0.5);" />
+    </div>
+  `;
+
+  overlay.appendChild(container);
+  document.body.appendChild(overlay);
+
+  requestAnimationFrame(() => {
+    overlay.style.opacity = '1';
+    container.style.transform = 'scale(1)';
+  });
+
+  const close = () => {
+    overlay.style.opacity = '0';
+    container.style.transform = 'scale(0.95)';
+    setTimeout(() => overlay.remove(), 200);
+  };
+
+  container.querySelector('#ql-close-btn').onclick = close;
+  overlay.onclick = (e) => { if (e.target === overlay) close(); };
+  window.addEventListener('keydown', function escHandler(e) {
+    if (e.key === 'Escape') {
+      close();
+      window.removeEventListener('keydown', escHandler);
+    }
+  });
+}
+
+export function renderFinder(contentEl, wm, options = {}) {
   contentEl.innerHTML = '';
 
-  const titlebar = WindowManager.buildTitleBar('finder', 'mateus', wm, { showTitle: false });
+  const initialPath = options?.initialPath ? [...options.initialPath] : ['~'];
+  const isTrashApp = options?.appId === 'trash' || initialPath[initialPath.length - 1] === 'Lixo';
+  const appId = isTrashApp ? 'trash' : 'finder';
 
-  let currentPath = ['~'];
+  const titlebar = WindowManager.buildTitleBar(appId, isTrashApp ? 'Lixo' : 'mateus', wm, { showTitle: false });
+
+  let currentPath = initialPath;
   let viewMode    = 'grid';
   let searchQuery = '';
 
@@ -103,6 +206,10 @@ export function renderFinder(contentEl, wm) {
     },
     {
       header: 'iCloud',
+      items: []
+    },
+    {
+      header: 'Localizações',
       items: [
         { label: 'OneDrive', iconFile: 'assets/icons/sf-symbols/white/onedrive.png', path: ['~'] },
       ]
@@ -210,8 +317,6 @@ export function renderFinder(contentEl, wm) {
         sidebarScroll.querySelectorAll('.finder-sidebar-item').forEach(r => r.style.background = '');
         row.style.background = 'rgba(255,255,255,0.12)';
       });
-      row.addEventListener('mouseenter', () => { if (row.style.background !== 'rgba(255,255,255,0.12)') row.style.background = 'rgba(255,255,255,0.06)'; });
-      row.addEventListener('mouseleave', () => { if (row.style.background !== 'rgba(255,255,255,0.12)') row.style.background = ''; });
       sidebarScroll.appendChild(row);
     });
   });
@@ -303,8 +408,81 @@ export function renderFinder(contentEl, wm) {
   toolbar.appendChild(leftGroup);
   toolbar.appendChild(rightGroup);
 
+  const trashBar = document.createElement('div');
+  trashBar.className = 'finder-trash-bar';
+  trashBar.style.cssText = `
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 16px;
+    background: rgba(38, 38, 40, 0.95);
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+    height: 32px;
+    box-sizing: border-box;
+    user-select: none;
+  `;
+  trashBar.innerHTML = `
+    <span style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.92);letter-spacing:-0.1px;">Lixo</span>
+    <button id="finder-empty-trash-btn" style="
+      background: rgba(255, 255, 255, 0.12);
+      border: 0.5px solid rgba(255, 255, 255, 0.15);
+      border-radius: 5px;
+      color: #ffffff;
+      font-size: 11.5px;
+      font-weight: 400;
+      padding: 2px 10px;
+      cursor: pointer;
+      outline: none;
+      transition: background 0.12s;
+      font-family: inherit;
+    ">Esvaziar</button>
+  `;
+
+  trashBar.querySelector('#finder-empty-trash-btn').addEventListener('click', () => {
+    import('../macDialog.js').then(m => {
+      m.showMacAlert({
+        messageText: 'Tem certeza de que deseja esvaziar o Lixo?',
+        informativeText: 'Os itens no Lixo serão apagados permanentemente.',
+        buttons: ['Cancelar', 'Esvaziar Lixo'],
+        callback: (chosenBtn) => {
+          if (chosenBtn === 'Esvaziar Lixo') {
+            const lixoNode = resolvePath(['~', 'Lixo']);
+            if (lixoNode) lixoNode.children = {};
+            render();
+            import('../notificationManager.js').then(n => {
+              n.showNotification({
+                title: 'Lixo',
+                desc: 'O Lixo foi esvaziado.',
+                icon: 'assets/icons/dock/empty-bin.png',
+                duration: 3000
+              });
+            });
+          }
+        }
+      });
+    });
+  });
+
   const contentArea = document.createElement('div');
   contentArea.id = 'finder-content';
+  contentArea.addEventListener('click', (e) => {
+    if (!e.target.closest('.finder-grid-cell') && !e.target.closest('.finder-list-row')) {
+      contentArea.querySelectorAll('.finder-grid-cell').forEach(c => {
+        const icon = c.querySelector('.finder-icon-preview');
+        if (icon) icon.style.background = '';
+        const txt = c.querySelector('.finder-item-name');
+        if (txt) {
+          txt.style.background = '';
+          txt.style.color = 'rgba(255,255,255,0.92)';
+        }
+      });
+      contentArea.querySelectorAll('.finder-list-row').forEach(r => {
+        r.style.background = '';
+        r.style.color = '';
+      });
+    }
+  });
 
   const pathBar = document.createElement('div');
   pathBar.id = 'finder-pathbar';
@@ -325,6 +503,7 @@ export function renderFinder(contentEl, wm) {
   `;
 
   mainPane.appendChild(toolbar);
+  mainPane.appendChild(trashBar);
   mainPane.appendChild(contentArea);
   mainPane.appendChild(pathBar);
 
@@ -334,10 +513,21 @@ export function renderFinder(contentEl, wm) {
   contentEl.appendChild(root);
 
   function updatePathBar() {
+    const isTrash = currentPath[currentPath.length - 1] === 'Lixo';
     const fullPath = ['Macintosh HD', 'Usuários', ...currentPath.map(p => p === '~' ? 'mateus' : p)];
 
-    const lastSegment = fullPath[fullPath.length - 1];
+    const lastSegment = isTrash ? 'Lixo' : fullPath[fullPath.length - 1];
     folderTitle.textContent = lastSegment;
+
+    if (isTrash) {
+      pathBar.innerHTML = `
+        <span style="display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,0.85);font-weight:500;font-size:11px;">
+          <img src="assets/icons/dock/empty-bin.png" style="width:13px;height:13px;object-fit:contain;flex-shrink:0;" draggable="false" />
+          <span>Lixo</span>
+        </span>
+      `;
+      return;
+    }
 
     pathBar.innerHTML = fullPath.map((p, i) => {
       let iconSrc = 'assets/icons/folders/default-folder.png';
@@ -353,6 +543,8 @@ export function renderFinder(contentEl, wm) {
         iconSrc = 'assets/icons/folders/applications-folder.png';
       } else if (p === 'Imagens') {
         iconSrc = 'assets/icons/folders/imagens-folder.png';
+      } else if (p === 'Lixo') {
+        iconSrc = 'assets/icons/dock/empty-bin.png';
       } else if (p === 'Filmes' || p === 'Movies') {
         iconSrc = 'assets/icons/folders/films-folder.png';
       } else if (p === 'Música' || p === 'Music') {
@@ -378,6 +570,9 @@ export function renderFinder(contentEl, wm) {
   }
 
   function render() {
+    const isTrash = currentPath[currentPath.length - 1] === 'Lixo';
+    trashBar.style.display = isTrash ? 'flex' : 'none';
+
     const node     = resolvePath(currentPath);
     const children = node?.children || {};
     const filtered = Object.entries(children).filter(([name]) =>
@@ -403,20 +598,22 @@ export function renderFinder(contentEl, wm) {
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 7px;
-          padding: 10px 8px 8px 8px;
+          gap: 6px;
+          padding: 6px 4px 4px 4px;
           border-radius: 8px;
-          cursor: pointer;
+          cursor: default;
           width: 90px;
-          transition: background 0.12s;
+          user-select: none;
         `;
         cell.innerHTML = `
-          <div style="height:72px;display:flex;align-items:center;justify-content:center;">${getIconHtml(name, item, 68)}</div>
-          <span style="
-            font-size: 12px;
+          <div class="finder-icon-preview" style="width:76px;height:76px;display:flex;align-items:center;justify-content:center;border-radius:6px;transition:background 0.08s;">
+            ${getIconHtml(name, item, 68)}
+          </div>
+          <span class="finder-item-name" style="
+            font-size: 11.5px;
             text-align: center;
             word-break: break-word;
-            color: rgba(255,255,255,0.9);
+            color: rgba(255,255,255,0.92);
             max-width: 88px;
             line-height: 1.35;
             display: -webkit-box;
@@ -425,10 +622,30 @@ export function renderFinder(contentEl, wm) {
             overflow: hidden;
             letter-spacing: -0.1px;
             font-weight: 400;
+            padding: 1px 5px;
+            border-radius: 4px;
+            transition: background 0.08s, color 0.08s;
           ">${name}</span>
         `;
-        cell.addEventListener('mouseenter', () => cell.style.background = 'rgba(255,255,255,0.08)');
-        cell.addEventListener('mouseleave', () => cell.style.background = '');
+        cell.addEventListener('click', (e) => {
+          e.stopPropagation();
+          contentArea.querySelectorAll('.finder-grid-cell').forEach(c => {
+            const icon = c.querySelector('.finder-icon-preview');
+            if (icon) icon.style.background = '';
+            const txt = c.querySelector('.finder-item-name');
+            if (txt) {
+              txt.style.background = '';
+              txt.style.color = 'rgba(255,255,255,0.92)';
+            }
+          });
+          const icon = cell.querySelector('.finder-icon-preview');
+          if (icon) icon.style.background = 'rgba(255,255,255,0.18)';
+          const txt = cell.querySelector('.finder-item-name');
+          if (txt) {
+            txt.style.background = '#0063e1';
+            txt.style.color = '#ffffff';
+          }
+        });
         cell.addEventListener('dblclick', () => {
           if (item.type === 'folder') { currentPath.push(name); render(); }
           if (item.type === 'app') {
@@ -439,7 +656,13 @@ export function renderFinder(contentEl, wm) {
               }, 50);
             }
           }
-          if (item.type === 'file' && item.url) { window.open(item.url, '_blank'); }
+          if (item.type === 'file' && item.url) {
+            if (['png', 'jpg', 'jpeg', 'webp'].includes(item.ext)) {
+              openQuickLookImage(name, item.url);
+            } else {
+              window.open(item.url, '_blank');
+            }
+          }
         });
         contentArea.appendChild(cell);
       });
@@ -450,7 +673,7 @@ export function renderFinder(contentEl, wm) {
 
     } else {
 
-      contentArea.style.cssText = `flex:1;overflow-y:auto;padding:4px;`;
+      contentArea.style.cssText = `flex:1;overflow-y:auto;padding:4px;user-select:none;`;
       contentArea.innerHTML = `
         <div style="display:grid;grid-template-columns:1fr 100px 80px;font-size:11px;font-weight:600;color:rgba(255,255,255,0.35);padding:5px 12px;border-bottom:1px solid rgba(255,255,255,0.07);margin-bottom:2px;letter-spacing:0.1px;">
           <span>Nome</span><span style="text-align:right;">Data de modificação</span><span style="text-align:right;">Tamanho</span>
@@ -458,15 +681,16 @@ export function renderFinder(contentEl, wm) {
       `;
       filtered.forEach(([name, item]) => {
         const row = document.createElement('div');
+        row.className = 'finder-list-row';
         row.style.cssText = `
           display: grid;
           grid-template-columns: 1fr 100px 80px;
           align-items: center;
           font-size: 13px;
           padding: 5px 12px;
-          border-radius: 6px;
-          cursor: pointer;
-          transition: background 0.1s;
+          border-radius: 5px;
+          cursor: default;
+          transition: background 0.08s;
           letter-spacing: -0.1px;
         `;
         row.innerHTML = `
@@ -474,8 +698,15 @@ export function renderFinder(contentEl, wm) {
           <span style="text-align:right;opacity:0.4;font-size:11px;">${new Date().toLocaleDateString('pt-BR')}</span>
           <span style="text-align:right;opacity:0.4;font-size:11px;">${item.size || '—'}</span>
         `;
-        row.addEventListener('mouseenter', () => row.style.background = 'rgba(255,255,255,0.05)');
-        row.addEventListener('mouseleave', () => row.style.background = '');
+        row.addEventListener('click', (e) => {
+          e.stopPropagation();
+          contentArea.querySelectorAll('.finder-list-row').forEach(r => {
+            r.style.background = '';
+            r.style.color = '';
+          });
+          row.style.background = '#0063e1';
+          row.style.color = '#ffffff';
+        });
         row.addEventListener('dblclick', () => {
           if (item.type === 'folder') { currentPath.push(name); render(); }
           if (item.type === 'app') {
@@ -486,7 +717,13 @@ export function renderFinder(contentEl, wm) {
               }, 50);
             }
           }
-          if (item.type === 'file' && item.url) { window.open(item.url, '_blank'); }
+          if (item.type === 'file' && item.url) {
+            if (['png', 'jpg', 'jpeg', 'webp'].includes(item.ext)) {
+              openQuickLookImage(name, item.url);
+            } else {
+              window.open(item.url, '_blank');
+            }
+          }
         });
         contentArea.appendChild(row);
       });

@@ -41,7 +41,6 @@ function runBoot() {
       if (pct < 100) {
         requestAnimationFrame(step);
       } else {
-        // Fade out boot screen
         bootEl.style.transition = 'opacity 0.4s';
         bootEl.style.opacity = '0';
         setTimeout(() => {
@@ -54,41 +53,34 @@ function runBoot() {
   });
 }
 
-// ─── Main init ────────────────────────────────────────────────────────
 async function init() {
-  // Run boot animation
   await runBoot();
 
-  // Check mobile
   if (isMobile()) {
     window.location.replace('assets/portfolio.html');
     return;
   }
 
-  // Show app
   const appEl = document.getElementById('app');
   if (appEl) appEl.style.display = 'block';
 
-  // Apply dark-theme class permanently
   document.documentElement.classList.remove('light-theme');
   document.documentElement.classList.add('dark-theme');
   document.body.classList.remove('light-theme');
   document.body.classList.add('dark-theme');
   localStorage.removeItem('theme');
 
-  // Init core systems
   const wm = new WindowManager(document.getElementById('window-container'));
   const contextMenu = new ContextMenu();
   const desktop = new Desktop(wm, contextMenu);
   desktop.restoreWallpaper();
 
-  // Register all apps
   wm.registerApp('terminal',   (el) => renderTerminal(el, wm));
   wm.registerApp('safari',     (el) => renderSafari(el, wm));
   wm.registerApp('finder',     (el) => renderFinder(el, wm));
   wm.registerApp('settings',   (el) => renderSettings(el, wm, desktop));
+  wm.registerApp('trash',      (el) => renderFinder(el, wm, { initialPath: ['~', 'Lixo'] }));
 
-  // Init UI components
   const menuBar = new MenuBar(wm);
 
   const dockEl = document.getElementById('dock');
@@ -103,5 +95,4 @@ async function init() {
   import('./welcomeAlert.js').then(m => m.initWelcomeAlert());
 }
 
-// ─── Start ─────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', init);

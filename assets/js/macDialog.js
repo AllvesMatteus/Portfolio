@@ -3,13 +3,10 @@ import { showNotification } from './notificationManager.js';
 export function showMacDialog({
   icon = '',
   title = '',
-  message = 'Em breve.',
-  category = ''
+  message = 'Em breve.'
 } = {}) {
   showNotification({
-    category: category || title.toUpperCase(),
     title: title,
-    subtitle: 'Recurso em breve',
     desc: message,
     icon: icon
   });

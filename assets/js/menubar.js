@@ -1,4 +1,5 @@
 import { getSFSymbolHtml } from './sfSymbols.js';
+import { showNotification } from './notificationManager.js';
 
 const APPLE_MENU_OPTIONS = [
   { id: 'about', label: 'Sobre este Mac' },
@@ -115,6 +116,7 @@ export class MenuBar {
     this._initClock();
     this._initAppleMenu();
     this._initCC();
+    this._initMenubarIcons();
 
     document.addEventListener('mousedown', e => {
       const bar = document.getElementById('menubar');
@@ -428,6 +430,78 @@ export class MenuBar {
         this.state.ccOpen = true;
       }
     });
+  }
+
+  _initMenubarIcons() {
+    const batteryBtn = document.getElementById('menubar-battery-btn');
+    if (batteryBtn) {
+      batteryBtn.addEventListener('click', e => {
+        e.stopPropagation();
+        this._closeAll();
+        showNotification({
+          title: 'Bateria',
+          desc: 'Painel de energia disponível em breve.',
+          icon: 'assets/icons/menuBar/battery.100.png',
+          duration: 3500
+        });
+      });
+    }
+
+    const wifiBtn = document.getElementById('menubar-wifi-btn');
+    if (wifiBtn) {
+      wifiBtn.addEventListener('click', e => {
+        e.stopPropagation();
+        this._closeAll();
+        showNotification({
+          title: 'Wi-Fi',
+          desc: 'Seleção de redes disponível em breve.',
+          icon: 'assets/icons/menuBar/wi-fi.png',
+          duration: 3500
+        });
+      });
+    }
+
+    const btBtn = document.getElementById('menubar-bluetooth-btn');
+    if (btBtn) {
+      btBtn.addEventListener('click', e => {
+        e.stopPropagation();
+        this._closeAll();
+        showNotification({
+          title: 'Bluetooth',
+          desc: 'Pareamento de dispositivos disponível em breve.',
+          icon: 'assets/icons/menuBar/bluetooth.png',
+          duration: 3500
+        });
+      });
+    }
+
+    const siriBtn = document.getElementById('menubar-siri-btn');
+    if (siriBtn) {
+      siriBtn.addEventListener('click', e => {
+        e.stopPropagation();
+        this._closeAll();
+        showNotification({
+          title: 'Siri',
+          desc: 'Assistente de voz disponível em breve.',
+          icon: 'assets/icons/menuBar/siri-2018.png',
+          duration: 3500
+        });
+      });
+    }
+
+    const searchBtn = document.getElementById('menubar-search-btn');
+    if (searchBtn) {
+      searchBtn.addEventListener('click', e => {
+        e.stopPropagation();
+        this._closeAll();
+        showNotification({
+          title: 'Spotlight',
+          desc: 'Busca do sistema disponível em breve.',
+          icon: 'assets/icons/sf-symbols/white/magnifyingglass.png',
+          duration: 3500
+        });
+      });
+    }
   }
 
   _renderCCContent(cc) {

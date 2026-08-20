@@ -683,10 +683,8 @@ export function renderTerminal(contentEl, wm) {
           });
         } else if (notifData) {
           showNotification({
-            category: notifData.subtitle.toUpperCase(),
             title: notifData.title,
-            subtitle: notifData.subtitle,
-            desc: notifData.desc,
+            desc: notifData.desc || notifData.subtitle,
             icon: 'assets/icons/apps/custom/terminal.png'
           });
         } else {

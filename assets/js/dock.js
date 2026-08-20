@@ -17,7 +17,7 @@ export const APPS = [
   { id: 'terminal',  name: 'Terminal',           iconDark: 'assets/icons/dock/terminal.png',       iconLight: 'assets/icons/dock/terminal.png',       fallback: '🖥' },
   { id: 'settings',  name: 'Ajustes do Sistema', iconDark: 'assets/icons/dock/settings.png',       iconLight: 'assets/icons/dock/settings.png',       fallback: '⚙️' },
   { type: 'divider' },
-  { id: 'trash',     name: 'Lixeira',            iconDark: 'assets/icons/dock/empty-bin.png',      iconLight: 'assets/icons/dock/empty-bin.png',      fallback: '🗑️', noOpen: true },
+  { id: 'trash',     name: 'Lixo',               iconDark: 'assets/icons/dock/empty-bin.png',      iconLight: 'assets/icons/dock/empty-bin.png',      fallback: '🗑️' },
 ];
 
 class DockMagnification {
@@ -152,6 +152,7 @@ export class Dock {
     this._build();
 
     wm.onChange(state => this._updateIndicators(state));
+    this._updateIndicators({ openApps: wm.openApps, minimizedApps: wm.minimizedApps });
 
     dockEl.addEventListener('mouseenter', e => this.mainMag.onMouseEnter(e));
     dockEl.addEventListener('mousemove',  e => this.mainMag.onMouseMove(e));

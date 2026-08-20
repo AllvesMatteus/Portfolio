@@ -13,11 +13,11 @@ class NotificationManager {
   show({
     type = 'banner',
     appName = '',
-    category = '',
     title = 'Notificação',
-    subtitle = '',
     desc = '',
+    subtitle = '',
     icon = '',
+    time = 'Agora',
     duration = 5000,
     actions = [],
     onClick = null
@@ -30,8 +30,9 @@ class NotificationManager {
     const notif = document.createElement('div');
     notif.className = `mac-notif-banner ${type === 'alert' ? 'mac-notif-alert' : ''}`;
 
-    const appLabel = appName || category || 'SISTEMA';
-    const iconHtml = icon ? `<img src="${icon}" alt="${title}" class="mac-notif-icon" draggable="false" />` : '';
+    const titleText = title || appName || 'Notificação';
+    const messageText = desc || subtitle || '';
+    const iconHtml = icon ? `<img src="${icon}" alt="${titleText}" class="mac-notif-icon" draggable="false" />` : '';
 
     let actionsHtml = '';
     if (actions && actions.length > 0) {
@@ -43,16 +44,14 @@ class NotificationManager {
     }
 
     notif.innerHTML = `
-      <div class="mac-notif-header">
-        <span class="mac-notif-category">${appLabel}</span>
-        <span class="mac-notif-time">Agora</span>
-      </div>
       <div class="mac-notif-body">
         ${iconHtml}
         <div class="mac-notif-content">
-          <div class="mac-notif-title">${title}</div>
-          ${subtitle ? `<div class="mac-notif-subtitle">${subtitle}</div>` : ''}
-          ${desc ? `<div class="mac-notif-desc">${desc}</div>` : ''}
+          <div class="mac-notif-header">
+            <span class="mac-notif-title">${titleText}</span>
+            <span class="mac-notif-time">${time}</span>
+          </div>
+          ${messageText ? `<div class="mac-notif-desc">${messageText}</div>` : ''}
         </div>
       </div>
       ${actionsHtml}

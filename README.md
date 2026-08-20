@@ -6,7 +6,7 @@ Um ambiente desktop interativo executado no navegador, unificando a experiência
 
 ## Visão Geral Técnica
 
-**Mateus OS** é uma aplicação web que combina o ambiente de trabalho estilo macOS com o portfólio profissional de Mateus Alves, oferecendo navegação por terminal zsh, suporte a comandos e integração direta com aplicações nativas (Safari, Finder, Terminal e Ajustes).
+**Mateus OS** é uma aplicação web que combina o ambiente de trabalho estilo macOS com o portfólio profissional de Mateus Alves, oferecendo navegação por terminal zsh, suporte a comandos e integração direta com aplicações nativas (Safari, Finder, Terminal, Ajustes e Lixo).
 
 ---
 
@@ -20,11 +20,24 @@ Um ambiente desktop interativo executado no navegador, unificando a experiência
 - **Dynamic Theme Color Blending**: Automatic theme color management switching window background colors (`#22242A` for Google, `#28282b` for standard pages) and dynamically toggling the bottom toolbar separator line (`border-bottom`).
 - **Interactive Toolbar Controls**: Integrated Clipboard API for URL copying, automatic URL input placeholder clearing upon focus, and custom SF Symbol button hover states.
 
+### Finder & Lixo (Trash) Application
+- **Explorador de Arquivos com VFS**: Navegação hierárquica por pastas (Documentos, Downloads, Imagens, Developer e Lixo) com suporte a visualização em Grade e Lista.
+- **Seleção Nativa Fiel ao macOS**: Seleção por clique com destaque azul clássico (`#0063e1`) nos rótulos e moldura translúcida suave nos ícones, com desmarcação em área vazia e ausência de efeitos de hover.
+- **Quick Look Integrado**: Pré-visualização instantânea de imagens em modal nativo ao realizar duplo clique em fotos (`Captura de Tela`).
+- **Janela e Ações do Lixo**: Visual dedicado com barra de subcabeçalho, botão de esvaziamento, diálogo nativo de confirmação (`showMacAlert`) e notificações de conclusão.
+- **Barra de Caminho Dinâmica (Pathbar)**: Rastreamento em tempo real do diretório ativo com navegação rápida por clique e ícones nativos.
+
 ### Window Management Engine
 - **Z-Index Layering**: Dynamic depth management with automatic focus elevation (`windowManager.js`).
 - **Drag & Resize**: High-frequency mouse and touch event handling for real-time window bounds computation.
+- **Controles de Semáforo Dinâmicos**: Botões de fechar, minimizar e expandir calibrados para cada aplicação individual, incluindo instâncias especializadas como a Lixeira.
 - **Input Focus Protection**: Drag handler filtering that excludes interactive elements (`<input>`, `<textarea>`, `<button>`) from window drag events to prevent input focus loss and window flashing.
 - **Calibrated Default Aspect Ratios**: Initial window bounds optimized for standard desktop viewports (Safari: 1040x680px, Finder: 960x620px).
+
+### Sistema de Notificações macOS
+- **Layout Nativo**: Estrutura com ícone do aplicativo, linha superior contendo Título e Horário (`Agora`), e corpo com a mensagem explicativa sem redundâncias.
+- **Interatividade na Menubar**: Disparo de notificações de status ao clicar em Bateria, Wi-Fi, Bluetooth, Siri e Spotlight.
+- **Gestos de Descarte**: Suporte a arraste lateral (swipe-to-dismiss) e auto-fechamento com pausa ao posicionar o cursor sobre o banner.
 
 ### Desktop Widgets Engine
 - **Live Location Weather Engine**: Integrated 5-tier location resolution engine (GeoJS, IP-API, ipapi.co, HTML5 Geolocation + BigDataCloud reverse geocode, System Timezone fallback) paired with the Open-Meteo API for live weather conditions and 6-hour hourly forecasts.
@@ -42,7 +55,8 @@ Um ambiente desktop interativo executado no navegador, unificando a experiência
 
 ### Dock Component
 - **Spring Physics Magnification**: Smooth icon scaling based on cursor distance calculations.
-- **Active Indicators**: Status indicators for open and minimized applications.
+- **Active Indicators**: Status indicators (bolinhas luminosas) para todas as aplicações em execução e minimizadas.
+- **Tooltips Pixel-Perfect**: Balões de dica com tipografia San Francisco, desfoque de fundo e contorno escuro nativo do macOS.
 
 ### Terminal Engine (MateusOS)
 - **Modo de Operação e Privilégios Dual-Stage**: Divisão de permissões entre o Modo Normal (`mateus@MacBook-Pro ~ %`) para visitantes comuns e o Modo Engenharia/Administrador (`root@MacBook-Pro ~ #`) desbloqueado via `sudo -i` com a lecture de segurança nativa da Apple e preenchimento de senha automatizado.
@@ -82,12 +96,12 @@ MacOS-Web/
     │       ├── finder.js
     │       ├── safari.js
     │       ├── terminal.js
-    │       ├── settings.js
-    │       ├── notes.js
-    │       ├── music.js
-    │       ├── calendar.js
-    │       └── calculator.js
+    │       └── settings.js
     ├── docs/
+    │   └── mateus-desenvolvedor-fullstack.pdf
+    ├── images/
+    │   ├── user_photos/
+    │   └── wallpapers/
     ├── icons/
     └── favicons/
 ```
