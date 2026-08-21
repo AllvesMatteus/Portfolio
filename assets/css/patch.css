@@ -2521,24 +2521,26 @@ body.dark-theme {
 .settings-content-body {
   flex: 1;
   overflow-y: auto;
-  padding: 16px 28px 32px 28px;
+  padding: 14px 24px 32px 24px;
   box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", sans-serif;
+  color: #ffffff;
 }
 
 .settings-section-title {
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.85);
-  margin: 18px 0 6px 4px;
+  color: #ffffff;
+  margin: 16px 0 5px 6px;
+  letter-spacing: -0.1px;
   user-select: none;
 }
 
 .settings-card {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.06);
   border: 0.5px solid rgba(255, 255, 255, 0.08);
-  border-radius: 10px;
-  padding: 12px 16px;
+  border-radius: 8px;
+  padding: 10px 14px;
   box-sizing: border-box;
 }
 
@@ -2550,19 +2552,17 @@ body.dark-theme {
 .settings-card-divider {
   height: 0.5px;
   background: rgba(255, 255, 255, 0.08);
-  margin: 12px 0;
+  margin: 10px 0;
 }
 
 .settings-list-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 16px;
-  height: 38px;
+  padding: 0 14px;
+  height: 34px;
   box-sizing: border-box;
   border-bottom: 0.5px solid rgba(255, 255, 255, 0.06);
-  cursor: pointer;
-  transition: background 0.1s ease;
   user-select: none;
 }
 
@@ -2570,42 +2570,40 @@ body.dark-theme {
   border-bottom: none;
 }
 
-.settings-list-item:hover {
-  background: rgba(255, 255, 255, 0.04);
-}
-
 .settings-btn {
   background: rgba(255, 255, 255, 0.12);
-  border: 0.5px solid rgba(255, 255, 255, 0.15);
+  border: 0.5px solid rgba(255, 255, 255, 0.14);
   border-radius: 5px;
-  color: #ffffff;
+  color: #e5e5e7;
   font-size: 11.5px;
-  font-weight: 500;
-  padding: 3px 10px;
-  cursor: pointer;
+  font-weight: 400;
+  height: 20px;
+  line-height: 18px;
+  padding: 0 8px;
+  cursor: default;
   transition: background 0.12s ease;
   font-family: inherit;
   user-select: none;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .settings-btn:hover {
   background: rgba(255, 255, 255, 0.18);
 }
 
-.settings-btn:active {
-  background: rgba(255, 255, 255, 0.24);
-}
-
 .mac-switch {
-  width: 36px;
-  height: 20px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
+  width: 32px;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 9999px;
   position: relative;
-  cursor: pointer;
-  transition: background 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: default;
   flex-shrink: 0;
   user-select: none;
+  box-sizing: border-box;
 }
 
 .mac-switch.is-on {
@@ -2613,17 +2611,17 @@ body.dark-theme {
 }
 
 .mac-switch-knob {
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   background: #ffffff;
   border-radius: 50%;
   position: absolute;
   top: 2px;
   left: 2px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
   transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .mac-switch.is-on .mac-switch-knob {
-  transform: translateX(16px);
+  transform: translateX(14px);
 }
