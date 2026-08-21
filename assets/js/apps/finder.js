@@ -24,7 +24,12 @@ const FILE_TREE = {
           'wallpaper.jpg': { type: 'file', size: '1.2 MB', ext: 'jpg' }
         }
       },
-      'Mesa':       { type: 'folder', children: { 'macweb.dev': { type: 'folder', children: {} } } },
+      'Mesa':       {
+        type: 'folder',
+        children: {
+          'Currículo.pdf': { type: 'file', size: '353 KB', ext: 'pdf', url: 'assets/docs/mateus-desenvolvedor-fullstack.pdf', id: 'curriculo-pdf' }
+        }
+      },
       'Música':     { type: 'folder', children: {} },
       'Pública':    { type: 'folder', children: {} },
       'Developer':  {
@@ -99,6 +104,14 @@ function dispatchTrashUpdate() {
   window.dispatchEvent(new CustomEvent('trash:updated', { detail: { hasItems } }));
 }
 
+function dispatchMesaUpdate() {
+  window.dispatchEvent(new CustomEvent('mesa:updated'));
+}
+
+export function getMesaItems() {
+  return FILE_TREE['~']['Mesa']?.children || {};
+}
+
 export function moveToTrash(name, item, originPath = ['~']) {
   const node = resolvePath(originPath);
   if (node?.children?.[name]) {
@@ -106,6 +119,7 @@ export function moveToTrash(name, item, originPath = ['~']) {
   }
   TRASH_ITEMS[name] = { ...item, originPath: [...originPath], trashedAt: Date.now() };
   dispatchTrashUpdate();
+  dispatchMesaUpdate();
   showNotification({
     title: 'Lixo',
     desc: `"${name}" movido para o Lixo.`,
@@ -118,20 +132,19 @@ export function restoreFromTrash(name) {
   const item = TRASH_ITEMS[name];
   if (!item) return;
 
-  const originPath = item.originPath || ['~'];
-  if (originPath.length === 1 && originPath[0] === 'desktop') {
-    const desktopEl = document.querySelector(`.desktop-icon[data-id="${item.id || 'curriculo-pdf'}"]`);
-    if (desktopEl) desktopEl.style.display = 'flex';
-  } else {
-    const node = resolvePath(originPath) || FILE_TREE['~'];
-    if (node && node.children) {
-      const { originPath: _, trashedAt: __, ...cleanItem } = item;
-      node.children[name] = cleanItem;
-    }
+  const originPath = (item.originPath && item.originPath.length > 0 && item.originPath[0] !== 'desktop')
+    ? item.originPath
+    : ['~', 'Mesa'];
+
+  const node = resolvePath(originPath) || FILE_TREE['~']['Mesa'];
+  if (node && node.children) {
+    const { originPath: _, trashedAt: __, ...cleanItem } = item;
+    node.children[name] = cleanItem;
   }
 
   delete TRASH_ITEMS[name];
   dispatchTrashUpdate();
+  dispatchMesaUpdate();
   showNotification({
     title: 'Lixo',
     desc: `"${name}" colocado de volta.`,

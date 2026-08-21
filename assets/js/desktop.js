@@ -40,7 +40,7 @@ const WALLPAPER_GROUPS = [
 import { WidgetsManager } from './widgets.js';
 import { showNotification } from './notificationManager.js';
 import { showMacAlert } from './macDialog.js';
-import { moveToTrash } from './apps/finder.js';
+import { moveToTrash, getMesaItems } from './apps/finder.js';
 
 export const ALL_WALLPAPERS = WALLPAPER_GROUPS.flatMap(g => g.wallpapers);
 export { WALLPAPER_GROUPS };
@@ -57,6 +57,8 @@ export class Desktop {
     this._renderDesktopIcons();
     this._initDragSelection();
     this.widgetsManager = new WidgetsManager(this.el, wm);
+
+    window.addEventListener('mesa:updated', () => this._renderDesktopIcons());
 
     this.useStacks = true;
     this.groupBy = 'tipo';
@@ -127,32 +129,35 @@ export class Desktop {
   }
 
   _renderDesktopIcons() {
-    const DESKTOP_ITEMS = [
-      {
-        id: 'curriculo-pdf',
-        name: 'Currículo.pdf',
-        imgSrc: 'assets/icons/documents/pdf-document.png',
-        action: () => window.open('assets/docs/mateus-desenvolvedor-fullstack.pdf', '_blank'),
-      },
-    ];
+    const mesaItems = getMesaItems ? getMesaItems() : {};
+    const desktopItemEntries = Object.entries(mesaItems);
+
+    const activeIds = desktopItemEntries.map(([name, item]) => item.id || name.replace(/[^a-zA-Z0-9_-]/g, '_'));
+    document.querySelectorAll('.desktop-icon').forEach(el => {
+      if (!activeIds.includes(el.dataset.id)) {
+        el.remove();
+      }
+    });
 
     const savedPositions = this._getSavedIconPositions();
 
-    DESKTOP_ITEMS.forEach((item, index) => {
-      let wrapper = document.querySelector(`.desktop-icon[data-id="${item.id}"]`);
+    desktopItemEntries.forEach(([name, item], index) => {
+      const itemId = item.id || name.replace(/[^a-zA-Z0-9_-]/g, '_');
+      let wrapper = document.querySelector(`.desktop-icon[data-id="${itemId}"]`);
       if (!wrapper) {
         wrapper = document.createElement('div');
         wrapper.className = 'desktop-icon';
-        wrapper.dataset.id = item.id;
+        wrapper.dataset.id = itemId;
         this.el.appendChild(wrapper);
       }
+      wrapper.style.display = 'flex';
 
       const defaultLeft = window.innerWidth - 110;
-      const defaultTop = window.innerHeight - 190;
-      let pos = savedPositions[item.id];
+      const defaultTop = window.innerHeight - 190 - (index * 90);
+      let pos = savedPositions[itemId];
       if (!pos || pos.top < 350) {
         pos = { left: defaultLeft, top: defaultTop };
-        this._saveIconPosition(item.id, pos.left, pos.top);
+        this._saveIconPosition(itemId, pos.left, pos.top);
       }
 
       wrapper.style.cssText = `
@@ -172,116 +177,143 @@ export class Desktop {
         touch-action: none;
       `;
 
+      let iconHtml = '';
+      if (item.type === 'folder') {
+        iconHtml = `<img src="assets/icons/folders/default-folder.png" alt="${name}" draggable="false" style="width:60px;height:60px;object-fit:contain;filter:drop-shadow(0 4px 10px rgba(0,0,0,0.45));" />`;
+      } else if (item.ext === 'pdf') {
+        iconHtml = `<img src="assets/icons/documents/pdf-document.png" alt="${name}" draggable="false" style="width:60px;height:60px;object-fit:contain;filter:drop-shadow(0 4px 10px rgba(0,0,0,0.45));" />`;
+      } else if (['png', 'jpg', 'jpeg', 'webp'].includes(item.ext) && item.url) {
+        iconHtml = `<img src="${item.url}" alt="${name}" draggable="false" style="width:60px;height:60px;object-fit:cover;border-radius:6px;filter:drop-shadow(0 4px 10px rgba(0,0,0,0.45));" />`;
+      } else {
+        iconHtml = `<img src="assets/icons/documents/pdf-document.png" alt="${name}" draggable="false" style="width:60px;height:60px;object-fit:contain;filter:drop-shadow(0 4px 10px rgba(0,0,0,0.45));" />`;
+      }
+
       wrapper.innerHTML = `
         <div class="desktop-icon-preview" style="display:flex;align-items:center;justify-content:center;width:68px;height:68px;border-radius:6px;transition:background 0.08s;">
-          ${item.imgSrc ? `<img src="${item.imgSrc}" alt="${item.name}" draggable="false" style="width:60px;height:60px;object-fit:contain;filter:drop-shadow(0 4px 10px rgba(0,0,0,0.45));" />` : `<span style="font-size:44px;line-height:1;">${item.emoji || ''}</span>`}
+          ${iconHtml}
         </div>
-        <span class="desktop-icon-label" style="font-size:11px;font-weight:500;color:#fff;text-align:center;text-shadow:0 1px 3px rgba(0,0,0,0.95),0 1px 8px rgba(0,0,0,0.6);padding:1px 5px;border-radius:4px;max-width:84px;word-break:break-word;line-height:1.3;font-family:-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased;transition:background 0.08s;">${item.name}</span>
+        <span class="desktop-icon-label" style="font-size:11px;font-weight:500;color:#fff;text-align:center;text-shadow:0 1px 3px rgba(0,0,0,0.95),0 1px 8px rgba(0,0,0,0.6);padding:1px 5px;border-radius:4px;max-width:84px;word-break:break-word;line-height:1.3;font-family:-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased;transition:background 0.08s;">${name}</span>
       `;
 
-      wrapper.addEventListener('contextmenu', e => {
+      wrapper.oncontextmenu = e => {
         e.preventDefault();
         e.stopPropagation();
 
         this._selectIcon(wrapper);
 
+        const isImage = item.type === 'file' && ['png', 'jpg', 'jpeg', 'webp'].includes(item.ext);
         const menuItems = [
           {
             label: 'Abrir',
-            action: () => window.open('assets/docs/mateus-desenvolvedor-fullstack.pdf', '_blank')
-          },
-          {
-            label: 'Baixar',
-            action: () => this._downloadFile('assets/docs/mateus-desenvolvedor-fullstack.pdf', 'mateus-desenvolvedor-fullstack.pdf')
-          },
-          { type: 'divider' },
-          {
-            label: 'Mover para o Lixo',
             action: () => {
-              wrapper.style.display = 'none';
-              moveToTrash('Currículo.pdf', { type: 'file', size: '353 KB', ext: 'pdf', url: 'assets/docs/mateus-desenvolvedor-fullstack.pdf', id: 'curriculo-pdf' }, ['desktop']);
-            }
-          },
-          { type: 'divider' },
-          {
-            label: 'Obter Informações',
-            action: () => {
-              showMacAlert({
-                messageText: 'Currículo.pdf',
-                informativeText: 'Tipo: Documento PDF\nTamanho: 353 KB\nModificado: Hoje\nLocal: Mesa',
-                buttons: ['OK']
-              });
-            }
-          },
-          {
-            label: 'Renomear',
-            action: () => {}
-          },
-          {
-            label: 'Comprimir “mateus-desenvolvedor-fullstack”',
-            action: () => {
-              showNotification({
-                title: 'Finder',
-                desc: 'Criando arquivo compactado...',
-                icon: 'assets/icons/dock/finder.png',
-                duration: 2500
-              });
-            }
-          },
-          {
-            label: 'Duplicar',
-            action: () => {}
-          },
-          {
-            label: 'Criar Atalho',
-            action: () => {}
-          },
-          {
-            label: 'Visualização Rápida',
-            action: () => window.open('assets/docs/mateus-desenvolvedor-fullstack.pdf', '_blank')
-          },
-          { type: 'divider' },
-          {
-            label: 'Copiar',
-            action: () => navigator.clipboard?.writeText('mateus-desenvolvedor-fullstack.pdf')
-          },
-          {
-            label: 'Compartilhar...',
-            action: () => {
-              if (navigator.share) {
-                navigator.share({ title: 'Currículo Mateus Alves', url: window.location.href });
-              } else {
-                navigator.clipboard?.writeText(window.location.href);
+              if (item.type === 'folder') {
+                this.wm.openApp('finder', 'Finder');
+                setTimeout(() => {
+                  window.dispatchEvent(new CustomEvent('finder:navigate', { detail: { path: ['~', 'Mesa', name] } }));
+                }, 10);
+              } else if (item.url) {
+                window.open(item.url, '_blank');
               }
             }
-          },
-          { type: 'divider' },
-          { type: 'tags' },
-          {
-            label: 'Etiquetas...',
-            action: () => {}
-          },
-          { type: 'divider' },
-          {
-            label: 'Ações Rápidas',
-            submenu: [
-              { label: 'Criar PDF', disabled: true },
-              { label: 'Girar à Esquerda', disabled: true }
-            ]
           }
         ];
 
-        this.contextMenu.open(e.clientX, e.clientY, menuItems);
-      });
+        if (item.url) {
+          menuItems.push({
+            label: 'Baixar',
+            action: () => this._downloadFile(item.url, name)
+          });
+        } else {
+          menuItems.push({ label: 'Abrir Com', disabled: true });
+        }
 
-      this._makeIconDraggable(wrapper, item.id, item.action);
+        menuItems.push({ type: 'divider' });
+        menuItems.push({
+          label: 'Mover para o Lixo',
+          action: () => {
+            moveToTrash(name, item, ['~', 'Mesa']);
+          }
+        });
+        menuItems.push({ type: 'divider' });
+        menuItems.push({
+          label: 'Obter Informações',
+          action: () => {
+            showMacAlert({
+              messageText: name,
+              informativeText: `Tipo: ${item.type === 'folder' ? 'Pasta' : (item.ext ? item.ext.toUpperCase() : 'Arquivo')}\nTamanho: ${item.size || '—'}\nModificado: Hoje\nLocal: Mesa`,
+              buttons: ['OK']
+            });
+          }
+        });
+        menuItems.push({ label: 'Renomear', action: () => {} });
+        menuItems.push({
+          label: `Comprimir “${name.replace(/\.[^/.]+$/, '')}”`,
+          action: () => {
+            showNotification({
+              title: 'Finder',
+              desc: 'Criando arquivo compactado...',
+              icon: 'assets/icons/dock/finder.png',
+              duration: 2500
+            });
+          }
+        });
+        menuItems.push({ label: 'Duplicar', action: () => {} });
+        menuItems.push({ label: 'Criar Atalho', action: () => {} });
+        menuItems.push({
+          label: `Visualização Rápida de “${name}”`,
+          action: () => {
+            if (item.url) window.open(item.url, '_blank');
+          }
+        });
+        menuItems.push({ type: 'divider' });
+        menuItems.push({
+          label: 'Copiar',
+          action: () => navigator.clipboard?.writeText(name)
+        });
+        menuItems.push({
+          label: 'Compartilhar...',
+          action: () => {
+            if (navigator.share) {
+              navigator.share({ title: name, url: item.url || window.location.href });
+            } else {
+              navigator.clipboard?.writeText(item.url || window.location.href);
+            }
+          }
+        });
+        menuItems.push({ type: 'divider' });
+        menuItems.push({ type: 'tags' });
+        menuItems.push({ label: 'Etiquetas...', action: () => {} });
+
+        if (isImage && item.url) {
+          menuItems.push({ type: 'divider' });
+          menuItems.push({
+            label: 'Definir como Imagem da Mesa',
+            action: () => this.setWallpaperUrl(item.url)
+          });
+        }
+
+        this.contextMenu.open(e.clientX, e.clientY, menuItems);
+      };
+
+      const itemAction = () => {
+        if (item.type === 'folder') {
+          this.wm.openApp('finder', 'Finder');
+          setTimeout(() => {
+            window.dispatchEvent(new CustomEvent('finder:navigate', { detail: { path: ['~', 'Mesa', name] } }));
+          }, 10);
+        } else if (item.url) {
+          window.open(item.url, '_blank');
+        }
+      };
+
+      this._makeIconDraggable(wrapper, itemId, itemAction);
     });
 
-    this.el.addEventListener('click', e => {
+    this.el.onclick = e => {
       if (!e.target.closest('.desktop-icon')) {
         this._deselectAllIcons();
       }
-    });
+    };
   }
 
   _deselectAllIcons() {
