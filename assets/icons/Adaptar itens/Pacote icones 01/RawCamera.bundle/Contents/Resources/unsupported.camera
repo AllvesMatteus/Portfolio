@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>rawImageClass</key>
+		<dict>
+			<key>class</key>
+			<string>CRawImageUnsupported</string>
+			<key>supportedMethods</key>
+			<array>
+				<string>8</string>
+				<string>7</string>
+                <string>6</string>
+				<string>3</string>
+			</array>
+		</dict>
+		<key>rawProperties</key>
+		<dict>
+		</dict>
+	</dict>
+</plist>

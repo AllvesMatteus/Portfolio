@@ -1,0 +1,14 @@
+{
+    "applinks": {
+        "apps": [],
+        "details": [
+            {
+                "appID": "0000000000.com.apple.icq",
+                "components": [
+                    { "?": {"context":"?*"} }
+                ],
+                "alwaysEnabled": true
+            }
+        ]
+    }
+}

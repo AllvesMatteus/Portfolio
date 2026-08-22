@@ -6,7 +6,7 @@ export const INITIAL_POSITIONS = {
   trash: { x: 0, y: 0, w: 960, h: 620 },
   safari: { x: 0, y: 0, w: 1040, h: 680 },
   terminal: { x: 0, y: 0, w: 680, h: 440 },
-  settings: { x: 0, y: 0, w: 850, h: 580 },
+  settings: { x: 0, y: 0, w: 680, h: 580 },
 };
 
 export class WindowManager {
@@ -118,24 +118,37 @@ export class WindowManager {
     const isMaximized = win._maximized;
     if (isMaximized) {
 
+      win.x = win._prevX;
+      win.y = win._prevY;
+      win.w = win._prevW;
+      win.h = win._prevH;
       win.el.style.transform = `translate3d(${win._prevX}px, ${win._prevY}px, 0)`;
       win.el.style.width = `${win._prevW}px`;
       win.el.style.height = `${win._prevH}px`;
       win._maximized = false;
     } else {
-
       win._prevX = win.x;
       win._prevY = win.y;
       win._prevW = win.w;
       win._prevH = win.h;
 
-      const newW = window.innerWidth;
-      const newH = window.innerHeight - MENUBAR_HEIGHT - DOCK_HEIGHT;
-      win.el.style.transform = `translate3d(0px, ${MENUBAR_HEIGHT}px, 0)`;
+      let newW = window.innerWidth;
+      let newH = window.innerHeight - MENUBAR_HEIGHT - DOCK_HEIGHT;
+      let newX = 0;
+      let newY = MENUBAR_HEIGHT;
+
+      if (appId === 'settings') {
+        newW = Math.min(780, window.innerWidth - 40);
+        newH = window.innerHeight - MENUBAR_HEIGHT - DOCK_HEIGHT - 10;
+        newX = Math.max(0, Math.round((window.innerWidth - newW) / 2));
+        newY = MENUBAR_HEIGHT + 4;
+      }
+
+      win.el.style.transform = `translate3d(${newX}px, ${newY}px, 0)`;
       win.el.style.width = `${newW}px`;
       win.el.style.height = `${newH}px`;
-      win.x = 0;
-      win.y = MENUBAR_HEIGHT;
+      win.x = newX;
+      win.y = newY;
       win.w = newW;
       win.h = newH;
       win._maximized = true;
@@ -281,8 +294,11 @@ export class WindowManager {
       }
 
       const onMove = (ev) => {
-        const newW = Math.max(250, startW + (ev.clientX - startX));
-        const newH = Math.max(200, startH + (ev.clientY - startY));
+        let newW = Math.max(250, startW + (ev.clientX - startX));
+        let newH = Math.max(200, startH + (ev.clientY - startY));
+        if (win.id === 'settings') {
+          newW = Math.min(800, newW);
+        }
         el.style.width = `${newW}px`;
         el.style.height = `${newH}px`;
       };

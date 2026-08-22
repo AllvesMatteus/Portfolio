@@ -1,0 +1,2998 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<caml xmlns="http://www.apple.com/CoreAnimation/1.0">
+  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" backgroundColor="0.9924 0.6306 0.1372" bounds="0 0 896 672" contentsFormat="RGBA8" geometryFlipped="1" hidden="0" name="Root Layer" position="448 336" repeatCount="inf">
+    <sublayers>
+      <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 896 672" contentsFormat="RGBA8" masksToBounds="0" name="static elements" position="448 336" shadowOffset="0 0" shadowRadius="0">
+	<backgroundColor opacity="0" value="0 0 0"/>
+	<borderColor opacity="0" value="0 0 0"/>
+	<compositingFilter type="string" value="normalBlendMode"/>
+	<shadowColor opacity="0" value="0 0 0"/>
+	<style>
+	  <isCaffeinated type="integer" value="1"/>
+	</style>
+	<sublayers>
+	  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 896 672" contentsFormat="RGBA8" contentsGravity="resizeAspectFill" masksToBounds="0" name="Wallpaper" position="448 336" shadowOffset="0 0" shadowRadius="0" zPosition="-1000">
+	    <backgroundColor opacity="0" value="0 0 0"/>
+	    <borderColor opacity="0" value="0 0 0"/>
+	    <compositingFilter type="string" value="normalBlendMode"/>
+	    <contents type="CGImage" src="assets/MacDarkWallpaper.jpg"/>
+	    <shadowColor opacity="0" value="0 0 0"/>
+	    <style>
+	      <isCaffeinated type="integer" value="1"/>
+	    </style>
+	    <eventHandlers/>
+	  </CALayer>
+	  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 896 672" contentsFormat="RGBA8" hidden="0" masksToBounds="0" name="stacks" position="448 336" shadowOffset="0 0" shadowRadius="0" sortsSublayers="0" sublayerTransform="perspective(1000)" zPosition="1000">
+	    <backgroundColor opacity="0" value="0 0 0"/>
+	    <borderColor opacity="0" value="0 0 0"/>
+	    <compositingFilter type="string" value="normalBlendMode"/>
+	    <shadowColor opacity="0" value="0 0 0"/>
+	    <style>
+	      <isCaffeinated type="integer" value="1"/>
+	    </style>
+	    <sublayers>
+	      <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" allowsHitTesting="1" anchorPoint="-0.07351460221551 0.5" bounds="0 0 662 541" contentsFormat="RGBA8" hidden="0" masksToBounds="0" name="stack-4b" position="12 462.391183035714" shadowOffset="0 0" shadowRadius="0" transform="rotate(65deg, 0, 1, 0) scale(0.140359, 0.140359, 1)" zPosition="-1.001">
+		<backgroundColor opacity="0" value="0 0 0"/>
+		<borderColor opacity="0" value="0 0 0"/>
+		<compositingFilter type="string" value="normalBlendMode"/>
+		<filters>
+		  <CAFilter filter="gaussianBlur" name="gaussianBlur" inputRadius="0" inputQuality="low" inputIntermediateBitDepth="low"/>
+		</filters>
+		<shadowColor opacity="0" value="0 0 0"/>
+		<style>
+		  <isCaffeinated type="integer" value="1"/>
+		</style>
+		<sublayers>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" anchorPoint="1 0" bounds="0 0 662 541" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="42.7474" masksToBounds="0" name="Shadow" position="662 0" shadowOffset="0 20" shadowOpacity="0.24764" shadowPathIsBounds="1" shadowRadius="36" transform="rotate(-4.28915deg) shearXY(-4.29718deg) scale(1.00281, 0.997199, 1)">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CALayer>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 662 541" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="42.7474" masksToBounds="0" name="Rim Shadow" position="331 270.5" shadowOffset="0 0" shadowOpacity="0.15" shadowPathIsBounds="1" shadowRadius="1">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CALayer>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 662 541" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="42.7474" masksToBounds="1" name="Container" position="331 270.5" shadowOffset="0 0" shadowRadius="0">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <sublayers>
+		      <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" backgroundColor="0.149 0.149 0.1533" bounds="0 0 662 541" contentsFormat="RGBA8" contentsGravity="bottomLeft" masksToBounds="0" minificationFilter="box" name="Snapshot" position="331 270.5" rasterizationScale="0.2" shadowOffset="0 0" shadowRadius="0" shouldRasterize="1">
+			<borderColor opacity="0" value="0 0 0"/>
+			<compositingFilter type="string" value="normalBlendMode"/>
+			<shadowColor opacity="0" value="0 0 0"/>
+			<style>
+			  <isCaffeinated type="integer" value="1"/>
+			</style>
+			<eventHandlers/>
+		      </CALayer>
+		      <CABackdropLayer groupName="WallpaperDimmingBackdrop" scale="0.1" allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 662 541" contentsFormat="RGBA8" hidden="0" masksToBounds="0" name="Wallpaper Dimming Layer" position="331 270.5" shadowOffset="0 0" shadowRadius="0">
+			<backgroundColor opacity="0" value="0 0 0"/>
+			<borderColor opacity="0" value="0 0 0"/>
+			<compositingFilter type="string" value="normalBlendMode"/>
+			<filters>
+			  <CAFilter filter="gaussianBlur" name="gaussianBlur" inputRadius="100" inputNormalizeEdges="1" inputHardEdges="1"/>
+			</filters>
+			<shadowColor opacity="0" value="0 0 0"/>
+			<style>
+			  <isCaffeinated type="integer" value="1"/>
+			</style>
+			<sublayers>
+			  <CAGradientLayer endPoint="1 0.5" startPoint="0 0.5" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 662 541" contentsFormat="RGBA8" hidden="0" name="Dest In Gradient" position="331 270.5">
+			    <colors>
+			      <CGColor opacity="0.8844" value="0 0 0"/>
+			      <CGColor opacity="0.7043" value="0 0 0"/>
+			    </colors>
+			    <locations>
+			      <integer value="0"/>
+			      <integer value="1"/>
+			    </locations>
+			    <compositingFilter type="string" value="destOut"/>
+			  </CAGradientLayer>
+			</sublayers>
+			<eventHandlers/>
+		      </CABackdropLayer>
+		    </sublayers>
+		    <eventHandlers/>
+		  </CALayer>
+		</sublayers>
+		<eventHandlers/>
+	      </CALayer>
+	      <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" allowsHitTesting="1" anchorPoint="0 0.5" bounds="0 0 320 541" contentsFormat="RGBA8" hidden="0" masksToBounds="0" name="stack-4a" position="12 462.391183035714" shadowOffset="0 0" shadowRadius="0" transform="rotate(65deg, 0, 1, 0) scale(0.155134, 0.155134, 1)" zPosition="-1">
+		<backgroundColor opacity="0" value="0 0 0"/>
+		<borderColor opacity="0" value="0 0 0"/>
+		<compositingFilter type="string" value="normalBlendMode"/>
+		<filters>
+		  <CAFilter filter="gaussianBlur" name="gaussianBlur" inputRadius="0" inputQuality="low" inputIntermediateBitDepth="low"/>
+		</filters>
+		<shadowColor opacity="0" value="0 0 0"/>
+		<style>
+		  <isCaffeinated type="integer" value="1"/>
+		</style>
+		<sublayers>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" anchorPoint="1 0" bounds="0 0 320 541" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="38.6763" masksToBounds="0" name="Shadow" position="320 0" shadowOffset="0 20" shadowOpacity="0.251682" shadowPathIsBounds="1" shadowRadius="36" transform="rotate(-4.28915deg) shearXY(-4.29718deg) scale(1.00281, 0.997199, 1)">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CALayer>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 320 541" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="38.6763" masksToBounds="0" name="Rim Shadow" position="160 270.5" shadowOffset="0 0" shadowOpacity="0.15" shadowPathIsBounds="1" shadowRadius="1">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CALayer>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 320 541" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="38.6763" masksToBounds="1" name="Container" position="160 270.5" shadowOffset="0 0" shadowRadius="0">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <sublayers>
+		      <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" backgroundColor="0.149 0.149 0.1533" bounds="0 0 320 541" contentsFormat="RGBA8" contentsGravity="bottomLeft" masksToBounds="0" minificationFilter="box" name="Snapshot" position="160 270.5" rasterizationScale="0.2" shadowOffset="0 0" shadowRadius="0" shouldRasterize="1">
+			<borderColor opacity="0" value="0 0 0"/>
+			<compositingFilter type="string" value="normalBlendMode"/>
+			<shadowColor opacity="0" value="0 0 0"/>
+			<style>
+			  <isCaffeinated type="integer" value="1"/>
+			</style>
+			<eventHandlers/>
+		      </CALayer>
+		      <CABackdropLayer groupName="WallpaperDimmingBackdrop" scale="0.1" allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 320 541" contentsFormat="RGBA8" hidden="0" masksToBounds="0" name="Wallpaper Dimming Layer" position="160 270.5" shadowOffset="0 0" shadowRadius="0">
+			<backgroundColor opacity="0" value="0 0 0"/>
+			<borderColor opacity="0" value="0 0 0"/>
+			<compositingFilter type="string" value="normalBlendMode"/>
+			<filters>
+			  <CAFilter filter="gaussianBlur" name="gaussianBlur" inputRadius="100" inputNormalizeEdges="1" inputHardEdges="1"/>
+			</filters>
+			<shadowColor opacity="0" value="0 0 0"/>
+			<style>
+			  <isCaffeinated type="integer" value="1"/>
+			</style>
+			<sublayers>
+			  <CAGradientLayer endPoint="1 0.5" startPoint="0 0.5" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 320 541" contentsFormat="RGBA8" name="Dest In Gradient" position="160 270.5">
+			    <colors>
+			      <CGColor opacity="0.8989" value="0 0 0"/>
+			      <CGColor opacity="0.7978" value="0 0 0"/>
+			    </colors>
+			    <locations>
+			      <integer value="0"/>
+			      <integer value="1"/>
+			    </locations>
+			    <compositingFilter type="string" value="destOut"/>
+			  </CAGradientLayer>
+			</sublayers>
+			<eventHandlers/>
+		      </CABackdropLayer>
+		    </sublayers>
+		    <eventHandlers/>
+		  </CALayer>
+		</sublayers>
+		<eventHandlers/>
+	      </CALayer>
+	      <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" allowsHitTesting="1" anchorPoint="0 0.5" bounds="0 0 662 541" contentsFormat="RGBA8" hidden="0" masksToBounds="0" name="stack-3" position="12 354.463727678571" shadowOffset="0 0" shadowRadius="0" transform="rotate(65deg, 0, 1, 0) scale(0.155134, 0.155134, 1)" zPosition="-1">
+		<backgroundColor opacity="0" value="0 0 0"/>
+		<borderColor opacity="0" value="0 0 0"/>
+		<compositingFilter type="string" value="normalBlendMode"/>
+		<filters>
+		  <CAFilter filter="gaussianBlur" name="gaussianBlur" inputRadius="0" inputQuality="low" inputIntermediateBitDepth="low"/>
+		</filters>
+		<shadowColor opacity="0" value="0 0 0"/>
+		<style>
+		  <isCaffeinated type="integer" value="1"/>
+		</style>
+		<sublayers>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" anchorPoint="1 0" bounds="0 0 662 541" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="38.6763" masksToBounds="0" name="Shadow" position="662 0" shadowOffset="0 20" shadowOpacity="0.251682" shadowPathIsBounds="1" shadowRadius="36" transform="rotate(-4.28915deg) shearXY(-4.29718deg) scale(1.00281, 0.997199, 1)">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CALayer>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 662 541" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="38.6763" masksToBounds="0" name="Rim Shadow" position="331 270.5" shadowOffset="0 0" shadowOpacity="0.15" shadowPathIsBounds="1" shadowRadius="1">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CALayer>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 662 541" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="38.6763" masksToBounds="1" name="Container" position="331 270.5" shadowOffset="0 0" shadowRadius="0">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <sublayers>
+		      <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" backgroundColor="0.149 0.149 0.1533" bounds="0 0 662 541" contentsFormat="RGBA8" contentsGravity="bottomLeft" masksToBounds="0" minificationFilter="box" name="Snapshot" position="331 270.5" rasterizationScale="0.2" shadowOffset="0 0" shadowRadius="0" shouldRasterize="1">
+			<borderColor opacity="0" value="0 0 0"/>
+			<compositingFilter type="string" value="normalBlendMode"/>
+			<shadowColor opacity="0" value="0 0 0"/>
+			<style>
+			  <isCaffeinated type="integer" value="1"/>
+			</style>
+			<eventHandlers/>
+		      </CALayer>
+		      <CABackdropLayer groupName="WallpaperDimmingBackdrop" scale="0.1" allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 662 541" contentsFormat="RGBA8" hidden="0" masksToBounds="0" name="Wallpaper Dimming Layer" position="331 270.5" shadowOffset="0 0" shadowRadius="0">
+			<backgroundColor opacity="0" value="0 0 0"/>
+			<borderColor opacity="0" value="0 0 0"/>
+			<compositingFilter type="string" value="normalBlendMode"/>
+			<filters>
+			  <CAFilter filter="gaussianBlur" name="gaussianBlur" inputRadius="100" inputNormalizeEdges="1" inputHardEdges="1"/>
+			</filters>
+			<shadowColor opacity="0" value="0 0 0"/>
+			<style>
+			  <isCaffeinated type="integer" value="1"/>
+			</style>
+			<sublayers>
+			  <CAGradientLayer endPoint="1 0.5" startPoint="0 0.5" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 662 541" contentsFormat="RGBA8" name="Dest In Gradient" position="331 270.5">
+			    <colors>
+			      <CGColor opacity="0.8989" value="0 0 0"/>
+			      <CGColor opacity="0.6991" value="0 0 0"/>
+			    </colors>
+			    <locations>
+			      <integer value="0"/>
+			      <integer value="1"/>
+			    </locations>
+			    <compositingFilter type="string" value="destOut"/>
+			  </CAGradientLayer>
+			</sublayers>
+			<eventHandlers/>
+		      </CABackdropLayer>
+		    </sublayers>
+		    <eventHandlers/>
+		  </CALayer>
+		</sublayers>
+		<eventHandlers/>
+	      </CALayer>
+	      <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" allowsHitTesting="1" anchorPoint="0 0.5" bounds="0 0 662 541" contentsFormat="RGBA8" hidden="0" masksToBounds="0" name="stack-2c" position="12 246.536272321429" shadowOffset="0 0" shadowRadius="0" transform="rotate(65deg, 0, 1, 0) scale(0.135134, 0.135134, 1)" zPosition="-1.2">
+		<backgroundColor opacity="0" value="0 0 0"/>
+		<borderColor opacity="0" value="0 0 0"/>
+		<compositingFilter type="string" value="normalBlendMode"/>
+		<filters>
+		  <CAFilter filter="gaussianBlur" name="gaussianBlur" inputRadius="0" inputQuality="low" inputIntermediateBitDepth="low"/>
+		</filters>
+		<shadowColor opacity="0" value="0 0 0"/>
+		<style>
+		  <isCaffeinated type="integer" value="1"/>
+		</style>
+		<sublayers>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" anchorPoint="1 0" bounds="0 0 662 541" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="44.4004" masksToBounds="0" name="Shadow" position="662 0" shadowOffset="0 20" shadowOpacity="0.111619" shadowPathIsBounds="1" shadowRadius="36" transform="rotate(-4.28915deg) shearXY(-4.29718deg) scale(1.00281, 0.997199, 1)">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CALayer>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 662 541" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="44.4004" masksToBounds="0" name="Rim Shadow" position="331 270.5" shadowOffset="0 0" shadowOpacity="0.15" shadowPathIsBounds="1" shadowRadius="1">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CALayer>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 662 541" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="44.4004" masksToBounds="1" name="Container" position="331 270.5" shadowOffset="0 0" shadowRadius="0">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <sublayers>
+		      <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" backgroundColor="0.149 0.149 0.1533" bounds="0 0 662 541" contentsFormat="RGBA8" contentsGravity="bottomLeft" masksToBounds="0" minificationFilter="box" name="Snapshot" position="331 270.5" rasterizationScale="0.2" shadowOffset="0 0" shadowRadius="0" shouldRasterize="1">
+			<borderColor opacity="0" value="0 0 0"/>
+			<compositingFilter type="string" value="normalBlendMode"/>
+			<shadowColor opacity="0" value="0 0 0"/>
+			<style>
+			  <isCaffeinated type="integer" value="1"/>
+			</style>
+			<eventHandlers/>
+		      </CALayer>
+		      <CABackdropLayer groupName="WallpaperDimmingBackdrop" scale="0.1" allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 662 541" contentsFormat="RGBA8" hidden="0" masksToBounds="0" name="Wallpaper Dimming Layer" position="331 270.5" shadowOffset="0 0" shadowRadius="0">
+			<backgroundColor opacity="0" value="0 0 0"/>
+			<borderColor opacity="0" value="0 0 0"/>
+			<compositingFilter type="string" value="normalBlendMode"/>
+			<filters>
+			  <CAFilter filter="gaussianBlur" name="gaussianBlur" inputRadius="100" inputNormalizeEdges="1" inputHardEdges="1"/>
+			</filters>
+			<shadowColor opacity="0" value="0 0 0"/>
+			<style>
+			  <isCaffeinated type="integer" value="1"/>
+			</style>
+			<sublayers>
+			  <CAGradientLayer endPoint="1 0.5" startPoint="0 0.5" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 662 541" contentsFormat="RGBA8" name="Dest In Gradient" position="331 270.5">
+			    <colors>
+			      <CGColor opacity="0.3986" value="0 0 0"/>
+			      <CGColor opacity="0.2227" value="0 0 0"/>
+			    </colors>
+			    <locations>
+			      <integer value="0"/>
+			      <integer value="1"/>
+			    </locations>
+			    <compositingFilter type="string" value="destOut"/>
+			  </CAGradientLayer>
+			</sublayers>
+			<eventHandlers/>
+		      </CABackdropLayer>
+		    </sublayers>
+		    <eventHandlers/>
+		  </CALayer>
+		</sublayers>
+		<eventHandlers/>
+	      </CALayer>
+	      <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" allowsHitTesting="1" anchorPoint="-0.04833836858006 0.5" bounds="0 0 662 541" contentsFormat="RGBA8" hidden="0" masksToBounds="0" name="stack-2b" position="12 246.536272321429" shadowOffset="0 0" shadowRadius="0" transform="rotate(65deg, 0, 1, 0) scale(0.145134, 0.145134, 1)" zPosition="-1.1">
+		<backgroundColor opacity="0" value="0 0 0"/>
+		<borderColor opacity="0" value="0 0 0"/>
+		<compositingFilter type="string" value="normalBlendMode"/>
+		<filters>
+		  <CAFilter filter="gaussianBlur" name="gaussianBlur" inputRadius="0" inputQuality="low" inputIntermediateBitDepth="low"/>
+		</filters>
+		<shadowColor opacity="0" value="0 0 0"/>
+		<style>
+		  <isCaffeinated type="integer" value="1"/>
+		</style>
+		<sublayers>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" anchorPoint="1 0" bounds="0 0 662 541" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="41.3411" masksToBounds="0" name="Shadow" position="662 0" shadowOffset="0 20" shadowOpacity="0.178897" shadowPathIsBounds="1" shadowRadius="36" transform="rotate(-4.28915deg) shearXY(-4.29718deg) scale(1.00281, 0.997199, 1)">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CALayer>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 662 541" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="41.3411" masksToBounds="0" name="Rim Shadow" position="331 270.5" shadowOffset="0 0" shadowOpacity="0.15" shadowPathIsBounds="1" shadowRadius="1">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CALayer>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 662 541" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="41.3411" masksToBounds="1" name="Container" position="331 270.5" shadowOffset="0 0" shadowRadius="0">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <sublayers>
+		      <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" backgroundColor="0.149 0.149 0.1533" bounds="0 0 662 541" contentsFormat="RGBA8" contentsGravity="bottomLeft" masksToBounds="0" minificationFilter="box" name="Snapshot" position="331 270.5" rasterizationScale="0.2" shadowOffset="0 0" shadowRadius="0" shouldRasterize="1">
+			<borderColor opacity="0" value="0 0 0"/>
+			<compositingFilter type="string" value="normalBlendMode"/>
+			<shadowColor opacity="0" value="0 0 0"/>
+			<style>
+			  <isCaffeinated type="integer" value="1"/>
+			</style>
+			<eventHandlers/>
+		      </CALayer>
+		      <CABackdropLayer groupName="WallpaperDimmingBackdrop" scale="0.1" allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 662 541" contentsFormat="RGBA8" hidden="0" masksToBounds="0" name="Wallpaper Dimming Layer" position="331 270.5" shadowOffset="0 0" shadowRadius="0">
+			<backgroundColor opacity="0" value="0 0 0"/>
+			<borderColor opacity="0" value="0 0 0"/>
+			<compositingFilter type="string" value="normalBlendMode"/>
+			<filters>
+			  <CAFilter filter="gaussianBlur" name="gaussianBlur" inputRadius="100" inputNormalizeEdges="1" inputHardEdges="1"/>
+			</filters>
+			<shadowColor opacity="0" value="0 0 0"/>
+			<style>
+			  <isCaffeinated type="integer" value="1"/>
+			</style>
+			<sublayers>
+			  <CAGradientLayer endPoint="1 0.5" startPoint="0 0.5" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 662 541" contentsFormat="RGBA8" name="Dest In Gradient" position="331 270.5">
+			    <colors>
+			      <CGColor opacity="0.6389" value="0 0 0"/>
+			      <CGColor opacity="0.4525" value="0 0 0"/>
+			    </colors>
+			    <locations>
+			      <integer value="0"/>
+			      <integer value="1"/>
+			    </locations>
+			    <compositingFilter type="string" value="destOut"/>
+			  </CAGradientLayer>
+			</sublayers>
+			<eventHandlers/>
+		      </CABackdropLayer>
+		    </sublayers>
+		    <eventHandlers/>
+		  </CALayer>
+		</sublayers>
+		<eventHandlers/>
+	      </CALayer>
+	      <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" allowsHitTesting="1" anchorPoint="-0.09667673716012 0.5" bounds="0 0 662 541" contentsFormat="RGBA8" hidden="0" masksToBounds="0" name="stack-2a" position="12 246.536272321429" shadowOffset="0 0" shadowRadius="0" transform="rotate(65deg, 0, 1, 0) scale(0.155134, 0.155134, 1)" zPosition="-1">
+		<backgroundColor opacity="0" value="0 0 0"/>
+		<borderColor opacity="0" value="0 0 0"/>
+		<compositingFilter type="string" value="normalBlendMode"/>
+		<filters>
+		  <CAFilter filter="gaussianBlur" name="gaussianBlur" inputRadius="0" inputQuality="low" inputIntermediateBitDepth="low"/>
+		</filters>
+		<shadowColor opacity="0" value="0 0 0"/>
+		<style>
+		  <isCaffeinated type="integer" value="1"/>
+		</style>
+		<sublayers>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" anchorPoint="1 0" bounds="0 0 662 541" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="38.6763" masksToBounds="0" name="Shadow" position="662 0" shadowOffset="0 20" shadowOpacity="0.245824" shadowPathIsBounds="1" shadowRadius="36" transform="rotate(-4.28915deg) shearXY(-4.29718deg) scale(1.00281, 0.997199, 1)">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CALayer>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 662 541" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="38.6763" masksToBounds="0" name="Rim Shadow" position="331 270.5" shadowOffset="0 0" shadowOpacity="0.15" shadowPathIsBounds="1" shadowRadius="1">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CALayer>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 662 541" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="38.6763" masksToBounds="1" name="Container" position="331 270.5" shadowOffset="0 0" shadowRadius="0">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <sublayers>
+		      <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" backgroundColor="0.149 0.149 0.1533" bounds="0 0 662 541" contentsFormat="RGBA8" contentsGravity="bottomLeft" masksToBounds="0" minificationFilter="box" name="Snapshot" position="331 270.5" rasterizationScale="0.2" shadowOffset="0 0" shadowRadius="0" shouldRasterize="1">
+			<borderColor opacity="0" value="0 0 0"/>
+			<compositingFilter type="string" value="normalBlendMode"/>
+			<shadowColor opacity="0" value="0 0 0"/>
+			<style>
+			  <isCaffeinated type="integer" value="1"/>
+			</style>
+			<eventHandlers/>
+		      </CALayer>
+		      <CABackdropLayer groupName="WallpaperDimmingBackdrop" scale="0.1" allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 662 541" contentsFormat="RGBA8" hidden="0" masksToBounds="0" name="Wallpaper Dimming Layer" position="331 270.5" shadowOffset="0 0" shadowRadius="0">
+			<backgroundColor opacity="0" value="0 0 0"/>
+			<borderColor opacity="0" value="0 0 0"/>
+			<compositingFilter type="string" value="normalBlendMode"/>
+			<filters>
+			  <CAFilter filter="gaussianBlur" name="gaussianBlur" inputRadius="100" inputNormalizeEdges="1" inputHardEdges="1"/>
+			</filters>
+			<shadowColor opacity="0" value="0 0 0"/>
+			<style>
+			  <isCaffeinated type="integer" value="1"/>
+			</style>
+			<sublayers>
+			  <CAGradientLayer endPoint="1 0.5" startPoint="0 0.5" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 662 541" contentsFormat="RGBA8" name="Dest In Gradient" position="331 270.5">
+			    <colors>
+			      <CGColor opacity="0.8779" value="0 0 0"/>
+			      <CGColor opacity="0.6815" value="0 0 0"/>
+			    </colors>
+			    <locations>
+			      <integer value="0"/>
+			      <integer value="1"/>
+			    </locations>
+			    <compositingFilter type="string" value="destOut"/>
+			  </CAGradientLayer>
+			</sublayers>
+			<eventHandlers/>
+		      </CABackdropLayer>
+		    </sublayers>
+		    <eventHandlers/>
+		  </CALayer>
+		</sublayers>
+		<eventHandlers/>
+	      </CALayer>
+	    </sublayers>
+	    <eventHandlers/>
+	  </CALayer>
+	  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" backgroundColor="0 0 0" bounds="0 0 896 672" contentsFormat="RGBA8" hidden="0" masksToBounds="0" name="Home Screen Dimming" opacity="0" position="448 336" shadowOffset="0 0" shadowRadius="0">
+	    <borderColor opacity="0" value="0 0 0"/>
+	    <compositingFilter type="string" value="normalBlendMode"/>
+	    <shadowColor opacity="0" value="0 0 0"/>
+	    <style>
+	      <isCaffeinated type="integer" value="1"/>
+	    </style>
+	    <eventHandlers/>
+	  </CALayer>
+	  <CABackdropLayer captureOnly="1" groupName="WallpaperDimmingBackdrop" scale="0.1" allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 896 672" contentsFormat="RGBA8" masksToBounds="0" name="Wallpaper Dimming Layer" position="448 336" shadowOffset="0 0" shadowRadius="0">
+	    <backgroundColor opacity="0" value="0 0 0"/>
+	    <borderColor opacity="0" value="0 0 0"/>
+	    <compositingFilter type="string" value="normalBlendMode"/>
+	    <filters>
+	      <CAFilter filter="gaussianBlur" name="gaussianBlur" inputRadius="100" inputNormalizeEdges="1" inputHardEdges="1"/>
+	    </filters>
+	    <shadowColor opacity="0" value="0 0 0"/>
+	    <style>
+	      <isCaffeinated type="integer" value="1"/>
+	    </style>
+	    <eventHandlers/>
+	  </CABackdropLayer>
+	  <CABackdropLayer groupName="HomeScreenBackdrop" scale="0.25" allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 896 672" contentsFormat="RGBA8" hidden="0" masksToBounds="0" name="Home Screen Backdrop" position="448 336" shadowOffset="0 0" shadowRadius="0">
+	    <backgroundColor opacity="0" value="0 0 0"/>
+	    <borderColor opacity="0" value="0 0 0"/>
+	    <compositingFilter type="string" value="normalBlendMode"/>
+	    <filters>
+	      <CAFilter filter="gaussianBlur" name="gaussianBlur" inputRadius="100" inputNormalizeEdges="1" inputHardEdges="1"/>
+	    </filters>
+	    <shadowColor opacity="0" value="0 0 0"/>
+	    <style>
+	      <isCaffeinated type="integer" value="1"/>
+	    </style>
+	    <eventHandlers/>
+	  </CABackdropLayer>
+	</sublayers>
+	<eventHandlers/>
+      </CALayer>
+      <CALayer id="#17" allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 896 672" contentsFormat="RGBA8" hidden="0" masksToBounds="0" name="Switch stacks" position="448 336" shadowOffset="0 0" shadowRadius="0" sortsSublayers="0" sublayerTransform="perspective(1000)" zPosition="1000">
+	<backgroundColor opacity="0" value="0 0 0"/>
+	<borderColor opacity="0" value="0 0 0"/>
+	<compositingFilter type="string" value="normalBlendMode"/>
+	<shadowColor opacity="0" value="0 0 0"/>
+	<style>
+	  <isCaffeinated type="integer" value="1"/>
+	</style>
+	<sublayers>
+	  <CALayer id="#18" allowsEdgeAntialiasing="0" allowsGroupOpacity="1" allowsHitTesting="1" anchorPoint="0 0.5" bounds="0 0 662 541" contentsFormat="RGBA8" hidden="0" masksToBounds="0" name="stack- 5_offscreen" position="-90 138.608816964286" shadowOffset="0 0" shadowRadius="0" transform="rotate(65deg, 0, 1, 0) scale(0.155134, 0.155134, 1)" zPosition="-1">
+	    <backgroundColor opacity="0" value="0 0 0"/>
+	    <borderColor opacity="0" value="0 0 0"/>
+	    <compositingFilter type="string" value="normalBlendMode"/>
+	    <filters>
+	      <CAFilter filter="gaussianBlur" name="gaussianBlur" inputRadius="0" inputQuality="low" inputIntermediateBitDepth="low"/>
+	    </filters>
+	    <shadowColor opacity="0" value="0 0 0"/>
+	    <style>
+	      <isCaffeinated type="integer" value="1"/>
+	    </style>
+	    <sublayers>
+	      <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" anchorPoint="1 0" bounds="0 0 662 541" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="38.6763" masksToBounds="0" name="Shadow" position="662 0" shadowOffset="0 20" shadowOpacity="0.251682" shadowPathIsBounds="1" shadowRadius="36" transform="rotate(-4.28915deg) shearXY(-4.29718deg) scale(1.00281, 0.997199, 1)">
+		<backgroundColor opacity="0" value="0 0 0"/>
+		<borderColor opacity="0" value="0 0 0"/>
+		<compositingFilter type="string" value="normalBlendMode"/>
+		<style>
+		  <isCaffeinated type="integer" value="1"/>
+		</style>
+		<eventHandlers/>
+	      </CALayer>
+	      <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 662 541" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="38.6763" masksToBounds="0" name="Rim Shadow" position="331 270.5" shadowOffset="0 0" shadowOpacity="0.15" shadowPathIsBounds="1" shadowRadius="1">
+		<backgroundColor opacity="0" value="0 0 0"/>
+		<borderColor opacity="0" value="0 0 0"/>
+		<compositingFilter type="string" value="normalBlendMode"/>
+		<style>
+		  <isCaffeinated type="integer" value="1"/>
+		</style>
+		<eventHandlers/>
+	      </CALayer>
+	      <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 662 541" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="38.6763" masksToBounds="1" name="Container" position="331 270.5" shadowOffset="0 0" shadowRadius="0">
+		<backgroundColor opacity="0" value="0 0 0"/>
+		<borderColor opacity="0" value="0 0 0"/>
+		<compositingFilter type="string" value="normalBlendMode"/>
+		<shadowColor opacity="0" value="0 0 0"/>
+		<style>
+		  <isCaffeinated type="integer" value="1"/>
+		</style>
+		<sublayers>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" backgroundColor="0.149 0.149 0.1533" bounds="0 0 662 541" contentsFormat="RGBA8" contentsGravity="bottomLeft" masksToBounds="0" minificationFilter="box" name="Snapshot" position="331 270.5" rasterizationScale="0.2" shadowOffset="0 0" shadowRadius="0" shouldRasterize="1">
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CALayer>
+		  <CABackdropLayer groupName="WallpaperDimmingBackdrop" scale="0.1" allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 662 541" contentsFormat="RGBA8" hidden="0" masksToBounds="0" name="Wallpaper Dimming Layer" position="331 270.5" shadowOffset="0 0" shadowRadius="0">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <filters>
+		      <CAFilter filter="gaussianBlur" name="gaussianBlur" inputRadius="100" inputNormalizeEdges="1" inputHardEdges="1"/>
+		    </filters>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <sublayers>
+		      <CAGradientLayer endPoint="1 0.5" startPoint="0 0.5" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 662 541" contentsFormat="RGBA8" name="Dest In Gradient" position="331 270.5">
+			<colors>
+			  <CGColor opacity="0.8989" value="0 0 0"/>
+			  <CGColor opacity="0.6991" value="0 0 0"/>
+			</colors>
+			<locations>
+			  <integer value="0"/>
+			  <integer value="1"/>
+			</locations>
+			<compositingFilter type="string" value="destOut"/>
+		      </CAGradientLayer>
+		    </sublayers>
+		    <eventHandlers/>
+		  </CABackdropLayer>
+		</sublayers>
+		<eventHandlers/>
+	      </CALayer>
+	    </sublayers>
+	    <eventHandlers/>
+	  </CALayer>
+	  <CALayer id="#9" allowsEdgeAntialiasing="0" allowsGroupOpacity="1" allowsHitTesting="1" anchorPoint="0 0.5" bounds="0 0 530 433" contentsFormat="RGBA8" hidden="0" masksToBounds="0" name="stack-1_msg" position="12 145" shadowOffset="0 0" shadowRadius="0" transform="rotate(65deg, 0, 1, 0) scale(0.15513, 0.15513, 1)" zPosition="-1">
+	    <backgroundColor opacity="0" value="0 0 0"/>
+	    <borderColor opacity="0" value="0 0 0"/>
+	    <compositingFilter type="string" value="normalBlendMode"/>
+	    <filters>
+	      <CAFilter filter="gaussianBlur" name="gaussianBlur" inputRadius="0" inputQuality="low" inputIntermediateBitDepth="low"/>
+	    </filters>
+	    <shadowColor opacity="0" value="0 0 0"/>
+	    <style>
+	      <isCaffeinated type="integer" value="1"/>
+	    </style>
+	    <sublayers>
+	      <CALayer id="#12" allowsEdgeAntialiasing="0" allowsGroupOpacity="1" anchorPoint="1 0" bounds="0 0 530 433" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="38.6763" hidden="0" masksToBounds="0" name="Shadow" position="530.000378054234 10.125005458167" shadowOffset="0 20" shadowOpacity="0.251682" shadowPathIsBounds="1" shadowRadius="36" transform="rotate(-4.28916deg) rotate(-0.528432deg, 1, 0, 0) shearYZ(-0.848895deg) shearXZ(-0.0240329deg) shearXY(-4.29689deg) scale(1.00279, 0.997268, 0.99989)">
+		<backgroundColor opacity="0" value="0 0 0"/>
+		<borderColor opacity="0" value="0 0 0"/>
+		<compositingFilter type="string" value="normalBlendMode"/>
+		<style>
+		  <isCaffeinated type="integer" value="1"/>
+		</style>
+		<eventHandlers/>
+	      </CALayer>
+	      <CALayer id="#19" allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 530 433" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="38.6763" hidden="0" masksToBounds="0" name="Rim Shadow" position="265 216.5" shadowOffset="0 0" shadowOpacity="0.15" shadowPathIsBounds="1" shadowRadius="1">
+		<backgroundColor opacity="0" value="0 0 0"/>
+		<borderColor opacity="0" value="0 0 0"/>
+		<compositingFilter type="string" value="normalBlendMode"/>
+		<style>
+		  <isCaffeinated type="integer" value="1"/>
+		</style>
+		<eventHandlers/>
+	      </CALayer>
+	      <CALayer id="#10" allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 530 433" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="38.6763" masksToBounds="1" name="Container" position="265 216.5" shadowOffset="0 0" shadowRadius="0">
+		<backgroundColor opacity="0" value="0 0 0"/>
+		<borderColor opacity="0" value="0 0 0"/>
+		<compositingFilter type="string" value="normalBlendMode"/>
+		<shadowColor opacity="0" value="0 0 0"/>
+		<style>
+		  <isCaffeinated type="integer" value="1"/>
+		</style>
+		<sublayers>
+		  <CALayer allowsEdgeAntialiasing="1" allowsGroupOpacity="1" backgroundColor="0.149 0.149 0.1533" bounds="0 0 530 433" contentsFormat="RGBA8" hidden="0" name="content" position="265 216.5">
+		    <sublayers>
+		      <CALayer id="#11" allowsEdgeAntialiasing="0" allowsGroupOpacity="1" backgroundColor="0 0 0" bounds="0 0 530 433" contentsFormat="RGBA8" contentsGravity="bottomLeft" masksToBounds="0" minificationFilter="box" name="Snapshot" opacity="0" position="265 216.5" rasterizationScale="0.2" shadowOffset="0 0" shadowRadius="0" shouldRasterize="0">
+			<borderColor opacity="0" value="0 0 0"/>
+			<compositingFilter type="string" value="normalBlendMode"/>
+			<contents type="CGImage" src="assets/Messages-Mac_2d-DK.png"/>
+			<shadowColor opacity="0" value="0 0 0"/>
+			<style>
+			  <isCaffeinated type="integer" value="1"/>
+			</style>
+			<eventHandlers/>
+		      </CALayer>
+		    </sublayers>
+		  </CALayer>
+		  <CABackdropLayer id="#13" groupName="WallpaperDimmingBackdrop" scale="0.1" allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 530 433" contentsFormat="RGBA8" hidden="0" masksToBounds="0" name="Wallpaper Dimming Layer" opacity="1" position="265 216.5" shadowOffset="0 0" shadowRadius="0">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <filters>
+		      <CAFilter filter="gaussianBlur" name="gaussianBlur" inputRadius="100" inputNormalizeEdges="1" inputHardEdges="1"/>
+		    </filters>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <sublayers>
+		      <CAGradientLayer endPoint="1 0.5" startPoint="0 0.5" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 662 541" contentsFormat="RGBA8" hidden="0" name="Dest In Gradient" position="331 270.5">
+			<colors>
+			  <CGColor opacity="0.8989" value="0 0 0"/>
+			  <CGColor opacity="0.6991" value="0 0 0"/>
+			</colors>
+			<locations>
+			  <integer value="0"/>
+			  <integer value="1"/>
+			</locations>
+			<compositingFilter type="string" value="destOut"/>
+		      </CAGradientLayer>
+		    </sublayers>
+		    <eventHandlers/>
+		  </CABackdropLayer>
+		</sublayers>
+		<eventHandlers/>
+	      </CALayer>
+	    </sublayers>
+	    <eventHandlers/>
+	  </CALayer>
+	  <CALayer id="#4" allowsEdgeAntialiasing="0" allowsGroupOpacity="1" allowsHitTesting="1" anchorPoint="0 0.5" bounds="0 0 662 541" contentsFormat="RGBA8" hidden="0" masksToBounds="0" name="stack-2_safari" position="147 301" shadowOffset="0 0" shadowRadius="0" transform="" zPosition="0">
+	    <backgroundColor opacity="0" value="0 0 0"/>
+	    <borderColor opacity="0" value="0 0 0"/>
+	    <compositingFilter type="string" value="normalBlendMode"/>
+	    <filters>
+	      <CAFilter filter="gaussianBlur" name="gaussianBlur" inputRadius="0" inputQuality="low" inputIntermediateBitDepth="low"/>
+	    </filters>
+	    <shadowColor opacity="0" value="0 0 0"/>
+	    <style>
+	      <isCaffeinated type="integer" value="1"/>
+	    </style>
+	    <sublayers>
+	      <CALayer id="#8" allowsEdgeAntialiasing="0" allowsGroupOpacity="1" anchorPoint="0.5 0" bounds="0 0 662 541" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="12" masksToBounds="0" name="Shadow" position="331 90.5" shadowOffset="0 20" shadowOpacity="0.35" shadowPathIsBounds="1" shadowRadius="36" transform="shearYZ(-10.1913deg) shearXZ(-0.782435deg) shearXY(-1.76832e-07deg) scale(0.997184, 0.871362, 0.984457)">
+		<backgroundColor opacity="0" value="0 0 0"/>
+		<borderColor opacity="0" value="0 0 0"/>
+		<compositingFilter type="string" value="normalBlendMode"/>
+		<style>
+		  <isCaffeinated type="integer" value="1"/>
+		</style>
+		<eventHandlers/>
+	      </CALayer>
+	      <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 662 541" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="12" hidden="0" masksToBounds="0" name="Rim Shadow" position="331 270.5" shadowOffset="0 0" shadowOpacity="0.15" shadowPathIsBounds="1" shadowRadius="1">
+		<backgroundColor opacity="0" value="0 0 0"/>
+		<borderColor opacity="0" value="0 0 0"/>
+		<compositingFilter type="string" value="normalBlendMode"/>
+		<style>
+		  <isCaffeinated type="integer" value="1"/>
+		</style>
+		<eventHandlers/>
+	      </CALayer>
+	      <CALayer id="#7" allowsEdgeAntialiasing="0" allowsGroupOpacity="1" backgroundColor="0 0 0" bounds="0 0 662 540" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="12" masksToBounds="1" name="Container" position="331 270.5" shadowOffset="0 0" shadowRadius="0">
+		<borderColor opacity="0" value="0 0 0"/>
+		<compositingFilter type="string" value="normalBlendMode"/>
+		<shadowColor opacity="0" value="0 0 0"/>
+		<style>
+		  <isCaffeinated type="integer" value="1"/>
+		</style>
+		<sublayers>
+		  <CALayer allowsEdgeAntialiasing="1" allowsGroupOpacity="1" backgroundColor="0.149 0.149 0.1533" bounds="0 0 662 540" contentsFormat="RGBA8" name="content" position="331 269">
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <sublayers>
+		      <CALayer id="#6" allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 662 541" contentsFormat="RGBA8" contentsGravity="bottomLeft" masksToBounds="0" minificationFilter="box" name="Snapshot" opacity="1" position="331 270.5" rasterizationScale="0.2" shadowOffset="0 0" shadowRadius="0" shouldRasterize="0">
+			<backgroundColor opacity="0" value="0 0 0"/>
+			<borderColor opacity="0" value="0 0 0"/>
+			<compositingFilter type="string" value="normalBlendMode"/>
+			<contents type="CGImage" src="assets/Safari-Mac_2-DK.png"/>
+			<shadowColor opacity="0" value="0 0 0"/>
+			<style>
+			  <isCaffeinated type="integer" value="1"/>
+			</style>
+			<eventHandlers/>
+		      </CALayer>
+		      <CALayer id="#16" allowsEdgeAntialiasing="0" allowsGroupOpacity="1" backgroundColor="1 1 1" bounds="0 0 80 26" contentsFormat="RGBA8" contentsGravity="bottomLeft" hidden="0" masksToBounds="0" minificationFilter="box" name="lights" opacity="1" position="41 14.5" rasterizationScale="0.2" shadowOffset="0 0" shadowRadius="0" shouldRasterize="0">
+			<borderColor opacity="0" value="0 0 0"/>
+			<compositingFilter type="string" value="normalBlendMode"/>
+			<contents type="CGImage" src="assets/traffic-lights_2-DK.png"/>
+			<shadowColor opacity="0" value="0 0 0"/>
+			<style>
+			  <isCaffeinated type="integer" value="1"/>
+			</style>
+			<eventHandlers/>
+		      </CALayer>
+		      <CALayer id="#20" allowsEdgeAntialiasing="0" allowsGroupOpacity="1" backgroundColor="1 1 1" bounds="0 0 80 26" contentsFormat="RGBA8" contentsGravity="bottomLeft" hidden="0" masksToBounds="0" minificationFilter="box" name="lights gray" opacity="0" position="41 14.5" rasterizationScale="0.2" shadowOffset="0 0" shadowRadius="0" shouldRasterize="0">
+			<borderColor opacity="0" value="0 0 0"/>
+			<compositingFilter type="string" value="normalBlendMode"/>
+			<contents type="CGImage" src="assets/traffic-lights_2-gray-DK.png"/>
+			<shadowColor opacity="0" value="0 0 0"/>
+			<style>
+			  <isCaffeinated type="integer" value="1"/>
+			</style>
+			<eventHandlers/>
+		      </CALayer>
+		    </sublayers>
+		  </CALayer>
+		  <CABackdropLayer id="#5" groupName="WallpaperDimmingBackdrop" scale="0.1" allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 662 541" contentsFormat="RGBA8" hidden="0" masksToBounds="0" name="Wallpaper Dimming Layer" opacity="0" position="331 270.5" shadowOffset="0 0" shadowRadius="0">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <filters>
+		      <CAFilter filter="gaussianBlur" name="gaussianBlur" inputRadius="100" inputNormalizeEdges="1" inputHardEdges="1"/>
+		    </filters>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <sublayers>
+		      <CAGradientLayer endPoint="1 0.5" startPoint="0 0.5" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 662 541" contentsFormat="RGBA8" name="Dest In Gradient" position="331 270.5">
+			<colors>
+			  <CGColor opacity="0.8989" value="0 0 0"/>
+			  <CGColor opacity="0.6991" value="0 0 0"/>
+			</colors>
+			<locations>
+			  <integer value="0"/>
+			  <integer value="1"/>
+			</locations>
+			<compositingFilter type="string" value="destOut"/>
+		      </CAGradientLayer>
+		    </sublayers>
+		    <eventHandlers/>
+		  </CABackdropLayer>
+		</sublayers>
+		<eventHandlers/>
+	      </CALayer>
+	    </sublayers>
+	    <eventHandlers/>
+	  </CALayer>
+	</sublayers>
+	<eventHandlers/>
+      </CALayer>
+      <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 442 58" contentsFormat="RGBA8" masksToBounds="0" name="Dock" position="448 630" shadowOffset="0 0" shadowRadius="0" zPosition="1010">
+	<backgroundColor opacity="0" value="0 0 0"/>
+	<borderColor opacity="0" value="0 0 0"/>
+	<compositingFilter type="string" value="normalBlendMode"/>
+	<shadowColor opacity="0" value="0 0 0"/>
+	<style>
+	  <isCaffeinated type="integer" value="1"/>
+	</style>
+	<sublayers>
+	  <CABackdropLayer captureOnly="1" groupName="Dock" scale="0.1" allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 442 58" contentsFormat="RGBA8" masksToBounds="0" name="Capture Only Material" position="221 29" shadowOffset="0 0" shadowRadius="0">
+	    <backgroundColor opacity="0" value="0 0 0"/>
+	    <borderColor opacity="0" value="0 0 0"/>
+	    <compositingFilter type="string" value="normalBlendMode"/>
+	    <filters>
+	      <CAFilter filter="luminanceCurveMap" name="luminanceCurveMap" inputAmount="0.5">
+		<inputValues>
+		  <real value="0.3"/>
+		  <real value="0.5"/>
+		  <integer value="1"/>
+		  <real value="0.77"/>
+		</inputValues>
+	      </CAFilter>
+	      <CAFilter filter="colorSaturate" name="colorSaturate" inputAmount="1.8"/>
+	      <CAFilter filter="colorBrightness" name="colorBrightness" inputAmount="0.08"/>
+	      <CAFilter filter="gaussianBlur" name="gaussianBlur" inputRadius="29.5" inputNormalizeEdges="1" inputDither="1"/>
+	    </filters>
+	    <shadowColor opacity="0" value="0 0 0"/>
+	    <style>
+	      <isCaffeinated type="integer" value="1"/>
+	    </style>
+	    <eventHandlers/>
+	  </CABackdropLayer>
+	  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 442 58" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="18.55" masksToBounds="0" name="Shadow" position="221 29" shadowOffset="0 6" shadowOpacity="0.15" shadowPathIsBounds="1" shadowRadius="45">
+	    <backgroundColor opacity="0" value="0 0 0"/>
+	    <borderColor opacity="0" value="0 0 0"/>
+	    <compositingFilter type="string" value="normalBlendMode"/>
+	    <style>
+	      <isCaffeinated type="integer" value="1"/>
+	    </style>
+	    <eventHandlers/>
+	  </CALayer>
+	  <CALayer allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 442 58" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="18.55" masksToBounds="1" name="darken" position="221 29">
+	    <backgroundColor opacity="0" value="0 0 0"/>
+	    <sublayers>
+	      <CABackdropLayer groupName="Dock" scale="0.1" allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 442 58" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="18.55" hidden="0" masksToBounds="0" name="Material" position="221 29" shadowOffset="0 0" shadowRadius="0">
+		<backgroundColor opacity="0" value="0.2745 0 0"/>
+		<borderColor opacity="0" value="0 0 0"/>
+		<compositingFilter type="string" value="normalBlendMode"/>
+		<filters>
+		  <CAFilter filter="luminanceCurveMap" name="luminanceCurveMap" inputAmount="0.45">
+		    <inputValues>
+		      <real value="0.3"/>
+		      <real value="0.5"/>
+		      <integer value="1"/>
+		      <real value="0.77"/>
+		    </inputValues>
+		  </CAFilter>
+		  <CAFilter filter="colorSaturate" name="colorSaturate" inputAmount="2"/>
+		  <CAFilter filter="colorBrightness" name="colorBrightness" inputAmount="-0.23"/>
+		  <CAFilter filter="gaussianBlur" name="gaussianBlur" inputRadius="25.5" inputNormalizeEdges="1" inputDither="1"/>
+		</filters>
+		<shadowColor opacity="0" value="0 0 0"/>
+		<style>
+		  <isCaffeinated type="integer" value="1"/>
+		</style>
+		<eventHandlers/>
+	      </CABackdropLayer>
+	    </sublayers>
+	  </CALayer>
+	  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 38 38" contentsFormat="RGBA8" hidden="0" masksToBounds="0" name="Messages" position="29 29" shadowOffset="0 0" shadowRadius="0">
+	    <backgroundColor opacity="0" value="0 0 0"/>
+	    <borderColor opacity="0" value="0 0 0"/>
+	    <compositingFilter type="string" value="normalBlendMode"/>
+	    <shadowColor opacity="0" value="0 0 0"/>
+	    <style>
+	      <isCaffeinated type="integer" value="1"/>
+	    </style>
+	    <sublayers>
+	      <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" backgroundColor="0.9576 0.9081 0.7251" bounds="0 0 38 38" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="8.55" masksToBounds="1" name="Messages - Icon Image" position="19 19" shadowOffset="0 0" shadowRadius="0">
+		<borderColor opacity="0" value="0 0 0"/>
+		<compositingFilter type="string" value="normalBlendMode"/>
+		<shadowColor opacity="0" value="0 0 0"/>
+		<style>
+		  <isCaffeinated type="integer" value="1"/>
+		</style>
+		<sublayers>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 38 38" contentsFormat="RGBA8" masksToBounds="0" name="Tap State" opacity="0" position="19 19" shadowOffset="0 0" shadowRadius="0">
+		    <backgroundColor opacity="0.1" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CALayer>
+		</sublayers>
+		<eventHandlers/>
+	      </CALayer>
+	    </sublayers>
+	    <eventHandlers/>
+	  </CALayer>
+	  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 38 38" contentsFormat="RGBA8" hidden="0" masksToBounds="0" name="Safari" position="77 29" shadowOffset="0 0" shadowRadius="0">
+	    <backgroundColor opacity="0" value="0 0 0"/>
+	    <borderColor opacity="0" value="0 0 0"/>
+	    <compositingFilter type="string" value="normalBlendMode"/>
+	    <shadowColor opacity="0" value="0 0 0"/>
+	    <style>
+	      <isCaffeinated type="integer" value="1"/>
+	    </style>
+	    <sublayers>
+	      <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" backgroundColor="0.9549 0.9549 0.9187" bounds="0 0 38 38" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="8.55" masksToBounds="1" name="Safari - Icon Image" position="19 19" shadowOffset="0 0" shadowRadius="0">
+		<borderColor opacity="0" value="0 0 0"/>
+		<compositingFilter type="string" value="normalBlendMode"/>
+		<shadowColor opacity="0" value="0 0 0"/>
+		<style>
+		  <isCaffeinated type="integer" value="1"/>
+		</style>
+		<sublayers>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 38 38" contentsFormat="RGBA8" masksToBounds="0" name="Tap State" opacity="0" position="19 19" shadowOffset="0 0" shadowRadius="0">
+		    <backgroundColor opacity="0.1" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CALayer>
+		</sublayers>
+		<eventHandlers/>
+	      </CALayer>
+	    </sublayers>
+	    <eventHandlers/>
+	  </CALayer>
+	  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 38 38" contentsFormat="RGBA8" masksToBounds="0" name="Music" position="125 29" shadowOffset="0 0" shadowRadius="0">
+	    <backgroundColor opacity="0" value="0 0 0"/>
+	    <borderColor opacity="0" value="0 0 0"/>
+	    <compositingFilter type="string" value="normalBlendMode"/>
+	    <shadowColor opacity="0" value="0 0 0"/>
+	    <style>
+	      <isCaffeinated type="integer" value="1"/>
+	    </style>
+	    <sublayers>
+	      <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" backgroundColor="0.9735 0.4145 0.4316" bounds="0 0 38 38" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="8.55" masksToBounds="1" name="Music - Icon Image" position="19 19" shadowOffset="0 0" shadowRadius="0">
+		<borderColor opacity="0" value="0 0 0"/>
+		<compositingFilter type="string" value="normalBlendMode"/>
+		<shadowColor opacity="0" value="0 0 0"/>
+		<style>
+		  <isCaffeinated type="integer" value="1"/>
+		</style>
+		<sublayers>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 38 38" contentsFormat="RGBA8" masksToBounds="0" name="Tap State" opacity="0" position="19 19" shadowOffset="0 0" shadowRadius="0">
+		    <backgroundColor opacity="0.1" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CALayer>
+		</sublayers>
+		<eventHandlers/>
+	      </CALayer>
+	    </sublayers>
+	    <eventHandlers/>
+	  </CALayer>
+	  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 38 38" contentsFormat="RGBA8" masksToBounds="0" name="Mail" position="173 29" shadowOffset="0 0" shadowRadius="0">
+	    <backgroundColor opacity="0" value="0 0 0"/>
+	    <borderColor opacity="0" value="0 0 0"/>
+	    <compositingFilter type="string" value="normalBlendMode"/>
+	    <shadowColor opacity="0" value="0 0 0"/>
+	    <style>
+	      <isCaffeinated type="integer" value="1"/>
+	    </style>
+	    <sublayers>
+	      <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" backgroundColor="0.9825 0.817 0.5163" bounds="0 0 38 38" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="8.55" masksToBounds="1" name="Mail - Icon Image" position="19 19" shadowOffset="0 0" shadowRadius="0">
+		<borderColor opacity="0" value="0 0 0"/>
+		<compositingFilter type="string" value="normalBlendMode"/>
+		<shadowColor opacity="0" value="0 0 0"/>
+		<style>
+		  <isCaffeinated type="integer" value="1"/>
+		</style>
+		<sublayers>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 38 38" contentsFormat="RGBA8" masksToBounds="0" name="Tap State" opacity="0" position="19 19" shadowOffset="0 0" shadowRadius="0">
+		    <backgroundColor opacity="0.1" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CALayer>
+		</sublayers>
+		<eventHandlers/>
+	      </CALayer>
+	    </sublayers>
+	    <eventHandlers/>
+	  </CALayer>
+	  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 38 38" contentsFormat="RGBA8" masksToBounds="0" name="Photos" position="221 29" shadowOffset="0 0" shadowRadius="0">
+	    <backgroundColor opacity="0" value="0 0 0"/>
+	    <borderColor opacity="0" value="0 0 0"/>
+	    <compositingFilter type="string" value="normalBlendMode"/>
+	    <shadowColor opacity="0" value="0 0 0"/>
+	    <style>
+	      <isCaffeinated type="integer" value="1"/>
+	    </style>
+	    <sublayers>
+	      <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" backgroundColor="0.9549 0.9549 0.9549" bounds="0 0 38 38" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="8.55" masksToBounds="1" name="Photos - Icon Image" position="19 19" shadowOffset="0 0" shadowRadius="0">
+		<borderColor opacity="0" value="0 0 0"/>
+		<compositingFilter type="string" value="normalBlendMode"/>
+		<shadowColor opacity="0" value="0 0 0"/>
+		<style>
+		  <isCaffeinated type="integer" value="1"/>
+		</style>
+		<sublayers>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 38 38" contentsFormat="RGBA8" masksToBounds="0" name="Tap State" opacity="0" position="19 19" shadowOffset="0 0" shadowRadius="0">
+		    <backgroundColor opacity="0.1" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CALayer>
+		</sublayers>
+		<eventHandlers/>
+	      </CALayer>
+	    </sublayers>
+	    <eventHandlers/>
+	  </CALayer>
+	  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 38 38" contentsFormat="RGBA8" masksToBounds="0" name="Notes" position="269 29" shadowOffset="0 0" shadowRadius="0">
+	    <backgroundColor opacity="0" value="0 0 0"/>
+	    <borderColor opacity="0" value="0 0 0"/>
+	    <compositingFilter type="string" value="normalBlendMode"/>
+	    <shadowColor opacity="0" value="0 0 0"/>
+	    <style>
+	      <isCaffeinated type="integer" value="1"/>
+	    </style>
+	    <sublayers>
+	      <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" backgroundColor="0.6001 0.7897 1.003" bounds="0 0 38 38" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="8.55" masksToBounds="1" name="Notes - Icon Image" position="19 19" shadowOffset="0 0" shadowRadius="0">
+		<borderColor opacity="0" value="0 0 0"/>
+		<compositingFilter type="string" value="normalBlendMode"/>
+		<shadowColor opacity="0" value="0 0 0"/>
+		<style>
+		  <isCaffeinated type="integer" value="1"/>
+		</style>
+		<sublayers>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 38 38" contentsFormat="RGBA8" masksToBounds="0" name="Tap State" opacity="0" position="19 19" shadowOffset="0 0" shadowRadius="0">
+		    <backgroundColor opacity="0.1" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CALayer>
+		</sublayers>
+		<eventHandlers/>
+	      </CALayer>
+	    </sublayers>
+	    <eventHandlers/>
+	  </CALayer>
+	  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 38 38" contentsFormat="RGBA8" masksToBounds="0" name="Files" position="317 29" shadowOffset="0 0" shadowRadius="0">
+	    <backgroundColor opacity="0" value="0 0 0"/>
+	    <borderColor opacity="0" value="0 0 0"/>
+	    <compositingFilter type="string" value="normalBlendMode"/>
+	    <shadowColor opacity="0" value="0 0 0"/>
+	    <style>
+	      <isCaffeinated type="integer" value="1"/>
+	    </style>
+	    <sublayers>
+	      <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" backgroundColor="0.7596 0.8449 0.3549" bounds="0 0 38 38" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="8.55" masksToBounds="1" name="Files - Icon Image" position="19 19" shadowOffset="0 0" shadowRadius="0">
+		<borderColor opacity="0" value="0 0 0"/>
+		<compositingFilter type="string" value="normalBlendMode"/>
+		<shadowColor opacity="0" value="0 0 0"/>
+		<style>
+		  <isCaffeinated type="integer" value="1"/>
+		</style>
+		<sublayers>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 38 38" contentsFormat="RGBA8" masksToBounds="0" name="Tap State" opacity="0" position="19 19" shadowOffset="0 0" shadowRadius="0">
+		    <backgroundColor opacity="0.1" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CALayer>
+		</sublayers>
+		<eventHandlers/>
+	      </CALayer>
+	    </sublayers>
+	    <eventHandlers/>
+	  </CALayer>
+	  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 38 38" contentsFormat="RGBA8" hidden="0" masksToBounds="0" name="Pages" position="365 29" shadowOffset="0 0" shadowRadius="0">
+	    <backgroundColor opacity="0" value="0 0 0"/>
+	    <borderColor opacity="0" value="0 0 0"/>
+	    <compositingFilter type="string" value="normalBlendMode"/>
+	    <shadowColor opacity="0" value="0 0 0"/>
+	    <style>
+	      <isCaffeinated type="integer" value="1"/>
+	    </style>
+	    <sublayers>
+	      <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" backgroundColor="0.9549 0.9549 0.9549" bounds="0 0 38 38" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="8.55" masksToBounds="1" name="Pages - Icon Image" position="19 19" shadowOffset="0 0" shadowRadius="0">
+		<borderColor opacity="0" value="0 0 0"/>
+		<compositingFilter type="string" value="normalBlendMode"/>
+		<shadowColor opacity="0" value="0 0 0"/>
+		<style>
+		  <isCaffeinated type="integer" value="1"/>
+		</style>
+		<sublayers>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 38 38" contentsFormat="RGBA8" masksToBounds="0" name="Tap State" opacity="0" position="19 19" shadowOffset="0 0" shadowRadius="0">
+		    <backgroundColor opacity="0.1" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CALayer>
+		</sublayers>
+		<eventHandlers/>
+	      </CALayer>
+	    </sublayers>
+	    <eventHandlers/>
+	  </CALayer>
+	  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 38 38" contentsFormat="RGBA8" hidden="0" masksToBounds="0" name="Keynote" position="413 29" shadowOffset="0 0" shadowRadius="0">
+	    <backgroundColor opacity="0" value="0 0 0"/>
+	    <borderColor opacity="0" value="0 0 0"/>
+	    <compositingFilter type="string" value="normalBlendMode"/>
+	    <shadowColor opacity="0" value="0 0 0"/>
+	    <style>
+	      <isCaffeinated type="integer" value="1"/>
+	    </style>
+	    <sublayers>
+	      <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" backgroundColor="0.8302 0.8038 0.9713" bounds="0 0 38 38" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="8.55" masksToBounds="1" name="Keynote - Icon Image" position="19 19" shadowOffset="0 0" shadowRadius="0">
+		<borderColor opacity="0" value="0 0 0"/>
+		<compositingFilter type="string" value="normalBlendMode"/>
+		<shadowColor opacity="0" value="0 0 0"/>
+		<style>
+		  <isCaffeinated type="integer" value="1"/>
+		</style>
+		<sublayers>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 38 38" contentsFormat="RGBA8" masksToBounds="0" name="Tap State" opacity="0" position="19 19" shadowOffset="0 0" shadowRadius="0">
+		    <backgroundColor opacity="0.1" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CALayer>
+		</sublayers>
+		<eventHandlers/>
+	      </CALayer>
+	    </sublayers>
+	    <eventHandlers/>
+	  </CALayer>
+	</sublayers>
+	<eventHandlers/>
+      </CALayer>
+      <CALayer id="#3" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 200 200" contentsFormat="RGBA8" name="cursor mvmt" position="130 170" zPosition="1500">
+	<sublayers>
+	  <CAShapeLayer id="#1" path="" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" borderColor="0 0.4784 1" borderWidth="40" bounds="0 0 50 50" contentsFormat="RGBA8" continuousCorners="0" cornerRadius="25" hidden="0" name="click1" opacity="0" position="95 94" transform="scale(0.3, 0.3, 1)">
+	    <fillColor opacity="0" value="0 0 0"/>
+	  </CAShapeLayer>
+	  <CAShapeLayer id="#2" path="" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" borderColor="0 0.4784 1" borderWidth="40" bounds="0 0 50 50" contentsFormat="RGBA8" continuousCorners="0" cornerRadius="25" hidden="0" name="click2" opacity="0" position="95 94" transform="scale(0.3, 0.3, 1)">
+	    <fillColor opacity="0" value="0 0 0"/>
+	  </CAShapeLayer>
+	  <CALayer allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 81 108" contentsFormat="RGBA8" name="cursor" position="102 105" shadowOffset="0 8" shadowOpacity="0.4" shadowRadius="5" transform="scale(0.31, 0.31, 1)">
+	    <contents type="CGImage" src="assets/cursor-big_pp.png"/>
+	  </CALayer>
+	</sublayers>
+      </CALayer>
+      <CALayer allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 896 672" contentsFormat="RGBA8" name="app icons-left" position="448 336" zPosition="1200">
+	<sublayers>
+	  <CALayer id="#14" allowsEdgeAntialiasing="0" allowsGroupOpacity="1" allowsHitTesting="1" bounds="0 0 16 16" contentsFormat="RGBA8" hidden="0" masksToBounds="0" name="Icon1-msg" opacity="1" position="16 181" shadowOffset="0 0" shadowRadius="0">
+	    <backgroundColor opacity="0" value="0 0.4784 1"/>
+	    <borderColor opacity="0" value="0 0 0"/>
+	    <compositingFilter type="string" value="normalBlendMode"/>
+	    <shadowColor opacity="0" value="0 0 0"/>
+	    <style>
+	      <isCaffeinated type="integer" value="1"/>
+	    </style>
+	    <sublayers>
+	      <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" backgroundColor="0.8964 0.7801 0.6842" bounds="0 0 16 16" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="3.6" masksToBounds="0" name="Icon Container - 1a" position="8 8" shadowOffset="0 0" shadowRadius="0">
+		<borderColor opacity="0" value="0 0 0"/>
+		<compositingFilter type="string" value="normalBlendMode"/>
+		<shadowColor opacity="0" value="0 0 0"/>
+		<style>
+		  <isCaffeinated type="integer" value="1"/>
+		</style>
+		<sublayers>
+		  <CABackdropLayer captureOnly="1" groupName="Icon for Messages" allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 16 16" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="3.6" masksToBounds="0" name="Capture Only Material" position="8 8" shadowOffset="0 0" shadowRadius="0">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <filters>
+		      <CAFilter filter="luminanceCurveMap" name="luminanceCurveMap" inputAmount="0.6">
+			<inputValues>
+			  <real value="0.725"/>
+			  <real value="0.825"/>
+			  <real value="0.76"/>
+			  <real value="0.73"/>
+			</inputValues>
+		      </CAFilter>
+		      <CAFilter filter="colorSaturate" name="colorSaturate" inputAmount="1.35"/>
+		      <CAFilter filter="colorBrightness" name="colorBrightness" inputAmount="0.12"/>
+		      <CAFilter filter="gaussianBlur" name="gaussianBlur" inputRadius="0" inputNormalizeEdges="1" inputDither="1"/>
+		    </filters>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CABackdropLayer>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 16 16" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="3.6" masksToBounds="0" name="Shadow" position="8 8" shadowOffset="0 8" shadowOpacity="0.4" shadowPathIsBounds="1" shadowRadius="24">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CALayer>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" backgroundColor="0.6001 0.7897 1.003" bounds="0 0 16 16" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="3.6" masksToBounds="1" minificationFilter="lanczos" name="Icon Image - Icon for safari" position="8 8" shadowOffset="0 0" shadowRadius="0">
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CALayer>
+		  <CABackdropLayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 16 16" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="3.6" hidden="1" masksToBounds="0" name="Material" opacity="0" position="8 8" shadowOffset="0 0" shadowRadius="0">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <filters>
+		      <CAFilter filter="luminanceCurveMap" name="luminanceCurveMap" inputAmount="0.6">
+			<inputValues>
+			  <real value="0.725"/>
+			  <real value="0.825"/>
+			  <real value="0.76"/>
+			  <real value="0.73"/>
+			</inputValues>
+		      </CAFilter>
+		      <CAFilter filter="colorSaturate" name="colorSaturate" inputAmount="1.35"/>
+		      <CAFilter filter="colorBrightness" name="colorBrightness" inputAmount="0.12"/>
+		      <CAFilter filter="gaussianBlur" name="gaussianBlur" inputRadius="0" inputNormalizeEdges="1" inputDither="1"/>
+		    </filters>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CABackdropLayer>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" borderWidth="1" bounds="0 0 18 18" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="3.6" masksToBounds="0" name="Icon Stroke - Icon for Messages" opacity="0" position="9 8" shadowOffset="0 0" shadowRadius="0">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="plusD"/>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CALayer>
+		</sublayers>
+		<eventHandlers/>
+	      </CALayer>
+	    </sublayers>
+	    <eventHandlers/>
+	  </CALayer>
+	  <CALayer id="#15" allowsEdgeAntialiasing="0" allowsGroupOpacity="1" allowsHitTesting="1" bounds="0 0 16 16" contentsFormat="RGBA8" cornerRadius="1" hidden="0" masksToBounds="0" name="Icon1-safari" opacity="0" position="16 181" shadowOffset="0 0" shadowRadius="0">
+	    <backgroundColor opacity="0" value="0.6794 0.853 1"/>
+	    <borderColor opacity="0" value="0 0 0"/>
+	    <compositingFilter type="string" value="normalBlendMode"/>
+	    <shadowColor opacity="0" value="0 0 0"/>
+	    <style>
+	      <isCaffeinated type="integer" value="1"/>
+	    </style>
+	    <sublayers>
+	      <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 16 16" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="3.6" masksToBounds="0" name="Icon Container - Icon for Messages" position="8 8" shadowOffset="0 0" shadowRadius="0">
+		<backgroundColor opacity="0" value="0 0 0"/>
+		<borderColor opacity="0" value="0 0 0"/>
+		<compositingFilter type="string" value="normalBlendMode"/>
+		<shadowColor opacity="0" value="0 0 0"/>
+		<style>
+		  <isCaffeinated type="integer" value="1"/>
+		</style>
+		<sublayers>
+		  <CABackdropLayer captureOnly="1" groupName="Icon for Messages" allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 16 16" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="3.6" masksToBounds="0" name="Capture Only Material" position="8 8" shadowOffset="0 0" shadowRadius="0">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <filters>
+		      <CAFilter filter="luminanceCurveMap" name="luminanceCurveMap" inputAmount="0.6">
+			<inputValues>
+			  <real value="0.725"/>
+			  <real value="0.825"/>
+			  <real value="0.76"/>
+			  <real value="0.73"/>
+			</inputValues>
+		      </CAFilter>
+		      <CAFilter filter="colorSaturate" name="colorSaturate" inputAmount="1.35"/>
+		      <CAFilter filter="colorBrightness" name="colorBrightness" inputAmount="0.12"/>
+		      <CAFilter filter="gaussianBlur" name="gaussianBlur" inputRadius="0" inputNormalizeEdges="1" inputDither="1"/>
+		    </filters>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CABackdropLayer>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 16 16" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="3.6" masksToBounds="0" name="Shadow" position="8 8" shadowOffset="0 8" shadowOpacity="0.4" shadowPathIsBounds="1" shadowRadius="24">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CALayer>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" backgroundColor="0.4333 0.8211 0.5789" bounds="0 0 16 16" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="3.6" masksToBounds="1" minificationFilter="lanczos" name="Icon Image - Icon for Messages" position="8 8" shadowOffset="0 0" shadowRadius="0">
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CALayer>
+		  <CABackdropLayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 16 16" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="3.6" hidden="1" masksToBounds="0" name="Material" opacity="0" position="8 8" shadowOffset="0 0" shadowRadius="0">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <filters>
+		      <CAFilter filter="luminanceCurveMap" name="luminanceCurveMap" inputAmount="0.6">
+			<inputValues>
+			  <real value="0.725"/>
+			  <real value="0.825"/>
+			  <real value="0.76"/>
+			  <real value="0.73"/>
+			</inputValues>
+		      </CAFilter>
+		      <CAFilter filter="colorSaturate" name="colorSaturate" inputAmount="1.35"/>
+		      <CAFilter filter="colorBrightness" name="colorBrightness" inputAmount="0.12"/>
+		      <CAFilter filter="gaussianBlur" name="gaussianBlur" inputRadius="0" inputNormalizeEdges="1" inputDither="1"/>
+		    </filters>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CABackdropLayer>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" borderWidth="1" bounds="0 0 18 18" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="3.6" masksToBounds="0" name="Icon Stroke - Icon for Messages" opacity="0" position="9 8" shadowOffset="0 0" shadowRadius="0">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="plusD"/>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CALayer>
+		</sublayers>
+		<eventHandlers/>
+	      </CALayer>
+	    </sublayers>
+	    <eventHandlers/>
+	  </CALayer>
+	  <CALayer id="#21" allowsEdgeAntialiasing="0" allowsGroupOpacity="1" allowsHitTesting="1" bounds="0 0 16 16" contentsFormat="RGBA8" hidden="0" masksToBounds="0" name="Icon1-offscreen" opacity="0" position="16 181" shadowOffset="0 0" shadowRadius="0">
+	    <backgroundColor opacity="0" value="0.6794 0.853 1"/>
+	    <borderColor opacity="0" value="0 0 0"/>
+	    <compositingFilter type="string" value="normalBlendMode"/>
+	    <shadowColor opacity="0" value="0 0 0"/>
+	    <style>
+	      <isCaffeinated type="integer" value="1"/>
+	    </style>
+	    <sublayers>
+	      <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 16 16" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="3.6" masksToBounds="0" name="Icon Container - Icon for Messages" position="8 8" shadowOffset="0 0" shadowRadius="0">
+		<backgroundColor opacity="0" value="0 0 0"/>
+		<borderColor opacity="0" value="0 0 0"/>
+		<compositingFilter type="string" value="normalBlendMode"/>
+		<shadowColor opacity="0" value="0 0 0"/>
+		<style>
+		  <isCaffeinated type="integer" value="1"/>
+		</style>
+		<sublayers>
+		  <CABackdropLayer captureOnly="1" groupName="Icon for Messages" allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 16 16" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="3.6" masksToBounds="0" name="Capture Only Material" position="8 8" shadowOffset="0 0" shadowRadius="0">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <filters>
+		      <CAFilter filter="luminanceCurveMap" name="luminanceCurveMap" inputAmount="0.6">
+			<inputValues>
+			  <real value="0.725"/>
+			  <real value="0.825"/>
+			  <real value="0.76"/>
+			  <real value="0.73"/>
+			</inputValues>
+		      </CAFilter>
+		      <CAFilter filter="colorSaturate" name="colorSaturate" inputAmount="1.35"/>
+		      <CAFilter filter="colorBrightness" name="colorBrightness" inputAmount="0.12"/>
+		      <CAFilter filter="gaussianBlur" name="gaussianBlur" inputRadius="0" inputNormalizeEdges="1" inputDither="1"/>
+		    </filters>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CABackdropLayer>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 16 16" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="3.6" masksToBounds="0" name="Shadow" position="8 8" shadowOffset="0 8" shadowOpacity="0.4" shadowPathIsBounds="1" shadowRadius="24">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CALayer>
+		  <CALayer id="#22" allowsEdgeAntialiasing="0" allowsGroupOpacity="1" backgroundColor="0.9825 0.817 0.5163" bounds="0 0 16 16" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="3.6" masksToBounds="1" minificationFilter="lanczos" name="Icon Image - Icon for offscreen" position="8 8" shadowOffset="0 0" shadowRadius="0">
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CALayer>
+		  <CABackdropLayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 16 16" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="3.6" hidden="1" masksToBounds="0" name="Material" opacity="0" position="8 8" shadowOffset="0 0" shadowRadius="0">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <filters>
+		      <CAFilter filter="luminanceCurveMap" name="luminanceCurveMap" inputAmount="0.6">
+			<inputValues>
+			  <real value="0.725"/>
+			  <real value="0.825"/>
+			  <real value="0.76"/>
+			  <real value="0.73"/>
+			</inputValues>
+		      </CAFilter>
+		      <CAFilter filter="colorSaturate" name="colorSaturate" inputAmount="1.35"/>
+		      <CAFilter filter="colorBrightness" name="colorBrightness" inputAmount="0.12"/>
+		      <CAFilter filter="gaussianBlur" name="gaussianBlur" inputRadius="0" inputNormalizeEdges="1" inputDither="1"/>
+		    </filters>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CABackdropLayer>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" borderWidth="1" bounds="0 0 18 18" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="3.6" masksToBounds="0" name="Icon Stroke - Icon for Messages" opacity="0" position="9 8" shadowOffset="0 0" shadowRadius="0">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="plusD"/>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CALayer>
+		</sublayers>
+		<eventHandlers/>
+	      </CALayer>
+	    </sublayers>
+	    <eventHandlers/>
+	  </CALayer>
+	  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" allowsHitTesting="1" bounds="0 0 16 16" contentsFormat="RGBA8" masksToBounds="0" name="Icon2" position="16 289" shadowOffset="0 0" shadowRadius="0">
+	    <backgroundColor opacity="0" value="0 0 0"/>
+	    <borderColor opacity="0" value="0 0 0"/>
+	    <compositingFilter type="string" value="normalBlendMode"/>
+	    <shadowColor opacity="0" value="0 0 0"/>
+	    <style>
+	      <isCaffeinated type="integer" value="1"/>
+	    </style>
+	    <sublayers>
+	      <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 16 16" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="3.6" masksToBounds="0" name="Icon Container - 2" position="8 8" shadowOffset="0 0" shadowRadius="0">
+		<backgroundColor opacity="0" value="0 0 0"/>
+		<borderColor opacity="0" value="0 0 0"/>
+		<compositingFilter type="string" value="normalBlendMode"/>
+		<shadowColor opacity="0" value="0 0 0"/>
+		<style>
+		  <isCaffeinated type="integer" value="1"/>
+		</style>
+		<sublayers>
+		  <CABackdropLayer captureOnly="1" groupName="Icon for nytimes.com and 4 other tabs - Safari" allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 16 16" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="3.6" masksToBounds="0" name="Capture Only Material" position="8 8" shadowOffset="0 0" shadowRadius="0">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <filters>
+		      <CAFilter filter="luminanceCurveMap" name="luminanceCurveMap" inputAmount="0.6">
+			<inputValues>
+			  <real value="0.725"/>
+			  <real value="0.825"/>
+			  <real value="0.76"/>
+			  <real value="0.73"/>
+			</inputValues>
+		      </CAFilter>
+		      <CAFilter filter="colorSaturate" name="colorSaturate" inputAmount="1.35"/>
+		      <CAFilter filter="colorBrightness" name="colorBrightness" inputAmount="0.12"/>
+		      <CAFilter filter="gaussianBlur" name="gaussianBlur" inputRadius="0" inputNormalizeEdges="1" inputDither="1"/>
+		    </filters>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CABackdropLayer>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 16 16" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="3.6" masksToBounds="0" name="Shadow" position="8 8" shadowOffset="0 8" shadowOpacity="0.4" shadowPathIsBounds="1" shadowRadius="24">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CALayer>
+		  <CALayer id="#23" allowsEdgeAntialiasing="0" allowsGroupOpacity="1" backgroundColor="1 0.675 0.9201" bounds="0 0 16 16" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="3.6" masksToBounds="1" minificationFilter="lanczos" name="Icon Image -2" position="8 8" shadowOffset="0 0" shadowRadius="0">
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CALayer>
+		  <CABackdropLayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 16 16" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="3.6" hidden="1" masksToBounds="0" name="Material" opacity="0" position="8 8" shadowOffset="0 0" shadowRadius="0">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <filters>
+		      <CAFilter filter="luminanceCurveMap" name="luminanceCurveMap" inputAmount="0.6">
+			<inputValues>
+			  <real value="0.725"/>
+			  <real value="0.825"/>
+			  <real value="0.76"/>
+			  <real value="0.73"/>
+			</inputValues>
+		      </CAFilter>
+		      <CAFilter filter="colorSaturate" name="colorSaturate" inputAmount="1.35"/>
+		      <CAFilter filter="colorBrightness" name="colorBrightness" inputAmount="0.12"/>
+		      <CAFilter filter="gaussianBlur" name="gaussianBlur" inputRadius="0" inputNormalizeEdges="1" inputDither="1"/>
+		    </filters>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CABackdropLayer>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" borderWidth="1" bounds="0 0 18 18" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="3.6" masksToBounds="0" name="Icon Stroke - Icon for nytimes.com and 4 other tabs - Safari" opacity="0" position="9 8" shadowOffset="0 0" shadowRadius="0">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="plusD"/>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CALayer>
+		</sublayers>
+		<eventHandlers/>
+	      </CALayer>
+	    </sublayers>
+	    <eventHandlers/>
+	  </CALayer>
+	  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" allowsHitTesting="1" bounds="0 0 16 16" contentsFormat="RGBA8" masksToBounds="0" name="Icon3" position="16 396" shadowOffset="0 0" shadowRadius="0">
+	    <backgroundColor opacity="0" value="0 0 0"/>
+	    <borderColor opacity="0" value="0 0 0"/>
+	    <compositingFilter type="string" value="normalBlendMode"/>
+	    <shadowColor opacity="0" value="0 0 0"/>
+	    <style>
+	      <isCaffeinated type="integer" value="1"/>
+	    </style>
+	    <sublayers>
+	      <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 16 16" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="3.6" masksToBounds="0" name="Icon Container - 3" position="8 8" shadowOffset="0 0" shadowRadius="0">
+		<backgroundColor opacity="0" value="0 0 0"/>
+		<borderColor opacity="0" value="0 0 0"/>
+		<compositingFilter type="string" value="normalBlendMode"/>
+		<shadowColor opacity="0" value="0 0 0"/>
+		<style>
+		  <isCaffeinated type="integer" value="1"/>
+		</style>
+		<sublayers>
+		  <CABackdropLayer captureOnly="1" groupName="Icon for Music" allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 16 16" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="3.6" masksToBounds="0" name="Capture Only Material" position="8 8" shadowOffset="0 0" shadowRadius="0">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <filters>
+		      <CAFilter filter="luminanceCurveMap" name="luminanceCurveMap" inputAmount="0.6">
+			<inputValues>
+			  <real value="0.725"/>
+			  <real value="0.825"/>
+			  <real value="0.76"/>
+			  <real value="0.73"/>
+			</inputValues>
+		      </CAFilter>
+		      <CAFilter filter="colorSaturate" name="colorSaturate" inputAmount="1.35"/>
+		      <CAFilter filter="colorBrightness" name="colorBrightness" inputAmount="0.12"/>
+		      <CAFilter filter="gaussianBlur" name="gaussianBlur" inputRadius="0" inputNormalizeEdges="1" inputDither="1"/>
+		    </filters>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CABackdropLayer>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 16 16" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="3.6" masksToBounds="0" name="Shadow" position="8 8" shadowOffset="0 8" shadowOpacity="0.4" shadowPathIsBounds="1" shadowRadius="24">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CALayer>
+		  <CALayer id="#24" allowsEdgeAntialiasing="0" allowsGroupOpacity="1" backgroundColor="0.7701 0.6838 0.9099" bounds="0 0 16 16" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="3.6" masksToBounds="1" minificationFilter="lanczos" name="Icon Image - Icon for 3" position="8 8" shadowOffset="0 0" shadowRadius="0">
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CALayer>
+		  <CABackdropLayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 16 16" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="3.6" hidden="1" masksToBounds="0" name="Material" opacity="0" position="8 8" shadowOffset="0 0" shadowRadius="0">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <filters>
+		      <CAFilter filter="luminanceCurveMap" name="luminanceCurveMap" inputAmount="0.6">
+			<inputValues>
+			  <real value="0.725"/>
+			  <real value="0.825"/>
+			  <real value="0.76"/>
+			  <real value="0.73"/>
+			</inputValues>
+		      </CAFilter>
+		      <CAFilter filter="colorSaturate" name="colorSaturate" inputAmount="1.35"/>
+		      <CAFilter filter="colorBrightness" name="colorBrightness" inputAmount="0.12"/>
+		      <CAFilter filter="gaussianBlur" name="gaussianBlur" inputRadius="0" inputNormalizeEdges="1" inputDither="1"/>
+		    </filters>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CABackdropLayer>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" borderWidth="1" bounds="0 0 18 18" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="3.6" masksToBounds="0" name="Icon Stroke - Icon for Music" opacity="0" position="9 8" shadowOffset="0 0" shadowRadius="0">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="plusD"/>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CALayer>
+		</sublayers>
+		<eventHandlers/>
+	      </CALayer>
+	    </sublayers>
+	    <eventHandlers/>
+	  </CALayer>
+	  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" allowsHitTesting="1" bounds="0 0 16 16" contentsFormat="RGBA8" masksToBounds="0" name="Icon4" position="16 504" shadowOffset="0 0" shadowRadius="0">
+	    <backgroundColor opacity="0" value="0 0 0"/>
+	    <borderColor opacity="0" value="0 0 0"/>
+	    <compositingFilter type="string" value="normalBlendMode"/>
+	    <shadowColor opacity="0" value="0 0 0"/>
+	    <style>
+	      <isCaffeinated type="integer" value="1"/>
+	    </style>
+	    <sublayers>
+	      <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 16 16" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="3.6" masksToBounds="0" name="Icon Container - Icon 4" position="8 8" shadowOffset="0 0" shadowRadius="0">
+		<backgroundColor opacity="0" value="0 0 0"/>
+		<borderColor opacity="0" value="0 0 0"/>
+		<compositingFilter type="string" value="normalBlendMode"/>
+		<shadowColor opacity="0" value="0 0 0"/>
+		<style>
+		  <isCaffeinated type="integer" value="1"/>
+		</style>
+		<sublayers>
+		  <CABackdropLayer captureOnly="1" groupName="Icon for New Message - Mail" allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 16 16" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="3.6" masksToBounds="0" name="Capture Only Material" position="8 8" shadowOffset="0 0" shadowRadius="0">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <filters>
+		      <CAFilter filter="luminanceCurveMap" name="luminanceCurveMap" inputAmount="0.6">
+			<inputValues>
+			  <real value="0.725"/>
+			  <real value="0.825"/>
+			  <real value="0.76"/>
+			  <real value="0.73"/>
+			</inputValues>
+		      </CAFilter>
+		      <CAFilter filter="colorSaturate" name="colorSaturate" inputAmount="1.35"/>
+		      <CAFilter filter="colorBrightness" name="colorBrightness" inputAmount="0.12"/>
+		      <CAFilter filter="gaussianBlur" name="gaussianBlur" inputRadius="0" inputNormalizeEdges="1" inputDither="1"/>
+		    </filters>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CABackdropLayer>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 16 16" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="3.6" masksToBounds="0" name="Shadow" position="8 8" shadowOffset="0 8" shadowOpacity="0.4" shadowPathIsBounds="1" shadowRadius="24">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CALayer>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" backgroundColor="0.7596 0.8449 0.3549" bounds="0 0 16 16" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="3.6" masksToBounds="1" minificationFilter="lanczos" name="Icon Image - 4" position="8 8" shadowOffset="0 0" shadowRadius="0">
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CALayer>
+		  <CABackdropLayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" bounds="0 0 16 16" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="3.6" hidden="1" masksToBounds="0" name="Material" opacity="0" position="8 8" shadowOffset="0 0" shadowRadius="0">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <borderColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="normalBlendMode"/>
+		    <filters>
+		      <CAFilter filter="luminanceCurveMap" name="luminanceCurveMap" inputAmount="0.6">
+			<inputValues>
+			  <real value="0.725"/>
+			  <real value="0.825"/>
+			  <real value="0.76"/>
+			  <real value="0.73"/>
+			</inputValues>
+		      </CAFilter>
+		      <CAFilter filter="colorSaturate" name="colorSaturate" inputAmount="1.35"/>
+		      <CAFilter filter="colorBrightness" name="colorBrightness" inputAmount="0.12"/>
+		      <CAFilter filter="gaussianBlur" name="gaussianBlur" inputRadius="0" inputNormalizeEdges="1" inputDither="1"/>
+		    </filters>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CABackdropLayer>
+		  <CALayer allowsEdgeAntialiasing="0" allowsGroupOpacity="1" borderWidth="1" bounds="0 0 18 18" contentsFormat="RGBA8" cornerCurve="continuous" cornerRadius="3.6" masksToBounds="0" name="Icon Stroke - Icon for New Message - Mail" opacity="0" position="9 8" shadowOffset="0 0" shadowRadius="0">
+		    <backgroundColor opacity="0" value="0 0 0"/>
+		    <compositingFilter type="string" value="plusD"/>
+		    <shadowColor opacity="0" value="0 0 0"/>
+		    <style>
+		      <isCaffeinated type="integer" value="1"/>
+		    </style>
+		    <eventHandlers/>
+		  </CALayer>
+		</sublayers>
+		<eventHandlers/>
+	      </CALayer>
+	    </sublayers>
+	    <eventHandlers/>
+	  </CALayer>
+	</sublayers>
+      </CALayer>
+    </sublayers>
+    <states>
+      <LKState name="start" nextDelay="1">
+	<elements>
+	  <LKStateSetValue targetId="#1" keyPath="hidden">
+	    <value type="integer" value="1"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#2" keyPath="hidden">
+	    <value type="integer" value="1"/>
+	  </LKStateSetValue>
+	</elements>
+      </LKState>
+      <LKState name="cursor-1" nextDelay="1.5">
+	<elements>
+	  <LKStateSetValue targetId="#1" keyPath="opacity">
+	    <value type="integer" value="1"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#1" keyPath="transform.scale.xy">
+	    <value type="integer" value="1"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#1" keyPath="borderWidth">
+	    <value type="integer" value="0"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#3" keyPath="position.x">
+	    <value type="integer" value="120"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#3" keyPath="position.y">
+	    <value type="integer" value="200"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#3" keyPath="position">
+	    <value type="CGPoint" value="60 160"/>
+	  </LKStateSetValue>
+	</elements>
+      </LKState>
+      <LKState name="swap-msg" nextDelay="2">
+	<elements>
+	  <LKStateSetValue targetId="#4" keyPath="position.x">
+	    <value type="integer" value="12"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#4" keyPath="position.y">
+	    <value type="real" value="138.6"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#4" keyPath="zPosition">
+	    <value type="integer" value="-1"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#4" keyPath="transform.scale.xy">
+	    <value type="real" value="0.155"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#4" keyPath="transform.rotation.y">
+	    <value type="real" value="1.13446"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#5" keyPath="opacity">
+	    <value type="integer" value="1"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#6" keyPath="opacity">
+	    <value type="integer" value="0"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#7" keyPath="cornerRadius">
+	    <value type="real" value="38.6763"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#8" keyPath="transform.rotation.x">
+	    <value type="integer" value="0"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#8" keyPath="transform.rotation.y">
+	    <value type="integer" value="0"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#8" keyPath="transform.rotation.z">
+	    <value type="real" value="-0.0748598"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#8" keyPath="position">
+	    <value type="CGPoint" value="331 90.5"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#9" keyPath="position.x">
+	    <value type="integer" value="183"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#9" keyPath="position.y">
+	    <value type="integer" value="301"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#9" keyPath="zPosition">
+	    <value type="integer" value="0"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#9" keyPath="transform.scale.xy">
+	    <value type="integer" value="1"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#9" keyPath="transform.rotation.y">
+	    <value type="integer" value="0"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#10" keyPath="cornerRadius">
+	    <value type="integer" value="12"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#11" keyPath="opacity">
+	    <value type="integer" value="1"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#12" keyPath="shadowOpacity">
+	    <value type="real" value="0.35"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#8" keyPath="shadowOpacity">
+	    <value type="real" value="0.252"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#12" keyPath="cornerRadius">
+	    <value type="integer" value="12"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#8" keyPath="cornerRadius">
+	    <value type="real" value="38.6763"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#13" keyPath="opacity">
+	    <value type="integer" value="0"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#14" keyPath="opacity">
+	    <value type="integer" value="0"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#15" keyPath="opacity">
+	    <value type="integer" value="1"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#1" keyPath="hidden">
+	    <value type="integer" value="1"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#2" keyPath="transform.scale.xy">
+	    <value type="integer" value="1"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#2" keyPath="opacity">
+	    <value type="integer" value="1"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#2" keyPath="borderWidth">
+	    <value type="integer" value="0"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#3" keyPath="position.x">
+	    <value type="integer" value="44"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#3" keyPath="position.y">
+	    <value type="integer" value="148"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#3" keyPath="position">
+	    <value type="CGPoint" value="50 148"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#16" keyPath="opacity">
+	    <value type="integer" value="0"/>
+	  </LKStateSetValue>
+	</elements>
+      </LKState>
+      <LKState name="swap-safari" basedOn="swap-msg" nextDelay="2">
+	<elements>
+	  <LKStateSetValue targetId="#4" keyPath="position.y">
+	    <value type="integer" value="301"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#4" keyPath="zPosition">
+	    <value type="integer" value="0"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#4" keyPath="transform.scale.xy">
+	    <value type="integer" value="1"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#4" keyPath="transform.rotation.y">
+	    <value type="integer" value="0"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#7" keyPath="cornerRadius">
+	    <value type="integer" value="12"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#6" keyPath="opacity">
+	    <value type="integer" value="1"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#8" keyPath="shadowOpacity">
+	    <value type="real" value="0.35"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#8" keyPath="cornerRadius">
+	    <value type="integer" value="12"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#5" keyPath="opacity">
+	    <value type="integer" value="0"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#9" keyPath="position.x">
+	    <value type="integer" value="12"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#9" keyPath="position.y">
+	    <value type="integer" value="145"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#9" keyPath="zPosition">
+	    <value type="integer" value="-1"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#9" keyPath="transform.scale.xy">
+	    <value type="real" value="0.155"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#9" keyPath="transform.rotation.y">
+	    <value type="real" value="1.13446"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#10" keyPath="cornerRadius">
+	    <value type="real" value="38.6763"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#11" keyPath="opacity">
+	    <value type="integer" value="0"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#13" keyPath="opacity">
+	    <value type="integer" value="1"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#12" keyPath="transform.rotation.x">
+	    <value type="integer" value="0"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#12" keyPath="transform.rotation.y">
+	    <value type="real" value="-0.0750492"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#12" keyPath="cornerRadius">
+	    <value type="real" value="38.6763"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#12" keyPath="shadowOpacity">
+	    <value type="real" value="0.252"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#2" keyPath="hidden">
+	    <value type="integer" value="1"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#4" keyPath="position.x">
+	    <value type="integer" value="147"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#14" keyPath="opacity">
+	    <value type="integer" value="1"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#15" keyPath="opacity">
+	    <value type="integer" value="0"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#16" keyPath="opacity">
+	    <value type="integer" value="1"/>
+	  </LKStateSetValue>
+	</elements>
+      </LKState>
+      <LKState name="drag-out" basedOn="swap-safari" nextDelay="0.7">
+	<elements>
+	  <LKStateSetValue targetId="#3" keyPath="position.x">
+	    <value type="integer" value="50"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#3" keyPath="position.y">
+	    <value type="integer" value="148"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#9" keyPath="position">
+	    <value type="CGPoint" value="182 175"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#9" keyPath="position.x">
+	    <value type="integer" value="102"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#9" keyPath="position.y">
+	    <value type="integer" value="200"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#9" keyPath="transform.scale.xy">
+	    <value type="real" value="0.5"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#9" keyPath="transform.rotation.y">
+	    <value type="integer" value="0"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#9" keyPath="zPosition">
+	    <value type="integer" value="0"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#17" keyPath="sublayers">
+	    <value type="NSArray">
+	      <CALayer object="#18"/>
+	      <CALayer object="#4"/>
+	      <CALayer object="#9"/>
+	    </value>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#13" keyPath="opacity">
+	    <value type="integer" value="0"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#10" keyPath="cornerRadius">
+	    <value type="integer" value="24"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#19" keyPath="cornerRadius">
+	    <value type="integer" value="24"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#12" keyPath="cornerRadius">
+	    <value type="integer" value="24"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#1" keyPath="hidden">
+	    <value type="integer" value="1"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#2" keyPath="hidden">
+	    <value type="integer" value="1"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#20" keyPath="opacity">
+	    <value type="integer" value="1"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#3" keyPath="position">
+	    <value type="CGPoint" value="230 198"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#14" keyPath="opacity">
+	    <value type="integer" value="0"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#21" keyPath="opacity">
+	    <value type="integer" value="1"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#18" keyPath="position.x">
+	    <value type="integer" value="12"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#22" keyPath="backgroundColor">
+	    <value type="CGColor" value="1 0.6886 0"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#23" keyPath="backgroundColor">
+	    <value type="CGColor" value="1 0.675 0.9201"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#24" keyPath="backgroundColor">
+	    <value type="CGColor" value="0.7701 0.6838 0.9099"/>
+	  </LKStateSetValue>
+	</elements>
+      </LKState>
+      <LKState name="2-up" basedOn="drag-out" nextDelay="3">
+	<elements>
+	  <LKStateSetValue targetId="#9" keyPath="transform.scale.xy">
+	    <value type="integer" value="1"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#10" keyPath="cornerRadius">
+	    <value type="integer" value="12"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#12" keyPath="cornerRadius">
+	    <value type="integer" value="12"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#19" keyPath="cornerRadius">
+	    <value type="integer" value="12"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#12" keyPath="shadowOpacity">
+	    <value type="real" value="0.35"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#11" keyPath="opacity">
+	    <value type="integer" value="1"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#9" keyPath="position">
+	    <value type="CGPoint" value="112 370"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#18" keyPath="position.x">
+	    <value type="integer" value="12"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#3" keyPath="position">
+	    <value type="CGPoint" value="190 171"/>
+	  </LKStateSetValue>
+	</elements>
+      </LKState>
+      <LKState name="drag back" basedOn="2-up" nextDelay="0.6">
+	<elements>
+	  <LKStateSetValue targetId="#9" keyPath="transform.scale.xy">
+	    <value type="real" value="0.5"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#11" keyPath="opacity">
+	    <value type="integer" value="0"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#10" keyPath="cornerRadius">
+	    <value type="integer" value="24"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#12" keyPath="shadowOpacity">
+	    <value type="real" value="0.25"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#12" keyPath="cornerRadius">
+	    <value type="integer" value="24"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#19" keyPath="cornerRadius">
+	    <value type="integer" value="24"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#3" keyPath="position">
+	    <value type="CGPoint" value="130 138"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#9" keyPath="position">
+	    <value type="CGPoint" value="52 230"/>
+	  </LKStateSetValue>
+	</elements>
+      </LKState>
+      <LKState name="return" basedOn="drag back" nextDelay="1">
+	<elements>
+	  <LKStateSetValue targetId="#3" keyPath="position">
+	    <value type="CGPoint" value="130 170"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#18" keyPath="position.x">
+	    <value type="integer" value="-90"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#21" keyPath="opacity">
+	    <value type="integer" value="0"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#9" keyPath="position.x">
+	    <value type="integer" value="12"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#9" keyPath="position.y">
+	    <value type="integer" value="145"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#9" keyPath="zPosition">
+	    <value type="integer" value="-1"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#9" keyPath="transform.scale.xy">
+	    <value type="real" value="0.155"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#9" keyPath="transform.rotation.y">
+	    <value type="real" value="1.13446"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#10" keyPath="cornerRadius">
+	    <value type="real" value="38.6763"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#12" keyPath="shadowOpacity">
+	    <value type="real" value="0.252"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#12" keyPath="cornerRadius">
+	    <value type="real" value="38.6763"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#13" keyPath="opacity">
+	    <value type="integer" value="1"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#20" keyPath="opacity">
+	    <value type="integer" value="0"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#14" keyPath="opacity">
+	    <value type="integer" value="1"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue targetId="#15" keyPath="opacity">
+	    <value type="integer" value="0"/>
+	  </LKStateSetValue>
+	</elements>
+      </LKState>
+    </states>
+    <stateTransitions>
+      <LKStateTransition fromState="*" toState="cursor-1">
+	<elements>
+	  <LKStateTransitionElement key="opacity" targetId="#1">
+	    <animation type="CASpringAnimation" damping="45.8803" mass="1" stiffness="526.251" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" beginTime="1.22" duration="0.4025" fillMode="backwards" timingFunction="easeIn"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="transform.scale.xy" targetId="#1">
+	    <animation type="CASpringAnimation" damping="45.8803" mass="1" stiffness="526.251" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.scale.xy" beginTime="1.22" duration="0.4025" fillMode="backwards" timingFunction="easeIn"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="borderWidth" targetId="#1">
+	    <animation type="CASpringAnimation" damping="45.8803" mass="1" stiffness="526.251" velocity="0" mica_autorecalculatesDuration="1" keyPath="borderWidth" beginTime="1.22" duration="0.4025" fillMode="backwards" timingFunction="easeIn"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position" targetId="#3">
+	    <animation type="CASpringAnimation" damping="15.7164" mass="1" stiffness="61.7517" velocity="0" mica_autorecalculatesDuration="1" keyPath="position" duration="1.175" fillMode="backwards" timingFunction="easeIn"/>
+	  </LKStateTransitionElement>
+	</elements>
+      </LKStateTransition>
+      <LKStateTransition fromState="cursor-1" toState="*">
+	<elements>
+	  <LKStateTransitionElement key="position.x" targetId="#3">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="position.x" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position.y" targetId="#3">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="position.y" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#1">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="transform.scale.xy" targetId="#1">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.scale.xy" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="borderWidth" targetId="#1">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="borderWidth" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position" targetId="#3">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="position" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	</elements>
+      </LKStateTransition>
+      <LKStateTransition fromState="*" toState="swap-msg">
+	<elements>
+	  <LKStateTransitionElement key="position.x" targetId="#4">
+	    <animation type="CASpringAnimation" damping="18.7958" mass="1" stiffness="88.3201" velocity="0" mica_autorecalculatesDuration="1" keyPath="position.x" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position.y" targetId="#4">
+	    <animation type="CASpringAnimation" damping="18.7958" mass="1" stiffness="88.3201" velocity="0" mica_autorecalculatesDuration="1" keyPath="position.y" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="zPosition" targetId="#4">
+	    <animation type="CASpringAnimation" damping="18.7958" mass="1" stiffness="88.3201" velocity="0" mica_autorecalculatesDuration="1" keyPath="zPosition" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="transform.scale.xy" targetId="#4">
+	    <animation type="CASpringAnimation" damping="18.7958" mass="1" stiffness="88.3201" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.scale.xy" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="transform.rotation.y" targetId="#4">
+	    <animation type="CASpringAnimation" damping="18.7958" mass="1" stiffness="88.3201" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.rotation.y" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#5">
+	    <animation type="CASpringAnimation" damping="24.2188" mass="1" stiffness="146.637" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" beginTime="0.2375" duration="0.7625" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#6">
+	    <animation type="CASpringAnimation" damping="49.9103" mass="1" stiffness="622.761" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" beginTime="0.065" duration="0.37" fillMode="backwards" timingFunction="easeInEaseOut"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="cornerRadius" targetId="#7">
+	    <animation type="CASpringAnimation" damping="18.7958" mass="1" stiffness="88.3201" velocity="0" mica_autorecalculatesDuration="1" keyPath="cornerRadius" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="transform.rotation.y" targetId="#8">
+	    <animation type="CASpringAnimation" damping="18.7958" mass="1" stiffness="88.3201" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.rotation.y" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="transform.rotation.z" targetId="#8">
+	    <animation type="CASpringAnimation" damping="18.7958" mass="1" stiffness="88.3201" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.rotation.z" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="transform.rotation.x" targetId="#8">
+	    <animation type="CASpringAnimation" damping="18.7958" mass="1" stiffness="88.3201" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.rotation.x" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position" targetId="#8">
+	    <animation type="CASpringAnimation" damping="18.7958" mass="1" stiffness="88.3201" velocity="0" mica_autorecalculatesDuration="1" keyPath="position" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position.x" targetId="#9">
+	    <animation type="CASpringAnimation" damping="18.7958" mass="1" stiffness="88.3201" velocity="0" mica_autorecalculatesDuration="1" keyPath="position.x" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position.y" targetId="#9">
+	    <animation type="CASpringAnimation" damping="18.7958" mass="1" stiffness="88.3201" velocity="0" mica_autorecalculatesDuration="1" keyPath="position.y" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="zPosition" targetId="#9">
+	    <animation type="CASpringAnimation" damping="18.7958" mass="1" stiffness="88.3201" velocity="0" mica_autorecalculatesDuration="1" keyPath="zPosition" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="transform.scale.xy" targetId="#9">
+	    <animation type="CASpringAnimation" damping="18.7958" mass="1" stiffness="88.3201" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.scale.xy" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="transform.rotation.y" targetId="#9">
+	    <animation type="CASpringAnimation" damping="18.7958" mass="1" stiffness="88.3201" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.rotation.y" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="cornerRadius" targetId="#10">
+	    <animation type="CASpringAnimation" damping="18.7958" mass="1" stiffness="88.3201" velocity="0" mica_autorecalculatesDuration="1" keyPath="cornerRadius" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#11">
+	    <animation type="CASpringAnimation" damping="115.418" mass="1" stiffness="3330.31" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" beginTime="0.1125" duration="0.16" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="shadowOpacity" targetId="#12">
+	    <animation type="CASpringAnimation" damping="18.7958" mass="1" stiffness="88.3201" velocity="0" mica_autorecalculatesDuration="1" keyPath="shadowOpacity" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="shadowOpacity" targetId="#8">
+	    <animation type="CASpringAnimation" damping="18.7958" mass="1" stiffness="88.3201" velocity="0" mica_autorecalculatesDuration="1" keyPath="shadowOpacity" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="cornerRadius" targetId="#12">
+	    <animation type="CASpringAnimation" damping="18.7958" mass="1" stiffness="88.3201" velocity="0" mica_autorecalculatesDuration="1" keyPath="cornerRadius" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="cornerRadius" targetId="#8">
+	    <animation type="CASpringAnimation" damping="18.7958" mass="1" stiffness="88.3201" velocity="0" mica_autorecalculatesDuration="1" keyPath="cornerRadius" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#13">
+	    <animation type="CASpringAnimation" damping="45.041" mass="1" stiffness="507.174" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" beginTime="0.0925" duration="0.41" fillMode="backwards" timingFunction="easeInEaseOut"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#14">
+	    <animation type="CASpringAnimation" damping="74.6134" mass="1" stiffness="1391.79" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" duration="0.2475" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#15">
+	    <animation type="CASpringAnimation" damping="74.6134" mass="1" stiffness="1391.79" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" beginTime="0.195" duration="0.2475" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="hidden" targetId="#1">
+	    <animation type="CASpringAnimation" damping="1846.68" mass="1" stiffness="852559" velocity="0" mica_autorecalculatesDuration="1" keyPath="hidden" duration="0.01" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="transform.scale.xy" targetId="#2">
+	    <animation type="CASpringAnimation" damping="47.9658" mass="1" stiffness="575.179" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.scale.xy" beginTime="1.745" duration="0.385" fillMode="backwards" timingFunction="easeOut"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#2">
+	    <animation type="CASpringAnimation" damping="47.9658" mass="1" stiffness="575.179" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" beginTime="1.745" duration="0.385" fillMode="backwards" timingFunction="easeOut"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="borderWidth" targetId="#2">
+	    <animation type="CASpringAnimation" damping="47.9658" mass="1" stiffness="575.179" velocity="0" mica_autorecalculatesDuration="1" keyPath="borderWidth" beginTime="1.745" duration="0.385" fillMode="backwards" timingFunction="easeOut"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position" targetId="#3">
+	    <animation type="CASpringAnimation" damping="11.2947" mass="1" stiffness="31.8925" velocity="0" mica_autorecalculatesDuration="1" keyPath="position" beginTime="0.065" duration="1.635" fillMode="backwards" timingFunction="easeIn"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#16">
+	    <animation type="CASpringAnimation" damping="40.1453" mass="1" stiffness="402.911" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" duration="0.46" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	</elements>
+      </LKStateTransition>
+      <LKStateTransition fromState="swap-msg" toState="*">
+	<elements>
+	  <LKStateTransitionElement key="position.x" targetId="#3">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="position.x" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position.y" targetId="#3">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="position.y" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position.x" targetId="#4">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="position.x" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position.y" targetId="#4">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="position.y" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="zPosition" targetId="#4">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="zPosition" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="transform.scale.xy" targetId="#4">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.scale.xy" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="transform.rotation.y" targetId="#4">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.rotation.y" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#5">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#6">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="cornerRadius" targetId="#7">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="cornerRadius" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="transform.rotation.y" targetId="#8">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.rotation.y" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="transform.rotation.z" targetId="#8">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.rotation.z" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="transform.rotation.x" targetId="#8">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.rotation.x" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position" targetId="#8">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="position" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position.x" targetId="#9">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="position.x" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position.y" targetId="#9">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="position.y" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="zPosition" targetId="#9">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="zPosition" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="transform.scale.xy" targetId="#9">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.scale.xy" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="transform.rotation.y" targetId="#9">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.rotation.y" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="cornerRadius" targetId="#10">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="cornerRadius" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#11">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="shadowOpacity" targetId="#12">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="shadowOpacity" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="shadowOpacity" targetId="#8">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="shadowOpacity" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="cornerRadius" targetId="#12">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="cornerRadius" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="cornerRadius" targetId="#8">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="cornerRadius" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#13">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#14">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#15">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="hidden" targetId="#1">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="hidden" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="transform.scale.xy" targetId="#2">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.scale.xy" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#2">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="borderWidth" targetId="#2">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="borderWidth" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position" targetId="#3">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="position" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#16">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	</elements>
+      </LKStateTransition>
+      <LKStateTransition fromState="*" toState="swap-safari">
+	<elements>
+	  <LKStateTransitionElement key="position.x" targetId="#4">
+	    <animation type="CASpringAnimation" damping="18.5596" mass="1" stiffness="86.1149" velocity="0" mica_autorecalculatesDuration="1" keyPath="position.x" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position.y" targetId="#4">
+	    <animation type="CASpringAnimation" damping="18.5596" mass="1" stiffness="86.1149" velocity="0" mica_autorecalculatesDuration="1" keyPath="position.y" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="zPosition" targetId="#4">
+	    <animation type="CASpringAnimation" damping="18.5596" mass="1" stiffness="86.1149" velocity="0" mica_autorecalculatesDuration="1" keyPath="zPosition" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="transform.scale.xy" targetId="#4">
+	    <animation type="CASpringAnimation" damping="18.5596" mass="1" stiffness="86.1149" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.scale.xy" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="transform.rotation.y" targetId="#4">
+	    <animation type="CASpringAnimation" damping="18.5596" mass="1" stiffness="86.1149" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.rotation.y" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="cornerRadius" targetId="#7">
+	    <animation type="CASpringAnimation" damping="18.5596" mass="1" stiffness="86.1149" velocity="0" mica_autorecalculatesDuration="1" keyPath="cornerRadius" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#6">
+	    <animation type="CASpringAnimation" damping="18.5596" mass="1" stiffness="86.1149" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="shadowOpacity" targetId="#8">
+	    <animation type="CASpringAnimation" damping="18.5596" mass="1" stiffness="86.1149" velocity="0" mica_autorecalculatesDuration="1" keyPath="shadowOpacity" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="cornerRadius" targetId="#8">
+	    <animation type="CASpringAnimation" damping="18.5596" mass="1" stiffness="86.1149" velocity="0" mica_autorecalculatesDuration="1" keyPath="cornerRadius" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#5">
+	    <animation type="CASpringAnimation" damping="69.6861" mass="1" stiffness="1214.04" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" duration="0.265" fillMode="backwards" timingFunction="easeInEaseOut"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position.x" targetId="#9">
+	    <animation type="CASpringAnimation" damping="18.5596" mass="1" stiffness="86.1149" velocity="0" mica_autorecalculatesDuration="1" keyPath="position.x" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position.y" targetId="#9">
+	    <animation type="CASpringAnimation" damping="18.5596" mass="1" stiffness="86.1149" velocity="0" mica_autorecalculatesDuration="1" keyPath="position.y" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="zPosition" targetId="#9">
+	    <animation type="CASpringAnimation" damping="18.5596" mass="1" stiffness="86.1149" velocity="0" mica_autorecalculatesDuration="1" keyPath="zPosition" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="transform.scale.xy" targetId="#9">
+	    <animation type="CASpringAnimation" damping="18.5596" mass="1" stiffness="86.1149" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.scale.xy" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="transform.rotation.y" targetId="#9">
+	    <animation type="CASpringAnimation" damping="18.5596" mass="1" stiffness="86.1149" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.rotation.y" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="cornerRadius" targetId="#10">
+	    <animation type="CASpringAnimation" damping="18.5596" mass="1" stiffness="86.1149" velocity="0" mica_autorecalculatesDuration="1" keyPath="cornerRadius" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#11">
+	    <animation type="CASpringAnimation" damping="54.3142" mass="1" stiffness="737.508" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" beginTime="0" duration="0.34" fillMode="backwards" timingFunction="easeInEaseOut"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#13">
+	    <animation type="CASpringAnimation" damping="53.527" mass="1" stiffness="716.286" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" beginTime="0.145" duration="0.345" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="transform.rotation.x" targetId="#12">
+	    <animation type="CASpringAnimation" damping="18.5596" mass="1" stiffness="86.1149" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.rotation.x" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="transform.rotation.y" targetId="#12">
+	    <animation type="CASpringAnimation" damping="18.5596" mass="1" stiffness="86.1149" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.rotation.y" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="cornerRadius" targetId="#12">
+	    <animation type="CASpringAnimation" damping="18.5596" mass="1" stiffness="86.1149" velocity="0" mica_autorecalculatesDuration="1" keyPath="cornerRadius" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="shadowOpacity" targetId="#12">
+	    <animation type="CASpringAnimation" damping="18.5596" mass="1" stiffness="86.1149" velocity="0" mica_autorecalculatesDuration="1" keyPath="shadowOpacity" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="hidden" targetId="#2">
+	    <animation type="CASpringAnimation" damping="738.673" mass="1" stiffness="136409" velocity="0" mica_autorecalculatesDuration="1" keyPath="hidden" duration="0.025" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#14">
+	    <animation type="CASpringAnimation" damping="72.4189" mass="1" stiffness="1311.13" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" duration="0.255" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#15">
+	    <animation type="CASpringAnimation" damping="72.4189" mass="1" stiffness="1311.13" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" beginTime="0.21" duration="0.255" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#16">
+	    <animation type="CASpringAnimation" damping="75.3748" mass="1" stiffness="1420.34" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" duration="0.245" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	</elements>
+      </LKStateTransition>
+      <LKStateTransition fromState="swap-safari" toState="*">
+	<elements>
+	  <LKStateTransitionElement key="position.x" targetId="#4">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="position.x" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position.y" targetId="#4">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="position.y" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="zPosition" targetId="#4">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="zPosition" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="transform.scale.xy" targetId="#4">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.scale.xy" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="transform.rotation.y" targetId="#4">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.rotation.y" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="cornerRadius" targetId="#7">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="cornerRadius" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#6">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="shadowOpacity" targetId="#8">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="shadowOpacity" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="cornerRadius" targetId="#8">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="cornerRadius" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#5">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position.x" targetId="#9">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="position.x" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position.y" targetId="#9">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="position.y" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="zPosition" targetId="#9">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="zPosition" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="transform.scale.xy" targetId="#9">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.scale.xy" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="transform.rotation.y" targetId="#9">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.rotation.y" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="cornerRadius" targetId="#10">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="cornerRadius" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#11">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#13">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="transform.rotation.x" targetId="#12">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.rotation.x" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="transform.rotation.y" targetId="#12">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.rotation.y" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="cornerRadius" targetId="#12">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="cornerRadius" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="shadowOpacity" targetId="#12">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="shadowOpacity" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="hidden" targetId="#2">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="hidden" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#14">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#15">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#16">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	</elements>
+      </LKStateTransition>
+      <LKStateTransition fromState="*" toState="drag-out">
+	<elements>
+	  <LKStateTransitionElement key="position" targetId="#3">
+	    <animation type="CASpringAnimation" damping="14.8626" mass="1" stiffness="55.2245" velocity="0" mica_autorecalculatesDuration="1" keyPath="position" beginTime="0" duration="1.2425" fillMode="backwards" timingFunction="easeOut"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position" targetId="#9">
+	    <animation type="CASpringAnimation" damping="14.8626" mass="1" stiffness="55.2245" velocity="0" mica_autorecalculatesDuration="1" keyPath="position" beginTime="0" duration="1.2425" fillMode="backwards" timingFunction="easeOut"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position.x" targetId="#9">
+	    <animation type="CASpringAnimation" damping="14.8626" mass="1" stiffness="55.2245" velocity="0" mica_autorecalculatesDuration="1" keyPath="position.x" beginTime="0" duration="1.2425" fillMode="backwards" timingFunction="easeOut"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position.y" targetId="#9">
+	    <animation type="CASpringAnimation" damping="14.8626" mass="1" stiffness="55.2245" velocity="0" mica_autorecalculatesDuration="1" keyPath="position.y" beginTime="0" duration="1.2425" fillMode="backwards" timingFunction="easeOut"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="zPosition" targetId="#9">
+	    <animation type="CASpringAnimation" damping="14.8626" mass="1" stiffness="55.2245" velocity="0" mica_autorecalculatesDuration="1" keyPath="zPosition" beginTime="0" duration="1.2425" fillMode="backwards" timingFunction="easeOut"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="transform.scale.xy" targetId="#9">
+	    <animation type="CASpringAnimation" damping="14.8626" mass="1" stiffness="55.2245" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.scale.xy" beginTime="0" duration="1.2425" fillMode="backwards" timingFunction="easeOut"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="transform.rotation.y" targetId="#9">
+	    <animation type="CASpringAnimation" damping="14.8626" mass="1" stiffness="55.2245" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.rotation.y" beginTime="0" duration="1.2425" fillMode="backwards" timingFunction="easeOut"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="cornerRadius" targetId="#10">
+	    <animation type="CASpringAnimation" damping="14.8626" mass="1" stiffness="55.2245" velocity="0" mica_autorecalculatesDuration="1" keyPath="cornerRadius" beginTime="0" duration="1.2425" fillMode="backwards" timingFunction="easeOut"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="sublayers" targetId="#17">
+	    <animation type="CASpringAnimation" damping="14.8626" mass="1" stiffness="55.2245" velocity="0" mica_autorecalculatesDuration="1" keyPath="sublayers" beginTime="0" duration="1.2425" fillMode="backwards" timingFunction="easeOut"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#13">
+	    <animation type="CASpringAnimation" damping="14.8626" mass="1" stiffness="55.2245" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" beginTime="0" duration="1.2425" fillMode="backwards" timingFunction="easeOut"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="cornerRadius" targetId="#19">
+	    <animation type="CASpringAnimation" damping="14.8626" mass="1" stiffness="55.2245" velocity="0" mica_autorecalculatesDuration="1" keyPath="cornerRadius" beginTime="0" duration="1.2425" fillMode="backwards" timingFunction="easeOut"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="cornerRadius" targetId="#12">
+	    <animation type="CASpringAnimation" damping="14.8626" mass="1" stiffness="55.2245" velocity="0" mica_autorecalculatesDuration="1" keyPath="cornerRadius" beginTime="0" duration="1.2425" fillMode="backwards" timingFunction="easeOut"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="hidden" targetId="#1">
+	    <animation type="CASpringAnimation" damping="1231.12" mass="1" stiffness="378915" velocity="0" mica_autorecalculatesDuration="1" keyPath="hidden" beginTime="0" duration="0.015" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="hidden" targetId="#2">
+	    <animation type="CASpringAnimation" damping="1231.12" mass="1" stiffness="378915" velocity="0" mica_autorecalculatesDuration="1" keyPath="hidden" beginTime="0" duration="0.015" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#20">
+	    <animation type="CASpringAnimation" damping="76.9451" mass="1" stiffness="1480.14" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" beginTime="0" duration="0.24" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#14">
+	    <animation type="CASpringAnimation" damping="76.9451" mass="1" stiffness="1480.14" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" beginTime="0" duration="0.24" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#21">
+	    <animation type="CASpringAnimation" damping="76.9451" mass="1" stiffness="1480.14" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" beginTime="0.175" duration="0.24" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position.x" targetId="#18">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="position.x" beginTime="0" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="backgroundColor" targetId="#22">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="backgroundColor" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="backgroundColor" targetId="#23">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="backgroundColor" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="backgroundColor" targetId="#24">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="backgroundColor" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	</elements>
+      </LKStateTransition>
+      <LKStateTransition fromState="drag-out" toState="*">
+	<elements>
+	  <LKStateTransitionElement key="position" targetId="#3">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="position" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position.x" targetId="#3">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="position.x" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position.y" targetId="#3">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="position.y" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position" targetId="#9">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="position" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position.x" targetId="#9">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="position.x" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position.y" targetId="#9">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="position.y" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="zPosition" targetId="#9">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="zPosition" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="transform.scale.xy" targetId="#9">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.scale.xy" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="transform.rotation.y" targetId="#9">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.rotation.y" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="cornerRadius" targetId="#10">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="cornerRadius" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="sublayers" targetId="#17">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="sublayers" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#13">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="cornerRadius" targetId="#19">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="cornerRadius" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="cornerRadius" targetId="#12">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="cornerRadius" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="hidden" targetId="#1">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="hidden" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="hidden" targetId="#2">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="hidden" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#20">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#14">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#21">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position.x" targetId="#18">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="position.x" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="backgroundColor" targetId="#22">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="backgroundColor" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="backgroundColor" targetId="#23">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="backgroundColor" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="backgroundColor" targetId="#24">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="backgroundColor" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	</elements>
+      </LKStateTransition>
+      <LKStateTransition fromState="*" toState="2-up">
+	<elements>
+	  <LKStateTransitionElement key="transform.scale.xy" targetId="#9">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.scale.xy" duration="0.8" fillMode="backwards" timingFunction="easeOut"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position" targetId="#9">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="position" duration="0.8" fillMode="backwards" timingFunction="easeOut"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="cornerRadius" targetId="#10">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="cornerRadius" duration="0.8" fillMode="backwards" timingFunction="easeOut"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="cornerRadius" targetId="#12">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="cornerRadius" duration="0.8" fillMode="backwards" timingFunction="easeOut"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="cornerRadius" targetId="#19">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="cornerRadius" duration="0.8" fillMode="backwards" timingFunction="easeOut"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="shadowOpacity" targetId="#12">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="shadowOpacity" duration="0.8" fillMode="backwards" timingFunction="easeOut"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#11">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" duration="0.8" fillMode="backwards" timingFunction="easeOut"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position" targetId="#3">
+	    <animation type="CASpringAnimation" damping="23.1559" mass="1" stiffness="134.049" velocity="0" mica_autorecalculatesDuration="1" keyPath="position" beginTime="1.6925" duration="0.7975" fillMode="backwards" timingFunction="easeIn"/>
+	  </LKStateTransitionElement>
+	</elements>
+      </LKStateTransition>
+      <LKStateTransition fromState="2-up" toState="*">
+	<elements>
+	  <LKStateTransitionElement key="transform.scale.xy" targetId="#9">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.scale.xy" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position" targetId="#9">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="position" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="cornerRadius" targetId="#10">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="cornerRadius" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="cornerRadius" targetId="#12">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="cornerRadius" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="cornerRadius" targetId="#19">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="cornerRadius" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="shadowOpacity" targetId="#12">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="shadowOpacity" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#11">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position.x" targetId="#18">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="position.x" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position" targetId="#3">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="position" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	</elements>
+      </LKStateTransition>
+      <LKStateTransition fromState="*" toState="drag back">
+	<elements>
+	  <LKStateTransitionElement key="position" targetId="#3">
+	    <animation type="CASpringAnimation" damping="25.384" mass="1" stiffness="161.086" velocity="0" mica_autorecalculatesDuration="1" keyPath="position" duration="0.7275" fillMode="backwards" timingFunction="easeIn"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position" targetId="#9">
+	    <animation type="CASpringAnimation" damping="25.384" mass="1" stiffness="161.086" velocity="0" mica_autorecalculatesDuration="1" keyPath="position" beginTime="0" duration="0.7275" fillMode="backwards" timingFunction="easeIn"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="transform.scale.xy" targetId="#9">
+	    <animation type="CASpringAnimation" damping="25.384" mass="1" stiffness="161.086" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.scale.xy" beginTime="0" duration="0.7275" fillMode="backwards" timingFunction="easeIn"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#11">
+	    <animation type="CASpringAnimation" damping="25.384" mass="1" stiffness="161.086" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" beginTime="0" duration="0.7275" fillMode="backwards" timingFunction="easeIn"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="cornerRadius" targetId="#10">
+	    <animation type="CASpringAnimation" damping="25.384" mass="1" stiffness="161.086" velocity="0" mica_autorecalculatesDuration="1" keyPath="cornerRadius" beginTime="0" duration="0.7275" fillMode="backwards" timingFunction="easeIn"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="shadowOpacity" targetId="#12">
+	    <animation type="CASpringAnimation" damping="25.384" mass="1" stiffness="161.086" velocity="0" mica_autorecalculatesDuration="1" keyPath="shadowOpacity" beginTime="0" duration="0.7275" fillMode="backwards" timingFunction="easeIn"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="cornerRadius" targetId="#12">
+	    <animation type="CASpringAnimation" damping="25.384" mass="1" stiffness="161.086" velocity="0" mica_autorecalculatesDuration="1" keyPath="cornerRadius" beginTime="0" duration="0.7275" fillMode="backwards" timingFunction="easeIn"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="cornerRadius" targetId="#19">
+	    <animation type="CASpringAnimation" damping="25.2107" mass="1" stiffness="158.895" velocity="0" mica_autorecalculatesDuration="1" keyPath="cornerRadius" beginTime="0" duration="0.7325" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	</elements>
+      </LKStateTransition>
+      <LKStateTransition fromState="drag back" toState="*">
+	<elements>
+	  <LKStateTransitionElement key="position" targetId="#3">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="position" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position" targetId="#9">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="position" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="transform.scale.xy" targetId="#9">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.scale.xy" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#11">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="cornerRadius" targetId="#10">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="cornerRadius" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="shadowOpacity" targetId="#12">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="shadowOpacity" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="cornerRadius" targetId="#12">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="cornerRadius" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="cornerRadius" targetId="#19">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="cornerRadius" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	</elements>
+      </LKStateTransition>
+      <LKStateTransition fromState="*" toState="return">
+	<elements>
+	  <LKStateTransitionElement key="position" targetId="#3">
+	    <animation type="CASpringAnimation" damping="18.6064" mass="1" stiffness="86.5493" velocity="0" mica_autorecalculatesDuration="1" keyPath="position" beginTime="0" duration="1" fillMode="backwards" timingFunction="easeInEaseOut"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position.x" targetId="#18">
+	    <animation type="CASpringAnimation" damping="18.7006" mass="1" stiffness="87.428" velocity="0" mica_autorecalculatesDuration="1" keyPath="position.x" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#21">
+	    <animation type="CASpringAnimation" damping="76.1519" mass="1" stiffness="1449.78" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" duration="0.2425" fillMode="backwards" timingFunction="easeInEaseOut"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#15">
+	    <animation type="CASpringAnimation" damping="18.7006" mass="1" stiffness="87.428" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position.x" targetId="#9">
+	    <animation type="CASpringAnimation" damping="18.7006" mass="1" stiffness="87.428" velocity="0" mica_autorecalculatesDuration="1" keyPath="position.x" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position.y" targetId="#9">
+	    <animation type="CASpringAnimation" damping="18.7006" mass="1" stiffness="87.428" velocity="0" mica_autorecalculatesDuration="1" keyPath="position.y" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="zPosition" targetId="#9">
+	    <animation type="CASpringAnimation" damping="18.7006" mass="1" stiffness="87.428" velocity="0" mica_autorecalculatesDuration="1" keyPath="zPosition" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="transform.scale.xy" targetId="#9">
+	    <animation type="CASpringAnimation" damping="18.7006" mass="1" stiffness="87.428" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.scale.xy" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="transform.rotation.y" targetId="#9">
+	    <animation type="CASpringAnimation" damping="18.7006" mass="1" stiffness="87.428" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.rotation.y" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="cornerRadius" targetId="#10">
+	    <animation type="CASpringAnimation" damping="18.7006" mass="1" stiffness="87.428" velocity="0" mica_autorecalculatesDuration="1" keyPath="cornerRadius" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="shadowOpacity" targetId="#12">
+	    <animation type="CASpringAnimation" damping="18.7006" mass="1" stiffness="87.428" velocity="0" mica_autorecalculatesDuration="1" keyPath="shadowOpacity" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="cornerRadius" targetId="#12">
+	    <animation type="CASpringAnimation" damping="18.7006" mass="1" stiffness="87.428" velocity="0" mica_autorecalculatesDuration="1" keyPath="cornerRadius" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#13">
+	    <animation type="CASpringAnimation" damping="18.7006" mass="1" stiffness="87.428" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" duration="1" fillMode="backwards" timingFunction="default"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#20">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" beginTime="-0.295" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#14">
+	    <animation type="CASpringAnimation" damping="73.1359" mass="1" stiffness="1337.22" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" beginTime="0.2" duration="0.2525" fillMode="backwards" timingFunction="easeInEaseOut"/>
+	  </LKStateTransitionElement>
+	</elements>
+      </LKStateTransition>
+      <LKStateTransition fromState="return" toState="*">
+	<elements>
+	  <LKStateTransitionElement key="position" targetId="#3">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="position" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position.x" targetId="#18">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="position.x" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#21">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#15">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position.x" targetId="#9">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="position.x" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="position.y" targetId="#9">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="position.y" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="zPosition" targetId="#9">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="zPosition" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="transform.scale.xy" targetId="#9">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.scale.xy" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="transform.rotation.y" targetId="#9">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="transform.rotation.y" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="cornerRadius" targetId="#10">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="cornerRadius" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="shadowOpacity" targetId="#12">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="shadowOpacity" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="cornerRadius" targetId="#12">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="cornerRadius" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#13">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#20">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="opacity" targetId="#14">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="opacity" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	</elements>
+      </LKStateTransition>
+      <LKStateTransition fromState="*" toState="start">
+	<elements>
+	  <LKStateTransitionElement key="hidden" targetId="#1">
+	    <animation type="CASpringAnimation" damping="1846.68" mass="1" stiffness="852559" velocity="0" mica_autorecalculatesDuration="1" keyPath="hidden" duration="0.01" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="hidden" targetId="#2">
+	    <animation type="CASpringAnimation" damping="1846.68" mass="1" stiffness="852559" velocity="0" mica_autorecalculatesDuration="1" keyPath="hidden" duration="0.01" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	</elements>
+      </LKStateTransition>
+      <LKStateTransition fromState="start" toState="*">
+	<elements>
+	  <LKStateTransitionElement key="hidden" targetId="#1">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="hidden" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement key="hidden" targetId="#2">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" velocity="0" mica_autorecalculatesDuration="1" keyPath="hidden" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	</elements>
+      </LKStateTransition>
+    </stateTransitions>
+  </CALayer>
+</caml>

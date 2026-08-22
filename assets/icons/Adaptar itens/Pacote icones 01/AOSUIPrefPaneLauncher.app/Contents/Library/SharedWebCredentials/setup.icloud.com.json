@@ -1,0 +1,19 @@
+{
+    "applinks": {
+        "details": [{
+            "appID": "0000000000.com.apple.AOSUIPrefPaneLauncher",
+            "components": [
+                {
+                    "/" : "/private/email",
+                    "?" : "flow=?*"
+                },
+                {
+                    "/" : "/private/trustedcontact",
+                    "?" : {"flow" : "?*", "id" : "?*"}
+                }
+            ],
+            "alwaysEnabled": true
+        }]
+    }
+}
+

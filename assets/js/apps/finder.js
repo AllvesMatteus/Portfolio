@@ -27,7 +27,13 @@ const FILE_TREE = {
       'Mesa':       {
         type: 'folder',
         children: {
-          'Currículo.pdf': { type: 'file', size: '353 KB', ext: 'pdf', url: 'assets/docs/mateus-desenvolvedor-fullstack.pdf', id: 'curriculo-pdf' }
+          'Currículo.pdf': {
+            type: 'file',
+            size: '353 KB',
+            ext: 'pdf',
+            url: 'assets/docs/mateus-desenvolvedor-fullstack.pdf',
+            id: 'curriculo-pdf'
+          }
         }
       },
       'Música':     { type: 'folder', children: {} },
@@ -109,7 +115,7 @@ function dispatchMesaUpdate() {
 }
 
 export function getMesaItems() {
-  return FILE_TREE['~']['Mesa']?.children || {};
+  return FILE_TREE['~']?.children?.['Mesa']?.children || {};
 }
 
 export function moveToTrash(name, item, originPath = ['~']) {

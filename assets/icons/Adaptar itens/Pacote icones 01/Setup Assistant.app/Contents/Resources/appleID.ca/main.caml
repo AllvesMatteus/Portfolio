@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<caml xmlns="http://www.apple.com/CoreAnimation/1.0">
+  <CALayer id="#8" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 864 285" contentsFormat="RGBA8" name="Root Layer" position="432 142.5" mica_expanded="1" micaID="9DFC80E8-ED10-43BF-9C99-714E8998FA6B">
+    <backgroundColor opacity="0" value="0.9363 0.6291 0.979"/>
+    <sublayers>
+      <CALayer id="#7" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 400 300" contentsFormat="RGBA8" name="Animation" position="432 150" micaID="FC1AE42E-F447-45CB-9172-CDDA3B1C35F4">
+	<filters>
+	  <CAFilter filter="colorMatrix" name="colorMatrix" inputColorMatrix="matrix(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0)"/>
+	  <CAFilter filter="colorAdd" name="colorAdd" inputColor="0 0.4784 1"/>
+	</filters>
+	<sublayers>
+	  <CALayer id="#1" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 54 54" contentsFormat="RGBA8" name="iCloud" position="-77 90" transform="scale(2.5, 2.5, 1)" micaID="81A05C7E-9CFF-4777-905E-957EA4064B79">
+	    <sublayers>
+	      <CALayer allowsEdgeAntialiasing="1" allowsGroupOpacity="1" backgroundColor="0 0 0" borderWidth="27" bounds="0 0 312.543395996094 312.54345703125" contentsFormat="RGBA8" continuousCorners="1" cornerRadius="95" hidden="0" name="Layer 5" position="27 27" transform="scale(0.172776, 0.172776, 1)" micaID="B785DD09-3304-42DC-95AF-CE230CAB318E">
+		<borderColor opacity="0" value="0.5 0.5 0.5"/>
+	      </CALayer>
+	      <CAShapeLayer fillColor="1 1 1" path="27.95 11.63 m 28.02 17.05 23.95 21 18.77 21 c 15.25 21 12.8 19.19 11.32 17 c 8.2 17.96 4.75 15.67 4.71 12.25 c 1.83 11.87 0 9.47 0 6.5 c 0 2.94 3.25 0.01 7.56 0.01 c 25.21 0 l 29.03 0 32 2.63 32 5.93 c 32 8.46 30.5 10.68 27.95 11.63 c h" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 32 21" contentsFormat="RGBA8" name="path" position="27 27.5" micaID="0F36F596-4526-487C-93A7-6C154BEE2554">
+		<strokeColor opacity="0" value="0 0 0"/>
+	      </CAShapeLayer>
+	      <CAShapeLayer id="#15" fillColor="0.3 0.3 0.3" path="34.9 49 m 39.8 49 41.58 48.49 43.37 47.53 c 45.16 46.57 46.57 45.16 47.53 43.37 c 48.49 41.58 49 39.8 49 34.9 c 49 19.1 l 49 14.2 48.49 12.42 47.53 10.63 c 46.57 8.84 45.16 7.43 43.37 6.47 c 41.58 5.51 39.8 5 34.9 5 c 19.1 5 l 14.2 5 12.42 5.51 10.63 6.47 c 8.84 7.43 7.43 8.84 6.47 10.63 c 5.51 12.42 5 14.2 5 19.1 c 5 34.9 l 5 39.8 5.51 41.58 6.47 43.37 c 7.43 45.16 8.84 46.57 10.63 47.53 c 12.42 48.49 14.2 49 19.1 49 c 34.9 49 l 34.9 54 m 19.1 54 l 13.88 54 11.15 53.48 8.27 51.94 c 5.62 50.52 3.48 48.38 2.06 45.73 c 0.52 42.85 0 40.12 0 34.9 c 0 19.1 l 0 13.88 0.52 11.15 2.06 8.27 c 3.48 5.62 5.62 3.48 8.27 2.06 c 11.15 0.52 13.88 0 19.1 0 c 34.9 0 l 40.12 0 42.85 0.52 45.73 2.06 c 48.38 3.48 50.52 5.62 51.94 8.27 c 53.48 11.15 54 13.88 54 19.1 c 54 34.9 l 54 40.12 53.48 42.85 51.94 45.73 c 50.52 48.38 48.38 50.52 45.73 51.94 c 42.85 53.48 40.12 54 34.9 54 c 34.9 54 l h" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 54 54" contentsFormat="RGBA8" name="path" position="27 27" micaID="DC6AA3E0-66EB-4E30-8615-B91BE00ADF19">
+		<strokeColor opacity="0" value="0 0 0"/>
+	      </CAShapeLayer>
+	    </sublayers>
+	  </CALayer>
+	  <CALayer id="#2" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 60 60" contentsFormat="RGBA8" name="AppStore" position="30 163" transform="scale(2.5, 2.5, 1)" micaID="9A56B082-8438-4537-A0B8-F539EEC7B1A9">
+	    <sublayers>
+	      <CALayer allowsEdgeAntialiasing="1" allowsGroupOpacity="1" backgroundColor="0 0 0" borderWidth="27" bounds="0 0 354.639190673828 347.270446777344" contentsFormat="RGBA8" continuousCorners="1" cornerRadius="95" hidden="0" name="Layer 3" position="30.511566162109 30" transform="scale(0.172776, 0.172776, 1)" micaID="26884592-06BE-4EC7-80B2-1C639D38E682">
+		<borderColor opacity="0" value="0.5 0.5 0.5"/>
+	      </CALayer>
+	      <CAShapeLayer id="#14" fillColor="0.3 0.3 0.3" path="40.9 55 m 45.8 55 47.58 54.49 49.37 53.53 c 51.16 52.57 52.57 51.16 53.53 49.37 c 54.49 47.58 55 45.8 55 40.9 c 55 19.1 l 55 14.2 54.49 12.42 53.53 10.63 c 52.57 8.84 51.16 7.43 49.37 6.47 c 47.58 5.51 45.8 5 40.9 5 c 19.1 5 l 14.2 5 12.42 5.51 10.63 6.47 c 8.84 7.43 7.43 8.84 6.47 10.63 c 5.51 12.42 5 14.2 5 19.1 c 5 40.9 l 5 45.8 5.51 47.58 6.47 49.37 c 7.43 51.16 8.84 52.57 10.63 53.53 c 12.42 54.49 14.2 55 19.1 55 c 40.9 55 l 40.9 60 m 19.1 60 l 13.88 60 11.15 59.48 8.27 57.94 c 5.62 56.52 3.48 54.38 2.06 51.73 c 0.52 48.85 0 46.12 0 40.9 c 0 19.1 l 0 13.88 0.52 11.15 2.06 8.27 c 3.48 5.62 5.62 3.48 8.27 2.06 c 11.15 0.52 13.88 0 19.1 0 c 40.9 0 l 46.12 0 48.85 0.52 51.73 2.06 c 54.38 3.48 56.52 5.62 57.94 8.27 c 59.48 11.15 60 13.88 60 19.1 c 60 40.9 l 60 46.12 59.48 48.85 57.94 51.73 c 56.52 54.38 54.38 56.52 51.73 57.94 c 48.85 59.48 46.12 60 40.9 60 c 40.9 60 l h" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 60 60" contentsFormat="RGBA8" name="path" position="30 30" micaID="0E3B5DBA-930C-4D7F-AF80-112FF48A9A59">
+		<strokeColor opacity="0" value="0 0 0"/>
+	      </CAShapeLayer>
+	      <CAShapeLayer fillColor="1 1 1" path="2.24 4.25 m 1.08 4.25 0 3.38 0 2.11 c 0 0.86 1.08 0 2.24 0 c 20.79 0 l 21.24 1.89 20.26 4.24 17.7 4.24 c 12.55 4.24 l 21.54 19.84 l 22.12 20.86 21.9 22.24 20.83 22.86 c 19.71 23.51 18.45 22.99 17.89 21.97 c 17 20.52 l 16.12 21.98 l 15.56 23 14.29 23.53 13.17 22.87 c 12.09 22.22 11.9 20.86 12.48 19.85 c 14.59 16.27 l 7.65 4.25 l 2.24 4.25 l h" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 22.12 23.53" contentsFormat="RGBA8" name="path" position="24.06 33.605" micaID="7CCA908B-348E-4DF7-BBA2-EA155A57B25E">
+		<strokeColor opacity="0" value="0 0 0"/>
+	      </CAShapeLayer>
+	      <CAShapeLayer fillColor="1 1 1" path="13.27 11.44 m 7.9 11.44 l 2.03 21.61 l 0.26 20.32 0 16.61 1.32 14.38 c 8.74 1.52 l 9.3 0.5 10.55 0 11.69 0.63 c 12.78 1.25 12.98 2.61 12.4 3.65 c 10.33 7.19 l 13.27 7.19 l 14.44 7.19 15.52 8.05 15.52 9.3 c 15.52 10.57 14.44 11.44 13.27 11.44 c h" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 15.52 21.61" contentsFormat="RGBA8" name="path" position="39.24 25.455" micaID="1067E628-E3FE-4A25-84EB-F5702F676D5D">
+		<strokeColor opacity="0" value="0 0 0"/>
+	      </CAShapeLayer>
+	      <CAShapeLayer fillColor="1 1 1" path="1.76 5.69 m 0.58 3.66 l 0 2.62 0.16 1.29 1.27 0.64 c 2.4 0 3.65 0.51 4.21 1.53 c 5.94 4.45 l 5.51 5.2 3.89 6.27 1.76 5.69 c h" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 5.94 6.27" contentsFormat="RGBA8" name="path" position="18.54 17.775" micaID="8D511082-8EC5-4012-9292-9FD122FC1DAF">
+		<strokeColor opacity="0" value="0 0 0"/>
+	      </CAShapeLayer>
+	    </sublayers>
+	  </CALayer>
+	  <CALayer id="#3" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 54 54" contentsFormat="RGBA8" name="Wallet" position="475 169" transform="scale(2.5, 2.5, 1)" micaID="AE71244B-4C28-4A6B-9374-FF0C08B636A5">
+	    <sublayers>
+	      <CALayer allowsEdgeAntialiasing="1" allowsGroupOpacity="1" backgroundColor="0 0 0" borderWidth="27" bounds="0 0 325.276672363281 321.803985595703" contentsFormat="RGBA8" continuousCorners="1" cornerRadius="95" hidden="0" name="Layer 8" position="27.199996948242 26.600006103516" transform="scale(0.172776, 0.172776, 1)" micaID="CFB1C597-8DCB-4CD9-92C4-4C95C6527BB4">
+		<borderColor opacity="0" value="0.5 0.5 0.5"/>
+	      </CALayer>
+	      <CAShapeLayer id="#13" fillColor="0.3 0.3 0.3" path="34.9 49 m 39.8 49 41.58 48.49 43.37 47.53 c 45.16 46.57 46.57 45.16 47.53 43.37 c 48.49 41.58 49 39.8 49 34.9 c 49 19.1 l 49 14.2 48.49 12.42 47.53 10.63 c 46.57 8.84 45.16 7.43 43.37 6.47 c 41.58 5.51 39.8 5 34.9 5 c 19.1 5 l 14.2 5 12.42 5.51 10.63 6.47 c 8.84 7.43 7.43 8.84 6.47 10.63 c 5.51 12.42 5 14.2 5 19.1 c 5 34.9 l 5 39.8 5.51 41.58 6.47 43.37 c 7.43 45.16 8.84 46.57 10.63 47.53 c 12.42 48.49 14.2 49 19.1 49 c 34.9 49 l 34.9 54 m 19.1 54 l 13.88 54 11.15 53.48 8.27 51.94 c 5.62 50.52 3.48 48.38 2.06 45.73 c 0.52 42.85 0 40.12 0 34.9 c 0 19.1 l 0 13.88 0.52 11.15 2.06 8.27 c 3.48 5.62 5.62 3.48 8.27 2.06 c 11.15 0.52 13.88 0 19.1 0 c 34.9 0 l 40.12 0 42.85 0.52 45.73 2.06 c 48.38 3.48 50.52 5.62 51.94 8.27 c 53.48 11.15 54 13.88 54 19.1 c 54 34.9 l 54 40.12 53.48 42.85 51.94 45.73 c 50.52 48.38 48.38 50.52 45.73 51.94 c 42.85 53.48 40.12 54 34.9 54 c 34.9 54 l h" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 54 54" contentsFormat="RGBA8" name="path" position="27 27" micaID="A0379A5B-7175-4CCE-A15C-37F563811D99">
+		<strokeColor opacity="0" value="0 0 0"/>
+	      </CAShapeLayer>
+	      <CAShapeLayer fillColor="1 1 1" path="23.65 24 m 6.35 24 l 2.44 24 0 21.52 0 17.56 c 0 6.43 l 0 2.47 2.44 0 6.35 0 c 23.66 0 l 27.56 0 30.01 2.47 30.01 6.43 c 30.01 17.56 l 30 21.52 27.55 24 23.65 24 c h 3.68 19.4 m 3.8 20.38 4.66 21.03 5.97 21.03 c 24.05 21.03 l 25.36 21.03 26.22 20.38 26.34 19.4 c 26.34 19.3 l 3.68 19.3 l 3.68 19.4 l h 26.47 13.78 m 18.42 13.78 l 18.06 13.78 17.78 13.55 17.69 13.17 c 17.37 11.8 16.48 11.01 14.99 11.01 c 13.5 11.01 12.62 11.81 12.29 13.17 c 12.19 13.55 11.93 13.78 11.55 13.78 c 3.51 13.78 l 3.51 14.29 l 3.51 15.05 4.03 15.51 4.87 15.51 c 25.11 15.51 l 25.95 15.51 26.47 15.05 26.47 14.29 c 26.47 13.78 l h 26.47 16.54 m 3.53 16.54 l 3.53 17.05 l 3.53 17.81 4.05 18.27 4.89 18.27 c 25.13 18.27 l 25.97 18.27 26.49 17.81 26.49 17.05 c 26.49 16.54 l h" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 30.01 24" contentsFormat="RGBA8" name="path" position="27.005 27" micaID="F4A5066C-CDE7-41EF-BF30-8DA38F23E6F5">
+		<strokeColor opacity="0" value="0 0 0"/>
+	      </CAShapeLayer>
+	    </sublayers>
+	  </CALayer>
+	  <CALayer id="#4" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 60 60" contentsFormat="RGBA8" name="FindMy" position="392 98" transform="scale(2.5, 2.5, 1)" micaID="363D77AC-50A6-45A4-AD4A-D5748E03CA6B">
+	    <sublayers>
+	      <CALayer allowsEdgeAntialiasing="1" allowsGroupOpacity="1" backgroundColor="0 0 0" borderWidth="27" bounds="0 0 354.639190673828 347.270446777344" contentsFormat="RGBA8" continuousCorners="1" cornerRadius="95" hidden="0" name="Layer 7" position="29.711566162109 30" transform="scale(0.172776, 0.172776, 1)" micaID="793501D8-8B72-4A44-94DA-CAF00DCB72EA">
+		<borderColor opacity="0" value="0.5 0.5 0.5"/>
+	      </CALayer>
+	      <CAShapeLayer id="#12" fillColor="0.3 0.3 0.3" path="40.9 55 m 45.8 55 47.58 54.49 49.37 53.53 c 51.16 52.57 52.57 51.16 53.53 49.37 c 54.49 47.58 55 45.8 55 40.9 c 55 19.1 l 55 14.2 54.49 12.42 53.53 10.63 c 52.57 8.84 51.16 7.43 49.37 6.47 c 47.58 5.51 45.8 5 40.9 5 c 19.1 5 l 14.2 5 12.42 5.51 10.63 6.47 c 8.84 7.43 7.43 8.84 6.47 10.63 c 5.51 12.42 5 14.2 5 19.1 c 5 40.9 l 5 45.8 5.51 47.58 6.47 49.37 c 7.43 51.16 8.84 52.57 10.63 53.53 c 12.42 54.49 14.2 55 19.1 55 c 40.9 55 l 40.9 60 m 19.1 60 l 13.88 60 11.15 59.48 8.27 57.94 c 5.62 56.52 3.48 54.38 2.06 51.73 c 0.52 48.85 0 46.12 0 40.9 c 0 19.1 l 0 13.88 0.52 11.15 2.06 8.27 c 3.48 5.62 5.62 3.48 8.27 2.06 c 11.15 0.52 13.88 0 19.1 0 c 40.9 0 l 46.12 0 48.85 0.52 51.73 2.06 c 54.38 3.48 56.52 5.62 57.94 8.27 c 59.48 11.15 60 13.88 60 19.1 c 60 40.9 l 60 46.12 59.48 48.85 57.94 51.73 c 56.52 54.38 54.38 56.52 51.73 57.94 c 48.85 59.48 46.12 60 40.9 60 c 40.9 60 l h" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 60 60" contentsFormat="RGBA8" name="path" position="30 30" micaID="B2F71DC9-6EBE-487D-9AD6-9CE47CCA95E1">
+		<strokeColor opacity="0" value="0 0 0"/>
+	      </CAShapeLayer>
+	      <CAShapeLayer fillColor="1 1 1" path="24.8 29.34 m 23.95 29.93 22.88 29.88 22.22 28.79 c 17.35 20.68 l 16.92 20.8 16.46 20.87 15.99 20.87 c 15.45 20.87 14.92 20.77 14.43 20.61 c 12.82 23.3 l 13.79 23.72 14.87 23.95 15.99 23.95 c 16.51 23.95 16.99 23.9 17.47 23.82 c 18.74 25.98 l 17.87 26.23 16.94 26.35 15.99 26.35 c 14.42 26.35 12.91 25.99 11.58 25.35 c 9.89 28.15 l 11.73 29.09 13.8 29.62 15.99 29.62 c 17.56 29.62 19.08 29.34 20.48 28.85 c 21.72 30.94 l 19.95 31.63 18 32 15.99 32 c 13.2 32 10.58 31.28 8.37 30.04 c 7.32 29.47 7.08 28.41 7.66 27.43 c 12.5 19.39 l 11.66 18.51 11.13 17.31 11.13 16 c 11.13 13.33 13.32 11.14 15.98 11.14 c 18.66 11.14 20.85 13.33 20.85 16 c 20.85 17.39 20.26 18.66 19.31 19.55 c 20.92 22.22 l 22.76 20.77 23.94 18.52 23.94 16.01 c 23.94 11.62 20.38 8.05 15.99 8.05 c 11.6 8.05 8.05 11.62 8.05 16.01 c 8.05 17.87 8.7 19.58 9.77 20.93 c 8.48 23.13 l 6.73 21.27 5.64 18.77 5.64 16.01 c 5.64 10.3 10.28 5.66 15.99 5.66 c 21.7 5.66 26.35 10.3 26.35 16.01 c 26.35 19.4 24.7 22.42 22.18 24.3 c 23.86 27.1 l 27.33 24.64 29.6 20.58 29.6 16 c 29.6 8.49 23.5 2.38 15.99 2.38 c 8.48 2.38 2.39 8.49 2.39 16 c 2.39 19.94 4.07 23.5 6.75 25.99 c 5.51 28.07 l 2.15 25.14 0 20.81 0 16 c 0 7.18 7.19 0 15.99 0 c 24.81 0 32 7.18 32 16 c 32 21.52 29.18 26.46 24.8 29.34 c h 15.99 13.51 m 14.61 13.51 13.5 14.62 13.5 16 c 13.5 17.39 14.61 18.5 15.99 18.5 c 17.38 18.5 18.49 17.39 18.49 16 c 18.49 14.62 17.39 13.51 15.99 13.51 c h" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 32 32" contentsFormat="RGBA8" name="path" position="30 30" micaID="67B361ED-F272-4E6E-B9C4-16F588A262AC">
+		<strokeColor opacity="0" value="0 0 0"/>
+	      </CAShapeLayer>
+	    </sublayers>
+	  </CALayer>
+	  <CALayer id="#5" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 70 70" contentsFormat="RGBA8" name="Messages" position="284 174" transform="scale(2.5, 2.5, 1)" micaID="3663291E-B3F4-49CC-8B34-A1C0D1C3D83F">
+	    <sublayers>
+	      <CALayer allowsEdgeAntialiasing="1" allowsGroupOpacity="1" backgroundColor="0 0 0" borderWidth="27" bounds="0 0 409.494873046875 410.93669128418" contentsFormat="RGBA8" continuousCorners="1" cornerRadius="95" hidden="0" name="Layer 6" position="34.5 35.300003051758" transform="scale(0.172776, 0.172776, 1)" micaID="E7AA3140-C22B-4F32-A2B6-19F2C94D0486">
+		<borderColor opacity="0" value="0.5 0.5 0.5"/>
+	      </CALayer>
+	      <CAShapeLayer fillColor="1 1 1" path="21.01 38 m 9.32 38 0 30.53 0 21.3 c 0 15.41 3.67 10.21 9.55 7.14 c 9.85 6.98 9.94 6.71 9.78 6.41 c 8.82 4.82 7.14 2.93 6.42 2.02 c 5.7 1.1 6.05 0 7.44 0 c 9.6 0 14.76 2.21 18.01 4.37 c 18.33 4.59 18.59 4.67 18.85 4.66 c 19.26 4.63 19.65 4.6 20.05 4.6 c 33.05 4.6 42 12.13 42 21.3 c 42 30.53 32.68 38 21.01 38 c h" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 42 38" contentsFormat="RGBA8" name="path" position="35 34" micaID="848DC26A-A338-4ADA-B06E-B521D00DF6F3">
+		<strokeColor opacity="0" value="0 0 0"/>
+	      </CAShapeLayer>
+	      <CAShapeLayer id="#11" fillColor="0.3 0.3 0.3" path="50.9 65 m 55.8 65 57.58 64.49 59.37 63.53 c 61.16 62.57 62.57 61.16 63.53 59.37 c 64.49 57.58 65 55.8 65 50.9 c 65 19.1 l 65 14.2 64.49 12.42 63.53 10.63 c 62.57 8.84 61.16 7.43 59.37 6.47 c 57.58 5.51 55.8 5 50.9 5 c 19.1 5 l 14.2 5 12.42 5.51 10.63 6.47 c 8.84 7.43 7.43 8.84 6.47 10.63 c 5.51 12.42 5 14.2 5 19.1 c 5 50.9 l 5 55.8 5.51 57.58 6.47 59.37 c 7.43 61.16 8.84 62.57 10.63 63.53 c 12.42 64.49 14.2 65 19.1 65 c 50.9 65 l 50.9 70 m 19.1 70 l 13.88 70 11.15 69.48 8.27 67.94 c 5.62 66.52 3.48 64.38 2.06 61.73 c 0.52 58.85 0 56.12 0 50.9 c 0 19.1 l 0 13.88 0.52 11.15 2.06 8.27 c 3.48 5.62 5.62 3.48 8.27 2.06 c 11.15 0.52 13.88 0 19.1 0 c 50.9 0 l 56.12 0 58.85 0.52 61.73 2.06 c 64.38 3.48 66.52 5.62 67.94 8.27 c 69.48 11.15 70 13.88 70 19.1 c 70 50.9 l 70 56.12 69.48 58.85 67.94 61.73 c 66.52 64.38 64.38 66.52 61.73 67.94 c 58.85 69.48 56.12 70 50.9 70 c 50.9 70 l h" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 70 70" contentsFormat="RGBA8" name="path" position="35 35" micaID="B7F381AC-B7BF-4F40-9A47-E624D8DC71FC">
+		<strokeColor opacity="0" value="0 0 0"/>
+	      </CAShapeLayer>
+	    </sublayers>
+	  </CALayer>
+	  <CALayer id="#6" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 70 70" contentsFormat="RGBA8" hidden="0" name="Music" position="139 110" transform="scale(2.5, 2.5, 1)" micaID="B785568B-C277-4F9F-BCC5-E3EA1908B9AB">
+	    <sublayers>
+	      <CALayer allowsEdgeAntialiasing="1" allowsGroupOpacity="1" backgroundColor="0 0 0" borderWidth="27" bounds="0 0 405.714141845703 404.074401855469" contentsFormat="RGBA8" continuousCorners="1" cornerRadius="95" hidden="0" name="Layer 4" position="34.973388671875 35.092819213867" transform="scale(0.172776, 0.172776, 1)" micaID="18883CCD-D3DF-438E-806D-F353AE0355A2">
+		<borderColor opacity="0" value="0.5 0.5 0.5"/>
+	      </CALayer>
+	      <CALayer allowsEdgeAntialiasing="1" allowsGroupOpacity="1" borderColor="0.5 0.5 0.5" borderWidth="27" bounds="0 0 403.145156860352 403" contentsFormat="RGBA8" continuousCorners="1" cornerRadius="95" hidden="1" name="Layer 2" position="35.173095703125 35" transform="scale(0.172776, 0.172776, 1)" micaID="7BFBAA57-B405-485C-8F33-19CC1FDAE333">
+		<backgroundColor opacity="0" value="1 0.9935 0.9813"/>
+	      </CALayer>
+	      <CAShapeLayer id="#9" fillColor="0.3 0.3 0.3" lineCap="round" path="50.9 65 m 55.8 65 57.58 64.49 59.37 63.53 c 61.16 62.57 62.57 61.16 63.53 59.37 c 64.49 57.58 65 55.8 65 50.9 c 65 19.1 l 65 14.2 64.49 12.42 63.53 10.63 c 62.57 8.84 61.16 7.43 59.37 6.47 c 57.58 5.51 55.8 5 50.9 5 c 19.1 5 l 14.2 5 12.42 5.51 10.63 6.47 c 8.84 7.43 7.43 8.84 6.47 10.63 c 5.51 12.42 5 14.2 5 19.1 c 5 50.9 l 5 55.8 5.51 57.58 6.47 59.37 c 7.43 61.16 8.84 62.57 10.63 63.53 c 12.42 64.49 14.2 65 19.1 65 c 50.9 65 l 50.9 70 m 19.1 70 l 13.88 70 11.15 69.48 8.27 67.94 c 5.62 66.52 3.48 64.38 2.06 61.73 c 0.52 58.85 0 56.12 0 50.9 c 0 19.1 l 0 13.88 0.52 11.15 2.06 8.27 c 3.48 5.62 5.62 3.48 8.27 2.06 c 11.15 0.52 13.88 0 19.1 0 c 50.9 0 l 56.12 0 58.85 0.52 61.73 2.06 c 64.38 3.48 66.52 5.62 67.94 8.27 c 69.48 11.15 70 13.88 70 19.1 c 70 50.9 l 70 56.12 69.48 58.85 67.94 61.73 c 66.52 64.38 64.38 66.52 61.73 67.94 c 58.85 69.48 56.12 70 50.9 70 c 50.9 70 l h" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 70 70" contentsFormat="RGBA8" hidden="0" name="path" position="35 35" micaID="23C107EE-105F-47F0-9EBF-ABBDAE8C584D">
+		<strokeColor opacity="0" value="0 0 0"/>
+	      </CAShapeLayer>
+	      <CAShapeLayer fillColor="1 1 1" path="30.21 37.88 m 11.19 34.03 l 9.96 33.78 9.3 33.13 9.3 32.08 c 9.43 12.2 l 9.43 11.37 9.02 10.82 8.27 10.67 c 5.38 10.07 l 1.72 9.23 0 7.44 0 4.72 c 0 1.95 2.17 0 5.2 0 c 7.88 0 11.92 1.96 11.92 7.21 c 11.92 23.54 l 11.92 24.47 12.08 24.64 12.91 24.81 c 29.25 28.12 l 30.18 28.31 30.52 28.09 30.52 27.27 c 30.65 16.53 l 30.65 15.61 30.18 15.03 29.34 14.85 c 26.59 14.27 l 22.88 13.48 21.08 11.75 21.08 9.02 c 21.08 6.31 23.34 4.32 26.37 4.32 c 29.05 4.32 33.01 6.17 33.01 11.39 c 33.01 36 l 33 37.71 32.2 38.28 30.21 37.88 c h" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 33.01 38.28" contentsFormat="RGBA8" hidden="0" name="path" position="31.505 35.14" micaID="144B8F18-30F2-4D11-B3A2-9A4EF8290D5C">
+		<strokeColor opacity="0" value="0 0 0"/>
+	      </CAShapeLayer>
+	    </sublayers>
+	  </CALayer>
+	</sublayers>
+      </CALayer>
+    </sublayers>
+    <states>
+      <LKState name="base">
+	<elements>
+	  <LKStateSetValue final="false" targetId="#1" keyPath="position">
+	    <value type="CGPoint" value="-17 110"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#2" keyPath="position">
+	    <value type="CGPoint" value="70 143"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#3" keyPath="position">
+	    <value type="CGPoint" value="425 139"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#4" keyPath="position">
+	    <value type="CGPoint" value="342 118"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#5" keyPath="position">
+	    <value type="CGPoint" value="254 154"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#6" keyPath="position">
+	    <value type="CGPoint" value="169 120"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#1" keyPath="transform.scale.xy">
+	    <value type="integer" value="0"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#2" keyPath="transform.scale.xy">
+	    <value type="integer" value="0"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#3" keyPath="transform.scale.xy">
+	    <value type="integer" value="0"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#4" keyPath="transform.scale.xy">
+	    <value type="integer" value="0"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#5" keyPath="transform.scale.xy">
+	    <value type="integer" value="0"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#6" keyPath="transform.scale.xy">
+	    <value type="integer" value="0"/>
+	  </LKStateSetValue>
+	</elements>
+      </LKState>
+      <LKState name="light"/>
+      <LKState name="dark">
+	<elements>
+	  <LKStateSetValue final="false" targetId="#7" keyPath="filters.colorAdd.inputColor">
+	    <value type="CGColor" value="0.03922 0.5176 1"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#8" keyPath="sublayers">
+	    <value type="NSArray">
+	      <CALayer id="#16" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 864 300" contentsFormat="RGBA8" hidden="1" name="Buddy_Apple ID-1.png" position="432 142" micaID="90106B64-68D9-458A-988B-2D2D3C425286">
+		<contents type="CGImage" src="assets/Buddy_Apple%20ID-1.png"/>
+	      </CALayer>
+	      <CALayer id="#17" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" backgroundColor="0.9621 0.9816 1" bounds="0 0 894.222229003906 286.444442749023" contentsFormat="RGBA8" hidden="0" name="BG" position="426.666656494141 143.222229003906" micaID="13FBFD85-F3C7-4E12-B0D1-764D087B336A"/>
+	      <CALayer id="#18" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" backgroundColor="0 0 0" bounds="0 0 894.222229003906 286.444442749023" contentsFormat="RGBA8" hidden="0" name="BG 1" position="426.666656494141 143.222229003906" micaID="EF835D12-1567-49CB-9975-F6772535A410"/>
+	      <CALayer id="#10" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 210 210" contentsFormat="RGBA8" hidden="0" name="music-dk" position="139 117" transform="scale(0.85, 0.85, 1)" micaID="AA22C797-389A-449C-84C7-6BBA83A2D075"/>
+	      <CALayer object="#7"/>
+	    </value>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#9" keyPath="fillColor">
+	    <value type="CGColor" value="0.5 0.5 0.5"/>
+	  </LKStateSetValue>
+	  <LKStateRemoveElement final="false" targetId="#8" keyPath="sublayers" objectId="#10"/>
+	  <LKStateSetValue final="false" targetId="#11" keyPath="fillColor">
+	    <value type="CGColor" value="0.5 0.5 0.5"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#12" keyPath="fillColor">
+	    <value type="CGColor" value="0.5 0.5 0.5"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#13" keyPath="fillColor">
+	    <value type="CGColor" value="0.5 0.5 0.5"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#14" keyPath="fillColor">
+	    <value type="CGColor" value="0.5 0.5 0.5"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#15" keyPath="fillColor">
+	    <value type="CGColor" value="0.5 0.5 0.5"/>
+	  </LKStateSetValue>
+	  <LKStateRemoveElement final="false" targetId="#8" keyPath="sublayers" objectId="#16"/>
+	  <LKStateRemoveElement final="false" targetId="#8" keyPath="sublayers" objectId="#17"/>
+	  <LKStateRemoveElement final="false" targetId="#8" keyPath="sublayers" objectId="#18"/>
+	</elements>
+      </LKState>
+    </states>
+    <stateTransitions>
+      <LKStateTransition fromState="*" toState="base">
+	<elements>
+	  <LKStateTransitionElement final="false" key="position" targetId="#1">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="position" beginTime="1e-100" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="transform.scale.xy" targetId="#1">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="transform.scale.xy" beginTime="1e-100" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="position" targetId="#2">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="position" beginTime="1e-100" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="transform.scale.xy" targetId="#2">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="transform.scale.xy" beginTime="1e-100" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="position" targetId="#3">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="position" beginTime="1e-100" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="transform.scale.xy" targetId="#3">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="transform.scale.xy" beginTime="1e-100" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="position" targetId="#4">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="position" beginTime="1e-100" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="transform.scale.xy" targetId="#4">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="transform.scale.xy" beginTime="1e-100" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="position" targetId="#5">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="position" beginTime="1e-100" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="transform.scale.xy" targetId="#5">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="transform.scale.xy" beginTime="1e-100" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="position" targetId="#6">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="position" beginTime="1e-100" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="transform.scale.xy" targetId="#6">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="transform.scale.xy" beginTime="1e-100" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	</elements>
+      </LKStateTransition>
+      <LKStateTransition fromState="base" toState="*">
+	<elements>
+	  <LKStateTransitionElement final="false" key="position" targetId="#1">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="position" beginTime="0.2" duration="1.2" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="transform.scale.xy" targetId="#1">
+	    <animation type="CASpringAnimation" damping="30" mass="2" stiffness="350" keyPath="transform.scale.xy" beginTime="0.2" duration="1.2" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="position" targetId="#2">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="position" beginTime="0.1" duration="1.2" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="transform.scale.xy" targetId="#2">
+	    <animation type="CASpringAnimation" damping="30" mass="2" stiffness="350" keyPath="transform.scale.xy" beginTime="0.1" duration="1.2" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="position" targetId="#3">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="position" beginTime="0.3" duration="1.2" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="transform.scale.xy" targetId="#3">
+	    <animation type="CASpringAnimation" damping="30" mass="2" stiffness="350" keyPath="transform.scale.xy" beginTime="0.3" duration="1.2" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="position" targetId="#4">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="position" beginTime="0.2" duration="1.2" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="transform.scale.xy" targetId="#4">
+	    <animation type="CASpringAnimation" damping="30" mass="2" stiffness="350" keyPath="transform.scale.xy" beginTime="0.2" duration="1.2" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="position" targetId="#5">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="position" beginTime="0.1" duration="1.2" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="transform.scale.xy" targetId="#5">
+	    <animation type="CASpringAnimation" damping="30" mass="2" stiffness="350" keyPath="transform.scale.xy" beginTime="0.1" duration="1.2" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="position" targetId="#6">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="position" duration="1.2" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="transform.scale.xy" targetId="#6">
+	    <animation type="CASpringAnimation" damping="30" mass="2" stiffness="350" keyPath="transform.scale.xy" duration="1.2" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	</elements>
+      </LKStateTransition>
+      <LKStateTransition fromState="*" toState="dark">
+	<elements>
+	  <LKStateTransitionElement final="false" key="filters.colorAdd.inputColor" targetId="#7">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="filters.colorAdd.inputColor" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="sublayers" targetId="#8">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="sublayers" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="fillColor" targetId="#9">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="fillColor" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="fillColor" targetId="#11">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="fillColor" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="fillColor" targetId="#12">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="fillColor" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="fillColor" targetId="#13">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="fillColor" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="fillColor" targetId="#14">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="fillColor" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="fillColor" targetId="#15">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="fillColor" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	</elements>
+      </LKStateTransition>
+      <LKStateTransition fromState="dark" toState="*">
+	<elements>
+	  <LKStateTransitionElement final="false" key="filters.colorAdd.inputColor" targetId="#7">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="filters.colorAdd.inputColor" duration="0.1" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="fillColor" targetId="#9">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="fillColor" duration="0.1" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="fillColor" targetId="#11">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="fillColor" duration="0.1" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="fillColor" targetId="#12">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="fillColor" duration="0.1" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="fillColor" targetId="#13">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="fillColor" duration="0.1" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="fillColor" targetId="#14">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="fillColor" duration="0.1" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="fillColor" targetId="#15">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="fillColor" duration="0.1" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	</elements>
+      </LKStateTransition>
+    </stateTransitions>
+  </CALayer>
+</caml>

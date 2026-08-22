@@ -1,0 +1,11 @@
+{
+    "applinks": {
+        "details": [
+            {
+                "appID": "0000000000.com.apple.NewDeviceOutreachApp",
+                "components": [ { "/": "/*" } ],
+                "alwaysEnabled": true
+            }
+        ]
+    }
+}

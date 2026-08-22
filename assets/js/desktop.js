@@ -1,38 +1,104 @@
 const WALLPAPER_GROUPS = [
   {
-    id: 'custom',
-    title: 'Featured Wallpaper',
+    id: 'dynamic',
+    title: 'Imagens de Fundo Dinâmicas',
+    totalCount: 33,
+    badgeType: 'dynamic',
     wallpapers: [
-      { id: 'custom_wallpaper', name: 'macOS Wallpaper', image: 'assets/images/wallpapers/wallpaper.jpg', thumb: 'assets/images/wallpapers/wallpaper.jpg' }
+      { id: 'dyn_sequoia', name: 'Sequoia', image: 'assets/images/wallpapers/dynamic/sequoia.jpg', thumb: 'assets/images/wallpapers/dynamic/thumbs/sequoia.jpg' },
+      { id: 'dyn_macintosh', name: 'Macintosh', image: 'assets/images/wallpapers/dynamic/macintosh.jpg', thumb: 'assets/images/wallpapers/dynamic/thumbs/macintosh.jpg' },
+      { id: 'dyn_sonoma', name: 'Sonoma', image: 'assets/images/wallpapers/dynamic/sonoma.jpg', thumb: 'assets/images/wallpapers/dynamic/thumbs/sonoma.jpg' },
+      { id: 'dyn_ventura', name: 'Ventura', image: 'assets/images/wallpapers/dynamic/ventura.jpg', thumb: 'assets/images/wallpapers/dynamic/thumbs/ventura.jpg' },
+      { id: 'dyn_monterey', name: 'Monterey', image: 'assets/images/wallpapers/dynamic/monterey.jpg', thumb: 'assets/images/wallpapers/dynamic/thumbs/monterey.jpg' },
+      { id: 'dyn_bigsur', name: 'Big Sur', image: 'assets/images/wallpapers/dynamic/big-sur.jpg', thumb: 'assets/images/wallpapers/dynamic/thumbs/big-sur.jpg' },
+      { id: 'dyn_catalina', name: 'Catalina', image: 'assets/images/wallpapers/dynamic/catalina.jpg', thumb: 'assets/images/wallpapers/dynamic/thumbs/catalina.jpg' },
+      { id: 'dyn_cliffs', name: 'Os Penhascos', image: 'assets/images/wallpapers/dynamic/os-penhascos.jpg', thumb: 'assets/images/wallpapers/dynamic/thumbs/os-penhascos.jpg' },
+      { id: 'dyn_lake', name: 'O Lago', image: 'assets/images/wallpapers/dynamic/o-lago.jpg', thumb: 'assets/images/wallpapers/dynamic/thumbs/o-lago.jpg' }
     ]
   },
   {
-    id: 'sequoia',
-    title: 'macOS Sequoia',
+    id: 'landscape',
+    title: 'Paisagem',
+    totalCount: 64,
+    badgeType: 'video',
     wallpapers: [
-      { id: 'sequoia_1',  name: 'Sequoia Default', image: 'assets/images/wallpapers/Sequoia/wallpaper_default.png', thumb: 'assets/images/wallpapers/Sequoia/thumbs/wallpaper_default_thumb.png' },
-      { id: 'sequoia_2',  name: 'Sequoia Forest',  image: 'assets/images/wallpapers/Sequoia/wallpaper_2.png',       thumb: 'assets/images/wallpapers/Sequoia/thumbs/wallpaper_2_thumb.png'  },
-      { id: 'sequoia_3',  name: 'Sequoia Lake',    image: 'assets/images/wallpapers/Sequoia/wallpaper_3.png',       thumb: 'assets/images/wallpapers/Sequoia/thumbs/wallpaper_3_thumb.png'  },
-      { id: 'sequoia_4',  name: 'Sequoia Mountain',image: 'assets/images/wallpapers/Sequoia/wallpaper_4.png',       thumb: 'assets/images/wallpapers/Sequoia/thumbs/wallpaper_4_thumb.png'  },
-      { id: 'sequoia_5',  name: 'Sequoia Sunset',  image: 'assets/images/wallpapers/Sequoia/wallpaper_5.png',       thumb: 'assets/images/wallpapers/Sequoia/thumbs/wallpaper_5_thumb.png'  },
-      { id: 'sequoia_6',  name: 'Sequoia Night',   image: 'assets/images/wallpapers/Sequoia/wallpaper_6.png',       thumb: 'assets/images/wallpapers/Sequoia/thumbs/wallpaper_6_thumb.png'  },
-      { id: 'sequoia_7',  name: 'Sequoia Abstract',image: 'assets/images/wallpapers/Sequoia/wallpaper_7.png',       thumb: 'assets/images/wallpapers/Sequoia/thumbs/wallpaper_7_thumb.png'  },
-      { id: 'sequoia_8',  name: 'Sequoia Waves',   image: 'assets/images/wallpapers/Sequoia/wallpaper_8.png',       thumb: 'assets/images/wallpapers/Sequoia/thumbs/wallpaper_8_thumb.png'  },
-      { id: 'sequoia_9',  name: 'Sequoia Desert',  image: 'assets/images/wallpapers/Sequoia/wallpaper_9.png',       thumb: 'assets/images/wallpapers/Sequoia/thumbs/wallpaper_9_thumb.png'  },
-      { id: 'sequoia_10', name: 'Sequoia City',    image: 'assets/images/wallpapers/Sequoia/wallpaper_10.png',      thumb: 'assets/images/wallpapers/Sequoia/thumbs/wallpaper_10_thumb.png' },
-      { id: 'sequoia_11', name: 'Sequoia Vintage', image: 'assets/images/wallpapers/Sequoia/wallpaper_11.png',      thumb: 'assets/images/wallpapers/Sequoia/thumbs/wallpaper_11_thumb.png' },
+      { id: 'land_sequoia_sunrise', name: 'Sequoia ao Amanhecer', image: 'assets/images/wallpapers/landscape/sequoia-ao-amanhecer.jpg', thumb: 'assets/images/wallpapers/landscape/thumbs/sequoia-ao-amanhecer.jpg' },
+      { id: 'land_sequoia_morning', name: 'Sequoia de Manhã', image: 'assets/images/wallpapers/landscape/sequoia-de-manha.jpg', thumb: 'assets/images/wallpapers/landscape/thumbs/sequoia-de-manha.jpg' },
+      { id: 'land_sequoia_night', name: 'Sequoia à Noite', image: 'assets/images/wallpapers/landscape/sequoia-a-noite.jpg', thumb: 'assets/images/wallpapers/landscape/thumbs/sequoia-a-noite.jpg' },
+      { id: 'land_sonoma_horizon', name: 'Horizonte de Sonoma', image: 'assets/images/wallpapers/landscape/horizonte-de-sonoma.jpg', thumb: 'assets/images/wallpapers/landscape/thumbs/horizonte-de-sonoma.jpg', arrow: true },
+      { id: 'land_sonoma_night', name: 'Sonoma à Noite', image: 'assets/images/wallpapers/landscape/sonoma-a-noite.jpg', thumb: 'assets/images/wallpapers/landscape/thumbs/sonoma-a-noite.jpg', arrow: true },
+      { id: 'land_sonoma_clouds', name: 'Nuvens de Sonoma', image: 'assets/images/wallpapers/landscape/nuvens-de-sonoma.png', thumb: 'assets/images/wallpapers/landscape/thumbs/nuvens-de-sonoma.png', arrow: true },
+      { id: 'land_sonoma_above', name: 'Sonoma de Cima', image: 'assets/images/wallpapers/landscape/sonoma-de-cima.png', thumb: 'assets/images/wallpapers/landscape/thumbs/sonoma-de-cima.png', arrow: true },
+      { id: 'land_sonoma_river', name: 'Rio em Sonoma', image: 'assets/images/wallpapers/landscape/rio-em-sonoma.png', thumb: 'assets/images/wallpapers/landscape/thumbs/rio-em-sonoma.png', arrow: true },
+      { id: 'land_temblor', name: 'Cordilheira de Temblor, Califórnia', image: 'assets/images/wallpapers/landscape/cordilheira-de-temblor.png', thumb: 'assets/images/wallpapers/landscape/thumbs/cordilheira-de-temblor.png', arrow: true }
     ]
   },
   {
-    id: 'tahoe',
-    title: 'macOS Tahoe',
+    id: 'cityscape',
+    title: 'Paisagem urbana',
+    totalCount: 30,
+    badgeType: 'video',
     wallpapers: [
-      { id: 'tahoe_light', name: 'Tahoe Light',       image: 'assets/images/wallpapers/Tahoe/Tahoe Light.webp',        thumb: 'assets/images/wallpapers/Tahoe/thumbs/Tahoe Light_thumb.webp',        isLight: true  },
-      { id: 'tahoe_dark',  name: 'Tahoe Dark',        image: 'assets/images/wallpapers/Tahoe/Tahoe Dark.webp',         thumb: 'assets/images/wallpapers/Tahoe/thumbs/Tahoe Dark_thumb.webp',         isLight: false },
-      { id: 'tahoe_dawn',  name: 'Tahoe Beach Dawn',  image: 'assets/images/wallpapers/Tahoe/26-Tahoe-Beach-Dawn.png', thumb: 'assets/images/wallpapers/Tahoe/thumbs/26-Tahoe-Beach-Dawn_thumb.png'  },
-      { id: 'tahoe_day',   name: 'Tahoe Beach Day',   image: 'assets/images/wallpapers/Tahoe/26-Tahoe-Beach-Day.png',  thumb: 'assets/images/wallpapers/Tahoe/thumbs/26-Tahoe-Beach-Day_thumb.png'   },
-      { id: 'tahoe_dusk',  name: 'Tahoe Beach Dusk',  image: 'assets/images/wallpapers/Tahoe/26-Tahoe-Beach-Dusk.png', thumb: 'assets/images/wallpapers/Tahoe/thumbs/26-Tahoe-Beach-Dusk_thumb.png'  },
-      { id: 'tahoe_night', name: 'Tahoe Beach Night', image: 'assets/images/wallpapers/Tahoe/26-Tahoe-Beach-Night.png',thumb: 'assets/images/wallpapers/Tahoe/thumbs/26-Tahoe-Beach-Night_thumb.png' },
+      { id: 'city_dubai_skyline', name: 'Linha do Horizonte de Dubai', image: 'assets/images/wallpapers/placeholder.png', thumb: 'assets/images/wallpapers/placeholder.png', arrow: true },
+      { id: 'city_dubai_night', name: 'Dubai à Noite', image: 'assets/images/wallpapers/placeholder.png', thumb: 'assets/images/wallpapers/placeholder.png', arrow: true },
+      { id: 'city_dubai_creek', name: 'Dubai Creek', image: 'assets/images/wallpapers/placeholder.png', thumb: 'assets/images/wallpapers/placeholder.png', arrow: true },
+      { id: 'city_dubai_above', name: 'Dubai de Cima', image: 'assets/images/wallpapers/placeholder.png', thumb: 'assets/images/wallpapers/placeholder.png', arrow: true },
+      { id: 'city_dubai_harbor', name: 'Porto de Dubai Creek', image: 'assets/images/wallpapers/placeholder.png', thumb: 'assets/images/wallpapers/placeholder.png', arrow: true },
+      { id: 'city_la_overpass', name: 'Viaduto de Los Angeles', image: 'assets/images/wallpapers/placeholder.png', thumb: 'assets/images/wallpapers/placeholder.png', arrow: true },
+      { id: 'city_la_beach', name: 'Praia de Los Angeles', image: 'assets/images/wallpapers/placeholder.png', thumb: 'assets/images/wallpapers/placeholder.png', arrow: true },
+      { id: 'city_la_airport', name: 'Aeroporto de Los Angeles', image: 'assets/images/wallpapers/placeholder.png', thumb: 'assets/images/wallpapers/placeholder.png', arrow: true },
+      { id: 'city_la_sunset', name: 'Pôr do Sol em Los Angeles', image: 'assets/images/wallpapers/placeholder.png', thumb: 'assets/images/wallpapers/placeholder.png', arrow: true }
+    ]
+  },
+  {
+    id: 'underwater',
+    title: 'Subaquático',
+    totalCount: 21,
+    badgeType: 'video',
+    wallpapers: [
+      { id: 'under_jellyfish_light', name: 'Medusas do Alasca (Claro)', image: 'assets/images/wallpapers/placeholder.png', thumb: 'assets/images/wallpapers/placeholder.png', arrow: true },
+      { id: 'under_jellyfish_dark', name: 'Medusas do Alasca (Escuro)', image: 'assets/images/wallpapers/placeholder.png', thumb: 'assets/images/wallpapers/placeholder.png', arrow: true },
+      { id: 'under_dolphins', name: 'Grupo de Golfinhos da Califórnia', image: 'assets/images/wallpapers/placeholder.png', thumb: 'assets/images/wallpapers/placeholder.png', arrow: true },
+      { id: 'under_kelp', name: 'Floresta de Algas da Califórnia', image: 'assets/images/wallpapers/placeholder.png', thumb: 'assets/images/wallpapers/placeholder.png', arrow: true },
+      { id: 'under_tahiti_coast', name: 'Costa do Tahiti', image: 'assets/images/wallpapers/placeholder.png', thumb: 'assets/images/wallpapers/placeholder.png', arrow: true },
+      { id: 'under_tahiti_mist', name: 'Bruma de Ondas do Tahiti', image: 'assets/images/wallpapers/placeholder.png', thumb: 'assets/images/wallpapers/placeholder.png', arrow: true },
+      { id: 'under_seal_pod', name: 'Grupo de Focas', image: 'assets/images/wallpapers/placeholder.png', thumb: 'assets/images/wallpapers/placeholder.png', arrow: true },
+      { id: 'under_palau_coral', name: 'Coral de Palau (Colorido)', image: 'assets/images/wallpapers/placeholder.png', thumb: 'assets/images/wallpapers/placeholder.png', arrow: true },
+      { id: 'under_barracuda', name: 'Cardume de Barracudas', image: 'assets/images/wallpapers/placeholder.png', thumb: 'assets/images/wallpapers/placeholder.png', arrow: true }
+    ]
+  },
+  {
+    id: 'earth',
+    title: 'Terra',
+    totalCount: 22,
+    badgeType: 'video',
+    wallpapers: [
+      { id: 'earth_mideast', name: 'Oriente Médio', image: 'assets/images/wallpapers/placeholder.png', thumb: 'assets/images/wallpapers/placeholder.png' },
+      { id: 'earth_north_africa', name: 'Norte da África', image: 'assets/images/wallpapers/placeholder.png', thumb: 'assets/images/wallpapers/placeholder.png' },
+      { id: 'earth_caribbean', name: 'Caribe', image: 'assets/images/wallpapers/placeholder.png', thumb: 'assets/images/wallpapers/placeholder.png' },
+      { id: 'earth_aurora', name: 'Aurora Austral', image: 'assets/images/wallpapers/placeholder.png', thumb: 'assets/images/wallpapers/placeholder.png', arrow: true },
+      { id: 'earth_north_atlantic', name: 'Atlântico Norte', image: 'assets/images/wallpapers/placeholder.png', thumb: 'assets/images/wallpapers/placeholder.png' },
+      { id: 'earth_europe_night', name: 'Europa à Noite', image: 'assets/images/wallpapers/placeholder.png', thumb: 'assets/images/wallpapers/placeholder.png', arrow: true },
+      { id: 'earth_caribbean_islands', name: 'Ilhas do Caribe', image: 'assets/images/wallpapers/placeholder.png', thumb: 'assets/images/wallpapers/placeholder.png', arrow: true },
+      { id: 'earth_caribbean_sea', name: 'Mar do Caribe', image: 'assets/images/wallpapers/placeholder.png', thumb: 'assets/images/wallpapers/placeholder.png', arrow: true },
+      { id: 'earth_west_africa', name: 'África Ocidental', image: 'assets/images/wallpapers/placeholder.png', thumb: 'assets/images/wallpapers/placeholder.png', arrow: true }
+    ]
+  },
+  {
+    id: 'abstract',
+    title: 'Imagens',
+    totalCount: 41,
+    badgeType: 'none',
+    wallpapers: [
+      { id: 'img_teal_radial', name: 'Azul-celeste Radial', image: 'assets/images/wallpapers/placeholder.png', thumb: 'assets/images/wallpapers/placeholder.png' },
+      { id: 'img_blue_radial', name: 'Azul Radial', image: 'assets/images/wallpapers/placeholder.png', thumb: 'assets/images/wallpapers/placeholder.png', arrow: true },
+      { id: 'img_green_radial', name: 'Verde Radial', image: 'assets/images/wallpapers/placeholder.png', thumb: 'assets/images/wallpapers/placeholder.png', arrow: true },
+      { id: 'img_purple_radial', name: 'Roxo Radial', image: 'assets/images/wallpapers/placeholder.png', thumb: 'assets/images/wallpapers/placeholder.png', arrow: true },
+      { id: 'img_yellow_radial', name: 'Amarelo Radial', image: 'assets/images/wallpapers/placeholder.png', thumb: 'assets/images/wallpapers/placeholder.png', arrow: true },
+      { id: 'img_silver_imac', name: 'iMac Prateado', image: 'assets/images/wallpapers/placeholder.png', thumb: 'assets/images/wallpapers/placeholder.png' },
+      { id: 'img_blue_imac', name: 'iMac Azul', image: 'assets/images/wallpapers/placeholder.png', thumb: 'assets/images/wallpapers/placeholder.png' },
+      { id: 'img_purple_imac', name: 'iMac Roxo', image: 'assets/images/wallpapers/placeholder.png', thumb: 'assets/images/wallpapers/placeholder.png' },
+      { id: 'img_pink_imac', name: 'iMac Rosa', image: 'assets/images/wallpapers/placeholder.png', thumb: 'assets/images/wallpapers/placeholder.png' }
     ]
   }
 ];
@@ -51,8 +117,12 @@ export class Desktop {
     this.wm = wm;
     this.contextMenu = contextMenu;
 
-    this.currentWallpaper = ALL_WALLPAPERS.find(w => w.id === 'custom_wallpaper') || ALL_WALLPAPERS[0];
-    this._applyWallpaper(this.currentWallpaper.image);
+    const saved = localStorage.getItem('wallpaper');
+    const found = saved ? ALL_WALLPAPERS.find(w => w.id === saved) : null;
+    this.currentWallpaper = found || ALL_WALLPAPERS.find(w => w.id === 'land_sequoia_sunrise') || ALL_WALLPAPERS[0];
+    if (this.currentWallpaper && this.currentWallpaper.image) {
+      this._applyWallpaper(this.currentWallpaper.image);
+    }
 
     this._renderDesktopIcons();
     this._initDragSelection();
@@ -152,10 +222,11 @@ export class Desktop {
       }
       wrapper.style.display = 'flex';
 
+      const WIDGET_AREA_BOTTOM = 530;
       const defaultLeft = window.innerWidth - 110;
-      const defaultTop = window.innerHeight - 190 - (index * 90);
+      const defaultTop = WIDGET_AREA_BOTTOM + (index * 110);
       let pos = savedPositions[itemId];
-      if (!pos || pos.top < 350) {
+      if (!pos) {
         pos = { left: defaultLeft, top: defaultTop };
         this._saveIconPosition(itemId, pos.left, pos.top);
       }
@@ -486,8 +557,11 @@ export class Desktop {
     const wp = ALL_WALLPAPERS.find(w => w.id === wallpaperId);
     if (!wp) return;
     this.currentWallpaper = wp;
-    this._applyWallpaper(wp.image);
+    if (wp.image) {
+      this._applyWallpaper(wp.image);
+    }
     localStorage.setItem('wallpaper', wallpaperId);
+    window.dispatchEvent(new CustomEvent('wallpaper:changed', { detail: { wallpaper: wp } }));
   }
 
   setWallpaperUrl(url) {

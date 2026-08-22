@@ -1,0 +1,12 @@
+{
+    "applinks": {
+        "details": [{
+            "appID": "0000000000.com.apple.Family",
+            "components": [
+                {"/" : "/family/messages*"},
+                {"/" : "/family/cacheMugshotMarquee*"}
+            ],
+            "alwaysEnabled": true
+        }]
+    }
+}

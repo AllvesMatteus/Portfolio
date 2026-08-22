@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<caml xmlns="http://www.apple.com/CoreAnimation/1.0">
+  <CALayer allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 1050 875" contentsFormat="RGBA8" name="Root Layer" position="525 437.5" mica_expanded="1">
+    <sublayers>
+      <CALayer id="#8" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 74 97.1" contentsFormat="RGBA8" hidden="0" name="Globe" position="525 437.55" transform="scale(3, 3, 1)">
+	<sublayers>
+	  <CAShapeLayer id="#1" lineCap="round" lineWidth="5" path="69 34.5 m 69 15.4461761319 53.5538238681 0 34.5 0 c 15.4461761319 0 0 15.4461761319 0 34.5 c 0 53.5538238681 15.4461761319 69 34.5 69 c 53.5538238681 69 69 53.5538238681 69 34.5 c h" strokeColor="-8.828e-4 0.4775 0.9982" strokeEnd="1" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 69 69" contentsFormat="RGBA8" name="circle" position="37 48.6" transform="rotate(90deg)">
+	    <fillColor opacity="0" value="0 0 0"/>
+	  </CAShapeLayer>
+	</sublayers>
+      </CALayer>
+      <CALayer allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 74 97.1" contentsFormat="RGBA8" hidden="0" name="Globe 1" position="525 437.55" transform="scale(3, 3, 1)">
+	<sublayers>
+	  <CAShapeLayer id="#5" fillColor="-8.828e-4 0.4775 0.9982" path="0 3.8 m 74 3.8 l 74 -2.6645352591e-15 l 0 -2.6645352591e-15 l h" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 -2.6645352591e-15 74 3.8" contentsFormat="RGBA8" hidden="0" name="rect" position="37 48.6" transform="">
+	    <strokeColor opacity="0" value="0 0 0"/>
+	  </CAShapeLayer>
+	  <CAShapeLayer id="#6" fillColor="-8.828e-4 0.4775 0.9982" path="0 74 m 3.8 74 l 3.8 0 l 0 0 l h" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 3.8 74" contentsFormat="RGBA8" name="rect" position="37 48.6" transform="">
+	    <strokeColor opacity="0" value="0 0 0"/>
+	  </CAShapeLayer>
+	  <CAShapeLayer id="#3" lineCap="round" lineWidth="4" path="70 15.7 m 70 7.02912942814 54.329966243 0 35 0 c 15.670033757 0 0 7.02912942814 0 15.7 c 0 24.37087057186 15.670033757 31.4 35 31.4 c 54.329966243 31.4 70 24.37087057186 70 15.7 c h" strokeColor="-8.828e-4 0.4775 0.9982" strokeEnd="1" strokeStart="0" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 70 31.4" contentsFormat="RGBA8" name="ellipse" position="37 15.7" transform="rotate(-180deg, 1, 0, 0) scale(-1)">
+	    <fillColor opacity="0" value="0 0 0"/>
+	  </CAShapeLayer>
+	  <CAShapeLayer id="#2" lineCap="round" lineWidth="4" path="70 15.7 m 70 7.02912942814 54.329966243 0 35 0 c 15.670033757 0 0 7.02912942814 0 15.7 c 0 24.37087057186 15.670033757 31.4 35 31.4 c 54.329966243 31.4 70 24.37087057186 70 15.7 c h" strokeColor="-8.828e-4 0.4775 0.9982" strokeEnd="1" strokeStart="0" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 70 31.4" contentsFormat="RGBA8" name="ellipse" position="37 81.4">
+	    <fillColor opacity="0" value="0 0 0"/>
+	  </CAShapeLayer>
+	  <CAShapeLayer id="#4" lineCap="round" lineWidth="4" path="37.8 37 m 37.8 16.5654642574 29.33818177122 0 18.9 0 c 8.46181822878 0 0 16.5654642574 0 37 c 0 57.4345357426 8.46181822878 74 18.9 74 c 29.33818177122 74 37.8 57.4345357426 37.8 37 c h" strokeColor="-8.828e-4 0.4775 0.9982" strokeEnd="1" strokeStart="0" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 37.8 74" contentsFormat="RGBA8" name="ellipse" position="37 48.6">
+	    <fillColor opacity="0" value="0 0 0"/>
+	  </CAShapeLayer>
+	  <CAShapeLayer id="#7" lineCap="round" lineWidth="4" path="37.8 37 m 37.8 16.5654642574 29.33818177122 0 18.9 0 c 8.46181822878 0 0 16.5654642574 0 37 c 0 57.4345357426 8.46181822878 74 18.9 74 c 29.33818177122 74 37.8 57.4345357426 37.8 37 c h" strokeColor="-8.828e-4 0.4775 0.9982" strokeEnd="1" strokeStart="0" allowsEdgeAntialiasing="1" allowsGroupOpacity="1" bounds="0 0 37.8 74" contentsFormat="RGBA8" name="ellipse 1" position="37 48.6" transform="rotate(180deg)">
+	    <fillColor opacity="0" value="0 0 0"/>
+	  </CAShapeLayer>
+	</sublayers>
+      </CALayer>
+    </sublayers>
+    <states>
+      <LKState name="State 1">
+	<elements>
+	  <LKStateSetValue final="false" targetId="#1" keyPath="strokeEnd">
+	    <value type="integer" value="0"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#1" keyPath="lineWidth">
+	    <value type="integer" value="0"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#2" keyPath="strokeEnd">
+	    <value type="integer" value="0"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#2" keyPath="strokeStart">
+	    <value type="real" value="0.08"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#2" keyPath="lineWidth">
+	    <value type="integer" value="0"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#3" keyPath="strokeEnd">
+	    <value type="real" value="0.907752"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#3" keyPath="strokeStart">
+	    <value type="real" value="0.908"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#3" keyPath="lineWidth">
+	    <value type="integer" value="0"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#4" keyPath="lineWidth">
+	    <value type="integer" value="0"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#5" keyPath="transform.scale.xy">
+	    <value type="integer" value="0"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#6" keyPath="transform.scale.xy">
+	    <value type="integer" value="0"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#4" keyPath="strokeStart">
+	    <value type="real" value="0.294321"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#4" keyPath="strokeEnd">
+	    <value type="real" value="0.289964"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#7" keyPath="strokeStart">
+	    <value type="real" value="0.305514"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#7" keyPath="strokeEnd">
+	    <value type="real" value="0.305"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#7" keyPath="lineWidth">
+	    <value type="integer" value="0"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#8" keyPath="transform.rotation.z">
+	    <value type="real" value="3.14159"/>
+	  </LKStateSetValue>
+	</elements>
+      </LKState>
+      <LKState name="State 2">
+	<elements>
+	  <LKStateSetValue final="false" targetId="#2" keyPath="strokeEnd">
+	    <value type="real" value="0.380934"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#2" keyPath="strokeStart">
+	    <value type="real" value="0.129733"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#3" keyPath="strokeEnd">
+	    <value type="real" value="0.875977"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#3" keyPath="strokeStart">
+	    <value type="real" value="0.616211"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#4" keyPath="strokeStart">
+	    <value type="real" value="0.325871"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#7" keyPath="strokeEnd">
+	    <value type="real" value="0.682542"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#7" keyPath="strokeStart">
+	    <value type="real" value="0.31543"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#4" keyPath="strokeEnd">
+	    <value type="real" value="0.680213"/>
+	  </LKStateSetValue>
+	</elements>
+      </LKState>
+      <LKState name="Dark 1" basedOn="State 1">
+	<elements>
+	  <LKStateSetValue final="false" targetId="#1" keyPath="strokeColor">
+	    <value type="CGColor" value="0.03922 0.5176 1"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#5" keyPath="fillColor">
+	    <value type="CGColor" value="0.03922 0.5176 1"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#6" keyPath="fillColor">
+	    <value type="CGColor" value="0.03922 0.5176 1"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#3" keyPath="strokeColor">
+	    <value type="CGColor" value="0.03922 0.5176 1"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#2" keyPath="strokeColor">
+	    <value type="CGColor" value="0.03922 0.5176 1"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#4" keyPath="strokeColor">
+	    <value type="CGColor" value="0.03922 0.5176 1"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#7" keyPath="strokeColor">
+	    <value type="CGColor" value="0.03922 0.5176 1"/>
+	  </LKStateSetValue>
+	</elements>
+      </LKState>
+      <LKState name="Dark 2" basedOn="State 2">
+	<elements>
+	  <LKStateSetValue final="false" targetId="#1" keyPath="strokeColor">
+	    <value type="CGColor" value="0.03922 0.5176 1"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#3" keyPath="strokeColor">
+	    <value type="CGColor" value="0.03922 0.5176 1"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#2" keyPath="strokeColor">
+	    <value type="CGColor" value="0.03922 0.5176 1"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#4" keyPath="strokeColor">
+	    <value type="CGColor" value="0.03922 0.5176 1"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#7" keyPath="strokeColor">
+	    <value type="CGColor" value="0.03922 0.5176 1"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#5" keyPath="fillColor">
+	    <value type="CGColor" value="0.03922 0.5176 1"/>
+	  </LKStateSetValue>
+	  <LKStateSetValue final="false" targetId="#6" keyPath="fillColor">
+	    <value type="CGColor" value="0.03922 0.5176 1"/>
+	  </LKStateSetValue>
+	</elements>
+      </LKState>
+    </states>
+    <stateTransitions>
+      <LKStateTransition fromState="*" toState="State 1">
+	<elements>
+	  <LKStateTransitionElement final="false" key="strokeEnd" targetId="#1">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeEnd" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="lineWidth" targetId="#1">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="lineWidth" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeEnd" targetId="#2">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeEnd" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeStart" targetId="#2">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeStart" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="lineWidth" targetId="#2">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="lineWidth" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeStart" targetId="#3">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeStart" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeEnd" targetId="#3">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeEnd" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="lineWidth" targetId="#3">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="lineWidth" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeEnd" targetId="#4">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeEnd" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeStart" targetId="#4">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeStart" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="lineWidth" targetId="#4">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="lineWidth" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="transform.scale.xy" targetId="#5">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="transform.scale.xy" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="transform.scale.xy" targetId="#6">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="transform.scale.xy" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeEnd" targetId="#7">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeEnd" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeStart" targetId="#7">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeStart" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="lineWidth" targetId="#7">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="lineWidth" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="transform.rotation.z" targetId="#8">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="transform.rotation.z" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	</elements>
+      </LKStateTransition>
+      <LKStateTransition fromState="State 1" toState="*">
+	<elements>
+	  <LKStateTransitionElement final="false" key="strokeEnd" targetId="#1">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeEnd" beginTime="0.04" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="lineWidth" targetId="#1">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="lineWidth" beginTime="0.04" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeEnd" targetId="#2">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeEnd" beginTime="0" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeStart" targetId="#2">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeStart" beginTime="0" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="lineWidth" targetId="#2">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="lineWidth" beginTime="0" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeStart" targetId="#3">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeStart" beginTime="0" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeEnd" targetId="#3">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeEnd" beginTime="0" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="lineWidth" targetId="#3">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="lineWidth" beginTime="0" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeEnd" targetId="#4">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeEnd" beginTime="0" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeStart" targetId="#4">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeStart" beginTime="0" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="lineWidth" targetId="#4">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="lineWidth" beginTime="0" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="transform.scale.xy" targetId="#5">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="transform.scale.xy" beginTime="0" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="transform.scale.xy" targetId="#6">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="transform.scale.xy" beginTime="0" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeEnd" targetId="#7">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeEnd" beginTime="0" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeStart" targetId="#7">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeStart" beginTime="0" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="lineWidth" targetId="#7">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="lineWidth" beginTime="0" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="transform.rotation.z" targetId="#8">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="transform.rotation.z" beginTime="0.04" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	</elements>
+      </LKStateTransition>
+      <LKStateTransition fromState="*" toState="State 2">
+	<elements>
+	  <LKStateTransitionElement final="false" key="strokeEnd" targetId="#2">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeEnd" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeStart" targetId="#2">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeStart" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeEnd" targetId="#3">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeEnd" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeStart" targetId="#3">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeStart" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeEnd" targetId="#4">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeEnd" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeStart" targetId="#4">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeStart" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeEnd" targetId="#7">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeEnd" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeStart" targetId="#7">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeStart" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	</elements>
+      </LKStateTransition>
+      <LKStateTransition fromState="State 2" toState="*">
+	<elements>
+	  <LKStateTransitionElement final="false" key="strokeEnd" targetId="#2">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeEnd" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeStart" targetId="#2">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeStart" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeEnd" targetId="#3">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeEnd" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeStart" targetId="#3">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeStart" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeEnd" targetId="#4">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeEnd" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeStart" targetId="#4">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeStart" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeEnd" targetId="#7">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeEnd" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeStart" targetId="#7">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeStart" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	</elements>
+      </LKStateTransition>
+      <LKStateTransition fromState="*" toState="Dark 1">
+	<elements>
+	  <LKStateTransitionElement final="false" key="strokeColor" targetId="#1">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeColor" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="fillColor" targetId="#5">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="fillColor" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="fillColor" targetId="#6">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="fillColor" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeColor" targetId="#3">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeColor" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeColor" targetId="#2">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeColor" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeColor" targetId="#4">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeColor" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeColor" targetId="#7">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeColor" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	</elements>
+      </LKStateTransition>
+      <LKStateTransition fromState="Dark 1" toState="*">
+	<elements>
+	  <LKStateTransitionElement final="false" key="strokeColor" targetId="#1">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeColor" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="fillColor" targetId="#5">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="fillColor" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="fillColor" targetId="#6">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="fillColor" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeColor" targetId="#3">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeColor" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeColor" targetId="#2">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeColor" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeColor" targetId="#4">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeColor" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeColor" targetId="#7">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeColor" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	</elements>
+      </LKStateTransition>
+      <LKStateTransition fromState="*" toState="Dark 2">
+	<elements>
+	  <LKStateTransitionElement final="false" key="strokeColor" targetId="#1">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeColor" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeColor" targetId="#3">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeColor" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeColor" targetId="#2">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeColor" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeColor" targetId="#4">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeColor" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeColor" targetId="#7">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeColor" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="fillColor" targetId="#5">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="fillColor" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="fillColor" targetId="#6">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="fillColor" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	</elements>
+      </LKStateTransition>
+      <LKStateTransition fromState="Dark 2" toState="*">
+	<elements>
+	  <LKStateTransitionElement final="false" key="strokeColor" targetId="#1">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeColor" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeColor" targetId="#3">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeColor" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeColor" targetId="#2">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeColor" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeColor" targetId="#4">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeColor" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="strokeColor" targetId="#7">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="strokeColor" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="fillColor" targetId="#5">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="fillColor" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	  <LKStateTransitionElement final="false" key="fillColor" targetId="#6">
+	    <animation type="CASpringAnimation" damping="50" mass="2" stiffness="300" keyPath="fillColor" duration="0.8" fillMode="backwards"/>
+	  </LKStateTransitionElement>
+	</elements>
+      </LKStateTransition>
+    </stateTransitions>
+  </CALayer>
+</caml>

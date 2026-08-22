@@ -92,13 +92,12 @@ ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDH...[demonstrativa]...mateus@MacBook-Pro.l
   `
 };
 
-const ASCII_LOGO = `<pre style="margin:2px 0 10px 0;padding:0;font-family:'Courier New',Courier,monospace;font-size:10px;line-height:1.05;letter-spacing:0;white-space:pre;overflow-x:auto;user-select:none;">
-<span style="color:#818cf8">███╗   ███╗ █████╗ ████████╗ ████████╗ ███████╗ ██╗   ██╗ ███████╗</span>
-<span style="color:#6366f1">████╗ ████║██╔══██╗╚══██╔══╝ ╚══██╔══╝ ██╔════╝ ██║   ██║ ██╔════╝</span>
-<span style="color:#4f46e5">██╔████╔██║███████║   ██║       ██║    █████╗  ██║   ██║ ███████╗</span>
-<span style="color:#4338ca">██║╚██╔╝██║██╔══██║   ██║       ██║    ██╔══╝  ██║   ██║ ╚════██║</span>
-<span style="color:#3730a3">██║ ╚═╝ ██║██║  ██║   ██║       ██║    ███████╗╚██████╔╝ ███████║</span>
-<span style="color:#312e81">╚═╝     ╚═╝╚═╝  ╚═╝   ╚═╝       ╚═╝    ╚══════╝ ╚═════╝  ╚══════╝</span></pre>`;
+const ASCII_LOGO = `<pre style="margin:4px 0 12px 0;padding:0;font-family:Menlo,Monaco,'SF Mono','Courier New',monospace;font-size:10px;line-height:1.2;letter-spacing:0;white-space:pre;overflow-x:auto;user-select:none;">
+<span style="color:#818cf8">███    ███   █████   ████████  ████████  ██    ██  ███████</span>
+<span style="color:#6366f1">████  ████  ██   ██     ██     ██        ██    ██  ██     </span>
+<span style="color:#4f46e5">██ ████ ██  ███████     ██     ██████    ██    ██  ███████</span>
+<span style="color:#4338ca">██  ██  ██  ██   ██     ██     ██        ██    ██       ██</span>
+<span style="color:#3730a3">██      ██  ██   ██     ██     ████████   ██████   ███████</span></pre>`;
 
 const NAV_MAP = {
   'sobre': 'about', 'about': 'about',
@@ -685,7 +684,7 @@ export function renderTerminal(contentEl, wm) {
           showNotification({
             title: notifData.title,
             desc: notifData.desc || notifData.subtitle,
-            icon: 'assets/icons/apps/custom/terminal.png'
+            icon: 'assets/icons/dock/terminal.png'
           });
         } else {
           await printLine(`<span style="color:#ef4444;">osascript: Invalid syntax or command.</span>`);
@@ -1642,7 +1641,7 @@ function parseAppleScriptAlert(str) {
     buttons.push(defaultBtnText);
   }
 
-  let iconSrc = 'assets/icons/apps/custom/terminal.png';
+  let iconSrc = 'assets/icons/dock/terminal.png';
   if (/as\s+warning/i.test(sub)) {
     iconSrc = 'assets/icons/sf-symbols/white/exclamationmark.triangle.fill.png';
   } else if (/as\s+critical/i.test(sub)) {

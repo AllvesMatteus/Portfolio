@@ -2,21 +2,21 @@ import { getSFSymbolHtml } from './sfSymbols.js';
 import { showNotification } from './notificationManager.js';
 
 const APPLE_MENU_OPTIONS = [
-  { id: 'about', label: 'Sobre este Mac' },
+  { id: 'about', label: 'Sobre Este Mac' },
   { type: 'divider' },
   { id: 'settings', label: 'Ajustes do Sistema…' },
-  { id: 'appstore', label: 'App Store…' },
+  { id: 'appstore', label: 'App Store' },
   { type: 'divider' },
-  { id: 'recent', label: 'Itens Recentes' },
+  { id: 'recent', label: 'Itens Recentes', hasSubmenu: true },
   { type: 'divider' },
-  { id: 'force', label: 'Forçar Encerramento…', shortcut: '⌥⌘⎋' },
+  { id: 'force', label: 'Forçar Encerrar…', shortcut: '⌥⇧⌘⎋' },
   { type: 'divider' },
   { id: 'sleep', label: 'Repousar' },
   { id: 'restart', label: 'Reiniciar…' },
   { id: 'shutdown', label: 'Desligar…' },
   { type: 'divider' },
   { id: 'lock', label: 'Bloquear Tela', shortcut: '⌃⌘Q' },
-  { id: 'logout', label: 'Encerrar Sessão mateus…', shortcut: '⇧⌘Q' },
+  { id: 'logout', label: 'Finalizar Sessão de Mateus Alves…', shortcut: '⇧⌘Q' },
 ];
 
 const APP_MENUS = {
@@ -28,31 +28,127 @@ const APP_MENUS = {
 
 const MENU_OPTIONS = {
   Arquivo: [
-    { id: 'new-win', label: 'Nova Janela', shortcut: '⌘N' },
+    { id: 'finder-new-win', label: 'Nova Janela do Finder', shortcut: '⌘N' },
+    { id: 'new-folder', label: 'Nova Pasta', shortcut: '⇧⌘N' },
+    { id: 'new-folder-sel', label: 'Nova Pasta com Seleção', shortcut: '⌃⌘N', disabled: true },
+    { id: 'new-smart-folder', label: 'Nova Pasta Inteligente' },
     { id: 'new-tab', label: 'Nova Aba', shortcut: '⌘T' },
-    { id: 'open', label: 'Abrir Arquivo…', shortcut: '⌘O' },
+    { id: 'open', label: 'Abrir', shortcut: '⌘O', disabled: true },
+    { id: 'open-with', label: 'Abrir com', hasSubmenu: true, disabled: true },
+    { id: 'close-win', label: 'Fechar Janela', shortcut: '⌘W', disabled: true },
     { type: 'divider' },
-    { id: 'close-win', label: 'Fechar Janela', shortcut: '⌘W' },
-    { id: 'save', label: 'Salvar', shortcut: '⌘S' },
+    { id: 'info', label: 'Obter Informações', shortcut: '⌘I' },
+    { id: 'rename', label: 'Renomear', disabled: true },
+    { id: 'compress', label: 'Comprimir', disabled: true },
+    { id: 'duplicate', label: 'Duplicar', shortcut: '⌘D', disabled: true },
+    { id: 'alias', label: 'Criar Atalho', shortcut: '⌃⌘A', disabled: true },
+    { id: 'quicklook', label: 'Visualização Rápida', shortcut: '⌘Y', disabled: true },
+    { id: 'print', label: 'Imprimir', shortcut: '⌘P', disabled: true },
+    { type: 'divider' },
+    { id: 'share', label: 'Compartilhar…', disabled: true },
+    { type: 'divider' },
+    { id: 'show-original', label: 'Mostrar Original', shortcut: '⌘R', disabled: true },
+    { id: 'add-sidebar', label: 'Adicionar à Barra Lateral', shortcut: '⌃⌘T', disabled: true },
+    { type: 'divider' },
+    { id: 'trash', label: 'Mover para o Lixo', shortcut: '⌘⌫', disabled: true },
+    { id: 'eject', label: 'Ejetar', shortcut: '⌘E', disabled: true },
+    { type: 'divider' },
+    { type: 'tags' },
+    { id: 'tags-btn', label: 'Etiquetas…', disabled: true },
+    { type: 'divider' },
+    { id: 'search', label: 'Buscar', shortcut: '⌘F' },
   ],
   Editar: [
-    { id: 'undo', label: 'Desfazer', shortcut: '⌘Z' },
-    { id: 'redo', label: 'Refazer', shortcut: '⇧⌘Z' },
+    { id: 'undo', label: 'Desfazer', shortcut: '⌘Z', disabled: true },
+    { id: 'redo', label: 'Refazer', shortcut: '⇧⌘Z', disabled: true },
     { type: 'divider' },
-    { id: 'cut', label: 'Recortar', shortcut: '⌘X' },
-    { id: 'copy', label: 'Copiar', shortcut: '⌘C' },
-    { id: 'paste', label: 'Colar', shortcut: '⌘V' },
+    { id: 'cut', label: 'Recortar', shortcut: '⌘X', disabled: true },
+    { id: 'copy', label: 'Copiar', shortcut: '⌘C', disabled: true },
+    { id: 'paste', label: 'Colar', shortcut: '⌘V', disabled: true },
     { id: 'select-all', label: 'Selecionar Tudo', shortcut: '⌘A' },
+    { type: 'divider' },
+    { id: 'show-clipboard', label: 'Mostrar Área de Transferência' },
+    { type: 'divider' },
+    { id: 'dictation', label: 'Iniciar Ditado…', shortcut: 'fn fn' },
+    { id: 'emoji', label: 'Emoji e Símbolos', shortcut: '⌃⌘Espaço' },
   ],
   Visualizar: [
-    { id: 'toggle-sidebar', label: 'Mostrar Barra Lateral', shortcut: '⌃⌘S' },
-    { id: 'toggle-path', label: 'Mostrar Barra de Caminho' },
+    { id: 'view-icons', label: 'como Ícones', shortcut: '⌘1', disabled: true },
+    { id: 'view-list', label: 'como Lista', shortcut: '⌘2', disabled: true },
+    { id: 'view-columns', label: 'como Colunas', shortcut: '⌘3', disabled: true },
+    { id: 'view-gallery', label: 'como Galeria', shortcut: '⌘4', disabled: true },
     { type: 'divider' },
-    { id: 'zoom-in', label: 'Ampliar Zoom', shortcut: '⌘+' },
-    { id: 'zoom-out', label: 'Reduzir Zoom', shortcut: '⌘-' },
-    { id: 'actual-size', label: 'Tamanho Real', shortcut: '⌘0' },
+    { id: 'use-stacks', label: 'Usar Conjuntos', shortcut: '⌃⌘0', checked: true },
+    { id: 'group-by', label: 'Agrupar Conjuntos por', hasSubmenu: true },
+    { id: 'sort-by', label: 'Ordenar', disabled: true },
+    { id: 'align-by', label: 'Alinhar por', hasSubmenu: true },
     { type: 'divider' },
-    { id: 'fullscreen', label: 'Entrar em Tela Cheia', shortcut: '⌃⌘F' },
+    { id: 'hide-tab-bar', label: 'Ocultar Barra de Abas', shortcut: '⇧⌘T', disabled: true },
+    { id: 'show-all-tabs', label: 'Mostrar Todas as Abas', shortcut: '⇧⌘\\', disabled: true },
+    { type: 'divider' },
+    { id: 'hide-sidebar', label: 'Ocultar Barra Lateral', shortcut: '⌥⌘S', disabled: true },
+    { id: 'hide-preview', label: 'Ocultar Pré-visualização', shortcut: '⇧⌘P', disabled: true },
+    { type: 'divider' },
+    { id: 'hide-toolbar', label: 'Ocultar Barra de Ferramentas', shortcut: '⌥⌘T', disabled: true },
+    { id: 'hide-path', label: 'Ocultar Barra de Caminho', shortcut: '⌥⌘P', disabled: true },
+    { id: 'hide-status', label: 'Ocultar Barra de Estado', shortcut: '⌘/', disabled: true },
+    { type: 'divider' },
+    { id: 'cust-toolbar', label: 'Personalizar Barra de Ferramentas…', disabled: true },
+    { id: 'cust-touchbar', label: 'Personalizar Touch Bar…' },
+    { type: 'divider' },
+    { id: 'view-options', label: 'Mostrar Opções de Visualização', shortcut: '⌘J' },
+    { id: 'preview-options', label: 'Mostrar Opções de Pré-Visualização', disabled: true },
+    { type: 'divider' },
+    { id: 'fullscreen', label: 'Entrar em Tela Cheia', shortcut: 'fn F' },
+  ],
+  Ir: [
+    { id: 'go-back', label: 'Voltar', shortcut: '⌘[', disabled: true },
+    { id: 'go-forward', label: 'Avançar', shortcut: '⌘]', disabled: true },
+    { id: 'go-startup-disk', label: 'Selecionar Disco de Inicialização', shortcut: '⇧⌘A', disabled: true },
+    { type: 'divider' },
+    { id: 'go-recents', label: 'Recentes', shortcut: '⇧⌘F', icon: 'clock' },
+    { id: 'go-docs', label: 'Documentos', shortcut: '⇧⌘O', icon: 'doc.text' },
+    { id: 'go-desktop', label: 'Mesa', shortcut: '⇧⌘D', icon: 'desktopcomputer' },
+    { id: 'go-downloads', label: 'Downloads', shortcut: '⌥⌘L', icon: 'arrow.down.circle' },
+    { id: 'go-home', label: 'Pasta Pessoal', shortcut: '⇧⌘H', icon: 'house' },
+    { id: 'go-computer', label: 'Computador', shortcut: '⇧⌘C', icon: 'laptopcomputer' },
+    { id: 'go-airdrop', label: 'AirDrop', shortcut: '⇧⌘R', icon: 'airdrop' },
+    { id: 'go-network', label: 'Rede', shortcut: '⇧⌘K', icon: 'globe' },
+    { id: 'go-icloud', label: 'iCloud Drive', shortcut: '⇧⌘I', icon: 'icloud' },
+    { id: 'go-shared', label: 'Compartilhado', shortcut: '⇧⌘S', icon: 'folder.badge.person.crop' },
+    { id: 'go-apps', label: 'Aplicativos', shortcut: '⇧⌘A', icon: 'app' },
+    { id: 'go-utils', label: 'Utilitários', shortcut: '⇧⌘U', icon: 'wrench.and.screwdriver' },
+    { id: 'go-onedrive', label: 'OneDrive', icon: 'cloud' },
+    { type: 'divider' },
+    { id: 'recent-folders', label: 'Pastas Recentes', hasSubmenu: true },
+    { type: 'divider' },
+    { id: 'go-to-folder', label: 'Ir para Pasta…', shortcut: '⇧⌘G' },
+    { id: 'connect-server', label: 'Conectar ao Servidor…', shortcut: '⌘K' },
+  ],
+  Janela: [
+    { id: 'win-minimize', label: 'Minimizar', shortcut: '⌘M', disabled: true },
+    { id: 'win-zoom', label: 'Zoom', disabled: true },
+    { id: 'win-fill', label: 'Preencher', shortcut: '⌃fn F', disabled: true },
+    { id: 'win-center', label: 'Centralizar', shortcut: '⌃fn C', disabled: true },
+    { type: 'divider' },
+    { id: 'win-move-resize', label: 'Mover e Redimensionar', hasSubmenu: true },
+    { id: 'win-tile', label: 'Mosaico em Tela Cheia', hasSubmenu: true, disabled: true },
+    { type: 'divider' },
+    { id: 'win-remove-group', label: 'Remover Janela do Grupo', disabled: true },
+    { id: 'win-cycle', label: 'Percorrer Janelas', shortcut: '⌘`' },
+    { id: 'win-progress', label: 'Mostrar Janela de Progresso', disabled: true },
+    { type: 'divider' },
+    { id: 'win-front', label: 'Trazer Todas para a Frente' },
+    { type: 'divider' },
+    { id: 'win-prev-tab', label: 'Mostrar Aba Anterior', shortcut: '⌃⇧⇥', disabled: true },
+    { id: 'win-next-tab', label: 'Mostrar Aba Seguinte', shortcut: '⌃⇥', disabled: true },
+    { id: 'win-move-tab', label: 'Mover Aba para Nova Janela', disabled: true },
+    { id: 'win-merge-tabs', label: 'Combinar Todas as Janelas', disabled: true },
+  ],
+  Ajuda: [
+    { id: 'search-help', label: 'Buscar' },
+    { type: 'divider' },
+    { id: 'mac-help', label: 'Ajuda do macOS' },
   ],
   Shell: [
     { id: 'shell-new', label: 'Novo Terminal', shortcut: '⌘N' },
@@ -60,15 +156,6 @@ const MENU_OPTIONS = {
     { type: 'divider' },
     { id: 'shell-close-tab', label: 'Fechar Aba', shortcut: '⌘W' },
     { id: 'shell-close-win', label: 'Fechar Janela', shortcut: '⇧⌘W' },
-  ],
-  Ir: [
-    { id: 'go-back', label: 'Voltar', shortcut: '⌘[' },
-    { id: 'go-forward', label: 'Avançar', shortcut: '⌘]' },
-    { type: 'divider' },
-    { id: 'go-recents', label: 'Recentes', shortcut: '⇧⌘F' },
-    { id: 'go-docs', label: 'Documentos', shortcut: '⇧⌘O' },
-    { id: 'go-downloads', label: 'Downloads', shortcut: '⌥⌘L' },
-    { id: 'go-desktop', label: 'Mesa', shortcut: '⇧⌘D' },
   ],
   Histórico: [
     { id: 'hist-back', label: 'Voltar', shortcut: '⌘[' },
@@ -85,17 +172,6 @@ const MENU_OPTIONS = {
     { id: 'inspect', label: 'Inspecionar Elemento', shortcut: '⌥⌘I' },
     { id: 'console', label: 'Console JavaScript', shortcut: '⌥⌘J' },
     { id: 'source', label: 'Exibir Código-Fonte', shortcut: '⌥⌘U' },
-  ],
-  Janela: [
-    { id: 'minimize', label: 'Minimizar', shortcut: '⌘M' },
-    { id: 'zoom', label: 'Zoom' },
-    { type: 'divider' },
-    { id: 'front', label: 'Trazer Todas para a Frente' },
-  ],
-  Ajuda: [
-    { id: 'search-help', label: 'Buscar' },
-    { type: 'divider' },
-    { id: 'mac-help', label: 'Ajuda do macOS' },
   ],
 };
 
@@ -245,16 +321,34 @@ export class MenuBar {
   }
 
   _populateAppMenuDropdown(dropdown, appName) {
+    if (appName === 'Finder') {
+      const items = [
+        { id: 'about-app', label: 'Sobre o Finder' },
+        { type: 'divider' },
+        { id: 'app-settings', label: 'Configurações…', shortcut: '⌘,' },
+        { type: 'divider' },
+        { id: 'empty-trash', label: 'Esvaziar Lixo…', shortcut: '⇧⌘⌫' },
+        { type: 'divider' },
+        { id: 'services', label: 'Serviços', hasSubmenu: true },
+        { type: 'divider' },
+        { id: 'hide-app', label: 'Ocultar Finder', shortcut: '⌘H' },
+        { id: 'hide-others', label: 'Ocultar Outros', shortcut: '⌥⌘H' },
+        { id: 'show-all', label: 'Mostrar Tudo', disabled: true },
+      ];
+      this._populateMenu(dropdown, items);
+      return;
+    }
+
     const items = [
       { id: 'about-app', label: `Sobre o ${appName}` },
       { type: 'divider' },
       { id: 'app-settings', label: 'Configurações…', shortcut: '⌘,' },
       { type: 'divider' },
-      { id: 'services', label: 'Serviços' },
+      { id: 'services', label: 'Serviços', hasSubmenu: true },
       { type: 'divider' },
       { id: 'hide-app', label: `Ocultar ${appName}`, shortcut: '⌘H' },
       { id: 'hide-others', label: 'Ocultar Outros', shortcut: '⌥⌘H' },
-      { id: 'show-all', label: 'Mostrar Tudo' },
+      { id: 'show-all', label: 'Mostrar Tudo', disabled: true },
       { type: 'divider' },
       { id: 'quit-app', label: `Encerrar ${appName}`, shortcut: '⌘Q' },
     ];
@@ -263,54 +357,64 @@ export class MenuBar {
   }
 
   _populateAppleMenu(dropdown) {
-    dropdown.innerHTML = APPLE_MENU_OPTIONS.map(opt => {
-      if (opt.type === 'divider') return `<div class="menuBar__dropdownDivider"></div>`;
-      return `
-        <div class="menuBar__dropdownItem" data-id="${opt.id}">
-          <span class="menuBar__dropdownLabel">${opt.label}</span>
-          ${opt.shortcut ? `<span class="menuBar__dropdownShortcut">${opt.shortcut}</span>` : ''}
-        </div>
-      `;
-    }).join('');
-
-    dropdown.querySelectorAll('.menuBar__dropdownItem').forEach(item => {
-      item.addEventListener('click', e => {
-        e.stopPropagation();
-        const id = item.dataset.id;
-        this._closeAll();
-        if (id === 'about') this._showAbout();
-        if (id === 'settings') this.wm.openWindow('settings');
-      });
-    });
+    this._populateMenu(dropdown, APPLE_MENU_OPTIONS);
   }
 
   _populateMenu(dropdown, items) {
     dropdown.innerHTML = items.map(opt => {
       if (opt.type === 'divider') return `<div class="menuBar__dropdownDivider"></div>`;
+      if (opt.type === 'tags') {
+        const tagColors = ['#ff453a', '#ff9f0a', '#ffd60a', '#30d158', '#0a84ff', '#bf5af2', '#8e8e93'];
+        return `
+          <div class="menuBar__tag-row">
+            ${tagColors.map(c => `<span class="menuBar__tag-dot" style="background:${c};"></span>`).join('')}
+          </div>
+        `;
+      }
+
+      const disabledClass = opt.disabled ? 'is-disabled' : '';
+      let leftHtml = '';
+      if (opt.checked) {
+        leftHtml += `<span class="menuBar__dropdownCheckmark">✓</span>`;
+      }
+      if (opt.icon) {
+        leftHtml += `<span class="menuBar__dropdownItemIcon">${getSFSymbolHtml(opt.icon, { size: 13, style: 'opacity:0.85;' })}</span>`;
+      }
+      leftHtml += `<span class="menuBar__dropdownLabel">${opt.label}</span>`;
+
+      let rightHtml = '';
+      if (opt.shortcut) {
+        rightHtml = `<span class="menuBar__dropdownShortcut">${opt.shortcut}</span>`;
+      } else if (opt.hasSubmenu) {
+        rightHtml = `<span class="menuBar__dropdownSubmenuArrow">›</span>`;
+      }
+
       return `
-        <div class="menuBar__dropdownItem" data-id="${opt.id}">
-          <span class="menuBar__dropdownLabel">${opt.label}</span>
-          ${opt.shortcut ? `<span class="menuBar__dropdownShortcut">${opt.shortcut}</span>` : ''}
+        <div class="menuBar__dropdownItem ${disabledClass}" data-id="${opt.id || ''}">
+          <div class="menuBar__dropdownItemLeft">${leftHtml}</div>
+          ${rightHtml}
         </div>
       `;
     }).join('');
 
-    dropdown.querySelectorAll('.menuBar__dropdownItem').forEach(item => {
+    dropdown.querySelectorAll('.menuBar__dropdownItem:not(.is-disabled)').forEach(item => {
       item.addEventListener('click', e => {
         e.stopPropagation();
         const id = item.dataset.id;
         this._closeAll();
 
-        if (id === 'close-win') {
+        if (id === 'about') {
+          this._showAbout();
+        } else if (id === 'settings' || id === 'app-settings') {
+          this.wm.openWindow('settings');
+        } else if (id === 'finder-new-win' || id === 'new-win') {
+          this.wm.openApp('finder', 'Finder');
+        } else if (id === 'close-win') {
           if (this.wm.activeWinId) this.wm.closeWindow(this.wm.activeWinId, false);
         } else if (id === 'quit-app') {
           if (this.wm.activeWinId) this.wm.quitApp(this.wm.activeWinId);
         } else if (id === 'minimize' || id === 'hide-app') {
           if (this.wm.activeWinId) this.wm.minimizeWindow(this.wm.activeWinId);
-        } else if (id === 'app-settings') {
-          this.wm.openWindow('settings');
-        } else if (id === 'new-win') {
-          this.wm.openWindow(this.wm.activeWinId || 'finder');
         }
       });
     });

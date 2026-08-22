@@ -1,0 +1,27 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appID": "com.apple.CloudKit.ShareBear",
+        "components": [
+            { "/": "/pages/?*" },
+            { "/": "/numbers/?*" },
+            { "/": "/keynote/?*" },
+            { "/": "/iclouddrive/?*" },
+            { "/": "/share/?*" },
+            { "/": "/notes/?*" },
+            { "/": "/photos/?*" },
+            { "/": "/photos_sharing/?*" },
+            { "/": "/photos_links/?*" },
+            { "/": "/reminders/template/*", "exclude": true },
+            { "/": "/reminders/?*" },
+            { "/": "/safari-tab-groups/?*" },
+            { "/": "/freeform/copy/*", "exclude": true },
+            { "/": "/freeform/?*" },
+            { "/": "/v/?*" }
+        ],
+        "alwaysEnabled": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+    "applinks": {
+        "apps": [],
+        "details": [
+            {
+                "appID": "0000000000.com.apple.icq",
+                "components": [
+                    {
+                        "/": "?*icq",
+                        "comment": "Redirects to standard icq link"
+                    },
+                    {
+                        "/": "icq",
+                        "comment": "Redirects to standard icq link"
+                    },
+                ],
+                "alwaysEnabled": true,
+                "relativeOrder": -5
+            }
+        ]
+    }
+}

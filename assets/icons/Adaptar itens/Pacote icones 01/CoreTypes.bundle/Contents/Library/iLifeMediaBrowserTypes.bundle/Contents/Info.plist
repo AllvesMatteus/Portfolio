@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>BuildMachineOSBuild</key>
+	<string>23A344014</string>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeIconFile</key>
+			<string>com.apple.ilmbplugins.icns</string>
+			<key>CFBundleTypeName</key>
+			<string>iLifeMediaBrowser plug-in</string>
+			<key>CFBundleTypeRole</key>
+			<string>None</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.apple.iLifeMediaBrowser.plugin</string>
+			</array>
+			<key>LSTypeIsPackage</key>
+			<true/>
+		</dict>
+	</array>
+	<key>CFBundleIdentifier</key>
+	<string>com.apple.iLifeMediaBrowser.coretypes</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>iLifeMediaBrowserTypes</string>
+	<key>CFBundlePackageType</key>
+	<string>BNDL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>2.19.0</string>
+	<key>CFBundleSignature</key>
+	<string>rDrD</string>
+	<key>CFBundleSupportedPlatforms</key>
+	<array>
+		<string>MacOSX</string>
+	</array>
+	<key>CFBundleVersion</key>
+	<string>806.4</string>
+	<key>CSResourcesFileMapped</key>
+	<string>yes</string>
+	<key>DTCompiler</key>
+	<string>com.apple.compilers.llvm.clang.1_0</string>
+	<key>DTPlatformBuild</key>
+	<string></string>
+	<key>DTPlatformName</key>
+	<string>macosx</string>
+	<key>DTPlatformVersion</key>
+	<string>15.7</string>
+	<key>DTSDKBuild</key>
+	<string>24G201t</string>
+	<key>DTSDKName</key>
+	<string>macosx15.7.internal</string>
+	<key>DTXcode</key>
+	<string>1630</string>
+	<key>DTXcodeBuild</key>
+	<string>16E6052g</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>15.7</string>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>com.apple.plugin</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>iLifeMediaBrowser plug-In</string>
+			<key>UTTypeIdentifier</key>
+			<string>com.apple.iLifeMediaBrowser.plugin</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<string>ilmbplugin</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>

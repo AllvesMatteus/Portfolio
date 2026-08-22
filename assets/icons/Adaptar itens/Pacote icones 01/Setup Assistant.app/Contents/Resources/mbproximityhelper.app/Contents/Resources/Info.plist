@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleIdentifier</key>
+	<string>com.apple.mbproximityhelper</string>
+	<key>UNUserNotificationCenter</key>
+	<dict>
+		<key>UNDaemonShouldReceiveBackgroundResponses</key>
+		<true/>
+		<key>UNHideSettings</key>
+		<true/>
+		<key>UNSuppressUserAuthorizationPrompt</key>
+		<true/>
+		<key>UNDefaultSettings</key>
+		<dict>
+			<key>UNSettingBadges</key>
+			<true/>
+			<key>UNSettingAlerts</key>
+			<true/>
+			<key>UNSettingModalAlertStyle</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>LSUIElement</key>
+	<true/>
+</dict>
+</plist>
