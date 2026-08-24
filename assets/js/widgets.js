@@ -384,6 +384,7 @@ export class WidgetsManager {
                     <span class="bento-edu-degree">Análise e Dev. de Sistemas</span>
                     <span class="bento-edu-tag">Tecnólogo</span>
                   </div>
+                  <span class="bento-edu-year">2026</span>
                 </div>
                 <div class="bento-edu-card">
                   <img src="assets/images/portfolio/logo-etec.png" alt="ETEC" class="bento-edu-logo" />
@@ -392,6 +393,7 @@ export class WidgetsManager {
                     <span class="bento-edu-degree">Dev. de Sistemas</span>
                     <span class="bento-edu-tag">Técnico</span>
                   </div>
+                  <span class="bento-edu-year">2021</span>
                 </div>
               </div>
             </div>

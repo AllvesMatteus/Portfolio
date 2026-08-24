@@ -2448,6 +2448,7 @@ body.dark-theme {
 }
 
 .bento-edu-card {
+  position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -2498,6 +2499,17 @@ body.dark-theme {
   font-weight: 500;
   color: rgba(255, 255, 255, 0.45);
   margin-top: 1px;
+}
+
+.bento-edu-year {
+  position: absolute;
+  top: 7px;
+  right: 12px;
+  font-size: 8.5px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.2px;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
 }
 
 .bento-tech-grid {
