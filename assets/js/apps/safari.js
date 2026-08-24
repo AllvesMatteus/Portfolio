@@ -478,6 +478,11 @@ class SafariEngine {
       this.applyThemeColor('#28282b', false);
     }
 
+    if (finalUrl.includes('linkedin.com') || finalUrl.includes('github.com') || finalUrl.includes('wa.me') || finalUrl.includes('whatsapp.com')) {
+      this._showIframeBlockedMessage(finalUrl);
+      return;
+    }
+
     let embedUrl = finalUrl;
     if (!finalUrl.includes('google.com') && !this.isLocalUrl(finalUrl)) {
       embedUrl = `https://corsproxy.io/?${encodeURIComponent(finalUrl)}`;
@@ -495,15 +500,13 @@ class SafariEngine {
   }
 
   _showIframeBlockedMessage(url) {
-    const existing = this.bodyEl.querySelector('#safari-iframe');
-    if (!existing) return;
     const domain = this.extractDomain(url);
     this.bodyEl.innerHTML = `
       <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:16px;background:#1c1c1e;color:rgba(255,255,255,0.85);font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text',sans-serif;text-align:center;padding:40px;">
         <img src="https://favicone.com/${domain}?s=64" style="width:48px;height:48px;border-radius:12px;opacity:0.6;" alt="${domain}" onerror="this.style.display='none'" />
         <div style="font-size:17px;font-weight:600;color:#ffffff;">${domain}</div>
         <div style="font-size:13px;color:rgba(255,255,255,0.5);max-width:340px;line-height:1.5;">Este site não permite ser exibido dentro de outro aplicativo.<br/>Abra-o diretamente no seu navegador.</div>
-        <a href="${url}" target="_blank" style="margin-top:4px;background:rgba(10,132,255,0.18);border:1px solid rgba(10,132,255,0.35);border-radius:8px;padding:8px 20px;font-size:13px;font-weight:500;color:#0a84ff;text-decoration:none;cursor:pointer;">Abrir no Navegador</a>
+        <a href="${url}" target="_blank" rel="noopener noreferrer" style="margin-top:4px;background:rgba(10,132,255,0.18);border:1px solid rgba(10,132,255,0.35);border-radius:8px;padding:8px 20px;font-size:13px;font-weight:500;color:#0a84ff;text-decoration:none;cursor:pointer;">Abrir no Navegador</a>
       </div>
     `;
   }

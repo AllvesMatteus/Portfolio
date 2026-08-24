@@ -235,7 +235,16 @@ export class Dock {
           showMacDialog({ icon: app.iconDark, title: app.name, message: app.alertMessage });
           return;
         }
-        if (app.url) { window.open(app.url, '_blank'); return; }
+        if (app.url) {
+          const a = document.createElement('a');
+          a.href = app.url;
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          return;
+        }
         if (app.noOpen) return;
         if (app.id === 'trash') {
           this.wm.openApp('finder', 'Finder');
@@ -253,7 +262,16 @@ export class Dock {
             showMacDialog({ icon: app.iconDark, title: app.name, message: app.alertMessage });
             return;
           }
-          if (app.url) { window.open(app.url, '_blank'); return; }
+          if (app.url) {
+            const a = document.createElement('a');
+            a.href = app.url;
+            a.target = '_blank';
+            a.rel = 'noopener noreferrer';
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            return;
+          }
           if (app.noOpen) return;
           if (app.id === 'trash') {
             this.wm.openApp('finder', 'Finder');

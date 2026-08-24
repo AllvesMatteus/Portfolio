@@ -478,7 +478,7 @@ export class WidgetsManager {
                   </div>
                   <span class="bento-contact-name">E-mail</span>
                 </a>
-                <a href="https://linkedin.com/in/allves-matteus" target="_blank" rel="noopener noreferrer" class="bento-contact-item" title="LinkedIn">
+                <a href="https://www.linkedin.com/in/allves-matteus/" target="_blank" rel="noopener noreferrer" class="bento-contact-item" title="LinkedIn">
                   <div class="bento-contact-icon-wrap">
                     <img src="assets/icons/dock/linkedIn.png" alt="LinkedIn" class="bento-contact-large-img" />
                   </div>
@@ -490,7 +490,7 @@ export class WidgetsManager {
                   </div>
                   <span class="bento-contact-name">GitHub</span>
                 </a>
-                <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" class="bento-contact-item" title="WhatsApp">
+                <a href="https://wa.me/5511948642383?text=Ol%C3%A1%20Mateus!%20Vim%20pelo%20seu%20Portf%C3%B3lio%20e%20gostaria%20de%20conversar." target="_blank" rel="noopener noreferrer" class="bento-contact-item" title="WhatsApp">
                   <div class="bento-contact-icon-wrap">
                     <img src="assets/icons/dock/WhatsApp.png" alt="WhatsApp" class="bento-contact-large-img" />
                   </div>
