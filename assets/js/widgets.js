@@ -408,7 +408,7 @@ export class WidgetsManager {
           <div class="bento-slide bento-stack">
             <div class="bento-header-label">
               <span>TECH STACK PRINCIPAL</span>
-              <span class="bento-counter">Mais de 8 Tecnologias</span>
+              <span class="bento-counter">Front-end & Back-end</span>
             </div>
             <div class="bento-tech-grid">
               <div class="bento-tech-tile" title="JavaScript">
