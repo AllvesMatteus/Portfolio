@@ -472,8 +472,8 @@ export function renderSettings(contentEl, wm, desktop) {
       [
         {
           name: 'AppleCare e Garantia',
-          bg: '#ff3b30',
-          img: 'assets/icons/desktop/apple_icon.png'
+          bg: 'transparent',
+          img: 'assets/icons/settings icons/coverage-details.png'
         }
       ],
       [
@@ -529,8 +529,8 @@ export function renderSettings(contentEl, wm, desktop) {
 
         itemEl.innerHTML = `
           <div style="display:flex;align-items:center;">
-            <div style="width:20px;height:20px;background:${item.bg};border-radius:4.5px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-              ${item.sf ? getSFSymbolHtml(item.icon, { size: 12, style: 'opacity:1;' }) : (item.img ? `<img src="${item.img}" style="width:12px;height:12px;object-fit:contain;" draggable="false" />` : item.svg)}
+            <div style="width:20px;height:20px;background:${item.bg || 'transparent'};border-radius:4.5px;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;">
+              ${item.sf ? getSFSymbolHtml(item.icon, { size: 12, style: 'opacity:1;' }) : (item.img ? `<img src="${item.img}" style="width:20px;height:20px;object-fit:cover;border-radius:4.5px;" draggable="false" />` : item.svg)}
             </div>
             <span style="font-size:13px;font-weight:400;color:#ffffff;margin-left:10px;">${item.name}</span>
           </div>
