@@ -384,7 +384,7 @@ export class WidgetsManager {
                     <span class="bento-edu-degree">Análise e Dev. de Sistemas</span>
                     <span class="bento-edu-tag">Tecnólogo</span>
                   </div>
-                  <span class="bento-edu-year">2026</span>
+                  <span class="bento-edu-year">Cursando</span>
                 </div>
                 <div class="bento-edu-card">
                   <img src="assets/images/portfolio/logo-etec.png" alt="ETEC" class="bento-edu-logo" />
@@ -408,7 +408,7 @@ export class WidgetsManager {
           <div class="bento-slide bento-stack">
             <div class="bento-header-label">
               <span>TECH STACK PRINCIPAL</span>
-              <span class="bento-counter">8 Tecnologias</span>
+              <span class="bento-counter">Mais de 8 Tecnologias</span>
             </div>
             <div class="bento-tech-grid">
               <div class="bento-tech-tile" title="JavaScript">
