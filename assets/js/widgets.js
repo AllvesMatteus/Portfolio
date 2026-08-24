@@ -1,14 +1,17 @@
 import { getSFSymbolHtml } from './sfSymbols.js';
+import { showNotification } from './notificationManager.js';
 
 export class WidgetsManager {
   constructor(desktopEl, wm) {
     this.desktopEl = desktopEl;
+    this.wm = wm;
     this.container = null;
     this._init(wm);
   }
 
   _init(wm) {
     if (!this.desktopEl) return;
+    this.wm = wm;
 
     this.container = document.createElement('div');
     this.container.id = 'desktop-widgets-container';
@@ -18,6 +21,7 @@ export class WidgetsManager {
     this._renderCalendarWidget();
     this._renderBatteryWidget();
     this._renderWeatherWidget();
+    this._renderPortfolioWidget();
 
     if (wm && typeof wm.onChange === 'function') {
       wm.onChange(({ openApps, minimizedApps, windows }) => {
@@ -34,7 +38,7 @@ export class WidgetsManager {
   _renderCalendarWidget() {
     const card = document.createElement('div');
     card.className = 'widget-card widget-calendar';
-    
+
     const now = new Date();
     const monthNames = ['JANEIRO', 'FEVEREIRO', 'MARÇO', 'ABRIL', 'MAIO', 'JUNHO', 'JULHO', 'AGOSTO', 'SETEMBRO', 'OUTUBRO', 'NOVEMBRO', 'DEZEMBRO'];
     const currentMonth = monthNames[now.getMonth()];
@@ -259,7 +263,7 @@ export class WidgetsManager {
         if (data && data.latitude && data.longitude) {
           return { lat: parseFloat(data.latitude), lon: parseFloat(data.longitude), city: data.city || 'Sua Cidade' };
         }
-      } catch (e) {}
+      } catch (e) { }
       return null;
     };
 
@@ -270,7 +274,7 @@ export class WidgetsManager {
         if (data && data.lat && data.lon) {
           return { lat: data.lat, lon: data.lon, city: data.city || 'Sua Cidade' };
         }
-      } catch (e) {}
+      } catch (e) { }
       return null;
     };
 
@@ -281,7 +285,7 @@ export class WidgetsManager {
         if (data && data.latitude && data.longitude) {
           return { lat: data.latitude, lon: data.longitude, city: data.city || 'Sua Cidade' };
         }
-      } catch (e) {}
+      } catch (e) { }
       return null;
     };
 
@@ -292,7 +296,7 @@ export class WidgetsManager {
         if (parts.length > 1) {
           return parts[parts.length - 1].replace(/_/g, ' ');
         }
-      } catch (e) {}
+      } catch (e) { }
       return 'Sua Cidade';
     };
 
@@ -305,7 +309,7 @@ export class WidgetsManager {
       try {
         await fetchWeatherByCoords(loc.lat, loc.lon, loc.city);
         return;
-      } catch (e) {}
+      } catch (e) { }
     }
 
     const fallbackCity = fallbackTimezoneCity();
@@ -318,8 +322,437 @@ export class WidgetsManager {
         await fetchWeatherByCoords(latitude, longitude, name);
         return;
       }
-    } catch (e) {}
+    } catch (e) { }
 
     await fetchWeatherByCoords(-23.5505, -46.6333, fallbackCity);
+  }
+
+  _renderPortfolioWidget() {
+    const card = document.createElement('div');
+    card.className = 'widget-card widget-portfolio-carousel';
+    card.setAttribute('role', 'region');
+    card.setAttribute('aria-roledescription', 'carousel');
+    card.setAttribute('aria-label', 'Perfil e Portfólio de Mateus Alves');
+
+    const slides = [
+      {
+        id: 'hero',
+        label: '1 de 5',
+        title: 'Perfil',
+        content: `
+          <div class="bento-slide bento-hero-slide">
+            <div class="bento-header-label">
+              <span>DESENVOLVEDOR FULL STACK WEB</span>
+              <span class="bento-counter">São Paulo, Brasil</span>
+            </div>
+            <div class="bento-hero-body">
+              <div class="bento-hero-left">
+                <div class="bento-avatar-wrap">
+                  <img src="assets/images/portfolio/mateus-alves-about.jpg" alt="Mateus Alves" class="bento-avatar" draggable="false" />
+                </div>
+              </div>
+              <div class="bento-hero-right">
+                <h3 class="bento-name">Mateus Alves</h3>
+                <p class="bento-role">+5 anos de experiência criando soluções web, mobile e automações.</p>
+                <div class="bento-action-row">
+                  <button class="bento-btn-primary" id="btn-portfolio-safari">
+                    <img src="assets/icons/dock/safari.png" alt="Safari" class="bento-btn-icon" />
+                    <span>Explorar Portfólio</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: 'education',
+        label: '2 de 5',
+        title: 'Formação',
+        content: `
+          <div class="bento-slide bento-education">
+            <div class="bento-header-label">
+              <span>FORMAÇÃO ACADÊMICA</span>
+              <span class="bento-counter">Mackenzie & ETEC</span>
+            </div>
+            <div class="bento-edu-body-wrap">
+              <div class="bento-edu-grid">
+                <div class="bento-edu-card">
+                  <img src="assets/images/portfolio/logo-mackenzie.png" alt="Mackenzie" class="bento-edu-logo" />
+                  <div class="bento-edu-info">
+                    <span class="bento-edu-school">Mackenzie</span>
+                    <span class="bento-edu-degree">Análise e Dev. de Sistemas</span>
+                    <span class="bento-edu-tag">Tecnólogo</span>
+                  </div>
+                </div>
+                <div class="bento-edu-card">
+                  <img src="assets/images/portfolio/logo-etec.png" alt="ETEC" class="bento-edu-logo" />
+                  <div class="bento-edu-info">
+                    <span class="bento-edu-school">ETEC</span>
+                    <span class="bento-edu-degree">Dev. de Sistemas</span>
+                    <span class="bento-edu-tag">Técnico</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: 'stack',
+        label: '3 de 5',
+        title: 'Tech Stack',
+        content: `
+          <div class="bento-slide bento-stack">
+            <div class="bento-header-label">
+              <span>TECH STACK PRINCIPAL</span>
+              <span class="bento-counter">8 Tecnologias</span>
+            </div>
+            <div class="bento-tech-grid">
+              <div class="bento-tech-tile" title="JavaScript">
+                <div class="bento-tech-icon-box">
+                  <img src="assets/images/portfolio/tecnologias/javascript.png" alt="JavaScript" />
+                </div>
+                <span class="bento-tech-title">JavaScript</span>
+              </div>
+              <div class="bento-tech-tile" title="TypeScript">
+                <div class="bento-tech-icon-box">
+                  <img src="assets/images/portfolio/tecnologias/typescript.png" alt="TypeScript" />
+                </div>
+                <span class="bento-tech-title">TypeScript</span>
+              </div>
+              <div class="bento-tech-tile" title="React Native">
+                <div class="bento-tech-icon-box">
+                  <img src="assets/images/portfolio/tecnologias/react-native.png" alt="React Native" />
+                </div>
+                <span class="bento-tech-title">React Native</span>
+              </div>
+              <div class="bento-tech-tile" title="Tailwind CSS">
+                <div class="bento-tech-icon-box">
+                  <img src="assets/images/portfolio/tecnologias/tailwind.png" alt="Tailwind CSS" />
+                </div>
+                <span class="bento-tech-title">Tailwind</span>
+              </div>
+              <div class="bento-tech-tile" title="Node.js">
+                <div class="bento-tech-icon-box">
+                  <img src="assets/images/portfolio/tecnologias/node-js.png" alt="Node.js" />
+                </div>
+                <span class="bento-tech-title">Node.js</span>
+              </div>
+              <div class="bento-tech-tile" title="Python">
+                <div class="bento-tech-icon-box">
+                  <img src="assets/images/portfolio/tecnologias/python.png" alt="Python" />
+                </div>
+                <span class="bento-tech-title">Python</span>
+              </div>
+              <div class="bento-tech-tile" title="Supabase">
+                <div class="bento-tech-icon-box">
+                  <img src="assets/images/portfolio/tecnologias/supabase.png" alt="Supabase" />
+                </div>
+                <span class="bento-tech-title">Supabase</span>
+              </div>
+              <div class="bento-tech-tile" title="MongoDB">
+                <div class="bento-tech-icon-box">
+                  <img src="assets/images/portfolio/tecnologias/mongo-db.png" alt="MongoDB" />
+                </div>
+                <span class="bento-tech-title">MongoDB</span>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: 'contact',
+        label: '4 de 5',
+        title: 'Contatos',
+        content: `
+          <div class="bento-slide bento-contact">
+            <div class="bento-header-label">
+              <span>CONTATO</span>
+            </div>
+            <div class="bento-contact-body">
+              <div class="bento-contact-centered">
+                <a href="mailto:allves.matteus@hotmail.com?subject=Contato%20via%20Portf%C3%B3lio" class="bento-contact-item" title="Enviar E-mail para allves.matteus@hotmail.com">
+                  <div class="bento-contact-icon-wrap bento-mail-gradient">
+                    <img src="assets/icons/sf-symbols/white/envelope.fill.png" alt="E-mail" class="bento-mail-symbol" />
+                  </div>
+                  <span class="bento-contact-name">E-mail</span>
+                </a>
+                <a href="https://linkedin.com/in/allves-matteus" target="_blank" rel="noopener noreferrer" class="bento-contact-item" title="LinkedIn">
+                  <div class="bento-contact-icon-wrap">
+                    <img src="assets/icons/dock/linkedIn.png" alt="LinkedIn" class="bento-contact-large-img" />
+                  </div>
+                  <span class="bento-contact-name">LinkedIn</span>
+                </a>
+                <a href="https://github.com/AllvesMatteus" target="_blank" rel="noopener noreferrer" class="bento-contact-item" title="GitHub">
+                  <div class="bento-contact-icon-wrap">
+                    <img src="assets/icons/dock/github-desktop.png" alt="GitHub" class="bento-contact-large-img" />
+                  </div>
+                  <span class="bento-contact-name">GitHub</span>
+                </a>
+                <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" class="bento-contact-item" title="WhatsApp">
+                  <div class="bento-contact-icon-wrap">
+                    <img src="assets/icons/dock/WhatsApp.png" alt="WhatsApp" class="bento-contact-large-img" />
+                  </div>
+                  <span class="bento-contact-name">WhatsApp</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: 'tips',
+        label: '5 de 5',
+        title: 'Dicas',
+        content: `
+          <div class="bento-slide bento-tips">
+            <div class="bento-header-label">
+              <span>COMO EXPLORAR</span>
+              <span class="bento-counter">Atalhos do Sistema</span>
+            </div>
+            <div class="bento-tips-inset-card">
+              <div class="bento-tip-row" id="tip-open-safari">
+                <img src="assets/icons/dock/safari.png" alt="Safari" class="bento-tip-icon" />
+                <div class="bento-tip-text"><strong>Safari</strong> · Ver portfólio web tradicional</div>
+                <span class="bento-tip-arrow">›</span>
+              </div>
+              <div class="bento-tip-row" id="tip-open-terminal">
+                <img src="assets/icons/dock/terminal.png" alt="Terminal" class="bento-tip-icon" />
+                <div class="bento-tip-text"><strong>Terminal</strong> · Digite <code>man</code> ou <code>sudo -i</code></div>
+                <span class="bento-tip-arrow">›</span>
+              </div>
+              <div class="bento-tip-row" id="tip-open-finder">
+                <img src="assets/icons/dock/finder.png" alt="Finder" class="bento-tip-icon" />
+                <div class="bento-tip-text"><strong>Finder</strong> · Arquivos e Currículo na Mesa</div>
+                <span class="bento-tip-arrow">›</span>
+              </div>
+            </div>
+          </div>
+        `
+      }
+    ];
+
+    card.innerHTML = `
+      <div class="carousel-track-wrapper">
+        <div class="carousel-track" id="portfolio-carousel-track">
+          ${slides.map((s, idx) => `
+            <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="${s.label}" data-slide="${idx}">
+              ${s.content}
+            </div>
+          `).join('')}
+        </div>
+      </div>
+      
+      <button class="carousel-control carousel-prev" aria-label="Slide anterior" id="btn-carousel-prev">
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <button class="carousel-control carousel-next" aria-label="Próximo slide" id="btn-carousel-next">
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+
+      <div class="carousel-dots" role="tablist" aria-label="Seletor de slides">
+        ${slides.map((s, idx) => `
+          <button class="carousel-dot ${idx === 0 ? 'is-active' : ''}" role="tab" aria-selected="${idx === 0 ? 'true' : 'false'}" aria-label="Ir para ${s.title}" data-index="${idx}"></button>
+        `).join('')}
+      </div>
+    `;
+
+    this.container.appendChild(card);
+    this._initPortfolioCarousel(card);
+  }
+
+  _initPortfolioCarousel(card) {
+    const track = card.querySelector('#portfolio-carousel-track');
+    const dots = card.querySelectorAll('.carousel-dot');
+    const prevBtn = card.querySelector('#btn-carousel-prev');
+    const nextBtn = card.querySelector('#btn-carousel-next');
+    const totalSlides = 5;
+    let currentIndex = 0;
+    let autoRotateTimer = null;
+
+    const goToSlide = (idx) => {
+      currentIndex = (idx + totalSlides) % totalSlides;
+      if (track) {
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      }
+      dots.forEach((dot, i) => {
+        const isActive = i === currentIndex;
+        dot.classList.toggle('is-active', isActive);
+        dot.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+    };
+
+    if (prevBtn) prevBtn.onclick = (e) => { e.stopPropagation(); goToSlide(currentIndex - 1); };
+    if (nextBtn) nextBtn.onclick = (e) => { e.stopPropagation(); goToSlide(currentIndex + 1); };
+
+    dots.forEach((dot, i) => {
+      dot.onclick = (e) => {
+        e.stopPropagation();
+        goToSlide(i);
+      };
+    });
+
+    const startAutoRotate = () => {
+      stopAutoRotate();
+      autoRotateTimer = setInterval(() => {
+        goToSlide(currentIndex + 1);
+      }, 7000);
+    };
+
+    const stopAutoRotate = () => {
+      if (autoRotateTimer) {
+        clearInterval(autoRotateTimer);
+        autoRotateTimer = null;
+      }
+    };
+
+    card.addEventListener('mouseenter', stopAutoRotate);
+    card.addEventListener('mouseleave', startAutoRotate);
+    startAutoRotate();
+
+    let touchStartX = 0;
+    card.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+
+    card.addEventListener('touchend', (e) => {
+      const touchEndX = e.changedTouches[0].clientX;
+      const diffX = touchEndX - touchStartX;
+      if (Math.abs(diffX) > 35) {
+        if (diffX > 0) goToSlide(currentIndex - 1);
+        else goToSlide(currentIndex + 1);
+      }
+    }, { passive: true });
+
+    let wheelDebounce = false;
+    card.addEventListener('wheel', (e) => {
+      if (wheelDebounce) return;
+      if (Math.abs(e.deltaX) > 20 || Math.abs(e.deltaY) > 40) {
+        wheelDebounce = true;
+        if (e.deltaX > 0 || e.deltaY > 0) goToSlide(currentIndex + 1);
+        else goToSlide(currentIndex - 1);
+        setTimeout(() => { wheelDebounce = false; }, 350);
+      }
+    }, { passive: true });
+
+    const btnSafari = card.querySelector('#btn-portfolio-safari');
+    if (btnSafari) {
+      btnSafari.onclick = (e) => {
+        e.stopPropagation();
+        this._showPortfolioOpenDialog();
+      };
+    }
+
+    const tipSafari = card.querySelector('#tip-open-safari');
+    if (tipSafari) {
+      tipSafari.onclick = (e) => {
+        e.stopPropagation();
+        this._showPortfolioOpenDialog();
+      };
+    }
+
+    const tipTerminal = card.querySelector('#tip-open-terminal');
+    if (tipTerminal) {
+      tipTerminal.onclick = (e) => {
+        e.stopPropagation();
+        if (this.wm) this.wm.openApp('terminal', 'Terminal');
+      };
+    }
+
+    const tipFinder = card.querySelector('#tip-open-finder');
+    if (tipFinder) {
+      tipFinder.onclick = (e) => {
+        e.stopPropagation();
+        if (this.wm) this.wm.openApp('finder', 'Finder');
+      };
+    }
+  }
+
+  _showPortfolioOpenDialog() {
+    const existing = document.getElementById('portfolio-choice-modal');
+    if (existing) existing.remove();
+
+    const overlay = document.createElement('div');
+    overlay.id = 'portfolio-choice-modal';
+    overlay.className = 'macos-alert-overlay';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+
+    overlay.innerHTML = `
+      <div class="macos-alert-dialog" role="document">
+        <div class="macos-alert-icon-wrap">
+          <img src="assets/icons/dock/safari.png" alt="Safari" class="macos-alert-icon" />
+        </div>
+        <h3 class="macos-alert-title">Abrir Portfólio Web</h3>
+        <p class="macos-alert-desc">Como você deseja visualizar o portfólio de Mateus Alves?</p>
+        <div class="macos-alert-actions">
+          <button class="macos-alert-btn macos-alert-btn-primary" id="btn-choice-safari">
+            Abrir no Safari
+          </button>
+          <button class="macos-alert-btn macos-alert-btn-secondary" id="btn-choice-newtab">
+            Abrir em Nova Aba
+          </button>
+          <button class="macos-alert-btn macos-alert-btn-cancel" id="btn-choice-cancel">
+            Cancelar
+          </button>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(overlay);
+
+    requestAnimationFrame(() => {
+      overlay.classList.add('is-visible');
+    });
+
+    const closeModal = () => {
+      overlay.classList.remove('is-visible');
+      setTimeout(() => {
+        if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+      }, 200);
+      document.removeEventListener('keydown', handleKey);
+    };
+
+    const handleKey = (e) => {
+      if (e.key === 'Escape') closeModal();
+    };
+    document.addEventListener('keydown', handleKey);
+
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) closeModal();
+    });
+
+    const btnChoiceSafari = overlay.querySelector('#btn-choice-safari');
+    if (btnChoiceSafari) {
+      btnChoiceSafari.onclick = (e) => {
+        e.stopPropagation();
+        closeModal();
+        if (this.wm) {
+          const isSafariOpen = this.wm.openApps && this.wm.openApps.includes('safari');
+          this.wm.openApp('safari', 'Safari');
+          setTimeout(() => {
+            window.dispatchEvent(new CustomEvent('portfolio:open', { detail: { section: 'all', showAll: true } }));
+          }, isSafariOpen ? 60 : 250);
+        }
+      };
+    }
+
+    const btnChoiceNewTab = overlay.querySelector('#btn-choice-newtab');
+    if (btnChoiceNewTab) {
+      btnChoiceNewTab.onclick = (e) => {
+        e.stopPropagation();
+        closeModal();
+        window.open('assets/portfolio.html', '_blank', 'noopener,noreferrer');
+      };
+    }
+
+    const btnChoiceCancel = overlay.querySelector('#btn-choice-cancel');
+    if (btnChoiceCancel) {
+      btnChoiceCancel.onclick = (e) => {
+        e.stopPropagation();
+        closeModal();
+      };
+    }
   }
 }

@@ -181,6 +181,20 @@ export class Desktop {
       if (e.shiftKey) return;
       if (!e.defaultPrevented) e.preventDefault();
     }, { capture: true });
+
+    window.addEventListener('resize', () => {
+      document.querySelectorAll('.desktop-icon').forEach(icon => {
+        const id = icon.dataset.id;
+        const curLeft = icon.offsetLeft;
+        const curTop = icon.offsetTop;
+        const adjusted = this._avoidWidgetAreas(curLeft, curTop);
+        if (adjusted.left !== curLeft || adjusted.top !== curTop) {
+          icon.style.left = `${adjusted.left}px`;
+          icon.style.top = `${adjusted.top}px`;
+          if (id) this._saveIconPosition(id, adjusted.left, adjusted.top);
+        }
+      });
+    });
   }
 
   _getSavedIconPositions() {
@@ -196,6 +210,96 @@ export class Desktop {
     const saved = this._getSavedIconPositions();
     saved[id] = { left, top };
     localStorage.setItem('desktop_icon_positions', JSON.stringify(saved));
+  }
+
+  _getWidgetZone() {
+    const container = document.getElementById('desktop-widgets-container') || document.querySelector('.desktop-widgets-container');
+    if (container) {
+      const rect = container.getBoundingClientRect();
+      if (rect.width > 0 && rect.height > 0) {
+        return rect;
+      }
+    }
+    const cards = document.querySelectorAll('.desktop-widgets-container .widget-card');
+    if (cards.length > 0) {
+      let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+      cards.forEach(card => {
+        const r = card.getBoundingClientRect();
+        if (r.width > 0 && r.height > 0) {
+          minX = Math.min(minX, r.left);
+          minY = Math.min(minY, r.top);
+          maxX = Math.max(maxX, r.right);
+          maxY = Math.max(maxY, r.bottom);
+        }
+      });
+      if (minX !== Infinity) {
+        return {
+          left: minX,
+          top: minY,
+          right: maxX,
+          bottom: maxY,
+          width: maxX - minX,
+          height: maxY - minY
+        };
+      }
+    }
+    return null;
+  }
+
+  _avoidWidgetAreas(targetLeft, targetTop, iconWidth = 84, iconHeight = 90, margin = 14) {
+    let currentLeft = targetLeft;
+    let currentTop = targetTop;
+
+    const minLeft = 10;
+    const maxLeft = window.innerWidth - iconWidth - 10;
+    const minTop = 36;
+    const maxTop = window.innerHeight - iconHeight - 80;
+
+    currentLeft = Math.max(minLeft, Math.min(maxLeft, currentLeft));
+    currentTop = Math.max(minTop, Math.min(maxTop, currentTop));
+
+    const zone = this._getWidgetZone();
+    if (!zone) {
+      return { left: currentLeft, top: currentTop };
+    }
+
+    const wLeft = zone.left - margin;
+    const wRight = zone.right + margin;
+    const wTop = zone.top - margin;
+    const wBottom = zone.bottom + margin;
+
+    const iconRight = currentLeft + iconWidth;
+    const iconBottom = currentTop + iconHeight;
+
+    const isOverlapping = (
+      currentLeft < wRight &&
+      iconRight > wLeft &&
+      currentTop < wBottom &&
+      iconBottom > wTop
+    );
+
+    if (isOverlapping) {
+      // Regra estrita: NUNCA mover para cima ou para a direita.
+      // Apenas empurrar para a ESQUERDA (fora da coluna de widgets) ou para BAIXO (abaixo do último widget).
+      const escapeLeft = wLeft - iconWidth;
+      const escapeBottom = wBottom;
+
+      const distLeft = Math.abs(iconRight - wLeft);
+      const distBottom = Math.abs(wBottom - currentTop);
+
+      if (distLeft <= distBottom) {
+        currentLeft = escapeLeft;
+        currentTop = Math.max(minTop, Math.min(maxTop, currentTop));
+      } else {
+        currentTop = escapeBottom;
+        currentLeft = Math.max(minLeft, Math.min(maxLeft, currentLeft));
+      }
+    }
+
+    currentLeft = Math.max(minLeft, Math.min(maxLeft, currentLeft));
+    currentTop = Math.max(minTop, Math.min(maxTop, currentTop));
+
+    return { left: Math.round(currentLeft), top: Math.round(currentTop) };
   }
 
   _renderDesktopIcons() {
@@ -228,8 +332,11 @@ export class Desktop {
       let pos = savedPositions[itemId];
       if (!pos) {
         pos = { left: defaultLeft, top: defaultTop };
-        this._saveIconPosition(itemId, pos.left, pos.top);
       }
+      const adjusted = this._avoidWidgetAreas(pos.left, pos.top);
+      pos.left = adjusted.left;
+      pos.top = adjusted.top;
+      this._saveIconPosition(itemId, pos.left, pos.top);
 
       wrapper.style.cssText = `
         position: absolute;
@@ -481,7 +588,20 @@ export class Desktop {
       wrapper.style.cursor = 'pointer';
 
       if (isDragging) {
-        this._saveIconPosition(itemId, wrapper.offsetLeft, wrapper.offsetTop);
+        const curLeft = wrapper.offsetLeft;
+        const curTop = wrapper.offsetTop;
+        const adjusted = this._avoidWidgetAreas(curLeft, curTop);
+
+        if (adjusted.left !== curLeft || adjusted.top !== curTop) {
+          wrapper.style.transition = 'left 0.22s cubic-bezier(0.2, 0.9, 0.3, 1), top 0.22s cubic-bezier(0.2, 0.9, 0.3, 1)';
+          wrapper.style.left = `${adjusted.left}px`;
+          wrapper.style.top = `${adjusted.top}px`;
+          setTimeout(() => {
+            wrapper.style.transition = '';
+          }, 240);
+        }
+
+        this._saveIconPosition(itemId, adjusted.left, adjusted.top);
       }
     };
 
@@ -502,12 +622,18 @@ export class Desktop {
   _alignIconsToGrid() {
     const icons = document.querySelectorAll('.desktop-icon');
     const gridX = window.innerWidth - 100;
-    icons.forEach((icon, index) => {
+    let currentY = 45;
+    icons.forEach(icon => {
       const id = icon.dataset.id;
-      const top = 45 + (index * 110);
-      icon.style.left = `${gridX}px`;
-      icon.style.top = `${top}px`;
-      if (id) this._saveIconPosition(id, gridX, top);
+      const adjusted = this._avoidWidgetAreas(gridX, currentY);
+      icon.style.transition = 'left 0.22s ease, top 0.22s ease';
+      icon.style.left = `${adjusted.left}px`;
+      icon.style.top = `${adjusted.top}px`;
+      setTimeout(() => {
+        icon.style.transition = '';
+      }, 240);
+      if (id) this._saveIconPosition(id, adjusted.left, adjusted.top);
+      currentY = adjusted.top + 110;
     });
   }
 
