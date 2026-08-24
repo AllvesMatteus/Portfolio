@@ -1,0 +1,927 @@
+.cc-music-widget {
+    background: #ffffff47;
+    border-radius: 18px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px
+}
+
+.calendar-widget-container {
+    position: absolute;
+    top: 80px;
+    right: 80px;
+    z-index: 100;
+    animation: widgetFadeIn .3s ease-out
+}
+
+.calendar-widget {
+    width: 260px;
+    height: 260px;
+    background: #2c2c2ef2;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 22px;
+    box-shadow: 0 8px 32px #0000004d, 0 0 0 1px #ffffff1a;
+    padding: 18px 20px 22px;
+    font-family: var(--system-font-family);
+    display: flex;
+    flex-direction: column
+}
+
+.calendar-widget-header {
+    margin-bottom: 14px
+}
+
+.calendar-widget-month {
+    font-size: 15px;
+    font-weight: 700;
+    color: #ff453a;
+    text-transform: uppercase;
+    letter-spacing: .5px
+}
+
+.calendar-widget-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    margin-bottom: 8px
+}
+
+.calendar-widget-weekday {
+    font-size: 12px;
+    font-weight: 600;
+    color: #ffffff80;
+    text-align: center;
+    padding: 4px 0
+}
+
+.calendar-widget-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    flex: 1
+}
+
+.calendar-widget-day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 500;
+    color: #ffffffe6;
+    border-radius: 50%;
+    transition: all .12s
+}
+
+.calendar-widget-day.other-month {
+    color: #ffffff4d
+}
+
+.calendar-widget-day.today {
+    background: #ff453a;
+    color: #fff;
+    font-weight: 600
+}
+
+.light-theme .calendar-widget {
+    background: #fffffff2;
+    box-shadow: 0 8px 32px #00000026, 0 0 0 1px #0000001a
+}
+
+.light-theme .calendar-widget-month {
+    color: #ff3b30
+}
+
+.light-theme .calendar-widget-weekday {
+    color: #00000080
+}
+
+.light-theme .calendar-widget-day {
+    color: #000000e6
+}
+
+.light-theme .calendar-widget-day.other-month {
+    color: #0000004d
+}
+
+.light-theme .calendar-widget-day.today {
+    background: #ff3b30;
+    color: #fff
+}
+
+.desktop-widgets-container {
+  position: absolute;
+  top: 38px;
+  right: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 316px;
+  z-index: 10;
+  pointer-events: auto;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.desktop-widgets-container .widget-card {
+  background: rgba(120, 120, 128, 0.25);
+  backdrop-filter: blur(50px) saturate(150%);
+  -webkit-backdrop-filter: blur(50px) saturate(150%);
+  border: 0.5px solid rgba(255, 255, 255, 0.06);
+  border-radius: 22px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  color: #ffffff;
+  overflow: hidden;
+  box-sizing: border-box;
+  position: relative;
+  transition: background 0.35s ease, border-color 0.35s ease;
+}
+
+.desktop-widgets-container.widgets--desktop .widget-card {
+  border: 0.5px solid rgba(255, 255, 255, 0.055);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.28);
+  background: linear-gradient(to bottom, #23252b 0%, #131417 100%);
+}
+
+.desktop-widgets-container.widgets--desktop .widget-calendar {
+  background: linear-gradient(to bottom, #23252b 0%, #131417 100%);
+}
+
+.desktop-widgets-container.widgets--desktop .widget-battery {
+  background: rgba(0, 0, 0, 0.38);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: 0.5px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.28);
+}
+
+.desktop-widgets-container.widgets--desktop .widget-weather {
+  background: linear-gradient(to bottom, #23252b 0%, #131417 100%);
+}
+
+.desktop-widgets-container:not(.widgets--desktop) .widget-cal-title {
+  color: #ffffff;
+}
+
+.desktop-widgets-container:not(.widgets--desktop) .widget-cal-day.is-today span {
+  background: #ffffff;
+  color: #1e1f22;
+}
+
+.desktop-widgets-container:not(.widgets--desktop) .widget-cal-header-row span.is-weekend,
+.desktop-widgets-container:not(.widgets--desktop) .widget-cal-day.is-weekend {
+  color: #ffffff;
+  opacity: 1;
+}
+
+.desktop-widgets-container:not(.widgets--desktop) .widget-battery-ring-svg .ring-fill {
+  stroke: #ffffff;
+}
+
+.desktop-widgets-container:not(.widgets--desktop) .widget-hourly-time {
+  color: #ffffff;
+}
+
+.desktop-widgets-container .widget-top-row {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+
+.desktop-widgets-container .widget-calendar {
+  width: 152px;
+  height: 152px;
+  padding: 10px 12px 8px 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.desktop-widgets-container .widget-battery {
+  width: 152px;
+  height: 152px;
+  padding: 12px 14px 12px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.desktop-widgets-container {
+  display: grid;
+  grid-template-columns: 152px 152px;
+  gap: 12px;
+}
+
+.desktop-widgets-container .widget-weather {
+  grid-column: span 2;
+  width: 316px;
+  height: 152px;
+  padding: 12px 16px 10px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.desktop-widgets-container .widget-portfolio-carousel {
+  grid-column: span 2;
+  width: 316px;
+  height: 156px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+}
+
+.desktop-widgets-container.widgets--desktop .widget-portfolio-carousel {
+  background: linear-gradient(to bottom, #23252b 0%, #131417 100%);
+  border: 0.5px solid rgba(255, 255, 255, 0.055);
+}
+
+.carousel-track-wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  padding: 12px 26px 20px 26px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bento-header-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.bento-counter {
+  font-size: 9px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.55);
+  text-transform: none;
+}
+
+.bento-hero-slide {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.bento-hero-body {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+  margin: auto 0;
+  padding: 0 4px;
+}
+
+.bento-avatar-wrap {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+}
+
+.bento-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.28);
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.45);
+}
+
+.bento-hero-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  min-width: 0;
+  gap: 2px;
+}
+
+.bento-name {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.3px;
+  line-height: 1.15;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.bento-role {
+  margin: 1px 0 0 0;
+  font-size: 8.5px;
+  color: rgba(255, 255, 255, 0.72);
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.bento-action-row {
+  display: flex;
+  margin-top: 5px;
+}
+
+.bento-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 0.5px solid rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+  padding: 4px 11px;
+  border-radius: 8px;
+  font-size: 10.5px;
+  font-weight: 500;
+  cursor: pointer;
+  width: fit-content;
+  transition: background 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.bento-btn-primary:hover {
+  background: rgba(255, 255, 255, 0.26);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+}
+
+.bento-btn-icon {
+  width: 13px;
+  height: 13px;
+  object-fit: contain;
+}
+
+.bento-edu-body-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  width: 100%;
+  margin: auto 0;
+}
+
+.bento-edu-grid {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+}
+
+.bento-edu-card {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.06);
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  width: 100%;
+  height: 48px;
+  padding: 6px 12px;
+  box-sizing: border-box;
+}
+
+.bento-edu-logo {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  border-radius: 6px;
+  margin-bottom: 0;
+  margin-right: 12px;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.35));
+}
+
+.bento-edu-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+}
+
+.bento-edu-school {
+  font-size: 10px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.1;
+}
+
+.bento-edu-degree {
+  font-size: 8px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+.bento-edu-tag {
+  font-size: 7.5px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.45);
+  margin-top: 1px;
+}
+
+.bento-edu-year {
+  position: absolute;
+  top: 7px;
+  right: 12px;
+  font-size: 8.5px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.2px;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+}
+
+.bento-tech-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+  width: 100%;
+  max-width: 252px;
+  margin: auto auto;
+  align-content: center;
+}
+
+.bento-tech-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  height: 48px;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.bento-tech-icon-box {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bento-tech-icon-box img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.bento-tech-title {
+  font-size: 8px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  text-align: center;
+  padding: 0 2px;
+}
+
+.bento-contact {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.bento-contact-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  width: 100%;
+  margin: auto 0;
+}
+
+.bento-contact-centered {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+.bento-contact-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.15s ease, filter 0.15s ease;
+  outline: none;
+}
+
+.bento-contact-item:hover {
+  filter: brightness(1.25);
+  opacity: 0.95;
+}
+
+.bento-contact-icon-wrap {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 11px;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.35));
+}
+
+.bento-mail-gradient {
+  background: linear-gradient(135deg, #1fa2ff 0%, #007aff 100%);
+  border-radius: 11px;
+}
+
+.bento-mail-symbol {
+  width: 18px !important;
+  height: 18px !important;
+  object-fit: contain;
+}
+
+.bento-contact-large-img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  border-radius: 11px;
+}
+
+.bento-contact-name {
+  font-size: 9.5px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.bento-tips-inset-card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.06);
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  overflow: hidden;
+  flex: 1;
+  justify-content: space-evenly;
+}
+
+.bento-tip-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.06);
+}
+
+.bento-tip-row:last-child {
+  border-bottom: none;
+}
+
+.bento-tip-row:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.bento-tip-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  flex-shrink: 0;
+  border-radius: 4px;
+}
+
+.bento-tip-text {
+  font-size: 9.5px;
+  color: rgba(255, 255, 255, 0.88);
+  flex: 1;
+}
+
+.bento-tip-text strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.bento-tip-row code {
+  background: rgba(0, 0, 0, 0.35);
+  padding: 1px 4px;
+  border-radius: 3px;
+  color: #fbbf24;
+  font-family: monospace;
+}
+
+.bento-tip-arrow {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.38);
+  backdrop-filter: blur(10px);
+  border: 0.5px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease, background 0.15s ease;
+  z-index: 10;
+  padding: 0;
+}
+
+.widget-portfolio-carousel:hover .carousel-control {
+  opacity: 0.75;
+}
+
+.carousel-control:hover {
+  opacity: 1 !important;
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.carousel-prev {
+  left: 3px;
+}
+
+.carousel-next {
+  right: 3px;
+}
+
+.carousel-dots {
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 4px;
+  z-index: 10;
+}
+
+.carousel-dot {
+  width: 4.5px;
+  height: 4.5px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.carousel-dot.is-active {
+  width: 12px;
+  border-radius: 3px;
+  background: #ffffff;
+}
+
+.widget-cal-title {
+  color: #ff3b30;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+  padding-left: 6px;
+}
+
+.widget-cal-header-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  color: #ffffff;
+  font-size: 9.5px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.widget-cal-header-row span.is-weekend {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.widget-cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  row-gap: 1px;
+  text-align: center;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.widget-cal-day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 16px;
+  width: 100%;
+  color: #ffffff;
+  position: relative;
+  font-size: 10px;
+}
+
+.widget-cal-day.is-weekend {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.widget-cal-day.is-today {
+  color: #ffffff;
+}
+
+.widget-cal-day.is-today span {
+  background: #ff3b30;
+  color: #ffffff;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 9.5px;
+  line-height: 1;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.widget-battery-top {
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 2px;
+}
+
+.widget-battery-ring-wrap {
+  position: relative;
+  width: 58px;
+  height: 58px;
+}
+
+.widget-battery-ring-svg {
+  width: 58px;
+  height: 58px;
+  transform: rotate(-90deg);
+}
+
+.widget-battery-ring-svg .ring-bg {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.12);
+  stroke-width: 4;
+}
+
+.widget-battery-ring-svg .ring-fill {
+  fill: none;
+  stroke: #30d158;
+  stroke-width: 4;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.3s ease;
+}
+
+.widget-battery-icon-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.widget-battery-icon-center img {
+  width: 28px;
+  height: 28px;
+}
+
+.widget-battery-bottom {
+  margin-top: auto;
+  padding-bottom: 2px;
+}
+
+.widget-battery-pct {
+  font-size: 38px;
+  font-weight: 500;
+  letter-spacing: -1px;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.widget-weather-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.widget-weather-city-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: -0.2px;
+}
+
+.widget-weather-temp {
+  font-size: 42px;
+  font-weight: 200;
+  color: #ffffff;
+  line-height: 1;
+  margin-top: 1px;
+  letter-spacing: -1px;
+}
+
+.widget-weather-right {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.widget-weather-condition-icon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.widget-weather-condition-text {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 2px;
+}
+
+.widget-weather-range {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 1px;
+}
+
+.widget-weather-hourly {
+  display: flex;
+  justify-content: space-between;
+  border-top: none;
+  padding-top: 6px;
+  margin-top: 4px;
+}
+
+.widget-hourly-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.widget-hourly-time {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.55);
+  font-weight: 500;
+}
+
+.widget-hourly-icon {
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.widget-hourly-temp {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: #ffffff;
+}

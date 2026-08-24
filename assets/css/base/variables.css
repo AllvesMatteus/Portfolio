@@ -1,0 +1,530 @@
+:root {
+    --system-font-family: -apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    --monospace-font-family: "SF Mono", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", monospace
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--system-font-family);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    background: #0b0f1a;
+    color: #fffffff2;
+    -webkit-user-select: none;
+    user-select: none
+}
+
+input,
+textarea,
+[contenteditable] {
+    -webkit-user-select: text;
+    user-select: text
+}
+
+* {
+    font-family: var(--system-font-family)
+}
+
+.system-font {
+    font-family: var(--system-font-family) !important
+}
+
+.monospace-font {
+    font-family: var(--monospace-font-family) !important
+}
+
+.icon {
+    color: #ffffffbf
+}
+
+@media (prefers-color-scheme: dark) {
+    .menuBar {
+        background: #141419bf;
+        border-bottom-color: #ffffff0f
+    }
+
+    .menuBar__dropdown {
+        border-color: #ffffff0f
+    }
+}
+
+@media (max-width: 768px) {
+    .menuBar {
+        padding: 0 6px
+    }
+
+    .menuBar .menuBar__right {
+        gap: 10px
+    }
+
+    .menuBar .menuBar__date {
+        display: none
+    }
+}
+
+:root {
+    --context-bg: rgba(30, 30, 30, .65);
+    --context-border: rgba(255, 255, 255, .18);
+    --context-shadow: 0 8px 24px rgba(0, 0, 0, .4), 0 0 1px rgba(0, 0, 0, .6);
+    --context-text: #ffffff;
+    --context-hover-bg: #0060df;
+    --context-hover-text: #ffffff;
+    --context-shortcut: rgba(255, 255, 255, .5);
+    --context-divider: rgba(255, 255, 255, .12);
+    --context-arrow: rgba(255, 255, 255, .5)
+}
+
+.light-theme {
+    --context-bg: rgba(255, 255, 255, .85);
+    --context-border: rgba(0, 0, 0, .15);
+    --context-shadow: 0 8px 24px rgba(0, 0, 0, .12), 0 0 1px rgba(0, 0, 0, .15);
+    --context-text: rgba(0, 0, 0, .85);
+    --context-hover-bg: #0060df;
+    --context-hover-text: #ffffff;
+    --context-shortcut: rgba(0, 0, 0, .4);
+    --context-divider: rgba(0, 0, 0, .1);
+    --context-arrow: rgba(0, 0, 0, .4)
+}
+
+@media (max-width: 768px) {
+    .dock-container {
+        gap: 12px
+    }
+
+    .dock {
+        bottom: 6px;
+        padding: 7px 9px;
+        gap: 5px
+    }
+
+    .dock__icon-wrapper {
+        width: 48px;
+        height: 48px
+    }
+
+    .dock__item {
+        transform: none !important
+    }
+
+    .dock__tooltip {
+        display: none
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .dock {
+        background: #28282da6;
+        border-color: #ffffff1f
+    }
+
+    .dock--github {
+        background: #28282d8c;
+        border-color: #ffffff1a
+    }
+}
+
+.light-theme {
+    color: #1d1d1f
+}
+
+.fade-in {
+    animation: fadeIn .3s forwards
+}
+
+.fade-out {
+    animation: fadeOut .2s forwards
+}
+
+body {
+    margin: 0;
+    background: #05070f;
+    font-family: var(--system-font-family);
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -webkit-tap-highlight-color: transparent;
+    --text-primary: rgba(255, 255, 255, .9490196078);
+    --text-secondary: rgba(255, 255, 255, .7490196078);
+    --text-tertiary: rgba(255, 255, 255, .5490196078);
+    --text-muted: rgba(255, 255, 255, .3490196078);
+    --bg-body: rgb(5, 7, 15);
+    --bg-sidebar: rgba(30, 30, 34, .85);
+    --bg-sidebar-hover: rgba(255, 255, 255, .08);
+    --bg-sidebar-active: rgba(255, 255, 255, .15);
+    --bg-input: rgba(255, 255, 255, .12);
+    --bg-input-focus: rgba(255, 255, 255, .18);
+    --placeholder: rgba(255, 255, 255, .45);
+    --border-light: rgba(255, 255, 255, .08);
+    --border-lighter: rgba(255, 255, 255, .1);
+    --divider: rgba(255, 255, 255, .1);
+    --menubar-bg: rgba(0, 0, 0, .2);
+    --menubar-border: rgba(255, 255, 255, .07);
+    --menubar-item: rgba(255, 255, 255, .88);
+    --menubar-item-hover: rgba(255, 255, 255, .15);
+    --menubar-item-active: rgba(255, 255, 255, .18);
+    --dropdown-bg: rgba(12, 12, 14, .98);
+    --dropdown-border: rgba(255, 255, 255, .1);
+    --dropdown-item-hover: rgba(255, 255, 255, .08);
+    --cc-bg: rgba(42, 42, 46, .72);
+    --cc-border: rgba(255, 255, 255, .08);
+    --cc-shadow: rgba(0, 0, 0, .55);
+    --cc-card-bg: rgba(255, 255, 255, .09);
+    --cc-card-border: rgba(255, 255, 255, .06);
+    --cc-network-item-hover: rgba(255, 255, 255, .08);
+    --cc-network-icon-bg: rgba(255, 255, 255, .08);
+    --cc-network-icon-color: rgba(255, 255, 255, .5);
+    --dock-bg: rgba(255, 255, 255, .2);
+    --dock-border: rgba(255, 255, 255, .25);
+    --dock-shadow: rgba(0, 0, 0, .35);
+    --dock-separator: rgba(255, 255, 255, .35);
+    --window-bg: rgba(30, 30, 34, .92);
+    --window-border: rgba(255, 255, 255, .08);
+    --window-header: rgba(36, 36, 40, .95);
+    --scrollbar-thumb: rgba(255, 255, 255, .2);
+    --scrollbar-thumb-hover: rgba(255, 255, 255, .3)
+}
+
+body.light-theme {
+    background: #f5f5f7;
+    --text-primary: rgba(29, 29, 31, .9490196078);
+    --text-secondary: rgba(29, 29, 31, .7490196078);
+    --text-tertiary: rgba(29, 29, 31, .5490196078);
+    --text-muted: rgba(29, 29, 31, .3490196078);
+    --bg-body: rgb(245, 245, 247);
+    --bg-sidebar: rgba(255, 255, 255, .85);
+    --bg-sidebar-hover: rgba(0, 0, 0, .04);
+    --bg-sidebar-active: rgba(10, 132, 255, .15);
+    --bg-input: rgba(0, 0, 0, .06);
+    --bg-input-focus: rgba(0, 0, 0, .1);
+    --placeholder: rgba(0, 0, 0, .35);
+    --border-light: rgba(0, 0, 0, .08);
+    --border-lighter: rgba(0, 0, 0, .12);
+    --divider: rgba(0, 0, 0, .1);
+    --menubar-bg: rgba(255, 255, 255, .65);
+    --menubar-border: rgba(0, 0, 0, .08);
+    --menubar-item: rgba(0, 0, 0, .85);
+    --menubar-item-hover: rgba(0, 0, 0, .08);
+    --menubar-item-active: rgba(0, 0, 0, .12);
+    --dropdown-bg: rgba(255, 255, 255, .92);
+    --dropdown-border: rgba(0, 0, 0, .1);
+    --dropdown-item-hover: rgba(0, 0, 0, .05);
+    --cc-bg: rgba(255, 255, 255, .75);
+    --cc-border: rgba(0, 0, 0, .1);
+    --cc-shadow: rgba(0, 0, 0, .15);
+    --cc-card-bg: rgba(0, 0, 0, .04);
+    --cc-card-border: rgba(0, 0, 0, .06);
+    --cc-network-item-hover: rgba(0, 0, 0, .05);
+    --cc-network-icon-bg: rgba(0, 0, 0, .08);
+    --cc-network-icon-color: rgba(0, 0, 0, .5);
+    --dock-bg: rgba(255, 255, 255, .45);
+    --dock-border: rgba(255, 255, 255, .4);
+    --dock-shadow: rgba(0, 0, 0, .15);
+    --dock-separator: rgba(0, 0, 0, .2);
+    --window-bg: rgba(255, 255, 255, .92);
+    --window-border: rgba(0, 0, 0, .1);
+    --window-header: rgba(245, 245, 247, .9);
+    --scrollbar-thumb: rgba(0, 0, 0, .2);
+    --scrollbar-thumb-hover: rgba(0, 0, 0, .3)
+}
+
+:root {
+  --system-font-family: -apple-system, 'SF Pro Text', 'SF Pro Display', BlinkMacSystemFont,
+    'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --terminal-font: 'SF Mono', 'Fira Code', 'Fira Mono', Menlo, Consolas, 'Courier New', monospace;
+}
+
+.apple-icon {
+  display: block;
+}
+
+:root {
+  --apple-blue: #007AFF;
+  --apple-blue-dark: #0A84FF;
+  --apple-green: #34C759;
+  --apple-yellow: #FFCC00;
+  --apple-orange: #FF9500;
+  --apple-red: #FF3B30;
+  --apple-purple: #AF52DE;
+  --apple-pink: #FF2D55;
+  --apple-gray: #8E8E93;
+}
+
+:root {
+
+  --mac-close: #ed6a5f;
+  --mac-close-dark: #e24b41;
+  --mac-close-active: #b15048;
+
+  --mac-minimize: #f6be50;
+  --mac-minimize-dark: #e1a73e;
+  --mac-minimize-active: #b8923b;
+
+  --mac-maximize: #61c555;
+  --mac-maximize-dark: #2dac2f;
+  --mac-maximize-active: #4a9741;
+
+  --mac-nofocus-fill: #dddddd;
+  --mac-nofocus-border: #d1d0d2;
+}
+
+:root {
+  /* ---------- 1. TYPOGRAPHY ---------- */
+  --font-system: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'SF Mono', 'Menlo', 'Monaco', 'Courier New', monospace;
+  --font-serif: 'New York', 'Georgia', 'Times New Roman', serif;
+
+  /* Font Weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* ---------- 2. SYSTEM BACKGROUNDS (HIG) ---------- */
+  --mac-bg-primary: #000000;
+  --mac-bg-secondary: #1C1C1E;
+  --mac-bg-tertiary: #2C2C2E;
+  --mac-bg-window: rgba(30, 30, 32, 0.97);
+  --mac-bg-sidebar: rgba(26, 26, 28, 0.97);
+
+  /* ---------- 3. LABELS (TEXT OPACITIES) ---------- */
+  --mac-label: #FFFFFF;
+  --mac-label-secondary: rgba(235, 235, 245, 0.60);
+  --mac-label-tertiary: rgba(235, 235, 245, 0.30);
+  --mac-label-quaternary: rgba(235, 235, 245, 0.18);
+
+  /* ---------- 4. SYSTEM SEMANTIC COLORS ---------- */
+  --mac-blue: #0A84FF;
+  --mac-green: #30D158;
+  --mac-red: #FF453A;
+  --mac-orange: #FF9F0A;
+  --mac-yellow: #FFD60A;
+  --mac-pink: #FF375F;
+  --mac-purple: #BF5AF2;
+  --mac-teal: #64D2FF;
+  --mac-indigo: #5E5CE6;
+  --mac-brown: #AC8E68;
+
+  /* ---------- 5. SYSTEM GRAYS ---------- */
+  --mac-gray: #8E8E93;
+  --mac-gray-2: #636366;
+  --mac-gray-3: #48484A;
+  --mac-gray-4: #3A3A3C;
+  --mac-gray-5: #2C2C2E;
+  --mac-gray-6: #1C1C1E;
+
+  /* ---------- 6. CONTROLS ---------- */
+  --mac-control-bg: #1E1E1E;
+  --mac-control-text: rgba(255, 255, 255, 0.80);
+  --mac-control-selected: #357ef6;
+  --mac-control-disabled: rgba(255, 255, 255, 0.20);
+  --mac-focus: #007AFF;
+  --mac-link: #419CFF;
+  --mac-placeholder: rgba(255, 255, 255, 0.20);
+
+  /* ---------- 7. SEPARATORS ---------- */
+  --mac-separator: rgba(84, 84, 88, 0.60);
+  --mac-separator-opaque: #38383A;
+  --mac-separator-subtle: rgba(255, 255, 255, 0.08);
+
+  /* ---------- 8. FILLS ---------- */
+  --mac-fill-primary: rgba(120, 120, 128, 0.36);
+  --mac-fill-secondary: rgba(120, 120, 128, 0.32);
+  --mac-fill-tertiary: rgba(118, 118, 128, 0.24);
+  --mac-fill-quaternary: rgba(118, 118, 128, 0.18);
+
+  /* ---------- 9. TERMINAL.APP ---------- */
+  --terminal-bg: #1E1E1E;
+  --terminal-titlebar: #3A3A3A;
+  --terminal-titlebar-border: #2D2D2D;
+  --terminal-text: #E0E0E0;
+  --terminal-text-dim: #8E8E93;
+  --terminal-folder: #0A84FF;
+  --terminal-cursor: #E0E0E0;
+
+  /* ---------- 10. DOCK & MENUBAR ---------- */
+  --dock-bg: rgba(35, 35, 40, 0.52);
+  --dock-border: rgba(255, 255, 255, 0.09);
+  --menubar-bg: rgba(22, 22, 26, 0.85);
+  --menubar-text: #FFFFFF;
+}
+
+.mac-font-system {
+  font-family: var(--font-system);
+}
+
+.mac-font-mono {
+  font-family: var(--font-mono);
+}
+
+.mac-font-serif {
+  font-family: var(--font-serif);
+}
+
+.mac-label-primary {
+  color: var(--mac-label);
+}
+
+.mac-label-secondary {
+  color: var(--mac-label-secondary);
+}
+
+.mac-label-tertiary {
+  color: var(--mac-label-tertiary);
+}
+
+.mac-label-quaternary {
+  color: var(--mac-label-quaternary);
+}
+
+.light-theme,
+html.light-theme,
+body.light-theme {
+
+  color-scheme: dark;
+  background-color: #000000;
+  color: #FFFFFF;
+}
+
+.dark-theme,
+html.dark-theme,
+body.dark-theme {
+  color-scheme: dark;
+}
+
+.mac-switch {
+  width: 32px;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 9999px;
+  position: relative;
+  cursor: default;
+  flex-shrink: 0;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+.mac-switch.is-on {
+  background: #007aff;
+}
+
+.mac-switch-knob {
+  width: 14px;
+  height: 14px;
+  background: #ffffff;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mac-switch.is-on .mac-switch-knob {
+  transform: translateX(14px);
+}
+
+.mac-spinner {
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  border-top-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  animation: macSpinnerRotate 1s linear infinite;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.mac-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background: rgba(255, 255, 255, 0.08) url("data:image/svg+xml,%3Csvg width='8' height='12' viewBox='0 0 8 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 1L1 4H7L4 1Z' fill='%23ffffff' fill-opacity='0.6'/%3E%3Cpath d='M4 11L1 8H7L4 11Z' fill='%23ffffff' fill-opacity='0.6'/%3E%3C/svg%3E") no-repeat right 8px center;
+  border: 0.5px solid rgba(255, 255, 255, 0.12);
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 12px;
+  height: 22px;
+  padding: 0 22px 0 8px;
+  font-family: inherit;
+  outline: none;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.mac-select:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.mac-select option {
+  background-color: #2c2c2e;
+  color: #ffffff;
+}
+
+.mac-radio-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.mac-radio-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #ffffff;
+  cursor: pointer;
+  user-select: none;
+}
+
+.mac-radio-label input[type="radio"] {
+  accent-color: #007aff;
+  cursor: pointer;
+  margin: 0;
+  width: 14px;
+  height: 14px;
+}
+
+.mac-popup-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.mac-popup-text {
+  font-size: 13px;
+  font-weight: 400;
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+}
+
+.mac-popup-badge {
+  width: 18px;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 4.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.12s;
+}
+
+.mac-popup-btn:hover .mac-popup-badge {
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.mac-popup-select-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+  font-size: 13px;
+}

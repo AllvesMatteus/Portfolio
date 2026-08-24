@@ -1,5 +1,4 @@
 import { getSFSymbolHtml } from './sfSymbols.js';
-import { showNotification } from './notificationManager.js';
 
 export class WidgetsManager {
   constructor(desktopEl, wm) {
@@ -517,17 +516,17 @@ export class WidgetsManager {
               <div class="bento-tip-row" id="tip-open-safari">
                 <img src="assets/icons/dock/safari.png" alt="Safari" class="bento-tip-icon" />
                 <div class="bento-tip-text"><strong>Safari</strong> · Ver portfólio web tradicional</div>
-                <span class="bento-tip-arrow">›</span>
+                <span class="bento-tip-arrow">${getSFSymbolHtml('chevron.right', { size: 10 })}</span>
               </div>
               <div class="bento-tip-row" id="tip-open-terminal">
                 <img src="assets/icons/dock/terminal.png" alt="Terminal" class="bento-tip-icon" />
                 <div class="bento-tip-text"><strong>Terminal</strong> · Digite <code>man</code> ou <code>sudo -i</code></div>
-                <span class="bento-tip-arrow">›</span>
+                <span class="bento-tip-arrow">${getSFSymbolHtml('chevron.right', { size: 10 })}</span>
               </div>
               <div class="bento-tip-row" id="tip-open-finder">
                 <img src="assets/icons/dock/finder.png" alt="Finder" class="bento-tip-icon" />
                 <div class="bento-tip-text"><strong>Finder</strong> · Arquivos e Currículo na Mesa</div>
-                <span class="bento-tip-arrow">›</span>
+                <span class="bento-tip-arrow">${getSFSymbolHtml('chevron.right', { size: 10 })}</span>
               </div>
             </div>
           </div>
@@ -547,10 +546,10 @@ export class WidgetsManager {
       </div>
       
       <button class="carousel-control carousel-prev" aria-label="Slide anterior" id="btn-carousel-prev">
-        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        ${getSFSymbolHtml('chevron.left', { size: 11 })}
       </button>
       <button class="carousel-control carousel-next" aria-label="Próximo slide" id="btn-carousel-next">
-        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        ${getSFSymbolHtml('chevron.right', { size: 11 })}
       </button>
 
       <div class="carousel-dots" role="tablist" aria-label="Seletor de slides">

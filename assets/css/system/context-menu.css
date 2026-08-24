@@ -1,0 +1,174 @@
+.context-menu {
+    position: fixed;
+    z-index: 100000;
+    min-width: 240px;
+    padding: 6px;
+    background: var(--context-bg);
+    backdrop-filter: blur(50px) saturate(200%);
+    -webkit-backdrop-filter: blur(50px) saturate(200%);
+    border: 1px solid var(--context-border);
+    border-radius: 10px;
+    box-shadow: var(--context-shadow);
+    animation: contextFade .15s cubic-bezier(.2, .8, .2, 1);
+    font-family: var(--system-font-family);
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--context-text);
+    user-select: none;
+    transition: background-color .2s ease, border-color .2s ease
+}
+
+.context-menu__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 10px;
+    border-radius: 5px;
+    cursor: default;
+    transition: none;
+    margin-bottom: 1px
+}
+
+.context-menu__item:last-child {
+    margin-bottom: 0
+}
+
+.context-menu__item:not(.context-menu__item--disabled):hover {
+    background: var(--context-hover-bg);
+    color: var(--context-hover-text)
+}
+
+.context-menu__item:not(.context-menu__item--disabled):hover .context-menu__shortcut,
+.context-menu__item:not(.context-menu__item--disabled):hover .context-menu__arrow {
+    color: var(--context-hover-text);
+    opacity: 1
+}
+
+.context-menu__label {
+    flex: 1;
+    white-space: nowrap;
+    letter-spacing: -.01em
+}
+
+.context-menu__shortcut {
+    font-size: 13px;
+    color: var(--context-shortcut);
+    margin-left: 32px;
+    letter-spacing: 1.5px
+}
+
+.context-menu__arrow {
+    width: 12px;
+    height: 12px;
+    margin-left: 12px;
+    color: var(--context-arrow)
+}
+
+.context-menu__divider {
+    height: 1px;
+    background: var(--context-divider);
+    margin: 6px 4px
+}
+
+.context-menu__item--disabled {
+    opacity: .4
+}
+
+.context-menu__item--disabled:hover {
+    background: transparent
+}
+
+.context-menu {
+  position: fixed;
+  background: rgba(42, 42, 46, 0.92);
+  backdrop-filter: blur(35px) saturate(190%);
+  -webkit-backdrop-filter: blur(35px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  padding: 4px;
+  width: max-content;
+  min-width: 255px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), 0 2px 8px rgba(0, 0, 0, 0.35);
+  z-index: 99999;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  user-select: none;
+  -webkit-user-select: none;
+  animation: contextMenuIn 0.12s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.context-menu[data-depth]:not([data-depth="0"]) {
+  min-width: 175px;
+}
+
+.context-menu__item {
+  display: flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 8px 0 6px;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: 400;
+  color: #ffffff;
+  cursor: pointer;
+  letter-spacing: -0.15px;
+  transition: background 0.05s ease, color 0.05s ease;
+  white-space: nowrap;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.context-menu__item:hover,
+.context-menu__item.is-active-parent {
+  background: #0a84ff;
+  color: #ffffff;
+}
+
+.context-menu__item.context-menu__item--disabled,
+.context-menu__item.context-menu__item--header {
+  color: rgba(255, 255, 255, 0.35);
+  cursor: default;
+  pointer-events: none;
+  background: transparent;
+}
+
+.context-menu__item--header {
+  font-weight: 500;
+}
+
+.context-menu__check {
+  width: 18px;
+  min-width: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  margin-right: 2px;
+  color: currentColor;
+}
+
+.context-menu__label {
+  flex: 1;
+  white-space: nowrap;
+}
+
+.context-menu__arrow {
+  margin-left: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.85;
+  color: currentColor;
+}
+
+.context-menu__item:hover .context-menu__arrow,
+.context-menu__item.is-active-parent .context-menu__arrow {
+  opacity: 1;
+  color: #ffffff;
+}
+
+.context-menu__divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 4px 6px;
+}
