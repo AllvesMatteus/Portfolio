@@ -7,7 +7,7 @@ import { showNotification } from '../notificationManager.js';
 const SETTINGS_SECTIONS = [
   { id: 'wifi', label: 'Wi-Fi', icon: 'assets/icons/Settings_menuSections/Network/Wi-Fi.png' },
   { id: 'bluetooth', label: 'Bluetooth', icon: 'assets/icons/Settings_menuSections/Network/Bluetooth.png' },
-  { id: 'network', label: 'Rede', icon: 'assets/icons/settings icons/network.png' },
+  { id: 'network', label: 'Rede', icon: 'assets/icons/Settings_menuSections/Network/Network.png' },
   { id: 'battery', label: 'Bateria', icon: 'assets/icons/settings icons/battery-toolkit.png' },
   { id: 'about', label: 'Geral', icon: 'assets/icons/settings icons/settings-macOS.png', spacer: true },
   { id: 'siri', label: 'Siri', icon: 'assets/icons/settings icons/siri.png' },
