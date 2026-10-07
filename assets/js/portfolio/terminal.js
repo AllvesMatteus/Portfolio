@@ -35,15 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
         '/etc': { type: 'dir', children: ['hosts', 'zshrc'] }
     };
 
-    const ASCII_LOGO = `<div class="terminal-logo-scale origin-left">
-<span class="text-indigo-400">███╗   ███╗ █████╗ ████████╗███████╗██╗   ██╗███████╗</span>
-<span class="text-indigo-500">████╗ ████║██╔══██╗╚══██╔══╝██╔════╝██║   ██║██╔════╝</span>
-<span class="text-indigo-600">██╔████╔██║███████║   ██║   █████╗  ██║   ██║███████╗</span>
-<span class="text-indigo-700">██║╚██╔╝██║██╔══██║   ██║   ██╔══╝  ██║   ██║╚════██║</span>
-<span class="text-indigo-800">██║ ╚═╝ ██║██║  ██║   ██║   ███████╗╚██████╔╝███████║</span>
-<span class="text-indigo-900">╚═╝     ╚═╝╚═╝  ╚═╝   ╚═╝   ╚══════╝ ╚═════╝ ╚══════╝</span>
-</div>
-`;
 
     /* --- Sequência de Boot --- */
     function getBootSequence() {
@@ -68,8 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
     async function fullBootSequence() {
         output.innerHTML = '';
         inputLine.classList.add('hidden');
-        await printLine(ASCII_LOGO, false, 50);
-        await new Promise(r => setTimeout(r, 200));
         await printLines(getBootSequence(), 40);
 
         inputLine.classList.remove('hidden');
@@ -1084,7 +1073,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (skipBoot && !fromLegacy) {
                 sessionStorage.removeItem('skipBoot');
                 output.innerHTML = '';
-                await printLine(ASCII_LOGO, false, 0);
                 inputLine.classList.remove('hidden');
                 updatePrompt();
                 inputField.focus();

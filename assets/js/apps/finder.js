@@ -18,10 +18,9 @@ const FILE_TREE = {
       'Imagens':    {
         type: 'folder',
         children: {
-          'Captura de Tela 2026-05-05 às 18.38.12.jpeg': { type: 'file', size: '33 KB', ext: 'jpeg', url: 'assets/images/user_photos/Captura de Tela 2026-05-05 às 18.38.12.jpeg' },
-          'Captura de Tela 2026-05-08 às 02.39.45.jpeg': { type: 'file', size: '172 KB', ext: 'jpeg', url: 'assets/images/user_photos/Captura de Tela 2026-05-08 às 02.39.45.jpeg' },
-          'Captura de Tela 2026-05-08 às 20.26.10.jpeg': { type: 'file', size: '224 KB', ext: 'jpeg', url: 'assets/images/user_photos/Captura de Tela 2026-05-08 às 20.26.10.jpeg' },
-          'wallpaper.jpg': { type: 'file', size: '1.2 MB', ext: 'jpg' }
+          'sequoia-a-noite.jpg':     { type: 'file', size: '4.9 MB', ext: 'jpg', url: 'assets/images/wallpapers/landscape/sequoia-a-noite.jpg' },
+          'horizonte-de-sonoma.jpg': { type: 'file', size: '2.5 MB', ext: 'jpg', url: 'assets/images/wallpapers/landscape/horizonte-de-sonoma.jpg' },
+          'sequoia-ao-amanhecer.jpg':{ type: 'file', size: '1.9 MB', ext: 'jpg', url: 'assets/images/wallpapers/landscape/sequoia-ao-amanhecer.jpg' }
         }
       },
       'Mesa':       {
@@ -41,13 +40,131 @@ const FILE_TREE = {
       'Developer':  {
         type: 'folder',
         children: {
-          'archive':  { type: 'folder', children: {} },
-          'learning': { type: 'folder', children: {} },
-          'projects': { type: 'folder', children: {} },
-          'sandbox':  { type: 'folder', children: {} },
-          'setup':    { type: 'folder', children: {} },
+          'archive':  {
+            type: 'folder',
+            children: {
+              'clients':      { type: 'folder', children: {} },
+              'experiments':  { type: 'folder', children: {} },
+              'old-projects': {
+                type: 'folder',
+                children: {
+                  'Gerenciador de Galeria do Windows':     { type: 'folder', children: {} },
+                  'Gerenciador de Pesquisa do Windows 11': { type: 'folder', children: {} }
+                }
+              }
+            }
+          },
+          'learning': {
+            type: 'folder',
+            children: {
+              'Templates': {
+                type: 'folder',
+                children: {
+                  'E-Commerce-Template-5-electronic_store':             { type: 'folder', children: {} },
+                  'Expertum Free Website Template - Free-CSS.com':       { type: 'folder', children: {} },
+                  'HTML':                                                { type: 'folder', children: {} },
+                  'Liquid Glass - Exemple':                               { type: 'folder', children: {} },
+                  'Simple Studio Free Website Template - Free-CSS.com':  { type: 'folder', children: {} },
+                  'Wordpress':                                           { type: 'folder', children: {} },
+                  'templated-epilogue':                                   { type: 'folder', children: {} },
+                  'templated-imagination':                                { type: 'folder', children: {} },
+                  'templated-industrious':                                { type: 'folder', children: {} }
+                }
+              },
+              'ai':     { type: 'folder', children: {} },
+              'docker': { type: 'folder', children: {} },
+              'nodejs': { type: 'folder', children: {} },
+              'python': { type: 'folder', children: {} },
+              'react':  { type: 'folder', children: {} }
+            }
+          },
+          'projects': {
+            type: 'folder',
+            children: {
+              '2048':                   { type: 'folder', children: {} },
+              'Bongocat Osu':           { type: 'folder', children: {} },
+              'Curriculo':              { type: 'folder', children: {} },
+              'Customização de tenis':  { type: 'folder', children: {} },
+              'GupyAlert':              { type: 'folder', children: {} },
+              'Infoprodutos':           { type: 'folder', children: {} },
+              'JobLink':                { type: 'folder', children: {} },
+              'Memfy':                  { type: 'folder', children: {} },
+              'MicMute':                { type: 'folder', children: {} },
+              'Portifolio':             { type: 'folder', children: {} },
+              'SkinFilmesTV (VLC)':     { type: 'folder', children: {} },
+              'Spriters-Bot (Discord)': { type: 'folder', children: {} },
+              'Spriters-LOL':           { type: 'folder', children: {} },
+              'Whisperwood':            { type: 'folder', children: {} },
+              'Win Icon Generator':     { type: 'folder', children: {} },
+              'Youtube Music':          { type: 'folder', children: {} },
+              'mit':                    { type: 'folder', children: {} },
+              'personal-tools': {
+                type: 'folder',
+                children: {
+                  'Amanda':                    { type: 'folder', children: {} },
+                  'Beatriz Muller':            { type: 'folder', children: {} },
+                  'Canais':                    { type: 'folder', children: {} },
+                  'Carteirinhas de Estudante': { type: 'folder', children: {} },
+                  'Curriculo-online':          { type: 'folder', children: {} },
+                  'Perfil Github':             { type: 'folder', children: {} },
+                  'Portal Vagas Home':         { type: 'folder', children: {} },
+                  'Projetos da Juliana':       { type: 'folder', children: {} },
+                  'Visual Maker':              { type: 'folder', children: {} },
+                  'compritas':                 { type: 'folder', children: {} }
+                }
+              },
+              'rastremento':            { type: 'folder', children: {} },
+              'self-checkout':          { type: 'folder', children: {} }
+            }
+          },
+          'sandbox':  {
+            type: 'folder',
+            children: {
+              'Adobe Photoshop 2026 [v27.1.0.17]': { type: 'folder', children: {} },
+              'Ativador KMS':                      { type: 'folder', children: {} },
+              'Download videos em massa':          { type: 'folder', children: {} },
+              'macOS-web':                         { type: 'folder', children: {} },
+              'teste':                             { type: 'folder', children: {} },
+              'testes':                            { type: 'folder', children: {} }
+            }
+          },
+          'setup':    {
+            type: 'folder',
+            children: {
+              'git':       { type: 'folder', children: {} },
+              'ssh':       { type: 'folder', children: {} },
+              'templates': { type: 'folder', children: {} },
+              'terminal':  { type: 'folder', children: {} },
+              'vscode':    { type: 'folder', children: {} }
+            }
+          },
           'temp':     { type: 'folder', children: {} },
-          'work':     { type: 'folder', children: {} },
+          'work':     {
+            type: 'folder',
+            children: {
+              'clientes': {
+                type: 'folder',
+                children: {
+                  'Arquiteto':                        { type: 'folder', children: {} },
+                  'Cherrye - Brigadeiros Artezanais': { type: 'folder', children: {} },
+                  'Clinicas':                         { type: 'folder', children: {} },
+                  'Colegio Objetivo':                 { type: 'folder', children: {} },
+                  'Projeto - Site Manoel Tavares':    { type: 'folder', children: {} },
+                  'Sistema Imobiliário':              { type: 'folder', children: {} },
+                  'Sistema de Barbearia':             { type: 'folder', children: {} },
+                  'Sistema de Delivery':              { type: 'folder', children: {} },
+                  'Site Meteora':                     { type: 'folder', children: {} },
+                  'Taxi-Van Peruíbe':                 { type: 'folder', children: {} }
+                }
+              },
+              'estudos': {
+                type: 'folder',
+                children: {
+                  'Sites Clone': { type: 'folder', children: {} }
+                }
+              }
+            }
+          }
         }
       },
       'Aplicativos': {

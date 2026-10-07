@@ -1,155 +1,189 @@
-# Mateus OS — Portfólio Desktop
+<p align="center">
+  <img src="assets/favicons/logo.png" alt="Mateus OS Logo" width="120" height="120" style="border-radius: 24px;" />
+</p>
 
-Um ambiente desktop interativo executado no navegador, unificando a experiência inspirada no macOS com o Portfólio de Engenharia de Software de Mateus Alves. Construído em HTML5 puro, CSS3 e Módulos JavaScript ES6 sem frameworks pesados.
+<h1 align="center">Mateus OS</h1>
 
----
+<p align="center">
+  <b>Ambiente Desktop Interativo Inspirado no macOS e Portfólio de Engenharia de Software</b>
+</p>
 
-## Visão Geral Técnica
-
-**Mateus OS** é uma aplicação web que combina o ambiente de trabalho estilo macOS com o portfólio profissional de Mateus Alves, oferecendo navegação por terminal zsh, suporte a comandos e integração direta com aplicações nativas (Safari, Finder, Terminal, Ajustes e Lixo).
-
----
-
-## Core System Modules
-
-### Safari Web Browser Engine
-- **Modular Architecture**: Built around an object-oriented `SafariEngine` class managing session state, history stack navigation (Back, Forward, Reload), and dynamic iframe content rendering.
-- **Web Navigation & Search**: Native support for Google Search parameter embedding (`igu=1`) and cross-origin website proxying via CORS proxy endpoints.
-- **Authentic Start Page (Nova Aba)**: Replicates the macOS Safari Start Page with a customizable Favorites grid (Portfólio, LinkedIn, GitHub, WhatsApp) and iCloud Tabs integration.
-- **High-Resolution Favicon Resolver**: Multi-tier asynchronous favicon pipeline utilizing the Favicone API (`128px`) with fallbacks to Google Favicons CDN and system vector icons.
-- **Dynamic Theme Color Blending**: Automatic theme color management switching window background colors (`#22242A` for Google, `#28282b` for standard pages) and dynamically toggling the bottom toolbar separator line (`border-bottom`).
-- **Interactive Toolbar Controls**: Integrated Clipboard API for URL copying, automatic URL input placeholder clearing upon focus, and custom SF Symbol button hover states.
-
-### Finder & Lixo (Trash) Application
-- **Explorador de Arquivos com VFS**: Navegação hierárquica por pastas (Documentos, Downloads, Imagens, Developer e Lixo) com suporte a visualização em Grade e Lista.
-- **Seleção Nativa Fiel ao macOS**: Seleção por clique com destaque azul clássico (`#0063e1`) nos rótulos e moldura translúcida suave nos ícones, com desmarcação em área vazia e ausência de efeitos de hover.
-- **Quick Look Integrado**: Pré-visualização instantânea de imagens em modal nativo ao realizar duplo clique em fotos (`Captura de Tela`).
-- **Janela e Ações do Lixo**: Visual dedicado com barra de subcabeçalho, botão de esvaziamento, diálogo nativo de confirmação (`showMacAlert`) e notificações de conclusão.
-- **Barra de Caminho Dinâmica (Pathbar)**: Rastreamento em tempo real do diretório ativo com navegação rápida por clique e ícones nativos.
-
-### Window Management Engine
-- **Z-Index Layering**: Dynamic depth management with automatic focus elevation (`windowManager.js`).
-- **Drag & Resize**: High-frequency mouse and touch event handling for real-time window bounds computation.
-- **Controles de Semáforo Dinâmicos**: Botões de fechar, minimizar e expandir calibrados para cada aplicação individual, incluindo instâncias especializadas como a Lixeira.
-- **Input Focus Protection**: Drag handler filtering that excludes interactive elements (`<input>`, `<textarea>`, `<button>`) from window drag events to prevent input focus loss and window flashing.
-- **Calibrated Default Aspect Ratios**: Initial window bounds optimized for standard desktop viewports (Safari: 1040x680px, Finder: 960x620px).
-
-### Sistema de Notificações macOS
-- **Layout Nativo**: Estrutura com ícone do aplicativo, linha superior contendo Título e Horário (`Agora`), e corpo com a mensagem explicativa sem redundâncias.
-- **Interatividade na Menubar**: Disparo de notificações de status ao clicar em Bateria, Wi-Fi, Bluetooth, Siri e Spotlight.
-- **Gestos de Descarte**: Suporte a arraste lateral (swipe-to-dismiss) e auto-fechamento com pausa ao posicionar o cursor sobre o banner.
-
-### Desktop Widgets Engine
-- **Live Location Weather Engine**: Integrated 5-tier location resolution engine (GeoJS, IP-API, ipapi.co, HTML5 Geolocation + BigDataCloud reverse geocode, System Timezone fallback) paired with the Open-Meteo API for live weather conditions and 6-hour hourly forecasts.
-- **Mathematical Calendar Grid**: Real-time Portuguese calendar grid with 6-row mathematical overflow protection and a centered active day ring (`#ff3b30`).
-- **Battery Gauge**: SVG circular progress gauge rendering real-time battery status and status icons.
-
-### Control Center & Navigation Bar
-- **Symmetrical 1:1 Control Center**: Precise 1:1 square grid layout (`142px x 142px`) for Connectivity and Utilities cards.
-- **Interactive System Sliders**: Custom input sliders for System Volume and Display Brightness.
-- **Top Menubar**: Dynamic clock, status indicators, active application title, and contextual dropdown menus.
-
-### Multi-Level Context Menu System
-- **Nested Submenus**: Support for hierarchical multi-level context menus with automatic viewport overflow correction (`contextMenu.js`).
-- **State Indicators**: Rendered checkmarks, item headers, disabled states, and active blue parent item highlighting (`#0a84ff`).
-
-### Dock Component
-- **Spring Physics Magnification**: Smooth icon scaling based on cursor distance calculations.
-- **Active Indicators**: Status indicators (bolinhas luminosas) para todas as aplicações em execução e minimizadas.
-- **Tooltips Pixel-Perfect**: Balões de dica com tipografia San Francisco, desfoque de fundo e contorno escuro nativo do macOS.
-
-### Terminal Engine (MateusOS)
-- **Modo de Operação e Privilégios Dual-Stage**: Divisão de permissões entre o Modo Normal (`mateus@MacBook-Pro ~ %`) para visitantes comuns e o Modo Engenharia/Administrador (`root@MacBook-Pro ~ #`) desbloqueado via `sudo -i` com a lecture de segurança nativa da Apple e preenchimento de senha automatizado.
-- **Sistema de Arquivos Virtual (VFS)**: Estrutura simulada contendo caminhos de sistema `/Users/mateus` e diretórios protegidos `/var/root` / `/etc`. Permite a leitura em tempo real de arquivos virtuais `.md` e arquivos de sistema (como `/etc/hosts` e chaves SSH públicas).
-- **Comandos BSD Nativos**: Suporte completo a utilitários de shell:
-  - `ls`: Listagem avançada aceitando flags BSD (`-l`, `-a`, `-la`) com permissões detalhadas, proprietários, tamanhos e data de criação.
-  - `man` / `man intro`: Visualizador de manual interativo estilo `less` (alternate screen buffer), permitindo fechamento e limpeza de buffer de tela com a tecla `q`.
-  - `pbcopy`: Integração assíncrona com a Clipboard API do navegador para copiar dados reais de contato.
-  - `open`: Suporta abertura de arquivos com extensões (ex: `open about.md` abrindo seções da GUI), abertura de Finder (`open .`) e tratamento inteligente de redirecionamento de links externos (WhatsApp, LinkedIn) em novas abas reais fora do SO.
-  - `sw_vers`, `uname -a`, `date`, `uptime`, `whoami` (com flag `--verbose`).
-- **Ferramentas Root Avançadas**: Desbloqueio de comandos como `git log` (histórico real de commits), `system_profiler` (especificações de hardware), `defaults write` (alteração de tema claro/escuro em tempo real no DOM) e serviços bloqueantes como `caffeinate` e `tail -f system.log` com streaming de logs em tempo real canceláveis via `Ctrl + C`.
+<p align="center">
+  <img src="https://img.shields.io/badge/JavaScript-ES6%2B_Modules-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript" />
+  <img src="https://img.shields.io/badge/CSS3-Modular_Architecture-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3" />
+  <img src="https://img.shields.io/badge/HTML5-Semântico-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5" />
+  <img src="https://img.shields.io/badge/Design-macOS_Pixel--Perfect-000000?style=for-the-badge&logo=apple&logoColor=white" alt="macOS" />
+  <img src="https://img.shields.io/badge/Terminal-ZSH_Dual--Stage-5856D6?style=for-the-badge&logo=gnubash&logoColor=white" alt="ZSH Terminal" />
+  <img src="https://img.shields.io/badge/VFS-Virtual_File_System-3FCF8E?style=for-the-badge&logo=files&logoColor=white" alt="VFS" />
+</p>
 
 ---
 
-## Project Structure
+## 📌 Sobre o Projeto
+
+O **Mateus OS** é um ambiente desktop web interativo de alta fidelidade inspirado no macOS Sequoia e Tahoe, unificando a estética visual da Apple com o portfólio profissional de engenharia de software de Mateus Alves. Construído 100% em tecnologias web nativas (**HTML5**, **CSS3 modular** e **JavaScript ES6 Modules** sem a necessidade de frameworks volumosos), o projeto oferece uma experiência de sistema operacional completa executada diretamente no navegador — incluindo janelas multitarefa reais com elevação dinâmica de foco, virtual file system, terminal ZSH com emulação de privilégios, navegador Safari integrado e widgets dinâmicos.
+
+---
+
+## ✨ Principais Funcionalidades
+
+### 🧭 Safari Web Browser Engine
+- **Arquitetura OOP (`SafariEngine`):** Gerenciamento completo de sessão, pilha de histórico de navegação (Voltar, Avançar, Recarregar) e renderização assíncrona em iframe.
+- **Página Inicial Autêntica:** Réplica fiel da Start Page da Apple com favoritos em grade (Portfólio, LinkedIn, GitHub, WhatsApp) e abas sincronizadas.
+- **Resolução Multi-Tier de Favicons:** Pipeline dinâmico consumindo a API Favicone (128px), Google Favicons CDN e fallbacks vetoriais do sistema.
+- **Dynamic Theme Blending:** Harmonização automática de cores de fundo da janela e bordas divisórias de acordo com o domínio acessado.
+- **Controles Integrados:** Suporte à Clipboard API para cópia de links e higienização automática de URLs com suporte a proxy CORS.
+
+### 📂 Finder & Lixeira (VFS)
+- **Virtual File System (VFS):** Estrutura hierárquica em memória com suporte a navegação por pastas em modo Grade (*Grid*) e Lista (*List*).
+- **Seleção Nativa da Apple:** Destaque azul clássico (`#0063e1`) nos rótulos de itens e moldura translúcida suave nos ícones, sem hover indesejado.
+- **Quick Look Integrado:** Pré-visualização instantânea em modal nativo ao realizar clique duplo em fotos e capturas de tela.
+- **Barra de Caminho Dinâmica (Pathbar):** Rastreamento de diretório ativo em tempo real com navegação rápida com um clique.
+- **Janela e Ações da Lixeira:** Interface dedicada com confirmações nativas de esvaziamento (`showMacAlert`) e notificações de conclusão.
+
+### 🪟 Gerenciador de Janelas & Multitarefa
+- **Z-Index Layering Dinâmico:** Gerenciamento de profundidade em tempo real com elevação automática de foco da janela ativa (`windowManager.js`).
+- **Arrasto e Redimensionamento Fluido:** Processamento de eventos de ponteiro de alta frequência com cálculo instantâneo de limites da viewport.
+- **Semáforos Nativos Calibrados:** Botões de fechar, minimizar e expandir parametrizados individualmente para cada aplicação.
+- **Proteção de Foco em Elementos Interativos:** Filtro no manipulador de arrasto prevenindo perda de foco e jitter em `<input>`, `<textarea>` e botões.
+- **Proporções Otimizadas:** Dimensões iniciais calibradas para proporções desktop autênticas (Safari: 1040x680px, Finder: 960x620px).
+
+### ⚡ Terminal ZSH Dual-Stage (MateusOS)
+- **Modo Visitante Padrão (`mateus@MacBook-Pro ~ %`):** Ambiente seguro para visitantes com comandos de navegação (`open`, `cat`, `ls -la`, `pwd`, `whoami`, `pbcopy`, `clear`, `man`, `date`, `uptime`, `sw_vers`, `uname -a`).
+- **Modo Root de Engenharia (`root@MacBook-Pro ~ #`):** Elevação de privilégios via `sudo -i`, com o aviso oficial *Sudo Lecture* da Apple e senha oculta, liberando utilitários avançados de desenvolvedor.
+- **Comandos BSD Nativos:** Utilitários de linha de comando com suporte a flags BSD, leitura de arquivos do VFS e integração com a Clipboard API (`pbcopy`).
+- **Ferramentas de Engenharia Desbloqueadas:** Comandos de hardware e sistema como `system_profiler`, `defaults`, `caffeinate`, `git log` e streaming contínuo de logs com `tail -f`.
+
+### ⚙️ Central de Controle & Desktop Widgets
+- **Central de Controle 1:1:** Layout em grid simétrico (`142px x 142px`) para controles de conectividade e utilitários.
+- **Sliders Nativos do Sistema:** Controles deslizantes customizados para Volume do Sistema e Brilho da Tela.
+- **Live Weather Engine:** Resolução de localização com 5 camadas de fallback integrada à API do Open-Meteo com condições e previsões em tempo real.
+- **Calendário Matemático:** Grade mensal com proteção de transbordamento de 6 linhas e anel indicador do dia ativo (`#ff3b30`).
+- **Indicador de Bateria em SVG:** Gauge circular vetorial com renderização de percentual e estado de carga ao vivo.
+
+### ⚓ Dock & Design System Nativo
+- **Física de Molas (Spring Magnification):** Ampliação contínua e suave baseada na distância euclidiana do ponteiro do mouse.
+- **Indicadores de Status:** Marcadores luminosos inferiores indicando aplicativos em execução e minimizados.
+- **Tooltips com Efeito Vidro:** Balões flutuantes com tipografia San Francisco e desfoque translúcido (*backdrop-filter*).
+- **SF Symbols Vetoriais:** Suíte de ícones vetoriais otimizados renderizados dinamicamente via `sfSymbols.js`.
+
+### 🔔 Notificações & Áudio do Sistema
+- **Layout Fiel ao macOS:** Estrutura nativa com ícone do app, cabeçalho de horário relativo (`Agora`) e corpo descritivo.
+- **Interatividade via Menubar:** Notificações de status ao clicar em Bateria, Wi-Fi, Bluetooth e Siri.
+- **Gestos de Descarte:** Suporte a arraste lateral (*swipe-to-dismiss*) e pausa de temporizador sob hover.
+
+---
+
+## 🛠️ Stack Tecnológico
+
+| Camada | Tecnologias |
+|---|---|
+| **Frontend Core** | HTML5 Semântico, JavaScript ES6+ (Native Modules, sem bundlers) |
+| **Estilização & UI** | CSS3 Modular (Variables, Keyframes, Backdrop-Filter, Glassmorphism) |
+| **Tipografia & Ícones** | SF Symbols Vetoriais, San Francisco Typography, Favicone API |
+| **Serviços & APIs** | Open-Meteo API, BigDataCloud Reverse Geocoding, IP Geolocation |
+| **Armazenamento & VFS** | In-Memory Virtual File System (VFS), LocalStorage |
+| **Deploy & Hosting** | GitHub Pages, Vercel, Netlify |
+
+---
+
+## 📂 Estrutura de Pastas
 
 ```
 MacOS-Web/
-├── index.html          # Main HTML entry point
-├── manifest.json       # PWA manifest
-├── start-server.bat    # Windows quick-start server launcher
-└── assets/
-    ├── css/
-    │   ├── main.css        # Main compiled stylesheet
-    │   └── patch.css       # Pixel-perfect design system & override styles
-    ├── js/
-    │   ├── app.js          # Main entry point & boot sequence
-    │   ├── windowManager.js # Window lifecycle & placement engine
-    │   ├── themeManager.js # Dark/Light theme manager
-    │   ├── menubar.js      # Menubar & Control Center manager
-    │   ├── dock.js         # Dock magnification & status indicators
-    │   ├── desktop.js      # Desktop icons & position engine
-    │   ├── widgets.js      # Desktop widgets engine (Calendar, Battery, Weather)
-    │   ├── contextMenu.js  # Multi-level nested context menu engine
-    │   ├── sfSymbols.js    # SF Symbols rendering helper
-    │   └── apps/
-    │       ├── finder.js
-    │       ├── safari.js
-    │       ├── terminal.js
-    │       └── settings.js
-    ├── docs/
-    │   └── mateus-desenvolvedor-fullstack.pdf
-    ├── images/
-    │   ├── user_photos/
-    │   └── wallpapers/
-    ├── icons/
-    └── favicons/
+├── assets/
+│   ├── css/                      # Arquitetura modular CSS3
+│   │   ├── base/                 # Tokens globais, variáveis e animações
+│   │   ├── system/               # Componentes do ecossistema macOS
+│   │   ├── apps/                 # Folhas de estilo dedicadas por aplicativo
+│   │   ├── portfolio/            # Estilos específicos do portfólio mobile
+│   │   └── main.css              # Importador central de estilos
+│   ├── js/                       # Lógica em módulos nativos ES6
+│   │   ├── apps/                 # Controladores de aplicação (finder, safari, terminal, settings)
+│   │   ├── windowManager.js      # Gerenciador de ciclo de vida e z-index de janelas
+│   │   ├── themeManager.js       # Alternador de tema Claro / Escuro
+│   │   ├── menubar.js            # Menubar superior e Central de Controle
+│   │   ├── dock.js               # Física de magnificação e estado do Dock
+│   │   ├── desktop.js            # Mesa, ícones e seleção
+│   │   ├── widgets.js            # Widgets dinâmicos (Clima, Calendário, Bateria)
+│   │   ├── contextMenu.js        # Menus de contexto multinível
+│   │   ├── sfSymbols.js          # Renderizador de símbolos vetoriais
+│   │   └── app.js                # Bootstrap e inicialização do sistema
+│   ├── docs/                     # Documentações e currículo em PDF
+│   ├── favicons/                 # Logotipos, ícones web e manifest
+│   ├── icons/                    # Ícones de sistema, dock e menus
+│   ├── images/                   # Wallpapers dinâmicos, fotos e logos
+│   └── portfolio.html            # Experiência responsiva para dispositivos móveis
+├── comandos.md                   # Manual técnico e especificação do terminal ZSH
+├── index.html                    # Ponto de entrada do sistema operacional web
+├── manifest.json                 # Manifesto PWA da aplicação
+└── start-server.bat              # Launcher rápido de 1 clique para Windows
 ```
 
 ---
 
-## Environment Setup & Execution
+## 🚀 Como Executar o Projeto
 
-### Local HTTP Server Requirement
-Due to browser security restrictions regarding ES6 Module imports (`import`/`export`), `index.html` must be served via an HTTP server.
+### Pré-requisitos
+- Um navegador moderno (**Google Chrome**, **Microsoft Edge**, **Apple Safari** ou **Mozilla Firefox**)
+- Um servidor HTTP local (necessário para atender às políticas de segurança de módulos ES6 `import`/`export`)
 
-#### Python 3 HTTP Server
+### 1. Clonar o Repositório
 ```bash
-python -m http.server 8080
+git clone https://github.com/AllvesMatteus/MacOS-Web.git
+cd MacOS-Web
 ```
 
-#### Node.js Server (npx)
-```bash
-npx serve .
-```
+### 2. Iniciar o Servidor Local
+Você pode iniciar o servidor utilizando qualquer um dos métodos abaixo:
 
-#### Windows Launcher
-Execute `start-server.bat` by double-clicking or launching via PowerShell:
+#### Opção A — Windows (1 Clique)
+Execute o arquivo batch incluído na raiz do projeto:
 ```cmd
 start-server.bat
 ```
 
-Access the application in any modern web browser at `http://localhost:8080`.
+#### Opção B — Python 3
+```bash
+python -m http.server 8080
+```
+
+#### Opção C — Node.js (npx)
+```bash
+npx serve .
+```
+
+#### Opção D — Extensão Live Server (VS Code)
+Abra a pasta no VS Code, clique com o botão direito no arquivo `index.html` e selecione **"Open with Live Server"**.
+
+### 3. Acessar a Aplicação
+Abra seu navegador no endereço:
+```
+http://localhost:8080
+```
 
 ---
 
-## Deployment
+## 📜 Manual do Terminal ZSH (MateusOS)
 
-The project is fully compatible with static web hosting services such as GitHub Pages, Vercel, and Netlify.
+O sistema conta com emulação de terminal ZSH dividida em dois níveis de privilégio:
 
----
+| Modo | Prompt | Comandos Disponíveis |
+|---|---|---|
+| **Usuário Visitante** | `mateus@MacBook-Pro ~ %` | `open`, `cat`, `ls -la`, `pwd`, `whoami`, `pbcopy`, `clear`, `man`, `date`, `uptime`, `sw_vers`, `uname -a`, `sudo -i` |
+| **Engenharia (Root)** | `root@MacBook-Pro ~ #` | Acesso irrestrito a `/var/root`, `/etc/hosts`, `system_profiler`, `defaults`, `caffeinate`, `git log`, `tail -f` |
 
-## Browser Compatibility
-
-- Google Chrome / Chromium (v90+)
-- Mozilla Firefox (v88+)
-- Apple Safari (v14+)
-- Microsoft Edge (v90+)
+> Para consultar a lista completa com exemplos e especificações, consulte o [Manual Técnico de Comandos](comandos.md).
 
 ---
 
-## License & Credits
+## 📱 Versão Mobile Otimizada
 
-- **Original Concept**: [@gaminghackintosh](https://github.com/gaminghackintosh)
-- **Maintainer & Developer**: [@AllvesMatteus](https://github.com/AllvesMatteus)
-- **License**: MIT License
+Para dispositivos com tela reduzida (largura `<= 768px`) ou dispositivos móveis (*smartphones* e *tablets*), o sistema redireciona automaticamente para:
+- **`assets/portfolio.html`**: Interface limpa, responsiva e focada na experiência de toque.
+
+---
+
+## 📄 Licença
+
+Este projeto é desenvolvido e mantido por [Mateus Alves](https://github.com/AllvesMatteus). Conceito original e inspiração por [@gaminghackintosh](https://github.com/gaminghackintosh). Distribuído sob a licença MIT.

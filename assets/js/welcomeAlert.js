@@ -2,11 +2,9 @@ export function initWelcomeAlert() {
   const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) 
     || window.innerWidth < 768;
 
-  const hasSeen = localStorage.getItem('macos-web-alert-seen');
-
-  if (hasSeen && !isMobile) {
-    return;
-  }
+  try {
+    localStorage.removeItem('macos-web-alert-seen');
+  } catch (_) {}
 
   const overlay = document.createElement('div');
   overlay.id = 'welcome-alert-overlay';
@@ -32,10 +30,10 @@ export function initWelcomeAlert() {
     overlay.style.background = 'rgba(0, 0, 0, 0)';
 
     card.style.cssText = `
-      width: 270px;
+      width: 290px;
       background: #2C2C2E;
       border-radius: 14px;
-      padding: 20px 20px 0 20px;
+      padding: 22px 20px 0 20px;
       box-sizing: border-box;
       color: #ffffff;
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -47,34 +45,36 @@ export function initWelcomeAlert() {
     `;
 
     card.innerHTML = `
-      <div style="font-size:17px;font-weight:600;margin-bottom:6px;color:#ffffff;letter-spacing:-0.4px;">Bem-vindo</div>
-      <div style="font-size:13px;font-weight:400;color:rgba(255,255,255,0.7);line-height:1.35;margin-bottom:16px;letter-spacing:-0.1px;">Este é um projeto educacional e não comercial. Acesse pelo computador para a experiência completa.</div>
+      <div style="font-size:17px;font-weight:600;margin-bottom:8px;color:#ffffff;letter-spacing:-0.4px;">Olá, seja bem-vindo!</div>
+      <div style="font-size:13px;font-weight:400;color:rgba(255,255,255,0.75);line-height:1.4;margin-bottom:18px;letter-spacing:-0.1px;">Sou o <strong>Mateus Alves</strong> e este ambiente inspirado no macOS é o meu <strong>portfólio interativo</strong> — um projeto educacional e não comercial. Para aproveitar a experiência desktop completa, acesse pelo computador.</div>
       <div style="border-top: 0.5px solid rgba(255,255,255,0.15);margin:0 -20px;">
-        <button id="welcome-alert-close" style="width:100%;height:44px;background:none;border:none;color:#0a84ff;font-size:17px;font-weight:600;cursor:pointer;outline:none;display:flex;align-items:center;justify-content:center;font-family:inherit;">Entendi</button>
+        <button id="welcome-alert-close" style="width:100%;height:44px;background:none;border:none;color:#0a84ff;font-size:17px;font-weight:600;cursor:pointer;outline:none;display:flex;align-items:center;justify-content:center;font-family:inherit;">Explorar Portfólio</button>
       </div>
     `;
   } else {
     card.style.cssText = `
-      width: 260px;
+      width: 290px;
       background: #2C2C2E;
       border: 0.5px solid rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
-      padding: 16px;
+      border-radius: 12px;
+      padding: 18px 18px 16px 18px;
       box-sizing: border-box;
       color: #ffffff;
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Segoe UI", Roboto, sans-serif;
       text-align: center;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.55);
       transform: translateY(15px);
       opacity: 0;
-      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
     `;
 
     card.innerHTML = `
-      <div style="font-size:13.5px;font-weight:600;color:#ffffff;margin-bottom:4px;line-height:1.3;letter-spacing:-0.1px;">Bem-vindo</div>
-      <div style="font-size:11px;font-weight:400;color:rgba(255,255,255,0.7);line-height:1.4;margin-bottom:16px;letter-spacing:-0.05px;padding:0 4px;">Este é um projeto educacional e não comercial. A experiência completa do sistema e do portfólio foi pensada para ser acessada pelo computador.</div>
+      <div style="font-size:14px;font-weight:600;color:#ffffff;margin-bottom:6px;line-height:1.3;letter-spacing:-0.15px;">Olá, seja bem-vindo!</div>
+      <div style="font-size:11.5px;font-weight:400;color:rgba(255,255,255,0.75);line-height:1.45;margin-bottom:16px;letter-spacing:-0.05px;padding:0 2px;">
+        Sou o <strong>Mateus Alves</strong> e este ambiente inspirado no macOS é o meu <strong>portfólio interativo</strong> — um projeto estritamente educacional e não comercial. Sinta-se à vontade para explorar. Para a melhor experiência, acesse pelo computador.
+      </div>
       <div style="display:flex;width:100%;">
-        <button id="welcome-alert-close" style="width:100%;height:22px;background:#007aff;border:0.5px solid transparent;border-radius:5px;color:#ffffff;font-size:11.5px;font-weight:400;cursor:pointer;outline:none;font-family:inherit;box-shadow:0 1px 2px rgba(0,0,0,0.1);display:flex;align-items:center;justify-content:center;">Entendi</button>
+        <button id="welcome-alert-close" style="width:100%;height:26px;background:#007aff;border:0.5px solid transparent;border-radius:6px;color:#ffffff;font-size:12px;font-weight:500;cursor:pointer;outline:none;font-family:inherit;box-shadow:0 1px 2px rgba(0,0,0,0.15);display:flex;align-items:center;justify-content:center;transition:background 0.15s ease;">Explorar Portfólio</button>
       </div>
     `;
   }
@@ -100,8 +100,6 @@ export function initWelcomeAlert() {
   const closeBtn = card.querySelector('#welcome-alert-close');
 
   const closeAlert = () => {
-    localStorage.setItem('macos-web-alert-seen', 'true');
-
     if (isMobile) {
       overlay.style.opacity = '0';
       overlay.style.background = 'rgba(0, 0, 0, 0)';

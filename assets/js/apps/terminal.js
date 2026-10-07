@@ -17,10 +17,23 @@ const VFS = {
   '/Library': { type: 'dir', children: ['Preferences', 'Logs'] },
   '/System': { type: 'dir', children: ['Library'] },
   '/Users': { type: 'dir', children: ['mateus', 'guest', 'shared'] },
-  '/Users/mateus': { type: 'dir', children: ['about.md', 'skills.md', 'projects.md', 'experience.md', 'education.md', 'contact.md', 'Desktop', 'Documents', 'Downloads'] },
+  '/Users/mateus': { type: 'dir', children: ['about.md', 'skills.md', 'projects.md', 'experience.md', 'education.md', 'contact.md', 'Desktop', 'Documents', 'Downloads', 'Developer'] },
   '/Users/mateus/Desktop': { type: 'dir', children: ['macOS-Web'] },
   '/Users/mateus/Documents': { type: 'dir', children: ['Currículo.pdf'] },
   '/Users/mateus/Downloads': { type: 'dir', children: ['macOS-Sequoia.dmg'] },
+  '/Users/mateus/Developer': { type: 'dir', children: ['archive', 'learning', 'projects', 'sandbox', 'setup', 'temp', 'work'] },
+  '/Users/mateus/Developer/projects': { type: 'dir', children: ['2048', 'Bongocat Osu', 'Curriculo', 'Customização de tenis', 'GupyAlert', 'Infoprodutos', 'JobLink', 'Memfy', 'MicMute', 'Portifolio', 'SkinFilmesTV (VLC)', 'Spriters-Bot (Discord)', 'Spriters-LOL', 'Whisperwood', 'Win Icon Generator', 'Youtube Music', 'mit', 'personal-tools', 'rastremento', 'self-checkout'] },
+  '/Users/mateus/Developer/projects/personal-tools': { type: 'dir', children: ['Amanda', 'Beatriz Muller', 'Canais', 'Carteirinhas de Estudante', 'Curriculo-online', 'Perfil Github', 'Portal Vagas Home', 'Projetos da Juliana', 'Visual Maker', 'compritas'] },
+  '/Users/mateus/Developer/learning': { type: 'dir', children: ['Templates', 'ai', 'docker', 'nodejs', 'python', 'react'] },
+  '/Users/mateus/Developer/learning/Templates': { type: 'dir', children: ['E-Commerce-Template-5-electronic_store', 'Expertum Free Website Template - Free-CSS.com', 'HTML', 'Liquid Glass - Exemple', 'Simple Studio Free Website Template - Free-CSS.com', 'Wordpress', 'templated-epilogue', 'templated-imagination', 'templated-industrious'] },
+  '/Users/mateus/Developer/sandbox': { type: 'dir', children: ['Adobe Photoshop 2026 [v27.1.0.17]', 'Ativador KMS', 'Download videos em massa', 'macOS-web', 'teste', 'testes'] },
+  '/Users/mateus/Developer/setup': { type: 'dir', children: ['git', 'ssh', 'templates', 'terminal', 'vscode'] },
+  '/Users/mateus/Developer/temp': { type: 'dir', children: [] },
+  '/Users/mateus/Developer/work': { type: 'dir', children: ['clientes', 'estudos'] },
+  '/Users/mateus/Developer/work/clientes': { type: 'dir', children: ['Arquiteto', 'Cherrye - Brigadeiros Artezanais', 'Clinicas', 'Colegio Objetivo', 'Projeto - Site Manoel Tavares', 'Sistema Imobiliário', 'Sistema de Barbearia', 'Sistema de Delivery', 'Site Meteora', 'Taxi-Van Peruíbe'] },
+  '/Users/mateus/Developer/work/estudos': { type: 'dir', children: ['Sites Clone'] },
+  '/Users/mateus/Developer/archive': { type: 'dir', children: ['clients', 'experiments', 'old-projects'] },
+  '/Users/mateus/Developer/archive/old-projects': { type: 'dir', children: ['Gerenciador de Galeria do Windows', 'Gerenciador de Pesquisa do Windows 11'] },
   '/var': { type: 'dir', children: ['root', 'log', 'tmp'] },
   '/var/root': { type: 'dir', children: ['.zshrc', '.ssh'] },
   '/tmp': { type: 'dir', children: [] },
@@ -92,12 +105,6 @@ ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDH...[demonstrativa]...mateus@MacBook-Pro.l
   `
 };
 
-const ASCII_LOGO = `<pre style="margin:4px 0 12px 0;padding:0;font-family:Menlo,Monaco,'SF Mono','Courier New',monospace;font-size:10px;line-height:1.2;letter-spacing:0;white-space:pre;overflow-x:auto;user-select:none;">
-<span style="color:#818cf8">███    ███   █████   ████████  ████████  ██    ██  ███████</span>
-<span style="color:#6366f1">████  ████  ██   ██     ██     ██        ██    ██  ██     </span>
-<span style="color:#4f46e5">██ ████ ██  ███████     ██     ██████    ██    ██  ███████</span>
-<span style="color:#4338ca">██  ██  ██  ██   ██     ██     ██        ██    ██       ██</span>
-<span style="color:#3730a3">██      ██  ██   ██     ██     ████████   ██████   ███████</span></pre>`;
 
 const NAV_MAP = {
   'sobre': 'about', 'about': 'about',
@@ -360,8 +367,6 @@ export function renderTerminal(contentEl, wm) {
     await printLine(`<span style="color:#6b7280;">Last login: ${dateStr} on ttys001</span>`, 0);
     await printLine(``, 0);
 
-    await printLine(ASCII_LOGO, 0);
-    await new Promise(r => setTimeout(r, 200));
 
     const hintLine = currentLang === 'pt'
       ? `<span style="color:#6b7280;"># Digite <span style="color:#fbbf24;">man</span> para ver os comandos</span>`
